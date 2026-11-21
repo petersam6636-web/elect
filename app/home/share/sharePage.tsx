@@ -1,22 +1,66 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { gsap } from "gsap";
 import {
   AlertCircle,
   Check,
+  CalendarDays,
   Copy,
+  Crown,
   Link2,
   LoaderCircle,
   Plus,
+  ArrowRight,
   QrCode,
+  Trophy,
+  Users,
 } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
 import { ensureUserTask } from "@/lib/tasks";
+import { getElectionDurationMs } from "@/lib/electionTimer";
 import type { Project } from "@/types/project";
+
+function formatDate(date: string | null | undefined) {
+  if (!date) return "Date unavailable";
+
+  const parsed = new Date(date);
+  if (Number.isNaN(parsed.getTime())) return "Date unavailable";
+
+  return new Intl.DateTimeFormat("en", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(parsed);
+}
+
+function formatDuration(milliseconds: number | null) {
+  if (
+    milliseconds === null ||
+    !Number.isFinite(milliseconds) ||
+    milliseconds <= 0
+  ) {
+    return "Not available";
+  }
+
+  const seconds = Math.floor(milliseconds / 1000);
+  const days = Math.floor(seconds / 86400);
+  const hours = Math.floor((seconds % 86400) / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+  const parts: string[] = [];
+
+  if (days > 0) parts.push(`${days}d`);
+  if (hours > 0) parts.push(`${hours}h`);
+  if (minutes > 0) parts.push(`${minutes}m`);
+  if (parts.length === 0) parts.push(`${remainingSeconds}s`);
+
+  return parts.join(" ");
+}
 
 export default function SharePage() {
   const {
@@ -34,6 +78,7 @@ export default function SharePage() {
   const [origin, setOrigin] = useState("");
   const [copied, setCopied] = useState(false);
   const [copyError, setCopyError] = useState("");
+  const pageRef = useRef<HTMLElement>(null);
   const shareUrl = origin && linkingId
     ? `${origin}/home/share/${linkingId}`
     : "";
@@ -71,7 +116,7 @@ export default function SharePage() {
             .maybeSingle(),
           supabase
             .from("projects")
-            .select("*")
+            .select("*, nominees (*, achievements (*), voters (*))")
             .eq("user_id", userData.user.id)
             .eq("deleted", false)
             .order("created_at", { ascending: false })
@@ -142,6 +187,70 @@ export default function SharePage() {
     Boolean(project && project.length > 0) &&
     Boolean(currentProject?.id && shareUrl);
 
+  const finishedResults = useMemo(() => {
+    if (!currentProject) return null;
+
+    const nominees = currentProject.nominees ?? [];
+    const rankedNominees = [...nominees].sort(
+      (a, b) => (b.voters?.length ?? 0) - (a.voters?.length ?? 0)
+    );
+    const totalVotes = nominees.reduce(
+      (total, nominee) => total + (nominee.voters?.length ?? 0),
+      0
+    );
+    const highestVotes = rankedNominees.reduce(
+      (highest, nominee) =>
+        Math.max(highest, nominee.voters?.length ?? 0),
+      0
+    );
+    const winners =
+      highestVotes === 0
+        ? []
+        : rankedNominees.filter(
+            (nominee) => (nominee.voters?.length ?? 0) === highestVotes
+          );
+    const durationValue = getElectionDurationMs(
+      currentProject.duration_ms,
+      currentProject.created_at
+    );
+
+    return {
+      nominees,
+      rankedNominees,
+      totalVotes,
+      winners,
+      highestVotes,
+      duration:
+        Number.isFinite(durationValue) && durationValue > 0
+          ? durationValue
+          : null,
+    };
+  }, [currentProject]);
+
+  useEffect(() => {
+    if (!pageRef.current) return;
+
+    const media = gsap.matchMedia();
+
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.fromTo(
+        pageRef.current?.querySelectorAll(
+          "[data-enter], .finished-election-card"
+        ) ?? [],
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.55,
+          stagger: 0.08,
+          ease: "power3.out",
+        }
+      );
+    });
+
+    return () => media.revert();
+  }, [loadingProject, taskKey, currentProject?.id]);
+
   const handleCopyLink = async () => {
     if (!shareUrl) return;
 
@@ -158,7 +267,10 @@ export default function SharePage() {
   };
 
   return (
-    <main className="relative isolate flex min-h-[calc(100dvh-8rem)] items-center justify-center overflow-hidden px-3 py-8 sm:px-6">
+    <main
+      ref={pageRef}
+      className="relative isolate flex min-h-[calc(100dvh-8rem)] items-center justify-center overflow-hidden px-3 py-8 sm:px-6"
+    >
       <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/[0.055] blur-[130px]" />
       <div
         aria-hidden="true"
@@ -208,25 +320,152 @@ export default function SharePage() {
             <p>{projectError}</p>
           </section>
         ) : !canGenerateQr ? (
-          <section className="mx-auto max-w-xl rounded-3xl border border-white/[0.08] bg-[#0d1310]/80 px-6 py-12 text-center backdrop-blur-xl">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.07] text-emerald-300">
-              <QrCode size={21} />
-            </div>
-            <h2 className="mt-4 text-lg font-semibold text-white">
-              QR code isn&apos;t available
-            </h2>
-            <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-zinc-400">
-              Create a project to generate a QR code and share its voting
-              link.
-            </p>
-            <Link
-              href="/home/starting"
-              className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-emerald-400 px-5 text-sm font-semibold text-[#04130c] transition-colors hover:bg-emerald-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d1310]"
+          taskKey === false && currentProject && finishedResults ? (
+            <section
+              data-enter
+              className="finished-election-card mx-auto max-w-xl overflow-hidden rounded-3xl border border-emerald-400/15 bg-[#0d1310]/90 p-5 text-left shadow-[0_25px_90px_rgba(0,0,0,0.32)] backdrop-blur-xl sm:p-7"
             >
-              <Plus size={16} />
-              Create a project
-            </Link>
-          </section>
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.07] px-3 py-1.5 text-xs font-medium text-emerald-300">
+                  <Check size={13} />
+                  Election completed
+                </span>
+                <span className="inline-flex items-center gap-2 text-xs text-zinc-500">
+                  <CalendarDays size={14} />
+                  {formatDate(currentProject.created_at)}
+                </span>
+              </div>
+
+              <div className="mt-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-400/60">
+                  Finished project
+                </p>
+                <h2 className="mt-2 break-words text-2xl font-semibold tracking-tight text-white">
+                  {currentProject.name || "Untitled election"}
+                </h2>
+                {currentProject.description && (
+                  <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-400">
+                    {currentProject.description}
+                  </p>
+                )}
+              </div>
+
+              <div className="mt-6 rounded-2xl border border-emerald-300/15 bg-black/20 p-5">
+                {finishedResults.winners.length === 0 ? (
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/[0.06] text-zinc-400">
+                      <Trophy size={21} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-white">
+                        No winner recorded
+                      </p>
+                      <p className="mt-1 text-xs text-zinc-500">
+                        No votes were submitted for this election.
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-yellow-300/20 bg-yellow-300/[0.09] text-yellow-300">
+                        <Crown size={22} />
+                      </div>
+                      <div>
+                        <p className="text-[11px] uppercase tracking-wider text-zinc-500">
+                          {finishedResults.winners.length > 1
+                            ? "Joint winners"
+                            : "Winner"}
+                        </p>
+                        <p className="mt-1 font-semibold text-white">
+                          {finishedResults.winners
+                            .map((winner) => winner.name || "Unnamed nominee")
+                            .join(", ")}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="rounded-xl border border-yellow-300/15 bg-yellow-300/[0.06] px-4 py-3 text-left sm:text-right">
+                      <p className="text-[11px] text-yellow-100/50">Votes</p>
+                      <p className="mt-1 text-xl font-bold tabular-nums text-yellow-200">
+                        {finishedResults.highestVotes.toLocaleString()}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-4 grid grid-cols-2 gap-3">
+                <div className="rounded-2xl border border-white/[0.07] bg-black/15 p-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] text-zinc-500">Total votes</span>
+                    <Users size={15} className="text-emerald-300" />
+                  </div>
+                  <p className="mt-2 text-xl font-semibold tabular-nums text-white">
+                    {finishedResults.totalVotes.toLocaleString()}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-white/[0.07] bg-black/15 p-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] text-zinc-500">Duration</span>
+                    <CalendarDays size={15} className="text-emerald-300" />
+                  </div>
+                  <p className="mt-2 text-xl font-semibold text-white">
+                    {formatDuration(finishedResults.duration)}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+                <Link
+                  href="/home"
+                  className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-400 px-5 text-sm font-semibold text-[#04130c] transition hover:bg-emerald-300"
+                >
+                  <Trophy size={16} />
+                  View finished project
+                </Link>
+                <Link
+                  href="/home/history"
+                  className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-white/[0.09] bg-white/[0.04] px-5 text-sm font-semibold text-zinc-300 transition hover:border-emerald-400/30 hover:text-emerald-300"
+                >
+                  View history
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
+
+              {finishedResults.rankedNominees.length > 0 && (
+                <p className="mt-5 text-center text-[11px] text-zinc-600">
+                  {finishedResults.rankedNominees.length}{" "}
+                  {finishedResults.rankedNominees.length === 1
+                    ? "nominee"
+                    : "nominees"}{" "}
+                  participated
+                </p>
+              )}
+            </section>
+          ) : (
+            <section
+              data-enter
+              className="mx-auto max-w-xl rounded-3xl border border-white/[0.08] bg-[#0d1310]/80 px-6 py-12 text-center backdrop-blur-xl"
+            >
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.07] text-emerald-300">
+                <QrCode size={21} />
+              </div>
+              <h2 className="mt-4 text-lg font-semibold text-white">
+                QR code isn&apos;t available
+              </h2>
+              <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-zinc-400">
+                Create an active project before generating a QR code and
+                sharing its voting link.
+              </p>
+              <Link
+                href="/home/starting"
+                className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-emerald-400 px-5 text-sm font-semibold text-[#04130c] transition-colors hover:bg-emerald-300"
+              >
+                <Plus size={16} />
+                Create a project
+              </Link>
+            </section>
+          )
         ) : (
           <section className="relative mx-auto max-w-xl overflow-hidden rounded-[2rem] border border-white/[0.09] bg-[#0d1310]/85 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-2xl sm:p-7">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-300/50 to-transparent" />

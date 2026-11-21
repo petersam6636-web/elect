@@ -970,17 +970,6 @@ export default function NomineesPage() {
                   </div>
                 )}
 
-                <div className="min-w-0">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-300/60">
-                    Selected nominee
-                  </p>
-                  <p className="mt-1 truncate text-sm font-semibold text-white">
-                    {selectedNominee.name || "Unnamed nominee"}
-                  </p>
-                </div>
-              </div>
-
-
               <div className="space-y-4">
                 <div>
                   <label

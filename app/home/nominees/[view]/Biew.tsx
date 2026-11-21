@@ -447,7 +447,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
   // ------------------------------------------------------
 
   return (
-    <main className="relative min-h-screen w-full max-w-full overflow-x-clip px-3 py-5 text-white sm:px-6 lg:px-8">
+    <main className="relative min-h-screen w-full min-w-0 overflow-x-hidden px-3 py-5 text-white sm:px-6 lg:px-8">
       <div className="relative z-10 mx-auto w-full min-w-0 max-w-7xl">
 
         {/* --------------------------------------------------

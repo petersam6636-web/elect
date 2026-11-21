@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import Link from "next/link";
 import {
   AlertCircle,
@@ -17,6 +17,20 @@ import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
 import { ensureUserTask } from "@/lib/tasks";
 import type { Project } from "@/types/project";
+
+const SharedQRCode = memo(function SharedQRCode({ value }: { value: string }) {
+  return (
+    <QRCodeSVG
+      value={value}
+      size={280}
+      level="M"
+      includeMargin
+      bgColor="#ffffff"
+      fgColor="#07150e"
+      className="block h-auto w-full max-w-[260px]"
+    />
+  );
+});
 
 export default function SharePage() {
   const {
@@ -250,15 +264,7 @@ export default function SharePage() {
 
               <div className="mx-auto mt-5 flex w-full max-w-[320px] justify-center rounded-[1.75rem] border border-white/10 bg-white p-3 shadow-[0_20px_70px_rgba(16,185,129,0.12)] sm:p-4">
                 {shareUrl && (
-                  <QRCodeSVG
-                    value={shareUrl}
-                    size={280}
-                    level="H"
-                    includeMargin
-                    bgColor="#ffffff"
-                    fgColor="#07150e"
-                    className="block h-auto w-full max-w-[260px]"
-                  />
+                  <SharedQRCode value={shareUrl} />
                 )}
               </div>
 

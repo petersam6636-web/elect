@@ -37,7 +37,12 @@ export default function DashboardShell({ children }: DashboardShellProps) {
 
   useGSAP(
     () => {
-      if (pathname !== "/home/share") return;
+      if (
+        pathname !== "/home/share" &&
+        !pathname.startsWith("/home/share/")
+      ) {
+        return;
+      }
 
       const wrapper = smoothWrapperRef.current;
       const content = smoothContentRef.current;

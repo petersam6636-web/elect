@@ -1,22 +1,30 @@
 
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { gsap } from "gsap";
 import {
   ArrowRight,
   Award,
+  CalendarDays,
   CheckCircle2,
   Clock3,
+  Copy,
+  Crown,
   Info,
   Loader2,
   MessageSquare,
   ShieldCheck,
+  Trophy,
   Users,
   Vote,
   X,
 } from "lucide-react";
 import { supabase } from "@/lib/supabase-client";
+import useApp from "@/lib/useApp";
+import { getElectionDurationMs } from "@/lib/electionTimer";
 import type { Achievement, Nominee, Project } from "@/types/project";
 import ProjectLoading from "@/components/ProjectLoading";
 
@@ -97,11 +105,40 @@ function formatDate(date: string | null | undefined) {
   }).format(parsed);
 }
 
+function formatDuration(milliseconds: number | null) {
+  if (
+    milliseconds === null ||
+    !Number.isFinite(milliseconds) ||
+    milliseconds <= 0
+  ) {
+    return "Not available";
+  }
+
+  const seconds = Math.floor(milliseconds / 1000);
+  const days = Math.floor(seconds / 86400);
+  const hours = Math.floor((seconds % 86400) / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+  const parts: string[] = [];
+
+  if (days > 0) parts.push(`${days}d`);
+  if (hours > 0) parts.push(`${hours}h`);
+  if (minutes > 0) parts.push(`${minutes}m`);
+  if (parts.length === 0) parts.push(`${remainingSeconds}s`);
+
+  return parts.join(" ");
+}
+
 export default function QRPage({ projectId }: QRPageProps) {
   const router = useRouter();
+  const { setProject, setTaskKey } = useApp();
   const [currentProject, setCurrentProject] = useState<Project | null>(null);
   const [loadingProject, setLoadingProject] = useState(true);
   const [loadError, setLoadError] = useState("");
+  const [electionStatus, setElectionStatus] = useState<
+    "loading" | "active" | "finished"
+  >("loading");
+  const pageRef = useRef<HTMLElement>(null);
 
   const [selectedNominee, setSelectedNominee] =
     useState<Nominee | null>(null);
@@ -116,7 +153,7 @@ export default function QRPage({ projectId }: QRPageProps) {
   const [voteError, setVoteError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [showAlreadyVoted, setShowAlreadyVoted] = useState(false);
-
+  const [copied, setCopied] = useState(false);
   // Fetch the exact project identified by the URL projectId.
   // This page does not depend on the newest project in app context.
   const refreshProject = useCallback(async (): Promise<Project> => {
@@ -136,6 +173,31 @@ export default function QRPage({ projectId }: QRPageProps) {
     if (!projectData) {
       throw new Error("This election could not be found or is no longer available.");
     }
+
+    const { data: taskData, error: taskError } = await supabase
+      .from("tasks")
+      .select("key")
+      .eq("user_id", projectData.user_id)
+      .limit(1)
+      .maybeSingle();
+
+    if (taskError) throw taskError;
+
+    const isElectionActive = taskData?.key === true;
+    setElectionStatus(isElectionActive ? "active" : "finished");
+    setTaskKey(isElectionActive);
+    setProject((previousProjects) => {
+      const projects = previousProjects ?? [];
+      const existingIndex = projects.findIndex(
+        (project) => project.id === projectData.id
+      );
+
+      if (existingIndex === -1) return [...projects, projectData as Project];
+
+      return projects.map((project) =>
+        project.id === projectData.id ? (projectData as Project) : project
+      );
+    });
 
     const nomineeData = await fetchAllPages<Nominee>((from, to) =>
       supabase
@@ -200,9 +262,18 @@ export default function QRPage({ projectId }: QRPageProps) {
     } as Project;
 
     setCurrentProject(updatedProject);
+    setProject((previousProjects) =>
+      (previousProjects ?? []).some(
+        (project) => project.id === updatedProject.id
+      )
+        ? (previousProjects ?? []).map((project) =>
+            project.id === updatedProject.id ? updatedProject : project
+          )
+        : [...(previousProjects ?? []), updatedProject]
+    );
 
     return updatedProject;
-  }, [projectId]);
+  }, [projectId, setProject, setTaskKey]);
 
   // Check whether this browser has already voted in this exact project.
   const checkVotingStatus = useCallback(
@@ -328,12 +399,84 @@ export default function QRPage({ projectId }: QRPageProps) {
     0
   );
 
+  const finishedResults = useMemo(() => {
+    if (!currentProject) return null;
+
+    const rankedNominees = [...nominees].sort(
+      (a, b) => (b.voters?.length ?? 0) - (a.voters?.length ?? 0)
+    );
+    const highestVotes = rankedNominees.reduce(
+      (highest, nominee) =>
+        Math.max(highest, nominee.voters?.length ?? 0),
+      0
+    );
+    const winners =
+      highestVotes === 0
+        ? []
+        : rankedNominees.filter(
+            (nominee) => (nominee.voters?.length ?? 0) === highestVotes
+          );
+    const durationValue = getElectionDurationMs(
+      currentProject.duration_ms,
+      currentProject.created_at
+    );
+
+    return {
+      rankedNominees,
+      winners,
+      highestVotes,
+      duration:
+        Number.isFinite(durationValue) && durationValue > 0
+          ? durationValue
+          : null,
+    };
+  }, [currentProject, nominees]);
+
+  useEffect(() => {
+    if (!pageRef.current) return;
+
+    const media = gsap.matchMedia();
+
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.fromTo(
+        pageRef.current?.querySelectorAll(
+          "[data-enter], .finished-election-card"
+        ) ?? [],
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.55,
+          stagger: 0.08,
+          ease: "power3.out",
+        }
+      );
+    });
+
+    return () => media.revert();
+  }, [electionStatus, currentProject?.id]);
+
   const openVoteModal = async (nominee: Nominee) => {
     if (!currentProject?.id || submitting || hasVoted) return;
 
     setVoteError("");
 
     try {
+      const updatedProject = await refreshProject();
+      const { data: task, error: taskError } = await supabase
+        .from("tasks")
+        .select("key")
+        .eq("user_id", updatedProject.user_id)
+        .limit(1)
+        .maybeSingle();
+
+      if (taskError) throw taskError;
+      if (task?.key !== true) {
+        setElectionStatus("finished");
+        setVoteError("Voting has ended for this election.");
+        return;
+      }
+
       const voteStatus = await checkVotingStatus(currentProject.id);
 
       if (voteStatus.hasVoted) {
@@ -385,6 +528,22 @@ export default function QRPage({ projectId }: QRPageProps) {
     setVoteError("");
 
     try {
+      const updatedProject = await refreshProject();
+      const { data: task, error: taskError } = await supabase
+        .from("tasks")
+        .select("key")
+        .eq("user_id", updatedProject.user_id)
+        .limit(1)
+        .maybeSingle();
+
+      if (taskError) throw taskError;
+      if (task?.key !== true) {
+        setElectionStatus("finished");
+        setVoteError("Voting has ended for this election.");
+        setSelectedNominee(null);
+        return;
+      }
+
       // Verify the exact browser UUID and project combination again.
       const voteStatus = await checkVotingStatus(currentProject.id);
 
@@ -494,6 +653,20 @@ export default function QRPage({ projectId }: QRPageProps) {
     }
   };
 
+  const handleCopyLink = async () => {
+    if (!currentProject) return;
+
+    const shareLink = `${window.location.origin}/home/share/${currentProject.id}`;
+
+    try {
+      await navigator.clipboard.writeText(shareLink);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2200);
+    } catch (error) {
+      console.error("Unable to copy election link:", error);
+    }
+  };
+
   // Loading the project from Supabase.
   if (loadingProject) {
     return <ProjectLoading />;
@@ -535,8 +708,310 @@ export default function QRPage({ projectId }: QRPageProps) {
     return <ProjectLoading />;
   }
 
+  if (electionStatus === "finished" && finishedResults) {
+    return (
+      <main
+        ref={pageRef}
+        className="relative min-h-screen px-2 py-4 text-white lg:px-6"
+      >
+        <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 rounded-full bg-emerald-500/[0.035] blur-[100px]" />
+        <div className="pointer-events-none absolute bottom-20 right-0 h-64 w-64 rounded-full bg-emerald-400/[0.035] blur-[100px]" />
+
+        <div className="relative mx-auto w-full max-w-7xl">
+          <header
+            data-enter
+            className="mb-8 flex flex-col justify-between gap-5 border-b border-white/[0.07] pb-6 sm:flex-row sm:items-center"
+          >
+            <div>
+              <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5 text-xs font-medium text-emerald-300">
+                <CheckCircle2 size={13} />
+                Election completed
+              </div>
+
+              <h1 className="break-words text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                Final <span className="text-emerald-400">results.</span>
+              </h1>
+
+              <p className="mt-2 max-w-xl break-words text-sm text-white/40">
+                {currentProject.description ||
+                  "The election has ended and its final results are available."}
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => void handleRefresh()}
+              className="inline-flex h-11 w-fit shrink-0 items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 text-sm font-semibold text-white/70 transition hover:border-emerald-400/25 hover:text-emerald-300"
+            >
+              <Loader2 size={15} className="text-emerald-300" />
+              Refresh results
+            </button>
+          </header>
+
+          {loadError && (
+            <div
+              role="alert"
+              className="mb-5 rounded-xl border border-amber-400/15 bg-amber-400/[0.05] p-3 text-xs text-amber-200"
+            >
+              {loadError}
+            </div>
+          )}
+
+          <section className="finished-election-card relative overflow-hidden rounded-3xl border border-emerald-400/15 bg-gradient-to-br from-[#10251a] via-[#0b1711] to-[#09110d] p-5 shadow-[0_25px_90px_rgba(0,0,0,0.28)] sm:p-8">
+            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full border border-emerald-300/[0.07]" />
+            <div className="pointer-events-none absolute right-10 top-10 h-32 w-32 rounded-full bg-emerald-400/[0.08] blur-[55px]" />
+
+            <div className="relative">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-300/15 bg-black/20 px-3 py-1.5 text-xs font-medium text-emerald-200">
+                  <Trophy size={13} />
+                  Final election
+                </span>
+                <span className="inline-flex items-center gap-2 text-xs text-white/35">
+                  <CalendarDays size={14} />
+                  {formatDate(currentProject.created_at)}
+                </span>
+              </div>
+
+              <div className="mt-8 max-w-3xl">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300/60">
+                  Election
+                </p>
+                <h2 className="break-words text-3xl font-semibold tracking-tight sm:text-4xl">
+                  {currentProject.name || "Untitled election"}
+                </h2>
+              </div>
+
+              <div className="mt-8 rounded-2xl border border-emerald-300/15 bg-black/20 p-5 sm:p-6">
+                <div className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200/65">
+                  <Crown size={15} />
+                  Election result
+                </div>
+
+                {finishedResults.winners.length === 0 ? (
+                  <div className="flex items-start gap-3">
+                    <div className="rounded-xl bg-white/[0.06] p-3 text-white/50">
+                      <Vote size={22} />
+                    </div>
+                    <div>
+                      <p className="font-semibold">No votes recorded</p>
+                      <p className="mt-1 text-sm text-white/40">
+                        No winner can be determined for this election.
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-yellow-300/20 bg-yellow-300/[0.09] text-yellow-300">
+                        <Trophy size={27} />
+                      </div>
+                      <div>
+                        <p className="text-xs text-white/40">
+                          {finishedResults.winners.length > 1
+                            ? "Joint winners"
+                            : "Winning nominee"}
+                        </p>
+                        <div className="mt-1 flex flex-wrap gap-x-2">
+                          {finishedResults.winners.map((winner, index) => (
+                            <span
+                              key={winner.id}
+                              className="text-xl font-semibold sm:text-2xl"
+                            >
+                              {winner.name || "Unnamed nominee"}
+                              {index < finishedResults.winners.length - 1 && (
+                                <span className="text-emerald-300">,</span>
+                              )}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="rounded-xl border border-yellow-300/15 bg-yellow-300/[0.06] px-4 py-3 sm:text-right">
+                      <p className="text-xs text-yellow-100/50">
+                        {finishedResults.winners.length > 1 ? "Votes each" : "Winning votes"}
+                      </p>
+                      <p className="mt-1 text-2xl font-bold tabular-nums text-yellow-200">
+                        {finishedResults.highestVotes.toLocaleString()}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                <div className="rounded-2xl border border-white/[0.07] bg-black/15 p-5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-white/40">Election duration</span>
+                    <Clock3 size={17} className="text-emerald-300" />
+                  </div>
+                  <p className="mt-3 text-2xl font-semibold">
+                    {formatDuration(finishedResults.duration)}
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/[0.07] bg-black/15 p-5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-white/40">Total votes</span>
+                    <Users size={17} className="text-emerald-300" />
+                  </div>
+                  <p className="mt-3 text-2xl font-semibold tabular-nums">
+                    {totalVotes.toLocaleString()}
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/[0.07] bg-black/15 p-5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-white/40">Nominees</span>
+                    <Award size={17} className="text-emerald-300" />
+                  </div>
+                  <p className="mt-3 text-2xl font-semibold">
+                    {nominees.length}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section data-enter className="mt-9">
+            <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h2 className="font-semibold text-white">Nominee results</h2>
+                <p className="mt-1 text-xs text-white/40">
+                  Final vote distribution
+                </p>
+              </div>
+              <span className="rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-xs text-white/45">
+                {nominees.length} nominees
+              </span>
+            </div>
+
+            {finishedResults.rankedNominees.length === 0 ? (
+              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-6 text-center text-sm text-white/40">
+                No nominees were recorded for this election.
+              </div>
+            ) : (
+              <div className="grid gap-3">
+                {finishedResults.rankedNominees.map((nominee, index) => {
+                  const voteCount = nominee.voters?.length ?? 0;
+                  const percentage =
+                    totalVotes > 0 ? (voteCount / totalVotes) * 100 : 0;
+                  const isWinner = finishedResults.winners.some(
+                    (winner) => winner.id === nominee.id
+                  );
+
+                  return (
+                    <article
+                      key={nominee.id}
+                      data-enter
+                      className="overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025]"
+                    >
+                      <div className="p-4 sm:p-5">
+                        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                          <div className="flex min-w-0 items-center gap-3">
+                            {nominee.image ? (
+                              <img
+                                src={nominee.image}
+                                alt={nominee.name || "Nominee"}
+                                className="h-12 w-12 shrink-0 rounded-xl border border-emerald-400/20 object-cover"
+                              />
+                            ) : (
+                              <div
+                                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-sm font-semibold ${
+                                  isWinner
+                                    ? "bg-emerald-400/15 text-emerald-300"
+                                    : "bg-white/[0.06] text-white/45"
+                                }`}
+                              >
+                                {index + 1}
+                              </div>
+                            )}
+
+                            <div className="min-w-0">
+                              <p className="break-words font-medium text-white">
+                                {nominee.name || "Unnamed nominee"}
+                              </p>
+                              {isWinner && (
+                                <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-300">
+                                  <Crown size={11} />
+                                  Winner
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="text-right">
+                            <p className="font-semibold tabular-nums text-white">
+                              {voteCount.toLocaleString()} votes
+                            </p>
+                            <p className="mt-0.5 text-xs text-white/35">
+                              {percentage.toFixed(1)}%
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+                          <div
+                            className={`h-full rounded-full ${
+                              isWinner ? "bg-emerald-400" : "bg-white/25"
+                            }`}
+                            style={{ width: `${percentage}%` }}
+                          />
+                        </div>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            )}
+          </section>
+
+          <section
+            data-enter
+            className="mt-9 flex flex-col gap-4 rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.045] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"
+          >
+            <div>
+              <h2 className="font-semibold text-white">This election is complete</h2>
+              <p className="mt-1 text-sm text-white/40">
+                Share the result or continue with the election workspace.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => void handleCopyLink()}
+                disabled={!currentProject}
+                className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 text-sm font-semibold text-white/70 transition hover:border-emerald-400/30 hover:text-emerald-300 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {copied ? <CheckCircle2 size={16} /> : <Copy size={16} />}
+                {copied ? "Copied" : "Copy link"}
+              </button>
+
+              <Link
+                href="/home"
+                className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-emerald-400/25 bg-emerald-400/10 px-4 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-400 hover:text-[#04130c]"
+              >
+                View finished project
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </section>
+
+          <footer className="mt-12 border-t border-white/[0.06] py-6 text-center text-xs text-white/25">
+            VoteSphere · Every vote recorded. Every result visible.
+          </footer>
+        </div>
+      </main>
+    );
+  }
+
   return (
-    <main className="relative min-h-screen overflow-hidden px-2 py-4 text-white lg:px-6">
+    <main
+      ref={pageRef}
+      className="relative min-h-screen overflow-hidden px-2 py-4 text-white lg:px-6"
+    >
       <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 rounded-full bg-emerald-500/[0.035] blur-[100px]" />
       <div className="pointer-events-none absolute bottom-20 right-0 h-64 w-64 rounded-full bg-emerald-400/[0.035] blur-[100px]" />
 

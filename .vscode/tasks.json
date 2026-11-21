@@ -67,6 +67,28 @@
 				"$tsc"
 			],
 			"group": "build"
+		},
+		{
+			"label": "Validate AuthGuard smoother fix",
+			"type": "shell",
+			"command": "npm run build",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Validate AuthGuard ScrollSmoother",
+			"type": "shell",
+			"command": "npm run build",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
 		}
 	]
 }

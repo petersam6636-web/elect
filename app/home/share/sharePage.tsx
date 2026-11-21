@@ -13,6 +13,7 @@ import {
   Link2,
   LoaderCircle,
   Plus,
+  ArrowRight,
   QrCode,
   Trophy,
   Users,

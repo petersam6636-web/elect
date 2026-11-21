@@ -454,7 +454,7 @@ export default function NomineesPage() {
   };
 
   const handleDetails = (nomineeId: string) => {
-    router.push(`/home/nominees/${nomineeId}`);
+    router.push(`/home/${nomineeId}`);
   };
 
   const handleRefresh = async () => {
@@ -945,15 +945,6 @@ export default function NomineesPage() {
                 </button>
               </div>
 
-              <div className="mb-6 rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.055] p-4">
-                <p className="font-semibold text-emerald-200">
-                  {selectedNominee.name || "Unnamed nominee"}
-                </p>
-
-                <p className="mt-1 text-xs leading-5 text-white/40">
-                  Your vote will be recorded for this nominee.
-                </p>
-              </div>
 
               <div className="space-y-4">
                 <div>

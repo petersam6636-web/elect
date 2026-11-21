@@ -1,17 +1,11 @@
 
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ScrollSmoother from "gsap/ScrollSmoother";
-import { useGSAP } from "@gsap/react";
 import Slider from "./Slider";
 import type { NavigationPosition } from "./NavigationCustomizer";
 import useApp from "@/lib/useApp";
-
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 
 interface DashboardShellProps {
   children: ReactNode;
@@ -25,8 +19,6 @@ export default function DashboardShell({ children }: DashboardShellProps) {
 
   const [position, setPosition] = useState<NavigationPosition>("left");
   const [ready, setReady] = useState(false);
-  const smoothWrapperRef = useRef<HTMLDivElement>(null);
-  const smoothContentRef = useRef<HTMLElement>(null);
 
   const isNomineesRoute = pathname === "/home/nominees";
 
@@ -34,36 +26,6 @@ export default function DashboardShell({ children }: DashboardShellProps) {
     taskKey === true &&
     Boolean(project && project.length > 0) &&
     !isNomineesRoute;
-
-  useGSAP(
-    () => {
-      const wrapper = smoothWrapperRef.current;
-      const content = smoothContentRef.current;
-
-      if (!wrapper || !content) return;
-
-      const media = gsap.matchMedia();
-
-      media.add("(prefers-reduced-motion: no-preference)", () => {
-        const smoother = ScrollSmoother.create({
-          wrapper,
-          content,
-          smooth: 0.25,
-          smoothTouch: 0,
-          effects: false,
-        });
-
-        return () => smoother.kill();
-      });
-
-      return () => media.revert();
-    },
-    {
-      scope: smoothWrapperRef,
-      dependencies: [pathname],
-      revertOnUpdate: true,
-    }
-  );
 
   useEffect(() => {
     let savedPosition: NavigationPosition | null = null;
@@ -109,13 +71,9 @@ export default function DashboardShell({ children }: DashboardShellProps) {
       />
 
       <div
-        ref={smoothWrapperRef}
-        id="smooth-wrapper"
         className="relative min-h-dvh bg-[#070b09]"
       >
         <main
-          ref={smoothContentRef}
-          id="smooth-content"
           className={`min-h-dvh w-full transition-[padding] duration-300 ease-in-out ${
             position === "left"
               ? "md:pl-[88px] md:pr-5"

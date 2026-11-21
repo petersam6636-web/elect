@@ -551,9 +551,13 @@ export default function NomineesPage() {
   }
 
   return (
-    <main className="relative min-h-screen overflow-hidden px-2 py-4 text-white lg:px-6">
-      <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 rounded-full bg-emerald-500/[0.035] blur-[100px]" />
-      <div className="pointer-events-none absolute bottom-20 right-0 h-64 w-64 rounded-full bg-emerald-400/[0.035] blur-[100px]" />
+    <main className="relative min-h-screen overflow-x-clip px-2 py-4 text-white lg:px-6">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-[6%] top-[12%] h-24 w-24 rounded-full border border-emerald-300/10 bg-emerald-300/[0.02] sm:h-36 sm:w-36" />
+        <div className="absolute right-[7%] top-[18%] h-10 w-10 rounded-full border border-emerald-300/15 bg-emerald-300/[0.035] sm:h-16 sm:w-16" />
+        <div className="absolute bottom-[10%] left-[12%] h-20 w-20 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] sm:h-28 sm:w-28" />
+        <div className="absolute bottom-[22%] right-[10%] h-7 w-7 rounded-full border border-emerald-300/15 bg-emerald-300/[0.035] sm:h-10 sm:w-10" />
+      </div>
 
       <div className="relative mx-auto w-full max-w-7xl">
         {/* Election header */}
@@ -717,7 +721,10 @@ export default function NomineesPage() {
                   key={nominee.id}
                   className="group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-[#0b1510]/90 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/20 hover:shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:p-6"
                 >
-                  <div className="pointer-events-none absolute -right-16 -top-20 h-44 w-44 rounded-full bg-emerald-400/[0.035] blur-[65px] transition group-hover:bg-emerald-400/[0.07]" />
+                  <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+                    <div className="absolute -right-10 -top-14 h-36 w-36 rounded-full border border-emerald-300/10 bg-emerald-300/[0.02]" />
+                    <div className="absolute bottom-[12%] right-[8%] h-5 w-5 rounded-full border border-emerald-300/15 bg-emerald-300/[0.035]" />
+                  </div>
 
                   <div className="relative">
                     <div className="flex items-start gap-4">
@@ -913,7 +920,12 @@ export default function NomineesPage() {
             aria-labelledby="vote-modal-title"
             className="relative my-auto w-full max-w-md overflow-hidden rounded-3xl border border-emerald-400/15 bg-[#0c1711] p-6 shadow-[0_25px_100px_rgba(0,0,0,0.6)] sm:p-7"
           >
-            <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full bg-emerald-400/[0.07] blur-[65px]" />
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+              <div className="absolute -right-12 -top-16 h-36 w-36 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025]" />
+              <div className="absolute right-[12%] top-[28%] h-7 w-7 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
+              <div className="absolute -bottom-12 -left-10 h-28 w-28 rounded-full border border-emerald-300/10 bg-emerald-300/[0.02]" />
+              <div className="absolute bottom-[19%] right-[8%] h-5 w-5 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
+            </div>
 
             <div className="relative">
               <div className="mb-5 flex items-start justify-between">
@@ -943,6 +955,29 @@ export default function NomineesPage() {
                 >
                   <X size={19} />
                 </button>
+              </div>
+
+              <div className="mb-5 flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-black/20 p-3">
+                {selectedNominee.image ? (
+                  <img
+                    src={selectedNominee.image}
+                    alt={selectedNominee.name || "Nominee"}
+                    className="h-12 w-12 shrink-0 rounded-xl border border-emerald-400/20 object-cover"
+                  />
+                ) : (
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-emerald-400/15 bg-emerald-400/[0.08] text-sm font-bold text-emerald-300">
+                    {selectedNominee.name?.trim().charAt(0).toUpperCase() || "N"}
+                  </div>
+                )}
+
+                <div className="min-w-0">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-300/60">
+                    Selected nominee
+                  </p>
+                  <p className="mt-1 truncate text-sm font-semibold text-white">
+                    {selectedNominee.name || "Unnamed nominee"}
+                  </p>
+                </div>
               </div>
 
 

@@ -89,6 +89,17 @@
 				"$tsc"
 			],
 			"group": "build"
+		},
+		{
+			"label": "Validate card and scroll fixes",
+			"type": "shell",
+			"command": "npm run build",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
 		}
 	]
 }

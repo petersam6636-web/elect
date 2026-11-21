@@ -235,43 +235,7 @@ export default function CreateProjectPage() {
   }
 
   return (
-    <main className="relative min-h-screen overflow-hidden px-1 py-4 text-white sm:py-5">
-
-      {/* Static decorative glass bubbles - scattered around the page */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-
-        {/* Large upper-left bubble */}
-        <div className="absolute left-[5%] top-[12%] h-40 w-40 rounded-full border border-emerald-300/15 bg-gradient-to-br from-emerald-300/[0.09] via-emerald-500/[0.035] to-transparent shadow-[inset_0_0_35px_rgba(52,211,153,0.07)] sm:left-[10%] sm:h-52 sm:w-52" />
-
-        {/* Small upper-middle bubble */}
-        <div className="absolute left-[38%] top-[16%] h-7 w-7 rounded-full border border-emerald-300/25 bg-emerald-300/[0.07] sm:h-10 sm:w-10" />
-
-        {/* Medium upper-right bubble */}
-        <div className="absolute right-[8%] top-[24%] h-16 w-16 rounded-full border border-emerald-300/20 bg-emerald-300/[0.05] shadow-[inset_0_0_20px_rgba(52,211,153,0.10)] sm:right-[14%] sm:h-24 sm:w-24" />
-
-        {/* Small left-middle bubble */}
-        <div className="absolute left-[18%] top-[48%] h-8 w-8 rounded-full border border-emerald-300/25 bg-emerald-300/[0.07] sm:left-[24%] sm:h-11 sm:w-11" />
-
-        {/* Large right-middle bubble */}
-        <div className="absolute -right-12 top-[47%] h-44 w-44 rounded-full border border-emerald-300/15 bg-gradient-to-br from-emerald-300/[0.08] via-emerald-500/[0.03] to-transparent shadow-[inset_0_0_40px_rgba(52,211,153,0.07)] sm:right-[3%] sm:h-56 sm:w-56" />
-
-        {/* Small lower-middle bubble */}
-        <div className="absolute left-[48%] top-[76%] h-6 w-6 rounded-full border border-emerald-300/25 bg-emerald-300/[0.07] sm:h-9 sm:w-9" />
-
-        {/* Medium lower-left bubble */}
-        <div className="absolute bottom-[8%] left-[7%] h-20 w-20 rounded-full border border-emerald-300/15 bg-emerald-300/[0.05] shadow-[inset_0_0_25px_rgba(52,211,153,0.08)] sm:left-[16%] sm:h-28 sm:w-28" />
-
-        {/* Small far-right bubble */}
-        <div className="absolute bottom-[16%] right-[12%] h-8 w-8 rounded-full border border-emerald-300/25 bg-emerald-300/[0.07] sm:right-[22%] sm:h-10 sm:w-10" />
-
-        {/* Additional static ambient bubbles */}
-        <div className="absolute left-[72%] top-[8%] h-5 w-5 rounded-full border border-emerald-300/20 bg-emerald-300/[0.05] sm:h-8 sm:w-8" />
-        <div className="absolute left-[27%] top-[34%] h-6 w-6 rounded-full border border-emerald-300/20 bg-emerald-300/[0.05] sm:h-9 sm:w-9" />
-        <div className="absolute right-[28%] top-[63%] h-8 w-8 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04] sm:h-12 sm:w-12" />
-        <div className="absolute bottom-[28%] left-[4%] h-10 w-10 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04] sm:h-16 sm:w-16" />
-        <div className="absolute bottom-[4%] right-[38%] h-5 w-5 rounded-full border border-emerald-300/20 bg-emerald-300/[0.05] sm:h-7 sm:w-7" />
-
-      </div>
+    <main className="relative min-h-screen px-1 py-4 text-white sm:py-5">
 
       {/* Main content */}
       <div className="relative z-10 mx-auto flex min-h-[85vh] max-w-3xl items-center justify-center">
@@ -279,8 +243,17 @@ export default function CreateProjectPage() {
         {/* Main Card */}
         <form
           onSubmit={handleCreateProject}
-          className="w-full max-w-2xl rounded-3xl border border-emerald-400/15 bg-[#0b1913]/95 p-6 shadow-[0_0_55px_rgba(0,0,0,0.30)] backdrop-blur-xl sm:p-8"
+          className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-emerald-400/15 bg-[#0b1913]/95 p-6 shadow-[0_0_55px_rgba(0,0,0,0.30)] backdrop-blur-xl sm:p-8"
         >
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="absolute -right-20 -top-24 h-52 w-52 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025]" />
+            <div className="absolute right-[14%] top-[18%] h-8 w-8 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04] sm:h-10 sm:w-10" />
+            <div className="absolute -left-12 bottom-[8%] h-32 w-32 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] sm:h-40 sm:w-40" />
+            <div className="absolute bottom-[20%] right-[7%] h-6 w-6 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
+            <div className="absolute left-[46%] top-[9%] h-5 w-5 rounded-full border border-emerald-300/15 bg-emerald-300/[0.035]" />
+          </div>
+
+          <div className="relative">
 
           {/* Header */}
           <div className="mb-7">
@@ -530,6 +503,7 @@ export default function CreateProjectPage() {
           <p className="mt-4 text-center text-[10px] text-white/30">
             You can proceed to add nominees after creating your election.
           </p>
+          </div>
         </form>
       </div>
     </main>

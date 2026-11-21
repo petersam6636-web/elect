@@ -485,7 +485,7 @@ console.log(2)
 
                     <div
                       key={item.title}
-                      className="group flex items-center gap-4 rounded-2xl px-3 py-4 transition-all duration-200 hover:bg-white/[0.035] sm:px-4"
+                      className="group flex items-center gap-4 rounded-2xl px-3 py-4 transition-all duration-200 hover:bg-white/[0.035] px-2"
                     >
 
                       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/[0.07] bg-white/[0.035] transition-all duration-200 group-hover:border-emerald-400/15 group-hover:bg-emerald-400/[0.045]">

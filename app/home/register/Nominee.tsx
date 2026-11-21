@@ -442,28 +442,7 @@ export default function Nominee() {
   }
 
   return (
-    <main className="relative min-h-screen overflow-hidden ] px-1 py-4 text-white sm:py-5">
-
-      {/* Static decorative bubbles - same style and size as project creation */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-
-        <div className="absolute left-[5%] top-[12%] h-40 w-40 rounded-full border border-emerald-300/15 bg-gradient-to-br from-emerald-300/[0.09] via-emerald-500/[0.035] to-transparent shadow-[inset_0_0_35px_rgba(52,211,153,0.07)] sm:left-[10%] sm:h-52 sm:w-52" />
-
-        <div className="absolute left-[38%] top-[16%] h-7 w-7 rounded-full border border-emerald-300/25 bg-emerald-300/[0.07] sm:h-10 sm:w-10" />
-
-        <div className="absolute right-[8%] top-[24%] h-16 w-16 rounded-full border border-emerald-300/20 bg-emerald-300/[0.05] shadow-[inset_0_0_20px_rgba(52,211,153,0.10)] sm:right-[14%] sm:h-24 sm:w-24" />
-
-        <div className="absolute left-[18%] top-[48%] h-8 w-8 rounded-full border border-emerald-300/25 bg-emerald-300/[0.07] sm:left-[24%] sm:h-11 sm:w-11" />
-
-        <div className="absolute -right-12 top-[47%] h-44 w-44 rounded-full border border-emerald-300/15 bg-gradient-to-br from-emerald-300/[0.08] via-emerald-500/[0.03] to-transparent shadow-[inset_0_0_40px_rgba(52,211,153,0.07)] sm:right-[3%] sm:h-56 sm:w-56" />
-
-        <div className="absolute left-[48%] top-[76%] h-6 w-6 rounded-full border border-emerald-300/25 bg-emerald-300/[0.07] sm:h-9 sm:w-9" />
-
-        <div className="absolute bottom-[8%] left-[7%] h-20 w-20 rounded-full border border-emerald-300/15 bg-emerald-300/[0.05] shadow-[inset_0_0_25px_rgba(52,211,153,0.08)] sm:left-[16%] sm:h-28 sm:w-28" />
-
-        <div className="absolute bottom-[16%] right-[12%] h-8 w-8 rounded-full border border-emerald-300/25 bg-emerald-300/[0.07] sm:right-[22%] sm:h-10 sm:w-10" />
-
-      </div>
+    <main className="relative min-h-screen px-1 py-4 text-white sm:py-5">
 
       {/* Main content */}
       <div className="relative z-10 mx-auto max-w-3xl">
@@ -507,7 +486,15 @@ export default function Nominee() {
 
 
         {/* Single nominee form */}
-        <section className="rounded-3xl border border-emerald-400/15 bg-[#0b1913]/95 p-5 shadow-[0_0_55px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:p-8">
+        <section className="relative overflow-hidden rounded-3xl border border-emerald-400/15 bg-[#0b1913]/95 p-5 shadow-[0_0_55px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:p-8">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="absolute -right-16 -top-20 h-44 w-44 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] sm:h-56 sm:w-56" />
+            <div className="absolute right-[14%] top-[16%] h-7 w-7 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04] sm:h-9 sm:w-9" />
+            <div className="absolute bottom-[7%] left-[6%] h-16 w-16 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] sm:h-24 sm:w-24" />
+            <div className="absolute bottom-[24%] right-[8%] h-5 w-5 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
+          </div>
+
+          <div className="relative">
 
           <div className="mb-7 flex flex-wrap items-center justify-between gap-3">
             <div>
@@ -687,6 +674,7 @@ export default function Nominee() {
           <p className="mt-3 text-center text-[11px] text-white/30">
             Register this nominee to clear the form and add another person.
           </p>
+          </div>
         </section>
 
         {/* Registered nominee count */}
@@ -745,8 +733,15 @@ export default function Nominee() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="confirmation-title"
-            className="w-full max-w-md rounded-3xl border border-emerald-400/20 bg-[#0b1913] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
+            className="relative w-full max-w-md overflow-hidden rounded-3xl border border-emerald-400/20 bg-[#0b1913] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
           >
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+              <div className="absolute -right-10 -top-14 h-32 w-32 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025]" />
+              <div className="absolute right-[12%] top-[31%] h-6 w-6 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
+              <div className="absolute -bottom-10 -left-8 h-24 w-24 rounded-full border border-emerald-300/10 bg-emerald-300/[0.02]" />
+            </div>
+
+            <div className="relative">
             <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/10 text-xl text-emerald-300">
               ✓
             </div>
@@ -798,6 +793,7 @@ export default function Nominee() {
                 )}
               </button>
             </div>
+            </div>
           </div>
         </div>
       )}
@@ -809,8 +805,15 @@ export default function Nominee() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="register-nominee-title"
-            className="w-full max-w-md rounded-3xl border border-emerald-400/20 bg-[#0b1913] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
+            className="relative w-full max-w-md overflow-hidden rounded-3xl border border-emerald-400/20 bg-[#0b1913] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
           >
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+              <div className="absolute -right-12 -top-16 h-36 w-36 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025]" />
+              <div className="absolute right-[11%] top-[29%] h-6 w-6 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
+              <div className="absolute -bottom-12 -left-10 h-28 w-28 rounded-full border border-emerald-300/10 bg-emerald-300/[0.02]" />
+            </div>
+
+            <div className="relative">
             <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/10 text-xl text-emerald-300">
               +
             </div>
@@ -847,6 +850,7 @@ export default function Nominee() {
               >
                 Yes, register
               </button>
+            </div>
             </div>
           </div>
         </div>

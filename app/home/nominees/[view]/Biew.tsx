@@ -49,6 +49,7 @@ type Nominee = {
 
 type Project = {
   id: string;
+  user_id?: string;
   name?: string | null;
   created_at?: string | null;
   nominees?: Nominee[] | null;
@@ -174,6 +175,8 @@ function CircularProgress({
 export default function BiewPage({ nomineeId }: DetailsProps) {
   const { project, linkingId } = useApp();
 
+  const [electionActive, setElectionActive] = useState<boolean | null>(null);
+  const [electionStatusError, setElectionStatusError] = useState("");
   const [lookup, setLookup] = useState<ProjectLookup>({
     nomineeId: "",
     project: null,
@@ -266,6 +269,49 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
     contextProject ??
     (lookup.nomineeId === nomineeId ? lookup.project : null);
 
+  useEffect(() => {
+    if (!currentProject?.user_id) return;
+
+    let active = true;
+
+    const loadElectionStatus = async () => {
+      setElectionActive(null);
+      setElectionStatusError("");
+
+      try {
+        const { data, error } = await supabase
+          .from("tasks")
+          .select("key")
+          .eq("user_id", currentProject.user_id)
+          .limit(1)
+          .maybeSingle();
+
+        if (!active) return;
+
+        if (error) {
+          setElectionStatusError(error.message);
+          return;
+        }
+
+        setElectionActive(data?.key === true);
+      } catch (error: unknown) {
+        if (!active) return;
+
+        setElectionStatusError(
+          error instanceof Error
+            ? error.message
+            : "Unable to load the election status."
+        );
+      }
+    };
+
+    void loadElectionStatus();
+
+    return () => {
+      active = false;
+    };
+  }, [currentProject?.user_id]);
+
   const isLoading =
     !contextProject && lookup.nomineeId !== nomineeId;
 
@@ -315,13 +361,12 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
     );
 
     // Competition ranking: 1, 1, 3 when two nominees share first place.
-    const rank = nominee
-      ? rankedNominees.findIndex((item) => item.id === nominee.id) >= 0
+    const rank =
+      nominee && voteCount > 0
         ? rankedNominees.filter(
             (item) => (item.voters?.length ?? 0) > voteCount
           ).length + 1
-        : 0
-      : 0;
+        : 0;
 
     const progress =
       leadingVotes > 0
@@ -357,6 +402,12 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
   } = result;
 
   const topNominees = rankedNominees.slice(0, 3);
+  const winningNominees =
+    leadingVotes > 0
+      ? rankedNominees.filter(
+          (item) => (item.voters?.length ?? 0) === leadingVotes
+        )
+      : [];
 
   const comments = (nominee?.voters ?? [])
     .map((voter) => voter.comment?.trim())
@@ -440,14 +491,18 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
     );
   }
 
-  const isWinner = rank === 1;
+  const isWinner =
+    leadingVotes > 0 &&
+    (electionActive === false
+      ? winningNominees.some((item) => item.id === nominee.id)
+      : rank === 1);
 
   // ------------------------------------------------------
   // MAIN RENDER
   // ------------------------------------------------------
 
   return (
-    <main className="relative min-h-screen w-full min-w-0 overflow-x-hidden px-3 py-5 text-white sm:px-6 lg:px-8">
+    <main className="relative min-h-screen w-full min-w-0 overflow-x-hidden px-3 pb-28 pt-5 text-white sm:px-6 md:pb-5 lg:px-8">
       <div className="relative z-10 mx-auto w-full min-w-0 max-w-7xl">
 
         {/* --------------------------------------------------
@@ -480,10 +535,112 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
           <div className="mx-auto flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-4 py-2 sm:mx-0 sm:self-center">
             <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
             <span className="text-xs font-medium text-emerald-300">
-              Election profile
+              {electionActive === false
+                ? "Election complete"
+                : "Election profile"}
             </span>
           </div>
         </div>
+
+        {electionStatusError && (
+          <div
+            role="alert"
+            className="mb-6 rounded-xl border border-amber-400/15 bg-amber-400/[0.05] p-3 text-sm text-amber-200"
+          >
+            Election status could not be loaded: {electionStatusError}
+          </div>
+        )}
+
+        {electionActive === false && (
+          <section
+            aria-labelledby="final-results-heading"
+            className="mb-6 w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-emerald-400/20 bg-gradient-to-br from-emerald-500/[0.1] to-[#0b1712] p-5 sm:p-7"
+          >
+            <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div className="min-w-0">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300">
+                  Election complete
+                </p>
+                <h2
+                  id="final-results-heading"
+                  className="mt-2 text-xl font-semibold text-white sm:text-2xl"
+                >
+                  Final results
+                </h2>
+                <p className="mt-1 text-sm text-gray-400">
+                  {totalVotes.toLocaleString()}{" "}
+                  {totalVotes === 1 ? "vote" : "votes"} recorded
+                </p>
+              </div>
+              <span className="w-fit shrink-0 rounded-full border border-emerald-400/20 bg-emerald-400/[0.08] px-3 py-1.5 text-xs font-semibold text-emerald-200">
+                {winningNominees.length > 1
+                  ? "Tie"
+                  : winningNominees.length === 1
+                    ? "Winner determined"
+                    : "No votes"}
+              </span>
+            </div>
+
+            {winningNominees.length > 0 ? (
+              <div className="mt-5 flex min-w-0 items-start gap-3 rounded-2xl border border-yellow-300/15 bg-yellow-300/[0.05] p-4">
+                <Trophy className="mt-0.5 h-5 w-5 shrink-0 text-yellow-300" />
+                <div className="min-w-0">
+                  <p className="text-xs text-yellow-100/60">
+                    {winningNominees.length > 1
+                      ? "Joint winners"
+                      : "Winning nominee"}
+                  </p>
+                  <p className="mt-1 break-words text-lg font-semibold text-white">
+                    {winningNominees
+                      .map((item) => item.name || "Unnamed nominee")
+                      .join(", ")}
+                  </p>
+                  <p className="mt-1 text-xs text-gray-400">
+                    {leadingVotes.toLocaleString()}{" "}
+                    {leadingVotes === 1 ? "vote" : "votes"}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <p className="mt-5 rounded-2xl border border-white/[0.08] bg-black/15 p-4 text-sm text-gray-300">
+                No votes were recorded, so no winner can be determined.
+              </p>
+            )}
+
+            {rankedNominees.length > 0 && (
+              <ol className="mt-4 space-y-2">
+                {rankedNominees.map((item) => {
+                  const itemVotes = item.voters?.length ?? 0;
+                  const itemRank =
+                    itemVotes > 0
+                      ? rankedNominees.filter(
+                          (other) =>
+                            (other.voters?.length ?? 0) > itemVotes
+                        ).length + 1
+                      : 0;
+
+                  return (
+                    <li
+                      key={item.id}
+                      className="flex min-w-0 items-center gap-3 rounded-xl border border-white/[0.07] bg-black/10 px-3 py-3"
+                    >
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] text-xs font-semibold text-gray-300">
+                        {itemRank > 0 ? `#${itemRank}` : "—"}
+                      </span>
+                      <span className="min-w-0 flex-1 break-words text-sm font-medium text-white">
+                        {item.name || "Unnamed nominee"}
+                      </span>
+                      <span className="shrink-0 text-right text-xs tabular-nums text-gray-300">
+                        {itemVotes.toLocaleString()}{" "}
+                        {itemVotes === 1 ? "vote" : "votes"}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ol>
+            )}
+          </section>
+        )}
 
         {/* --------------------------------------------------
             PROFILE OVERVIEW
@@ -545,12 +702,18 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                 {isWinner ? (
                   <div className="mt-5 inline-flex items-center gap-2 rounded-xl border border-yellow-300/20 bg-yellow-300/[0.07] px-4 py-2 text-xs font-semibold text-yellow-200">
                     <Trophy className="h-4 w-4" />
-                    Currently leading this election
+                    {electionActive === false
+                      ? winningNominees.length > 1
+                        ? "Joint winner"
+                        : "Election winner"
+                      : "Currently leading this election"}
                   </div>
                 ) : (
                   <div className="mt-5 inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.035] px-4 py-2 text-xs font-medium text-gray-400">
                     <Sparkles className="h-4 w-4 text-emerald-400" />
-                    Candidate performance profile
+                    {electionActive === false
+                      ? "Final election position"
+                      : "Candidate performance profile"}
                   </div>
                 )}
               </div>

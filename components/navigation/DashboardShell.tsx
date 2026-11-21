@@ -37,13 +37,6 @@ export default function DashboardShell({ children }: DashboardShellProps) {
 
   useGSAP(
     () => {
-      if (
-        pathname !== "/home/share" &&
-        !pathname.startsWith("/home/share/")
-      ) {
-        return;
-      }
-
       const wrapper = smoothWrapperRef.current;
       const content = smoothContentRef.current;
 
@@ -118,7 +111,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
       <div
         ref={smoothWrapperRef}
         id="smooth-wrapper"
-        className="relative min-h-dvh"
+        className="relative min-h-dvh bg-[#070b09]"
       >
         <main
           ref={smoothContentRef}

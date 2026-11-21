@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #070b09;
+  --foreground: #f4f4f5;
 }
 
 @theme inline {
@@ -21,6 +21,8 @@
 
 html {
   scroll-behavior: smooth;
+  background: #070b09;
+  overscroll-behavior: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -33,6 +35,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  overscroll-behavior: none;
 }
 
 input,

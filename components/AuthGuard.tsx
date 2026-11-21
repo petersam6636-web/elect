@@ -27,7 +27,6 @@ export default function AuthGuard({ children }: AuthGuardProps) {
     segments[0] === "home" &&
     segments[1] === "share";
   const isPublicRoute = isNomineeDetailsRoute || isSharedProjectRoute;
-
   useEffect(() => {
     let active = true;
 
@@ -148,5 +147,10 @@ export default function AuthGuard({ children }: AuthGuardProps) {
     );
   }
 
-  return <>{children}</>;
+  return <div ref={wrapper}>
+    <div ref={content}>
+          {children}
+
+    </div>
+    <div/>;
 }

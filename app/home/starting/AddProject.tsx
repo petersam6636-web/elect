@@ -264,6 +264,13 @@ export default function CreateProjectPage() {
         {/* Small far-right bubble */}
         <div className="absolute bottom-[16%] right-[12%] h-8 w-8 rounded-full border border-emerald-300/25 bg-emerald-300/[0.07] sm:right-[22%] sm:h-10 sm:w-10" />
 
+        {/* Additional static ambient bubbles */}
+        <div className="absolute left-[72%] top-[8%] h-5 w-5 rounded-full border border-emerald-300/20 bg-emerald-300/[0.05] sm:h-8 sm:w-8" />
+        <div className="absolute left-[27%] top-[34%] h-6 w-6 rounded-full border border-emerald-300/20 bg-emerald-300/[0.05] sm:h-9 sm:w-9" />
+        <div className="absolute right-[28%] top-[63%] h-8 w-8 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04] sm:h-12 sm:w-12" />
+        <div className="absolute bottom-[28%] left-[4%] h-10 w-10 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04] sm:h-16 sm:w-16" />
+        <div className="absolute bottom-[4%] right-[38%] h-5 w-5 rounded-full border border-emerald-300/20 bg-emerald-300/[0.05] sm:h-7 sm:w-7" />
+
       </div>
 
       {/* Main content */}

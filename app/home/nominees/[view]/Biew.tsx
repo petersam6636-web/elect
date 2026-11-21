@@ -447,18 +447,18 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
   // ------------------------------------------------------
 
   return (
-    <main className="relative min-h-screen w-full max-w-full overflow-x-clip px-1 py-5 text-white sm:px-6 lg:px-8">
+    <main className="relative min-h-screen w-full max-w-full overflow-x-clip px-3 py-5 text-white sm:px-6 lg:px-8">
       <div className="relative z-10 mx-auto w-full min-w-0 max-w-7xl">
 
         {/* --------------------------------------------------
             NAVIGATION AND PAGE HEADING
         -------------------------------------------------- */}
 
-        <div className="mb-7 flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mb-7 flex min-w-0 flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <div className="min-w-0">
             <Link
               href={`/home/share/${linkingId ?? currentProject.id}`}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-white/[0.035] px-4 py-2 text-xs font-medium text-gray-300 transition hover:border-emerald-400/30 hover:bg-emerald-400/10 hover:text-emerald-300"
+              className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-white/[0.035] px-4 py-2 text-xs font-medium text-gray-300 transition hover:border-emerald-400/30 hover:bg-emerald-400/10 hover:text-emerald-300 sm:mx-0"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               Back to nominees
@@ -477,7 +477,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
             </p>
           </div>
 
-          <div className="flex items-center gap-2 self-start rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-4 py-2 sm:self-center">
+          <div className="mx-auto flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-4 py-2 sm:mx-0 sm:self-center">
             <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
             <span className="text-xs font-medium text-emerald-300">
               Election profile

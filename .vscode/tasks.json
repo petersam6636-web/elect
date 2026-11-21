@@ -56,6 +56,17 @@
 				"kind": "build",
 				"isDefault": true
 			}
+		},
+		{
+			"label": "Validate VoteSphere UI fixes",
+			"type": "shell",
+			"command": "npm run build",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
 		}
 	]
 }

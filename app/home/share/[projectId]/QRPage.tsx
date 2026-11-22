@@ -713,12 +713,12 @@ export default function QRPage({ projectId }: QRPageProps) {
     return (
       <main
         ref={pageRef}
-        className="relative min-h-screen overflow-x-clip px-0.5 py-4 text-white md:px-2"
+        className="relative min-h-screen w-full min-w-0 overflow-x-clip px-0.5 py-4 text-white md:px-2"
       >
         <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 rounded-full bg-emerald-500/[0.035] blur-[100px]" />
         <div className="pointer-events-none absolute bottom-20 right-0 h-64 w-64 rounded-full bg-emerald-400/[0.035] blur-[100px]" />
 
-        <div className="relative mx-auto w-full max-w-7xl">
+        <div className="relative mx-auto w-full min-w-0 max-w-7xl">
           <header
             data-enter
             className="mb-8 flex flex-col justify-between gap-5 border-b border-white/[0.07] pb-6 sm:flex-row sm:items-center"
@@ -758,7 +758,7 @@ export default function QRPage({ projectId }: QRPageProps) {
             </div>
           )}
 
-          <section className="finished-election-card relative overflow-hidden rounded-3xl border border-emerald-400/15 bg-gradient-to-br from-[#10251a] via-[#0b1711] to-[#09110d] p-5 shadow-[0_25px_90px_rgba(0,0,0,0.28)] sm:p-8">
+          <section className="finished-election-card relative min-w-0 overflow-hidden rounded-3xl border border-emerald-400/15 bg-gradient-to-br from-[#10251a] via-[#0b1711] to-[#09110d] p-5 shadow-[0_25px_90px_rgba(0,0,0,0.28)] sm:p-8">
             <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full border border-emerald-300/[0.07]" />
             <div className="pointer-events-none absolute right-10 top-10 h-32 w-32 rounded-full bg-emerald-400/[0.08] blur-[55px]" />
 
@@ -774,7 +774,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                 </span>
               </div>
 
-              <div className="mt-8 max-w-3xl">
+              <div className="mt-8 min-w-0 max-w-3xl">
                 <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300/60">
                   Election
                 </p>
@@ -802,7 +802,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex min-w-0 flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                     <div className="flex min-w-0 items-center gap-4">
                       <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-yellow-300/20 bg-yellow-300/[0.09] text-yellow-300">
                         <Trophy size={27} />
@@ -813,11 +813,11 @@ export default function QRPage({ projectId }: QRPageProps) {
                             ? "Joint winners"
                             : "Winning nominee"}
                         </p>
-                        <div className="mt-1 flex flex-wrap gap-x-2">
+                        <div className="mt-1 flex min-w-0 flex-wrap gap-x-2">
                           {finishedResults.winners.map((winner, index) => (
                             <span
                               key={winner.id}
-                              className="break-words text-xl font-semibold sm:text-2xl"
+                              className="min-w-0 break-words text-xl font-semibold sm:text-2xl"
                             >
                               {winner.name || "Unnamed nominee"}
                               {index < finishedResults.winners.length - 1 && (
@@ -841,18 +841,18 @@ export default function QRPage({ projectId }: QRPageProps) {
                 )}
               </div>
 
-              <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                <div className="rounded-2xl border border-white/[0.07] bg-black/15 p-5">
+              <div className="mt-5 grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-3">
+                <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-black/15 p-5">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-white/40">Election duration</span>
                     <Clock3 size={17} className="text-emerald-300" />
                   </div>
-                  <p className="mt-3 text-2xl font-semibold">
+                  <p className="mt-3 break-words text-2xl font-semibold">
                     {formatDuration(finishedResults.duration)}
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-white/[0.07] bg-black/15 p-5">
+                <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-black/15 p-5">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-white/40">Total votes</span>
                     <Users size={17} className="text-emerald-300" />
@@ -862,7 +862,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-white/[0.07] bg-black/15 p-5">
+                <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-black/15 p-5">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-white/40">Nominees</span>
                     <Award size={17} className="text-emerald-300" />
@@ -875,7 +875,7 @@ export default function QRPage({ projectId }: QRPageProps) {
             </div>
           </section>
 
-          <section data-enter className="mt-9">
+          <section data-enter className="mt-9 min-w-0">
             <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
               <div>
                 <h2 className="font-semibold text-white">Nominee results</h2>
@@ -893,7 +893,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                 No nominees were recorded for this election.
               </div>
             ) : (
-              <div className="grid gap-3">
+              <div className="grid min-w-0 gap-3">
                 {finishedResults.rankedNominees.map((nominee, index) => {
                   const voteCount = nominee.voters?.length ?? 0;
                   const percentage =
@@ -906,7 +906,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                     <article
                       key={nominee.id}
                       data-enter
-                      className="overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025]"
+                      className="min-w-0 overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025]"
                     >
                       <div className="p-4 sm:p-5">
                         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
@@ -942,8 +942,8 @@ export default function QRPage({ projectId }: QRPageProps) {
                             </div>
                           </div>
 
-                          <div className="text-right">
-                            <p className="font-semibold tabular-nums text-white">
+                          <div className="min-w-0 text-right">
+                            <p className="break-words font-semibold tabular-nums text-white">
                               {voteCount.toLocaleString()} votes
                             </p>
                             <p className="mt-0.5 text-xs text-white/35">
@@ -970,7 +970,7 @@ export default function QRPage({ projectId }: QRPageProps) {
 
           <section
             data-enter
-            className="mt-9 flex flex-col gap-4 rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.045] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"
+            className="mt-9 flex min-w-0 flex-col gap-4 rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.045] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"
           >
             <div>
               <h2 className="font-semibold text-white">This election is complete</h2>

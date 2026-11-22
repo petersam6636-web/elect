@@ -122,7 +122,7 @@ export default function AuthGuard({ children }: AuthGuardProps) {
   // has been verified.
   if (checking) {
     return (
-      <div className="flex min-h-dvh items-center justify-center bg-[#050a07] px-1.5 text-white md:px-3">
+      <div className="flex min-h-dvh items-center justify-center bg-[#050a07] px-2 text-white md:px-3">
         <div className="flex flex-col items-center gap-4">
 
           <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.07] shadow-[0_0_35px_rgba(16,185,129,0.10)]">

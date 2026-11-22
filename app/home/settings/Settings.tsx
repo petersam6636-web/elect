@@ -271,7 +271,7 @@ console.log(2)
   // ------------------------------------------------------
 
   return (
-    <main className="relative min-h-screen overflow-hidden px-1.5 py-4 text-white md:px-3">
+    <main className="relative min-h-screen overflow-hidden px-2 py-4 text-white md:px-3">
       {/* --------------------------------------------------
           STATIC BACKGROUND DECORATION
       -------------------------------------------------- */}

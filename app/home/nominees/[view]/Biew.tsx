@@ -427,7 +427,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
 
   if (!currentProject) {
     return (
-      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-1.5 py-6 text-white md:px-3">
+      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-2 py-6 text-white md:px-3">
         <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-emerald-500/10 blur-[120px]" />
 
         <div className="relative w-full max-w-md rounded-3xl border border-emerald-400/15 bg-[#0b1712]/90 p-8 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
@@ -462,7 +462,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
 
   if (!nominee) {
     return (
-      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-1.5 py-6 text-white md:px-3">
+      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-2 py-6 text-white md:px-3">
         <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-emerald-500/10 blur-[120px]" />
 
         <div className="relative w-full max-w-md rounded-3xl border border-emerald-400/15 bg-[#0b1712]/90 p-8 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
@@ -502,7 +502,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
   // ------------------------------------------------------
 
   return (
-    <main className="relative min-h-screen w-full min-w-0 overflow-x-hidden px-1.5 pb-28 pt-5 text-white md:px-3 md:pb-5">
+    <main className="relative min-h-screen w-full min-w-0 overflow-x-hidden px-2 pb-28 pt-5 text-white md:px-3 md:pb-5">
       <div className="relative z-10 mx-auto w-full min-w-0 max-w-7xl">
 
         {/* --------------------------------------------------
@@ -511,13 +511,6 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
 
         <div className="mb-7 flex min-w-0 flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <div className="min-w-0">
-            <Link
-              href={`/home/share/${linkingId ?? currentProject.id}`}
-              className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-white/[0.035] px-4 py-2 text-xs font-medium text-gray-300 transition hover:border-emerald-400/30 hover:bg-emerald-400/10 hover:text-emerald-300 sm:mx-0"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" />
-              Back to nominees
-            </Link>
 
             <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-emerald-400">
               VoteSphere / Nominee profile

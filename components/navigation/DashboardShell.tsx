@@ -22,6 +22,11 @@ export default function DashboardShell({ children }: DashboardShellProps) {
   const [ready, setReady] = useState(false);
   const [portalRoot, setPortalRoot] = useState<HTMLElement | null>(null);
 
+  const routeSegments = pathname.split("/").filter(Boolean);
+  const isPublicVoterRoute =
+    routeSegments.length === 3 &&
+    routeSegments[0] === "home" &&
+    (routeSegments[1] === "share" || routeSegments[1] === "nominees");
   const isNomineesRoute = pathname === "/home/nominees";
 
   const showNomineesIndicator =
@@ -69,7 +74,8 @@ export default function DashboardShell({ children }: DashboardShellProps) {
   return (
     <div className="relative min-h-dvh bg-[#070b09] text-zinc-100">
       {/* Keep fixed navigation outside ScrollSmoother's transformed content. */}
-      {portalRoot &&
+      {!isPublicVoterRoute &&
+        portalRoot &&
         createPortal(
           <Slider
             position={position}
@@ -84,14 +90,20 @@ export default function DashboardShell({ children }: DashboardShellProps) {
       >
         <main
           className={`min-h-dvh w-full transition-[padding] duration-300 ease-in-out ${
-            position === "left"
-              ? "md:pl-[88px] md:pr-5"
-              : position === "right"
-                ? "md:pl-5 md:pr-[88px]"
-                : "md:px-5 md:pb-[92px]"
+            isPublicVoterRoute
+              ? "md:px-5"
+              : position === "left"
+                ? "md:pl-[88px] md:pr-5"
+                : position === "right"
+                  ? "md:pl-5 md:pr-[88px]"
+                  : "md:px-5 md:pb-[92px]"
           }`}
         >
-          <div className="mx-auto min-h-dvh w-full max-w-[1600px] pb-24 pt-5 md:pb-6 md:pt-6">
+          <div
+            className={`mx-auto min-h-dvh w-full max-w-[1600px] pt-5 md:pt-6 ${
+              isPublicVoterRoute ? "pb-6" : "pb-24 md:pb-6"
+            }`}
+          >
             {ready ? children : (
               <div className="min-h-[60vh]" aria-hidden="true" />
             )}

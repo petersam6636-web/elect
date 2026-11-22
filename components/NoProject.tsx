@@ -11,7 +11,7 @@ export default function NoProject() {
   };
 
   return (
-    <main className="page-shell relative isolate flex min-h-dvh w-full items-center justify-center overflow-hidden bg-[#050a07] px-1.5 py-4 sm:py-8 md:px-3">
+    <main className="page-shell relative isolate flex min-h-dvh w-full items-center justify-center overflow-hidden bg-[#050a07] px-2 py-4 sm:py-8 md:px-3">
 
       {/* Background gradients */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">

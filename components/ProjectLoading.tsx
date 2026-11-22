@@ -2,7 +2,7 @@
 export default function ProjectLoading() {
   return (
     <div
-      className="min-h-screen w-full flex flex-col items-center justify-center bg-[#050b08] px-1.5 md:px-3"
+      className="min-h-screen w-full flex flex-col items-center justify-center bg-[#050b08] px-2 md:px-3"
       role="status"
       aria-label="Loading your project"
     >

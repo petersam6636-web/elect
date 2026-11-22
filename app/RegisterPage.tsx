@@ -236,7 +236,7 @@ export default function RegisterPage() {
 
   return (
     <main
-      className={`${geist.className} relative flex min-h-dvh w-full items-center justify-center overflow-hidden bg-[#050a07] px-4 py-5 text-white selection:bg-emerald-500/30`}
+      className={`${geist.className} relative flex min-h-dvh w-full items-center justify-center overflow-hidden bg-[#050a07] px-0.5 py-5 text-white selection:bg-emerald-500/30 md:px-2`}
     >
       {/* BACKGROUND AMBIENT GLOWS */}
 

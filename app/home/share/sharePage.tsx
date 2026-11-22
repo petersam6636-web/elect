@@ -172,7 +172,7 @@ export default function SharePage() {
   };
 
   return (
-    <main className="relative isolate flex min-h-[calc(100dvh-8rem)] items-center justify-center overflow-hidden px-2 py-5 sm:px-3">
+    <main className="relative isolate flex min-h-[calc(100dvh-8rem)] items-center justify-center overflow-hidden px-0.5 py-5 md:px-2">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-[8%] top-[17%] -z-10 h-12 w-12 rounded-full border border-emerald-300/15 bg-emerald-400/[0.04]"

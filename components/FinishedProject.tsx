@@ -140,7 +140,7 @@ export default function FinishedProject() {
 
   if (!finishedProject || !results) {
     return (
-      <main className="flex min-h-[60vh] items-center justify-center px-4">
+      <main className="flex min-h-[60vh] items-center justify-center px-0.5 md:px-2">
         <section className="w-full max-w-xl rounded-3xl border border-white/[0.08] bg-[#0d1310] p-8 text-center">
           <Trophy size={38} className="mx-auto text-emerald-400" />
           <h1 className="mt-5 text-2xl font-semibold text-white">
@@ -162,7 +162,7 @@ export default function FinishedProject() {
   }
 
   return (
-    <main className="w-full min-w-0">
+    <main className="w-full min-w-0 px-0.5 md:px-2">
       <header className="mb-7 flex flex-wrap items-end justify-between gap-4">
         <div>
           <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5 text-xs font-medium text-emerald-300">

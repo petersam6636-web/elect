@@ -88,7 +88,7 @@ export default function HomePage() {
   }, [setUserInfo]);
 
   return (
-    <div className="w-full min-w-0 space-y-4">
+    <div className="w-full min-w-0 space-y-4 px-0.5 md:px-2">
       <header className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <div className="mb-2 flex items-center gap-2 text-xs text-emerald-400">

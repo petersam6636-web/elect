@@ -423,7 +423,7 @@ export default function Nominee() {
 
   if (!currentProject) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#06110d] px-5 text-center text-white">
+      <main className="flex min-h-screen items-center justify-center bg-[#06110d] px-0.5 text-center text-white md:px-2">
         <div>
           <p className="text-sm text-red-300">
             {error || "No project was found for this registration."}
@@ -442,7 +442,7 @@ export default function Nominee() {
   }
 
   return (
-    <main className="relative min-h-screen px-1 py-4 text-white sm:py-5">
+    <main className="relative min-h-screen px-0.5 py-4 text-white sm:py-5 md:px-2">
 
       {/* Main content */}
       <div className="relative z-10 mx-auto max-w-3xl">

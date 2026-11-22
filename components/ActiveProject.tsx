@@ -392,7 +392,7 @@ export default function ActiveProject() {
 
   if (error && !activeProject) {
     return (
-      <div className="flex min-h-[50vh] items-center justify-center px-4">
+      <div className="flex min-h-[50vh] items-center justify-center px-0.5 md:px-2">
         <div className="w-full max-w-md rounded-3xl border border-red-500/15 bg-[#170f0f] p-7 text-center">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/10">
             <AlertCircle className="text-red-400" size={23} />
@@ -480,7 +480,7 @@ export default function ActiveProject() {
   // --------------------------------------------------
 
   return (
-    <div className="relative isolate mx-auto w-full max-w-7xl space-y-6 pb-6">
+    <div className="relative isolate mx-auto w-full max-w-7xl space-y-6 px-0.5 pb-6 md:px-2">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"

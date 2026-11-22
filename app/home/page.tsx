@@ -131,7 +131,7 @@ export default function HomePage() {
 
   if (error) {
     return (
-      <div className="flex min-h-[50vh] items-center justify-center px-4">
+      <div className="flex min-h-[50vh] items-center justify-center px-0.5 md:px-2">
         <p role="alert" className="text-center text-sm text-red-300">
           {error}
         </p>
@@ -155,7 +155,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="flex min-h-[50vh] items-center justify-center px-4">
+    <div className="flex min-h-[50vh] items-center justify-center px-0.5 md:px-2">
       <p className="text-center text-sm text-amber-300">
         Your election workspace needs attention. Please try again.
       </p>

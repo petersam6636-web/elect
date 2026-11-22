@@ -675,7 +675,7 @@ export default function QRPage({ projectId }: QRPageProps) {
   // Project not found or unable to load.
   if (loadError && !currentProject) {
     return (
-      <div className="flex min-h-[calc(100dvh-5rem)] w-full items-center justify-center overflow-hidden px-4 py-4">
+      <div className="flex min-h-[calc(100dvh-5rem)] w-full items-center justify-center overflow-hidden px-0.5 py-4 md:px-2">
         <section className="relative w-full max-w-md overflow-hidden rounded-3xl border border-white/[0.09] bg-[#0b1510] p-7 text-center shadow-[0_25px_80px_rgba(0,0,0,0.35)] sm:p-9">
           <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full bg-emerald-400/[0.08] blur-[65px]" />
 
@@ -712,7 +712,7 @@ export default function QRPage({ projectId }: QRPageProps) {
     return (
       <main
         ref={pageRef}
-        className="relative min-h-screen px-2 py-4 text-white lg:px-6"
+        className="relative min-h-screen px-0.5 py-4 text-white md:px-2"
       >
         <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 rounded-full bg-emerald-500/[0.035] blur-[100px]" />
         <div className="pointer-events-none absolute bottom-20 right-0 h-64 w-64 rounded-full bg-emerald-400/[0.035] blur-[100px]" />
@@ -1010,7 +1010,7 @@ export default function QRPage({ projectId }: QRPageProps) {
   return (
     <main
       ref={pageRef}
-      className="relative min-h-screen overflow-hidden px-2 py-4 text-white lg:px-6"
+      className="relative min-h-screen overflow-hidden px-0.5 py-4 text-white md:px-2"
     >
       <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 rounded-full bg-emerald-500/[0.035] blur-[100px]" />
       <div className="pointer-events-none absolute bottom-20 right-0 h-64 w-64 rounded-full bg-emerald-400/[0.035] blur-[100px]" />

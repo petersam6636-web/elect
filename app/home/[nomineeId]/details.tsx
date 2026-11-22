@@ -376,7 +376,7 @@ export default function DetailsPage({ nomineeId }: DetailsProps) {
 
   if (!currentProject) {
     return (
-      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-4 py-8 text-white">
+      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-0.5 py-8 text-white md:px-2">
         <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-emerald-500/10 blur-[120px]" />
 
         <div className="relative w-full max-w-md rounded-3xl border border-emerald-400/15 bg-[#0b1712]/90 p-8 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
@@ -411,7 +411,7 @@ export default function DetailsPage({ nomineeId }: DetailsProps) {
 
   if (!nominee) {
     return (
-      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-4 py-8 text-white">
+      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-0.5 py-8 text-white md:px-2">
         <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-emerald-500/10 blur-[120px]" />
 
         <div className="relative w-full max-w-md rounded-3xl border border-emerald-400/15 bg-[#0b1712]/90 p-8 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
@@ -447,7 +447,7 @@ export default function DetailsPage({ nomineeId }: DetailsProps) {
   // ------------------------------------------------------
 
   return (
-    <main className="relative min-h-screen w-full max-w-full overflow-x-clip px-1 py-5 text-white sm:px-6 lg:px-8">
+    <main className="relative min-h-screen w-full max-w-full overflow-x-clip px-0.5 py-5 text-white md:px-2">
       <div className="relative z-10 mx-auto w-full min-w-0 max-w-7xl">
 
         {/* --------------------------------------------------

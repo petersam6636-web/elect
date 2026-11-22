@@ -91,7 +91,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
                 : "md:px-5 md:pb-[92px]"
           }`}
         >
-          <div className="mx-auto min-h-dvh w-full max-w-[1600px] px-4 pb-24 pt-5 sm:px-6 md:px-0 md:pb-6 md:pt-6">
+          <div className="mx-auto min-h-dvh w-full max-w-[1600px] pb-24 pt-5 md:pb-6 md:pt-6">
             {ready ? children : (
               <div className="min-h-[60vh]" aria-hidden="true" />
             )}

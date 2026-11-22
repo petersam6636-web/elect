@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import Slider from "./Slider";
 import type { NavigationPosition } from "./NavigationCustomizer";
@@ -19,6 +20,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
 
   const [position, setPosition] = useState<NavigationPosition>("left");
   const [ready, setReady] = useState(false);
+  const [portalRoot, setPortalRoot] = useState<HTMLElement | null>(null);
 
   const isNomineesRoute = pathname === "/home/nominees";
 
@@ -28,6 +30,8 @@ export default function DashboardShell({ children }: DashboardShellProps) {
     !isNomineesRoute;
 
   useEffect(() => {
+    setPortalRoot(document.body);
+
     let savedPosition: NavigationPosition | null = null;
 
     try {
@@ -64,11 +68,16 @@ export default function DashboardShell({ children }: DashboardShellProps) {
 
   return (
     <div className="relative min-h-dvh bg-[#070b09] text-zinc-100">
-      <Slider
-        position={position}
-        onPositionChange={changePosition}
-        showNomineesIndicator={showNomineesIndicator}
-      />
+      {/* Keep fixed navigation outside ScrollSmoother's transformed content. */}
+      {portalRoot &&
+        createPortal(
+          <Slider
+            position={position}
+            onPositionChange={changePosition}
+            showNomineesIndicator={showNomineesIndicator}
+          />,
+          portalRoot
+        )}
 
       <div
         className="relative min-h-dvh bg-[#070b09]"

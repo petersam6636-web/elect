@@ -946,7 +946,6 @@ export default function NomineesPage() {
                   >
                     Cast your vote
                   </h2>
-
                 </div>
 
                 <button
@@ -960,20 +959,6 @@ export default function NomineesPage() {
                 </button>
               </div>
 
-              <div className="mb-5 flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-black/20 p-3">
-                {selectedNominee.image ? (
-                  <img
-                    src={selectedNominee.image}
-                    alt={selectedNominee.name || "Nominee"}
-                    className="h-12 w-12 shrink-0 rounded-xl border border-emerald-400/20 object-cover"
-                  />
-                ) : (
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-emerald-400/15 bg-emerald-400/[0.08] text-sm font-bold text-emerald-300">
-                    {selectedNominee.name?.trim().charAt(0).toUpperCase() || "N"}
-                  </div>
-                )}
-
-              </div>
 
               <div className="space-y-4">
                 <div>

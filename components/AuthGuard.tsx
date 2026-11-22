@@ -1,11 +1,7 @@
 
 "use client";
 
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { LoaderCircle, ShieldCheck } from "lucide-react";
 import { supabase } from "@/lib/supabase-client";
@@ -13,12 +9,9 @@ import { supabase } from "@/lib/supabase-client";
 type AuthGuardProps = {
   children: ReactNode;
 };
-gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
 export default function AuthGuard({ children }: AuthGuardProps) {
   const router = useRouter();
-  const smootherWrapperRef = useRef<HTMLDivElement>(null);
-  const smootherContentRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   const [checking, setChecking] = useState(true);
@@ -35,41 +28,6 @@ export default function AuthGuard({ children }: AuthGuardProps) {
     segments[1] === "share";
   const isPublicRoute = isNomineeDetailsRoute || isSharedProjectRoute;
 
-  useGSAP(
-    () => {
-      if (checking) return;
-
-      const wrapper = smootherWrapperRef.current;
-      const content = smootherContentRef.current;
-
-      if (!wrapper || !content) return;
-
-      const media = gsap.matchMedia();
-
-      media.add("(prefers-reduced-motion: no-preference)", () => {
-        const existingSmoother = ScrollSmoother.get();
-        if (existingSmoother) existingSmoother.kill();
-
-        const smoother = ScrollSmoother.create({
-          wrapper,
-          content,
-          smooth: 0.5,
-          smoothTouch: 0,
-          normalizeScroll: false,
-          effects: true,
-        });
-
-        return () => smoother.kill();
-      });
-
-      return () => media.revert();
-    },
-    {
-      scope: smootherWrapperRef,
-      dependencies: [checking, pathname],
-      revertOnUpdate: true,
-    }
-  );
   useEffect(() => {
     let active = true;
 
@@ -190,19 +148,5 @@ export default function AuthGuard({ children }: AuthGuardProps) {
     );
   }
 
-  return (
-    <div
-      ref={smootherWrapperRef}
-      id="smooth-wrapper"
-      className="relative min-h-dvh bg-[#070b09]"
-    >
-      <div
-        ref={smootherContentRef}
-        id="smooth-content"
-        className="min-h-dvh bg-[#070b09]"
-      >
-        {children}
-      </div>
-    </div>
-  );
+  return <div className="relative min-h-dvh bg-[#070b09]">{children}</div>;
 }

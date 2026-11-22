@@ -53,7 +53,7 @@ export default function AuthGuard({ children }: AuthGuardProps) {
         const smoother = ScrollSmoother.create({
           wrapper,
           content,
-          smooth: 0.25,
+          smooth: 0.5,
           smoothTouch: 0,
           normalizeScroll: false,
           effects: true,

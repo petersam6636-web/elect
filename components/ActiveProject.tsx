@@ -480,7 +480,16 @@ export default function ActiveProject() {
   // --------------------------------------------------
 
   return (
-    <div className="mx-auto w-full max-w-7xl space-y-6 pb-6">
+    <div className="relative isolate mx-auto w-full max-w-7xl space-y-6 pb-6">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      >
+        <div className="absolute left-[7%] top-[9%] h-12 w-12 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] shadow-[inset_0_0_18px_rgba(52,211,153,0.06)]" />
+        <div className="absolute right-[9%] top-[35%] h-20 w-20 rounded-full border border-emerald-300/[0.08] bg-emerald-300/[0.02] shadow-[inset_0_0_24px_rgba(52,211,153,0.05)]" />
+        <div className="absolute bottom-[18%] left-[20%] h-8 w-8 rounded-full border border-emerald-400/10 bg-emerald-400/[0.025]" />
+        <div className="absolute bottom-[5%] right-[22%] h-14 w-14 rounded-full border border-emerald-300/[0.08] bg-emerald-300/[0.02]" />
+      </div>
 
       {/* ELECTION HEADER */}
 
@@ -488,6 +497,15 @@ export default function ActiveProject() {
         <div className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-emerald-400/[0.09] blur-[90px]" />
 
         <div className="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-teal-400/[0.05] blur-[80px]" />
+
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 overflow-hidden"
+        >
+          <div className="absolute left-[12%] top-[22%] h-10 w-10 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04] shadow-[inset_0_0_18px_rgba(52,211,153,0.07),0_0_30px_rgba(16,185,129,0.07)]" />
+          <div className="absolute right-[13%] top-[18%] h-16 w-16 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] shadow-[inset_0_0_24px_rgba(52,211,153,0.06)]" />
+          <div className="absolute bottom-[17%] right-[32%] h-7 w-7 rounded-full border border-emerald-400/15 bg-emerald-400/[0.035]" />
+        </div>
 
         <div className="relative">
           <div className="flex flex-wrap items-center justify-between gap-3">

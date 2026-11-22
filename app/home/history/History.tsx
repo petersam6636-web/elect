@@ -623,8 +623,15 @@ export default function HistoryPage() {
                       className="group relative overflow-visible rounded-3xl border border-white/[0.08] bg-gradient-to-br from-[#102019]/90 via-[#0b1711]/95 to-[#09110d] p-5 shadow-[0_15px_55px_rgba(0,0,0,0.20)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/25 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] sm:p-6"
                     >
 
-                      {/* Decorative glow */}
-                      <div className="pointer-events-none absolute right-0 top-0 h-32 w-32 rounded-full bg-emerald-400/[0.055] blur-[55px]" />
+                      {/* Decorative background */}
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl"
+                      >
+                        <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-emerald-400/[0.055] blur-[55px]" />
+                        <div className="absolute bottom-[27%] right-[30%] h-10 w-10 rounded-full border border-emerald-300/[0.10] bg-emerald-300/[0.025] shadow-[inset_0_0_18px_rgba(52,211,153,0.05)]" />
+                        <div className="absolute bottom-[16%] left-[12%] h-6 w-6 rounded-full border border-emerald-400/[0.10] bg-emerald-400/[0.025]" />
+                      </div>
 
                       <div className="relative">
 

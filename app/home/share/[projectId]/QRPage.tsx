@@ -1231,25 +1231,6 @@ export default function QRPage({ projectId }: QRPageProps) {
                       </p>
                     </div>
 
-                    {(nominee.achievements?.length ?? 0) > 0 && (
-                      <section className="mt-5">
-                        <h4 className="mb-2 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300/55">
-                          <Award size={14} />
-                          Achievements
-                        </h4>
-                        <ul className="space-y-2">
-                          {nominee.achievements?.map((achievement) => (
-                            <li
-                              key={achievement.id}
-                              className="rounded-xl border border-white/[0.06] bg-white/[0.025] px-3 py-2 text-sm leading-5 text-white/55"
-                            >
-                              {achievement.project}
-                            </li>
-                          ))}
-                        </ul>
-                      </section>
-                    )}
-
                     <section className="mt-5">
                       <div className="mb-2 flex items-center justify-between gap-3">
                         <h4 className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/40">

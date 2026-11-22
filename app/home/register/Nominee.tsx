@@ -10,6 +10,7 @@ import { getElectionStartStorageKey } from "@/lib/electionTimer";
 
 import ProjectLoading from "@/components/ProjectLoading";
 import NomineeImageUpload from "@/components/NomineeImageUpload";
+import ModalPortal from "@/components/ModalPortal";
 
 import type {
   AchievementForm,
@@ -728,13 +729,14 @@ export default function Nominee() {
 
       {/* Confirmation modal */}
       {showConfirmation && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 py-6 backdrop-blur-sm">
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="confirmation-title"
-            className="relative w-full max-w-md overflow-hidden rounded-3xl border border-emerald-400/20 bg-[#0b1913] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
-          >
+        <ModalPortal>
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 py-6 backdrop-blur-sm">
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="confirmation-title"
+              className="relative w-full max-w-md overflow-hidden rounded-3xl border border-emerald-400/20 bg-[#0b1913] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
+            >
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
               <div className="absolute -right-10 -top-14 h-32 w-32 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025]" />
               <div className="absolute right-[12%] top-[31%] h-6 w-6 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
@@ -794,19 +796,21 @@ export default function Nominee() {
               </button>
             </div>
             </div>
+            </div>
           </div>
-        </div>
+        </ModalPortal>
       )}
 
       {/* Nominee registration confirmation */}
       {showNomineeConfirmation && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/75 px-4 py-6 backdrop-blur-sm">
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="register-nominee-title"
-            className="relative w-full max-w-md overflow-hidden rounded-3xl border border-emerald-400/20 bg-[#0b1913] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
-          >
+        <ModalPortal>
+          <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/75 px-4 py-6 backdrop-blur-sm">
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="register-nominee-title"
+              className="relative w-full max-w-md overflow-hidden rounded-3xl border border-emerald-400/20 bg-[#0b1913] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
+            >
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
               <div className="absolute -right-12 -top-16 h-36 w-36 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025]" />
               <div className="absolute right-[11%] top-[29%] h-6 w-6 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
@@ -852,8 +856,9 @@ export default function Nominee() {
               </button>
             </div>
             </div>
+            </div>
           </div>
-        </div>
+        </ModalPortal>
       )}
     </main>
   );

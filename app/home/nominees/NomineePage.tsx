@@ -21,6 +21,7 @@ import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
 import type { Nominee, Project } from "@/types/project";
 import ProjectLoading from "@/components/ProjectLoading";
+import ModalPortal from "@/components/ModalPortal";
 
 type VoteForm = {
   name: string;
@@ -847,10 +848,11 @@ export default function NomineesPage() {
 
       {/* Success notification */}
       {successMessage && (
-        <div
-          role="status"
-          className="fixed right-4 top-5 z-[120] flex w-[calc(100%-32px)] max-w-sm items-start gap-3 rounded-2xl border border-emerald-400/20 bg-[#10251a]/95 p-4 shadow-[0_15px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl"
-        >
+        <ModalPortal>
+          <div
+            role="status"
+            className="fixed right-4 top-5 z-[120] flex w-[calc(100%-32px)] max-w-sm items-start gap-3 rounded-2xl border border-emerald-400/20 bg-[#10251a]/95 p-4 shadow-[0_15px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl"
+          >
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-400/15 text-emerald-300">
             <CheckCircle2 size={19} />
           </div>
@@ -873,12 +875,14 @@ export default function NomineesPage() {
           >
             <X size={16} />
           </button>
-        </div>
+          </div>
+        </ModalPortal>
       )}
 
       {/* Already voted popup */}
       {showAlreadyVoted && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/70 px-4 backdrop-blur-sm">
+        <ModalPortal>
+          <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/70 px-4 backdrop-blur-sm">
           <div className="w-full max-w-sm rounded-3xl border border-white/[0.1] bg-[#0c1711] p-6 text-center shadow-2xl">
             <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">
               <ShieldCheck size={26} />
@@ -901,19 +905,21 @@ export default function NomineesPage() {
               Understood
             </button>
           </div>
-        </div>
+          </div>
+        </ModalPortal>
       )}
 
       {/* Voting modal */}
       {selectedNominee && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/75 px-4 py-6 backdrop-blur-md"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) {
-              closeVoteModal();
-            }
-          }}
-        >
+        <ModalPortal>
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/75 px-4 py-6 backdrop-blur-md"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) {
+                closeVoteModal();
+              }
+            }}
+          >
           <section
             role="dialog"
             aria-modal="true"
@@ -1089,6 +1095,7 @@ export default function NomineesPage() {
             </div>
           </section>
         </div>
+        </ModalPortal>
       )}
     </main>
   );

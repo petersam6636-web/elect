@@ -24,6 +24,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { supabase } from "@/lib/supabase-client";
+import ModalPortal from "@/components/ModalPortal";
 
 // ------------------------------------------------------
 // GSAP CONFIGURATION
@@ -615,15 +616,15 @@ console.log(2)
       ================================================== */}
 
       {showDeveloperModal && (
-
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/75 px-4 py-8 backdrop-blur-md"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) {
-              setShowDeveloperModal(false);
-            }
-          }}
-        >
+        <ModalPortal>
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/75 px-4 py-8 backdrop-blur-md"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) {
+                setShowDeveloperModal(false);
+              }
+            }}
+          >
 
           <div className="relative my-auto w-full max-w-lg animate-in fade-in zoom-in-95 duration-200">
 
@@ -789,8 +790,8 @@ console.log(2)
 
           </div>
 
-        </div>
-
+          </div>
+        </ModalPortal>
       )}
 
       {/* ==================================================
@@ -798,15 +799,15 @@ console.log(2)
       ================================================== */}
 
       {showLogoutModal && (
-
-        <div
-          className="fixed inset-0 z-[110] flex items-center justify-center bg-black/75 px-4 backdrop-blur-md"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget && !loggingOut) {
-              setShowLogoutModal(false);
-            }
-          }}
-        >
+        <ModalPortal>
+          <div
+            className="fixed inset-0 z-[110] flex items-center justify-center bg-black/75 px-4 backdrop-blur-md"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget && !loggingOut) {
+                setShowLogoutModal(false);
+              }
+            }}
+          >
 
           <div className="relative w-full max-w-md animate-in fade-in zoom-in-95 duration-200">
 
@@ -846,7 +847,6 @@ console.log(2)
                 <div className="mt-4 rounded-xl border border-red-400/20 bg-red-400/[0.07] px-4 py-3 text-sm text-red-300">
                   {error}
                 </div>
-
               )}
 
               {/* Modal Actions */}
@@ -902,6 +902,7 @@ console.log(2)
 
         </div>
 
+        </ModalPortal>
       )}
 
     </main>

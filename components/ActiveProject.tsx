@@ -31,6 +31,7 @@ import {
 } from "@/lib/electionTimer";
 
 import ProjectLoading from "@/components/ProjectLoading";
+import ModalPortal from "@/components/ModalPortal";
 
 import type { Project } from "@/types/project";
 
@@ -1100,17 +1101,18 @@ export default function ActiveProject() {
       {/* END ELECTION CONFIRMATION POPUP */}
 
       {showEndConfirmation && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/60 px-4 py-8 backdrop-blur-md"
-          onMouseDown={(event) => {
-            if (
-              event.target === event.currentTarget &&
-              !ending
-            ) {
-              setShowEndConfirmation(false);
-            }
-          }}
-        >
+        <ModalPortal>
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/60 px-4 py-8 backdrop-blur-md"
+            onMouseDown={(event) => {
+              if (
+                event.target === event.currentTarget &&
+                !ending
+              ) {
+                setShowEndConfirmation(false);
+              }
+            }}
+          >
           <div
             role="dialog"
             aria-modal="true"
@@ -1206,7 +1208,8 @@ export default function ActiveProject() {
               </div>
             </div>
           </div>
-        </div>
+          </div>
+        </ModalPortal>
       )}
 
       {/* FOOTER */}

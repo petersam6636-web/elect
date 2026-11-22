@@ -28,6 +28,7 @@ import {
 import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
 import { getElectionDurationMs } from "@/lib/electionTimer";
+import ModalPortal from "@/components/ModalPortal";
 
 import type {
   Project,
@@ -1345,15 +1346,15 @@ export default function HistoryPage() {
       {/* ================================================= */}
 
       {projectToDelete && (
-
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 px-4 py-6 backdrop-blur-md"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget && !deleting) {
-              setProjectToDelete(null);
-            }
-          }}
-        >
+        <ModalPortal>
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 px-4 py-6 backdrop-blur-md"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget && !deleting) {
+                setProjectToDelete(null);
+              }
+            }}
+          >
 
           <div className="w-full max-w-md overflow-hidden rounded-3xl border border-red-400/20 bg-[#0b1711] shadow-[0_25px_100px_rgba(0,0,0,0.65)]">
 
@@ -1462,19 +1463,20 @@ export default function HistoryPage() {
 
           </div>
 
-        </div>
-
+          </div>
+        </ModalPortal>
       )}
 
       {showDeleteAllConfirmation && (
-        <div
-          className="fixed inset-0 z-[110] flex items-center justify-center bg-black/75 px-4 py-6 backdrop-blur-md"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget && !deletingAll) {
-              setShowDeleteAllConfirmation(false);
-            }
-          }}
-        >
+        <ModalPortal>
+          <div
+            className="fixed inset-0 z-[110] flex items-center justify-center bg-black/75 px-4 py-6 backdrop-blur-md"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget && !deletingAll) {
+                setShowDeleteAllConfirmation(false);
+              }
+            }}
+          >
           <section
             role="dialog"
             aria-modal="true"
@@ -1550,7 +1552,8 @@ export default function HistoryPage() {
               </button>
             </div>
           </section>
-        </div>
+          </div>
+        </ModalPortal>
       )}
 
     </main>

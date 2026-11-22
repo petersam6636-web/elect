@@ -140,7 +140,7 @@ export default function FinishedProject() {
 
   if (!finishedProject || !results) {
     return (
-      <main className="flex min-h-[60vh] items-center justify-center px-0.5 md:px-2">
+      <main className="flex min-h-[60vh] items-center justify-center px-0.5 md:px-3">
         <section className="w-full max-w-xl rounded-3xl border border-white/[0.08] bg-[#0d1310] p-8 text-center">
           <Trophy size={38} className="mx-auto text-emerald-400" />
           <h1 className="mt-5 text-2xl font-semibold text-white">

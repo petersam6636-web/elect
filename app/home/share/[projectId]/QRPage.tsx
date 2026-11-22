@@ -712,7 +712,7 @@ export default function QRPage({ projectId }: QRPageProps) {
     return (
       <main
         ref={pageRef}
-        className="relative min-h-screen px-0.5 py-4 text-white md:px-2"
+        className="relative min-h-screen overflow-x-clip px-0.5 py-4 text-white md:px-2"
       >
         <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 rounded-full bg-emerald-500/[0.035] blur-[100px]" />
         <div className="pointer-events-none absolute bottom-20 right-0 h-64 w-64 rounded-full bg-emerald-400/[0.035] blur-[100px]" />
@@ -802,11 +802,11 @@ export default function QRPage({ projectId }: QRPageProps) {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="flex items-center gap-4">
+                    <div className="flex min-w-0 items-center gap-4">
                       <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-yellow-300/20 bg-yellow-300/[0.09] text-yellow-300">
                         <Trophy size={27} />
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <p className="text-xs text-white/40">
                           {finishedResults.winners.length > 1
                             ? "Joint winners"
@@ -816,7 +816,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                           {finishedResults.winners.map((winner, index) => (
                             <span
                               key={winner.id}
-                              className="text-xl font-semibold sm:text-2xl"
+                              className="break-words text-xl font-semibold sm:text-2xl"
                             >
                               {winner.name || "Unnamed nominee"}
                               {index < finishedResults.winners.length - 1 && (

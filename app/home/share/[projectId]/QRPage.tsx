@@ -989,14 +989,6 @@ export default function QRPage({ projectId }: QRPageProps) {
                 {copied ? <CheckCircle2 size={16} /> : <Copy size={16} />}
                 {copied ? "Copied" : "Copy link"}
               </button>
-
-              <Link
-                href="/home"
-                className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-emerald-400/25 bg-emerald-400/10 px-4 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-400 hover:text-[#04130c]"
-              >
-                View finished project
-                <ArrowRight size={16} />
-              </Link>
             </div>
           </section>
 

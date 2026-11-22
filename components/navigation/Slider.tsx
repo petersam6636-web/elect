@@ -132,7 +132,7 @@ export default function Slider({
       {/* Mobile navigation */}
       <nav
         aria-label="Mobile navigation"
-        className="fixed inset-x-2 bottom-[calc(env(safe-area-inset-bottom)+0.75rem)] z-50 mx-auto grid w-auto max-w-[25rem] grid-cols-5 items-center rounded-[20px] border border-white/[0.10] bg-[#0b120e]/95 px-2 py-2 shadow-[0_12px_45px_rgba(0,0,0,0.55)] backdrop-blur-2xl md:hidden"
+        className="fixed bottom-3 left-1/2 z-50 flex w-[calc(100%-24px)] max-w-[410px] -translate-x-1/2 items-center justify-around rounded-[20px] border border-white/[0.10] bg-[#0b120e]/95 px-2 py-2 shadow-[0_12px_45px_rgba(0,0,0,0.55)] backdrop-blur-2xl md:hidden"
       >
         {navigation.map(({ label, href, icon: Icon }) => {
           const active = isActive(href);
@@ -147,7 +147,7 @@ export default function Slider({
                   : label
               }
               aria-current={active ? "page" : undefined}
-              className={`relative flex h-11 w-full items-center justify-center rounded-xl transition-all ${
+              className={`relative flex h-10 w-10 items-center justify-center rounded-xl transition-all ${
                 active
                   ? "bg-emerald-400/15 text-emerald-300"
                   : "text-zinc-500 hover:bg-white/[0.05] hover:text-white"

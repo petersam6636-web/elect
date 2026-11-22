@@ -1231,35 +1231,6 @@ export default function QRPage({ projectId }: QRPageProps) {
                       </p>
                     </div>
 
-                    <section className="mt-5">
-                      <div className="mb-2 flex items-center justify-between gap-3">
-                        <h4 className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/40">
-                          <MessageSquare size={14} />
-                          Voter comments
-                        </h4>
-                        <span className="text-[11px] text-white/30">
-                          {comments.length}
-                        </span>
-                      </div>
-
-                      {comments.length > 0 ? (
-                        <ul className="max-h-40 space-y-2 overflow-y-auto">
-                          {comments.map((comment, commentIndex) => (
-                            <li
-                              key={`${nominee.id}-comment-${commentIndex}`}
-                              className="whitespace-pre-wrap break-words rounded-xl border border-white/[0.06] bg-white/[0.025] px-3 py-2 text-sm leading-5 text-white/55"
-                            >
-                              {comment}
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <p className="text-xs text-white/30">
-                          No comments yet.
-                        </p>
-                      )}
-                    </section>
-
                     {/* Vote progress */}
                     <div className="mt-6">
                       <div className="mb-2 flex items-center justify-between gap-3">

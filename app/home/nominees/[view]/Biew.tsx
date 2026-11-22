@@ -427,7 +427,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
 
   if (!currentProject) {
     return (
-      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-0.5 py-6 text-white md:px-2">
+      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-1.5 py-6 text-white md:px-3">
         <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-emerald-500/10 blur-[120px]" />
 
         <div className="relative w-full max-w-md rounded-3xl border border-emerald-400/15 bg-[#0b1712]/90 p-8 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
@@ -462,7 +462,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
 
   if (!nominee) {
     return (
-      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-0.5 py-6 text-white md:px-2">
+      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-1.5 py-6 text-white md:px-3">
         <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-emerald-500/10 blur-[120px]" />
 
         <div className="relative w-full max-w-md rounded-3xl border border-emerald-400/15 bg-[#0b1712]/90 p-8 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
@@ -502,7 +502,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
   // ------------------------------------------------------
 
   return (
-    <main className="relative min-h-screen w-full min-w-0 overflow-x-hidden px-0.5 pb-28 pt-5 text-white md:px-2 md:pb-5">
+    <main className="relative min-h-screen w-full min-w-0 overflow-x-hidden px-1.5 pb-28 pt-5 text-white md:px-3 md:pb-5">
       <div className="relative z-10 mx-auto w-full min-w-0 max-w-7xl">
 
         {/* --------------------------------------------------

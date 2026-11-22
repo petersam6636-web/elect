@@ -235,7 +235,7 @@ export default function CreateProjectPage() {
   }
 
   return (
-    <main className="relative min-h-screen px-0.5 py-4 text-white sm:py-5 md:px-2">
+    <main className="relative min-h-screen px-1.5 py-4 text-white sm:py-5 md:px-3">
 
       {/* Main content */}
       <div className="relative z-10 mx-auto flex min-h-[85vh] max-w-3xl items-center justify-center">

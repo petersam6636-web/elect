@@ -488,7 +488,7 @@ export default function NomineesPage() {
   // No active election.
   if (taskKey !== true || !selectedProject?.id) {
     return (
-      <div className="flex min-h-[calc(100dvh-5rem)] w-full items-center justify-center overflow-hidden px-0.5 py-4 md:px-2">
+      <div className="flex min-h-[calc(100dvh-5rem)] w-full items-center justify-center overflow-hidden px-1.5 py-4 md:px-3">
         <section className="relative w-full max-w-md overflow-hidden rounded-3xl border border-white/[0.09] bg-[#0b1510] p-7 text-center shadow-[0_25px_80px_rgba(0,0,0,0.35)] sm:p-9">
           <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full bg-emerald-400/[0.08] blur-[65px]" />
 
@@ -529,7 +529,7 @@ export default function NomineesPage() {
 
   if (loadError && !currentProject) {
     return (
-      <div className="flex min-h-[55vh] items-center justify-center px-0.5 md:px-2">
+      <div className="flex min-h-[55vh] items-center justify-center px-1.5 md:px-3">
         <div className="max-w-md text-center">
           <Info className="mx-auto mb-3 text-red-300" size={25} />
 
@@ -552,7 +552,7 @@ export default function NomineesPage() {
   }
 
   return (
-    <main className="relative min-h-screen overflow-x-clip px-0.5 py-4 text-white md:px-2">
+    <main className="relative min-h-screen overflow-x-clip px-1.5 py-4 text-white md:px-3">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-[6%] top-[12%] h-24 w-24 rounded-full border border-emerald-300/10 bg-emerald-300/[0.02] sm:h-36 sm:w-36" />
         <div className="absolute right-[7%] top-[18%] h-10 w-10 rounded-full border border-emerald-300/15 bg-emerald-300/[0.035] sm:h-16 sm:w-16" />
@@ -973,7 +973,16 @@ export default function NomineesPage() {
                   </div>
                 )}
 
-      
+                <div className="min-w-0">
+                  <p className="break-words text-sm font-semibold text-white">
+                    {selectedNominee.name || "Unnamed nominee"}
+                  </p>
+                  <p className="mt-1 text-xs text-white/40">
+                    Your selected candidate
+                  </p>
+                </div>
+              </div>
+
               <div className="space-y-4">
                 <div>
                   <label

@@ -157,7 +157,7 @@ export default function AuthCallbackPage() {
   }, [router]);
 
   return (
-    <main className="flex min-h-dvh items-center justify-center bg-[#070b09] px-0.5 text-zinc-100 md:px-2">
+    <main className="flex min-h-dvh items-center justify-center bg-[#070b09] px-1.5 text-zinc-100 md:px-3">
       <div className="w-full max-w-sm rounded-2xl border border-white/[0.08] bg-[#0d1310] p-6 text-center">
 
         {error ? (

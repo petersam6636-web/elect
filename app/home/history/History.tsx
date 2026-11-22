@@ -409,7 +409,7 @@ export default function HistoryPage() {
   };
 
   return (
-    <main className="relative min-h-screen overflow-hidden px-0.5 py-5 text-white md:px-2">
+    <main className="relative min-h-screen overflow-hidden px-1.5 py-5 text-white md:px-3">
 
       {/* Ambient background */}
       {/* <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-emerald-500/10 blur-[130px]" />

@@ -1451,10 +1451,6 @@ export default function QRPage({ projectId }: QRPageProps) {
                   >
                     Cast your vote
                   </h2>
-
-                  <p className="mt-1 text-sm text-white/40">
-                    You are voting for:
-                  </p>
                 </div>
 
                 <button
@@ -1468,15 +1464,6 @@ export default function QRPage({ projectId }: QRPageProps) {
                 </button>
               </div>
 
-              <div className="mb-6 rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.055] p-4">
-                <p className="font-semibold text-emerald-200">
-                  {selectedNominee.name || "Unnamed nominee"}
-                </p>
-
-                <p className="mt-1 text-xs leading-5 text-white/40">
-                  Your vote will be recorded for this nominee.
-                </p>
-              </div>
 
               <div className="space-y-4">
                 <div>

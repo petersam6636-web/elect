@@ -15,7 +15,7 @@ interface DashboardShellProps {
 const STORAGE_KEY = "votesphere-navigation-position";
 
 export default function DashboardShell({ children }: DashboardShellProps) {
-  const { project } = useApp();
+  const { taskKey, project } = useApp();
   const pathname = usePathname();
 
   const [position, setPosition] = useState<NavigationPosition>("left");
@@ -36,6 +36,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
     pathname.startsWith("/home/register/");
 
   const showNomineesIndicator =
+    taskKey === true &&
     Boolean(project && project.length > 0) &&
     !isExcludedNomineesIndicatorRoute;
 

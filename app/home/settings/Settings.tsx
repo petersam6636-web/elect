@@ -507,10 +507,6 @@ console.log(2)
 
                       </div>
 
-                      <span className="shrink-0 rounded-full border border-white/[0.08] bg-white/[0.035] px-2.5 py-1 text-[10px] font-medium text-gray-500">
-                        Coming next
-                      </span>
-
                     </div>
 
                   );

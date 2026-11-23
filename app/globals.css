@@ -20,6 +20,7 @@
 }
 
 html {
+  font-size: 112.5%;
   scroll-behavior: smooth;
   background: #070b09;
   overscroll-behavior: none;
@@ -71,6 +72,41 @@ body {
 
 body {
   overflow-x: hidden;
+}
+
+/* Shared VoteSphere readability adjustments */
+[class~="text-zinc-500"],
+[class~="text-gray-500"] {
+  color: #a1a1aa;
+}
+
+[class~="text-zinc-400"],
+[class~="text-gray-400"] {
+  color: #b8b8bf;
+}
+
+[class~="text-white/25"] {
+  color: rgb(255 255 255 / 0.32);
+}
+
+[class~="text-white/35"] {
+  color: rgb(255 255 255 / 0.48);
+}
+
+[class~="text-white/40"] {
+  color: rgb(255 255 255 / 0.56);
+}
+
+[class~="text-white/45"] {
+  color: rgb(255 255 255 / 0.62);
+}
+
+[class~="text-white/50"] {
+  color: rgb(255 255 255 / 0.66);
+}
+
+[class~="text-white/55"] {
+  color: rgb(255 255 255 / 0.68);
 }
 
 #smooth-wrapper {

@@ -335,11 +335,12 @@ export default function FinishedProject() {
               );
 
               return (
-                <article
+                <Link
                   key={nominee.id}
-                  className="overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025]"
+                  href={`/home/${nominee.id}`}
+                  className="group flex w-full overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] transition hover:border-emerald-400/25 hover:bg-emerald-400/[0.045]"
                 >
-                  <div className="p-4 sm:p-5">
+                  <div className="flex-1 p-4 sm:p-5">
                     <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
                       <div className="flex min-w-0 items-center gap-3">
                         {nominee.image ? (
@@ -383,24 +384,14 @@ export default function FinishedProject() {
                       </div>
                     </div>
 
-                    <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+                    <div className="flex h-1.5 w-full overflow-hidden rounded-full bg-white/[0.06]">
                       <div
-                        className={`h-full rounded-full ${
-                          isWinner ? "bg-emerald-400" : "bg-white/25"
-                        }`}
+                        className="h-full shrink-0 rounded-full bg-gradient-to-r from-emerald-300 via-emerald-500 to-emerald-950 transition-[filter] duration-300 group-hover:brightness-110"
                         style={{ width: `${percentage}%` }}
                       />
                     </div>
-
-                    <Link
-                      href={`/home/${nominee.id}`}
-                      className="mt-4 inline-flex min-h-10 items-center gap-2 rounded-xl border border-emerald-400/20 bg-emerald-400/[0.07] px-4 text-sm font-semibold text-emerald-300 transition hover:border-emerald-400/40 hover:bg-emerald-400/15 hover:text-emerald-200"
-                    >
-                      View more
-                      <ArrowRight size={15} />
-                    </Link>
                   </div>
-                </article>
+                </Link>
               );
             })}
           </div>

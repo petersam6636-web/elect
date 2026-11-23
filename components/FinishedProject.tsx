@@ -371,14 +371,6 @@ export default function FinishedProject() {
                         )}
                       </div>
                     </div>
-                    <div className="flex items-center justify-between rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 sm:hidden">
-                      <p className="text-[10px] uppercase tracking-[0.14em] text-white/40">
-                        Total votes
-                      </p>
-                      <p className="font-semibold tabular-nums text-white">
-                        {voteCount.toLocaleString()}
-                      </p>
-                    </div>
                   </div>
 
                   <div className="absolute right-5 top-5 hidden min-w-28 flex-col items-end rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 text-right sm:flex">
@@ -390,28 +382,38 @@ export default function FinishedProject() {
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between gap-4 sm:justify-end">
-                    <div
-                      role="progressbar"
-                      aria-label={`${nominee.name || "Nominee"} vote percentage`}
-                      aria-valuemin={0}
-                      aria-valuemax={100}
-                      aria-valuenow={Math.round(percentage)}
-                      className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-full p-[7px] shadow-[0_0_24px_rgba(16,185,129,0.10)]"
-                      style={{
-                        background: `conic-gradient(#10b981 ${percentage}%, rgba(255,255,255,0.07) ${percentage}% 100%)`,
-                      }}
-                    >
-                      <div className="flex h-full w-full items-center justify-center rounded-full border border-white/[0.08] bg-[#09110d]">
-                        <span className="text-sm font-bold tabular-nums text-white">
-                          {percentage.toFixed(1)}%
-                        </span>
+                  <div className="flex min-w-0 flex-col gap-3 sm:absolute sm:bottom-5 sm:right-5 sm:left-[calc(50%-1rem)] sm:max-w-[48%]">
+                    <div className="flex items-center gap-3 sm:hidden">
+                      <div className="shrink-0 rounded-lg border border-white/[0.06] bg-black/20 px-2.5 py-2 text-center">
+                        <p className="text-[9px] uppercase tracking-[0.12em] text-white/40">
+                          Votes
+                        </p>
+                        <p className="mt-0.5 text-sm font-semibold tabular-nums text-white">
+                          {voteCount.toLocaleString()}
+                        </p>
                       </div>
+                      <div
+                        role="progressbar"
+                        aria-label={`${nominee.name || "Nominee"} vote percentage`}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                        aria-valuenow={Math.round(percentage)}
+                        className="flex h-2 flex-1 overflow-hidden rounded-full bg-white/[0.07]"
+                      >
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-emerald-950 via-emerald-600 to-emerald-300"
+                          style={{ width: `${percentage}%` }}
+                        />
+                      </div>
+
+                      <span className="shrink-0 text-xs font-semibold tabular-nums text-emerald-300">
+                        {percentage.toFixed(1)}%
+                      </span>
                     </div>
 
                     <Link
                       href={`/home/${nominee.id}`}
-                      className="inline-flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.07] px-4 text-xs font-semibold text-emerald-300 transition hover:border-emerald-400/40 hover:bg-emerald-400/15 hover:text-emerald-200 sm:flex-none"
+                      className="inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.07] px-4 text-xs font-semibold text-emerald-300 transition hover:border-emerald-400/40 hover:bg-emerald-400/15 hover:text-emerald-200"
                     >
                       View more
                       <ArrowRight size={13} />

@@ -953,11 +953,11 @@ export default function ActiveProject() {
               return (
                 <article
                   key={nominee.id}
-                  className="overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d1310]"
+                  className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d1310]"
                 >
                   {/* Nominee information */}
 
-                  <div className="flex flex-wrap items-center justify-between gap-4 p-5">
+                  <div className="flex items-center gap-4 p-5 pr-28 sm:pr-32">
                     <div className="flex min-w-0 items-center gap-3">
                       {nominee.image ? (
                         <img
@@ -992,7 +992,7 @@ export default function ActiveProject() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 rounded-xl border border-emerald-400/10 bg-emerald-400/[0.06] px-3 py-2">
+                    <div className="absolute right-5 top-5 flex items-center gap-2 rounded-xl border border-emerald-400/10 bg-emerald-400/[0.06] px-3 py-2">
                       <Vote
                         size={15}
                         className="text-emerald-400"

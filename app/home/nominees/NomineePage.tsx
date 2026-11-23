@@ -80,6 +80,7 @@ export default function NomineesPage() {
   const [voteError, setVoteError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [showAlreadyVoted, setShowAlreadyVoted] = useState(false);
+  const [showVoteConfirmation, setShowVoteConfirmation] = useState(false);
 
   // Select the newest active project from shared application state.
   const selectedProject = useMemo(() => {
@@ -340,6 +341,7 @@ export default function NomineesPage() {
   const closeVoteModal = () => {
     if (submitting) return;
 
+    setShowVoteConfirmation(false);
     setSelectedNominee(null);
     setVoteError("");
 
@@ -1031,7 +1033,7 @@ export default function NomineesPage() {
               <div className="mt-6 flex flex-col gap-3">
                 <button
                   type="button"
-                  onClick={handleVote}
+                  onClick={() => setShowVoteConfirmation(true)}
                   disabled={submitting || !voteForm.name.trim()}
                   className="group flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-400 px-4 py-3.5 text-sm font-semibold text-[#04130c] transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-40"
                 >
@@ -1069,6 +1071,69 @@ export default function NomineesPage() {
             </div>
           </section>
         </div>
+        </ModalPortal>
+      )}
+
+      {showVoteConfirmation && selectedNominee && (
+        <ModalPortal>
+          <div
+            className="fixed inset-0 z-[130] flex items-center justify-center bg-black/80 px-4 backdrop-blur-md"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget && !submitting) {
+                setShowVoteConfirmation(false);
+              }
+            }}
+          >
+            <section
+              role="alertdialog"
+              aria-modal="true"
+              aria-labelledby="final-vote-confirmation-title"
+              className="w-full max-w-sm rounded-3xl border border-emerald-400/20 bg-[linear-gradient(145deg,rgba(16,37,26,0.98),rgba(11,17,13,0.98))] p-6 text-center shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
+            >
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.10] text-emerald-300">
+                <ShieldCheck size={26} />
+              </div>
+
+              <h3
+                id="final-vote-confirmation-title"
+                className="mt-5 text-xl font-semibold text-white"
+              >
+                Confirm your final vote
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-white/55">
+                Submit your vote for{" "}
+                <span className="font-semibold text-emerald-300">
+                  {selectedNominee.name || "this nominee"}
+                </span>
+                ?
+              </p>
+              <p className="mt-2 text-xs text-white/35">
+                This cannot be changed after submission.
+              </p>
+
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  disabled={submitting}
+                  onClick={() => setShowVoteConfirmation(false)}
+                  className="min-h-11 flex-1 rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 text-sm font-medium text-white/60 transition hover:bg-white/[0.06] hover:text-white disabled:opacity-40"
+                >
+                  Go back
+                </button>
+                <button
+                  type="button"
+                  disabled={submitting}
+                  onClick={() => {
+                    setShowVoteConfirmation(false);
+                    void handleVote();
+                  }}
+                  className="min-h-11 flex-1 rounded-xl bg-emerald-400 px-4 text-sm font-semibold text-[#04130c] transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  Yes, submit vote
+                </button>
+              </div>
+            </section>
+          </div>
         </ModalPortal>
       )}
     </main>

@@ -720,10 +720,6 @@ export default function Nominee() {
             <span aria-hidden="true">→</span>
           </button>
 
-          <p className="mt-3 text-center text-[11px] leading-5 text-white/30">
-            You will be asked to confirm before your nominees are saved
-            and voting is activated.
-          </p>
         </div>
       </div>
 

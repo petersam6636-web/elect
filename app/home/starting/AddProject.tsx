@@ -470,12 +470,6 @@ export default function CreateProjectPage() {
                   </div>
                 </div>
               )}
-
-              <p className="mt-3 text-[11px] leading-5 text-white/35">
-                Your election will automatically reach its scheduled
-                expiration time. Choose a duration that gives participants
-                enough time to take part.
-              </p>
             </div>
           </div>
 

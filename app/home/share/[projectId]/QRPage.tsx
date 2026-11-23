@@ -154,6 +154,7 @@ export default function QRPage({ projectId }: QRPageProps) {
   const [voteError, setVoteError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [showAlreadyVoted, setShowAlreadyVoted] = useState(false);
+  const [showVoteConfirmation, setShowVoteConfirmation] = useState(false);
   const [copied, setCopied] = useState(false);
   // Fetch the exact project identified by the URL projectId.
   // This page does not depend on the newest project in app context.
@@ -504,6 +505,7 @@ export default function QRPage({ projectId }: QRPageProps) {
   const closeVoteModal = () => {
     if (submitting) return;
 
+    setShowVoteConfirmation(false);
     setSelectedNominee(null);
     setVoteError("");
 
@@ -906,60 +908,84 @@ export default function QRPage({ projectId }: QRPageProps) {
                     <article
                       key={nominee.id}
                       data-enter
-                      className="min-w-0 overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025]"
+                      className="group relative grid min-w-0 grid-cols-1 items-center gap-4 overflow-hidden rounded-2xl border border-white/[0.10] bg-white/[0.025] p-4 transition hover:border-white/[0.16] hover:bg-white/[0.035] sm:grid-cols-[minmax(0,1fr)_auto] sm:p-5"
                     >
-                      <div className="p-4 sm:p-5">
-                        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-                          <div className="flex min-w-0 items-center gap-3">
-                            {nominee.image ? (
-                              <img
-                                src={nominee.image}
-                                alt={nominee.name || "Nominee"}
-                                className="h-12 w-12 shrink-0 rounded-xl border border-emerald-400/20 object-cover"
-                              />
-                            ) : (
-                              <div
-                                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-sm font-semibold ${
-                                  isWinner
-                                    ? "bg-emerald-400/15 text-emerald-300"
-                                    : "bg-white/[0.06] text-white/45"
-                                }`}
-                              >
-                                {index + 1}
-                              </div>
-                            )}
-
-                            <div className="min-w-0">
-                              <p className="break-words font-medium text-white">
-                                {nominee.name || "Unnamed nominee"}
-                              </p>
-                              {isWinner && (
-                                <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-300">
-                                  <Crown size={11} />
-                                  Winner
-                                </span>
-                              )}
-                            </div>
-                          </div>
-
-                          <div className="min-w-0 text-right">
-                            <p className="break-words font-semibold tabular-nums text-white">
-                              {voteCount.toLocaleString()} votes
-                            </p>
-                            <p className="mt-0.5 text-xs text-white/35">
-                              {percentage.toFixed(1)}%
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
-                          <div
-                            className={`h-full rounded-full ${
-                              isWinner ? "bg-emerald-400" : "bg-white/25"
-                            }`}
-                            style={{ width: `${percentage}%` }}
+                      <div className="flex min-w-0 items-center gap-3 sm:pr-32">
+                        {nominee.image ? (
+                          <img
+                            src={nominee.image}
+                            alt={nominee.name || "Nominee"}
+                            className="h-12 w-12 shrink-0 rounded-xl border border-emerald-400/20 object-cover"
                           />
+                        ) : (
+                          <div
+                            className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-sm font-semibold ${
+                              isWinner
+                                ? "bg-emerald-400/15 text-emerald-300"
+                                : "bg-white/[0.06] text-white/45"
+                            }`}
+                          >
+                            {index + 1}
+                          </div>
+                        )}
+
+                        <div className="min-w-0">
+                          <p className="break-words font-medium text-white">
+                            {nominee.name || "Unnamed nominee"}
+                          </p>
+                          {isWinner && (
+                            <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-300">
+                              <Crown size={11} />
+                              Winner
+                            </span>
+                          )}
                         </div>
+                      </div>
+
+                      <div className="absolute right-5 top-5 hidden min-w-28 flex-col items-end rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 text-right sm:flex">
+                        <p className="text-[10px] uppercase tracking-[0.14em] text-white/40">
+                          Total votes
+                        </p>
+                        <p className="mt-1 font-semibold tabular-nums text-white">
+                          {voteCount.toLocaleString()}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between gap-4 sm:justify-end">
+                        <div
+                          role="progressbar"
+                          aria-label={`${nominee.name || "Nominee"} vote percentage`}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
+                          aria-valuenow={Math.round(percentage)}
+                          className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-full p-[7px]"
+                          style={{
+                            background: `conic-gradient(#10b981 ${percentage}%, rgba(255,255,255,0.07) ${percentage}% 100%)`,
+                          }}
+                        >
+                          <div className="flex h-full w-full items-center justify-center rounded-full border border-white/[0.08] bg-[#09110d]">
+                            <span className="text-sm font-bold tabular-nums text-white">
+                              {percentage.toFixed(1)}%
+                            </span>
+                          </div>
+                        </div>
+
+                        <Link
+                          href={`/home/${nominee.id}`}
+                          className="inline-flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.07] px-4 text-xs font-semibold text-emerald-300 transition hover:border-emerald-400/40 hover:bg-emerald-400/15 hover:text-emerald-200 sm:flex-none"
+                        >
+                          View more
+                          <ArrowRight size={13} />
+                        </Link>
+                      </div>
+
+                      <div className="flex items-center justify-between rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 sm:hidden">
+                        <p className="text-[10px] uppercase tracking-[0.14em] text-white/40">
+                          Total votes
+                        </p>
+                        <p className="font-semibold tabular-nums text-white">
+                          {voteCount.toLocaleString()}
+                        </p>
                       </div>
                     </article>
                   );
@@ -1480,7 +1506,7 @@ export default function QRPage({ projectId }: QRPageProps) {
               <div className="mt-6 flex flex-col gap-3">
                 <button
                   type="button"
-                  onClick={handleVote}
+                  onClick={() => setShowVoteConfirmation(true)}
                   disabled={submitting || !voteForm.name.trim()}
                   className="group flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-400 px-4 py-3.5 text-sm font-semibold text-[#04130c] transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-40"
                 >
@@ -1518,6 +1544,69 @@ export default function QRPage({ projectId }: QRPageProps) {
             </div>
           </section>
         </div>
+        </ModalPortal>
+      )}
+
+      {showVoteConfirmation && selectedNominee && (
+        <ModalPortal>
+          <div
+            className="fixed inset-0 z-[130] flex items-center justify-center bg-black/80 px-4 backdrop-blur-md"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget && !submitting) {
+                setShowVoteConfirmation(false);
+              }
+            }}
+          >
+            <section
+              role="alertdialog"
+              aria-modal="true"
+              aria-labelledby="final-vote-confirmation-title"
+              className="w-full max-w-sm rounded-3xl border border-emerald-400/20 bg-[linear-gradient(145deg,rgba(16,37,26,0.98),rgba(11,17,13,0.98))] p-6 text-center shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
+            >
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.10] text-emerald-300">
+                <ShieldCheck size={26} />
+              </div>
+
+              <h3
+                id="final-vote-confirmation-title"
+                className="mt-5 text-xl font-semibold text-white"
+              >
+                Confirm your final vote
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-white/55">
+                Submit your vote for{" "}
+                <span className="font-semibold text-emerald-300">
+                  {selectedNominee.name || "this nominee"}
+                </span>
+                ?
+              </p>
+              <p className="mt-2 text-xs text-white/35">
+                This cannot be changed after submission.
+              </p>
+
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  disabled={submitting}
+                  onClick={() => setShowVoteConfirmation(false)}
+                  className="min-h-11 flex-1 rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 text-sm font-medium text-white/60 transition hover:bg-white/[0.06] hover:text-white disabled:opacity-40"
+                >
+                  Go back
+                </button>
+                <button
+                  type="button"
+                  disabled={submitting}
+                  onClick={() => {
+                    setShowVoteConfirmation(false);
+                    void handleVote();
+                  }}
+                  className="min-h-11 flex-1 rounded-xl bg-emerald-400 px-4 text-sm font-semibold text-[#04130c] transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  Yes, submit vote
+                </button>
+              </div>
+            </section>
+          </div>
         </ModalPortal>
       )}
     </main>

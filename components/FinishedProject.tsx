@@ -337,9 +337,9 @@ export default function FinishedProject() {
               return (
                 <article
                   key={nominee.id}
-                  className="group grid w-full grid-cols-1 items-center gap-4 overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition hover:border-emerald-400/25 hover:bg-emerald-400/[0.045] sm:grid-cols-[minmax(0,1fr)_auto] sm:p-5"
+                  className="group relative grid w-full grid-cols-1 items-center gap-4 overflow-hidden rounded-2xl border border-white/[0.10] bg-white/[0.025] p-4 transition hover:border-white/[0.16] hover:bg-white/[0.035] sm:grid-cols-[minmax(0,1fr)_auto] sm:p-5"
                 >
-                  <div className="flex min-w-0 flex-col justify-between gap-4 sm:h-full sm:flex-row sm:items-center">
+                  <div className="flex min-w-0 flex-col justify-between gap-4 sm:h-full sm:flex-row sm:items-center sm:pr-32">
                     <div className="flex min-w-0 items-center gap-3">
                       {nominee.image ? (
                         <img
@@ -371,15 +371,23 @@ export default function FinishedProject() {
                         )}
                       </div>
                     </div>
-
-                    <div className="flex items-center justify-between rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 sm:ml-auto sm:min-w-28 sm:flex-col sm:justify-center sm:text-center">
-                      <p className="text-[10px] uppercase tracking-[0.14em] text-white/40 sm:mb-1">
+                    <div className="flex items-center justify-between rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 sm:hidden">
+                      <p className="text-[10px] uppercase tracking-[0.14em] text-white/40">
                         Total votes
                       </p>
                       <p className="font-semibold tabular-nums text-white">
                         {voteCount.toLocaleString()}
                       </p>
                     </div>
+                  </div>
+
+                  <div className="absolute right-5 top-5 hidden min-w-28 flex-col items-end rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 text-right sm:flex">
+                    <p className="text-[10px] uppercase tracking-[0.14em] text-white/40">
+                      Total votes
+                    </p>
+                    <p className="mt-1 font-semibold tabular-nums text-white">
+                      {voteCount.toLocaleString()}
+                    </p>
                   </div>
 
                   <div className="flex items-center justify-between gap-4 sm:justify-end">
@@ -391,7 +399,7 @@ export default function FinishedProject() {
                       aria-valuenow={Math.round(percentage)}
                       className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-full p-[7px] shadow-[0_0_24px_rgba(16,185,129,0.10)]"
                       style={{
-                        background: `conic-gradient(#34d399 0%, #10b981 ${percentage * 0.65}%, #064e3b ${percentage}%, rgba(255,255,255,0.07) ${percentage}% 100%)`,
+                        background: `conic-gradient(#10b981 ${percentage}%, rgba(255,255,255,0.07) ${percentage}% 100%)`,
                       }}
                     >
                       <div className="flex h-full w-full items-center justify-center rounded-full border border-white/[0.08] bg-[#09110d]">

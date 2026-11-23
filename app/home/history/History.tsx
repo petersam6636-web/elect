@@ -421,7 +421,7 @@ export default function HistoryPage() {
       <div className="relative z-10 mx-auto w-full max-w-6xl">
 
         {/* Header */}
-        <header className="mb-10 flex flex-col justify-between gap-5 border-b border-white/[0.07] pb-6 sm:flex-row sm:items-center">
+        <header className="mb-10 flex flex-col justify-between gap-5 pb-6 sm:flex-row sm:items-center">
 
           <div className="flex items-center gap-3">
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.09] text-emerald-300 shadow-[0_0_30px_rgba(16,185,129,0.08)]">
@@ -440,7 +440,7 @@ export default function HistoryPage() {
           </div>
 
           {/* Section navigation */}
-          <div className="flex items-center gap-1 rounded-xl border border-white/[0.07] bg-white/[0.025] p-1">
+          <div className="flex items-center gap-1 rounded-xl bg-white/[0.025] p-1">
 
             <button
               type="button"

@@ -721,10 +721,10 @@ export default function QRPage({ projectId }: QRPageProps) {
         <div className="relative mx-auto w-full min-w-0 max-w-7xl">
           <header
             data-enter
-            className="mb-8 flex flex-col justify-between gap-5 border-b border-white/[0.07] pb-6 sm:flex-row sm:items-center"
+            className="mb-8 flex flex-col justify-between gap-5 pb-6 sm:flex-row sm:items-center"
           >
             <div>
-              <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5 text-xs font-medium text-emerald-300">
+              <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-emerald-400/[0.06] px-3 py-1.5 text-xs font-medium text-emerald-300">
                 <CheckCircle2 size={13} />
                 Election completed
               </div>
@@ -1010,7 +1010,7 @@ export default function QRPage({ projectId }: QRPageProps) {
 
       <div className="relative mx-auto w-full max-w-7xl">
         {/* Election header */}
-        <header className="mb-8 flex flex-col justify-between gap-5 border-b border-white/[0.07] pb-6 sm:flex-row sm:items-center">
+        <header className="mb-8 flex flex-col justify-between gap-5 pb-6 sm:flex-row sm:items-center">
           <div>
             <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-emerald-300/65">
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
@@ -1027,7 +1027,7 @@ export default function QRPage({ projectId }: QRPageProps) {
             </p>
           </div>
 
-          <div className="inline-flex w-fit shrink-0 items-center gap-2 rounded-xl border border-emerald-400/15 bg-emerald-400/[0.06] px-3.5 py-2.5 text-xs font-medium text-emerald-300">
+          <div className="inline-flex w-fit shrink-0 items-center gap-2 rounded-xl bg-emerald-400/[0.06] px-3.5 py-2.5 text-xs font-medium text-emerald-300">
             <CheckCircle2 size={15} />
             Voting active
           </div>

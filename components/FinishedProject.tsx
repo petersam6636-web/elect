@@ -335,9 +335,8 @@ export default function FinishedProject() {
               );
 
               return (
-                <Link
+                <article
                   key={nominee.id}
-                  href={`/home/${nominee.id}`}
                   className="group flex w-full overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] transition hover:border-emerald-400/25 hover:bg-emerald-400/[0.045]"
                 >
                   <div className="flex-1 p-4 sm:p-5">
@@ -384,14 +383,24 @@ export default function FinishedProject() {
                       </div>
                     </div>
 
-                    <div className="flex h-1.5 w-full overflow-hidden rounded-full bg-white/[0.06]">
-                      <div
-                        className="h-full shrink-0 rounded-full bg-gradient-to-r from-emerald-300 via-emerald-500 to-emerald-950 transition-[filter] duration-300 group-hover:brightness-110"
-                        style={{ width: `${percentage}%` }}
-                      />
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-1.5 flex-1 overflow-hidden rounded-full bg-white/[0.06]">
+                        <div
+                          className="h-full shrink-0 rounded-full bg-gradient-to-r from-emerald-300 via-emerald-500 to-emerald-950 transition-[filter] duration-300 group-hover:brightness-110"
+                          style={{ width: `${percentage}%` }}
+                        />
+                      </div>
+
+                      <Link
+                        href={`/home/${nominee.id}`}
+                        className="inline-flex max-w-28 min-h-9 flex-1 items-center justify-center gap-1.5 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.07] px-3 text-xs font-semibold text-emerald-300 transition hover:border-emerald-400/40 hover:bg-emerald-400/15 hover:text-emerald-200"
+                      >
+                        View more
+                        <ArrowRight size={13} />
+                      </Link>
                     </div>
                   </div>
-                </Link>
+                </article>
               );
             })}
           </div>
@@ -406,12 +415,12 @@ export default function FinishedProject() {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
           <button
             type="button"
             onClick={handleCopyLink}
             disabled={!shareUrl}
-            className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 text-sm font-semibold text-white/70 transition hover:border-emerald-400/30 hover:text-emerald-300 disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 text-sm font-semibold text-white/70 transition hover:border-emerald-400/30 hover:text-emerald-300 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {copied ? <CheckCircle2 size={16} /> : <Copy size={16} />}
             {copied ? "Copied" : "Copy link"}
@@ -419,7 +428,7 @@ export default function FinishedProject() {
 
           <Link
             href="/home/history"
-            className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-emerald-400/25 bg-emerald-400/10 px-4 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-400 hover:text-[#04130c]"
+            className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-emerald-400/25 bg-emerald-400/10 px-4 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-400 hover:text-[#04130c]"
           >
             View history
             <ArrowRight size={16} />

@@ -59,6 +59,10 @@ export default function Slider({
     <>
       {/* Desktop and tablet navigation */}
       <aside
+        style={{
+          backgroundColor: "rgba(11, 18, 14, 0.90)",
+          borderColor: "rgba(255, 255, 255, 0.08)",
+        }}
         className={`fixed z-50 hidden border border-white/[0.08] bg-[#0b120e]/90 shadow-[0_10px_50px_rgba(0,0,0,0.35)] backdrop-blur-2xl transition-all duration-300 md:flex ${
           vertical
             ? `top-1/2 w-[64px] -translate-y-1/2 flex-col items-center rounded-[20px] px-2 pb-2 pt-11 ${
@@ -131,6 +135,10 @@ export default function Slider({
 
       {/* Mobile navigation */}
       <nav
+        style={{
+          backgroundColor: "rgba(11, 18, 14, 0.95)",
+          borderColor: "rgba(255, 255, 255, 0.10)",
+        }}
         aria-label="Mobile navigation"
         className="fixed bottom-3 left-1/2 z-50 flex w-[calc(100%-24px)] max-w-[410px] -translate-x-1/2 items-center justify-around rounded-[20px] border border-white/[0.10] bg-[#0b120e]/95 px-2 py-2 shadow-[0_12px_45px_rgba(0,0,0,0.55)] backdrop-blur-2xl md:hidden"
       >

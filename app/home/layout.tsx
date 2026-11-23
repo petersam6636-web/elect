@@ -13,7 +13,7 @@ export default function HomeLayout({
     <Suspense
       fallback={
         <div
-          className="min-h-dvh bg-[#070b09]"
+          className="min-h-dvh"
           aria-label="Loading VoteSphere"
         />
       }

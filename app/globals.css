@@ -116,15 +116,15 @@ body {
 
 /* Refined surface depth: stronger contrast, balanced transparency */
 [class*="border-white/[0.06]"] {
-  border-color: rgb(255 255 255 / 0.10);
+  border-color: rgb(255 255 255 / 0.14);
 }
 
 [class*="border-white/[0.07]"] {
-  border-color: rgb(255 255 255 / 0.12);
+  border-color: rgb(255 255 255 / 0.16);
 }
 
 [class*="border-white/[0.08]"] {
-  border-color: rgb(255 255 255 / 0.13);
+  border-color: rgb(255 255 255 / 0.17);
 }
 
 [class*="border-white/[0.09]"] {
@@ -140,19 +140,19 @@ body {
 }
 
 [class*="bg-white/[0.025]"] {
-  background-color: rgb(255 255 255 / 0.045);
+  background-color: rgb(255 255 255 / 0.060);
 }
 
 [class*="bg-white/[0.035]"] {
-  background-color: rgb(255 255 255 / 0.055);
+  background-color: rgb(255 255 255 / 0.070);
 }
 
 [class*="bg-white/[0.06]"] {
-  background-color: rgb(255 255 255 / 0.075);
+  background-color: rgb(255 255 255 / 0.095);
 }
 
 [class*="bg-white/[0.07]"] {
-  background-color: rgb(255 255 255 / 0.09);
+  background-color: rgb(255 255 255 / 0.105);
 }
 
 [class*="bg-black/15"] {

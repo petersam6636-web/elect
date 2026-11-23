@@ -522,7 +522,7 @@ console.log(2)
               <button
                 type="button"
                 onClick={() => setShowDeveloperModal(true)}
-                className="group flex w-full items-center gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.025] px-3 py-4 text-left transition-all duration-200 hover:border-emerald-400/20 hover:bg-emerald-400/[0.045] sm:px-4"
+                className="group flex w-full items-center gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.025] px-3 py-4 text-left transition-all duration-200 hover:border-emerald-400/15 hover:bg-emerald-400/[0.045] sm:px-4"
               >
 
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.035] transition-all duration-200 group-hover:border-emerald-400/20 group-hover:bg-emerald-400/[0.06]">

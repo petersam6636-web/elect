@@ -337,68 +337,77 @@ export default function FinishedProject() {
               return (
                 <article
                   key={nominee.id}
-                  className="group flex w-full overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] transition hover:border-emerald-400/25 hover:bg-emerald-400/[0.045]"
+                  className="group grid w-full grid-cols-1 items-center gap-4 overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition hover:border-emerald-400/25 hover:bg-emerald-400/[0.045] sm:grid-cols-[minmax(0,1fr)_auto] sm:p-5"
                 >
-                  <div className="flex-1 p-4 sm:p-5">
-                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-                      <div className="flex min-w-0 items-center gap-3">
-                        {nominee.image ? (
-                          <img
-                            src={nominee.image}
-                            alt={nominee.name || "Nominee"}
-                            className="h-12 w-12 shrink-0 rounded-xl border border-emerald-400/20 object-cover"
-                          />
-                        ) : (
-                          <div
-                            className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${
-                              isWinner
-                                ? "bg-emerald-400/15 text-emerald-300"
-                                : "bg-white/[0.06] text-white/45"
-                            }`}
-                          >
-                            {index + 1}
-                          </div>
-                        )}
-
-                        <div className="min-w-0">
-                          <p className="break-words font-medium text-white">
-                            {nominee.name || "Unnamed nominee"}
-                          </p>
-                          {isWinner && (
-                            <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-300">
-                              <Crown size={11} />
-                              Winner
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="text-right">
-                        <p className="font-semibold tabular-nums text-white">
-                          {voteCount.toLocaleString()} votes
-                        </p>
-                        <p className="mt-0.5 text-xs text-white/35">
-                          {percentage.toFixed(1)}%
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-1.5 flex-1 overflow-hidden rounded-full bg-white/[0.06]">
-                        <div
-                          className="h-full shrink-0 rounded-full bg-gradient-to-r from-emerald-300 via-emerald-500 to-emerald-950 transition-[filter] duration-300 group-hover:brightness-110"
-                          style={{ width: `${percentage}%` }}
+                  <div className="flex min-w-0 flex-col justify-between gap-4 sm:h-full sm:flex-row sm:items-center">
+                    <div className="flex min-w-0 items-center gap-3">
+                      {nominee.image ? (
+                        <img
+                          src={nominee.image}
+                          alt={nominee.name || "Nominee"}
+                          className="h-12 w-12 shrink-0 rounded-xl border border-emerald-400/20 object-cover"
                         />
-                      </div>
+                      ) : (
+                        <div
+                          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${
+                            isWinner
+                              ? "bg-emerald-400/15 text-emerald-300"
+                              : "bg-white/[0.06] text-white/45"
+                          }`}
+                        >
+                          {index + 1}
+                        </div>
+                      )}
 
-                      <Link
-                        href={`/home/${nominee.id}`}
-                        className="inline-flex max-w-28 min-h-9 flex-1 items-center justify-center gap-1.5 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.07] px-3 text-xs font-semibold text-emerald-300 transition hover:border-emerald-400/40 hover:bg-emerald-400/15 hover:text-emerald-200"
-                      >
-                        View more
-                        <ArrowRight size={13} />
-                      </Link>
+                      <div className="min-w-0">
+                        <p className="break-words font-medium text-white">
+                          {nominee.name || "Unnamed nominee"}
+                        </p>
+                        {isWinner && (
+                          <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-300">
+                            <Crown size={11} />
+                            Winner
+                          </span>
+                        )}
+                      </div>
                     </div>
+
+                    <div className="flex items-center justify-between rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 sm:ml-auto sm:min-w-28 sm:flex-col sm:justify-center sm:text-center">
+                      <p className="text-[10px] uppercase tracking-[0.14em] text-white/40 sm:mb-1">
+                        Total votes
+                      </p>
+                      <p className="font-semibold tabular-nums text-white">
+                        {voteCount.toLocaleString()}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-4 sm:justify-end">
+                    <div
+                      role="progressbar"
+                      aria-label={`${nominee.name || "Nominee"} vote percentage`}
+                      aria-valuemin={0}
+                      aria-valuemax={100}
+                      aria-valuenow={Math.round(percentage)}
+                      className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-full p-[7px] shadow-[0_0_24px_rgba(16,185,129,0.10)]"
+                      style={{
+                        background: `conic-gradient(#34d399 0%, #10b981 ${percentage * 0.65}%, #064e3b ${percentage}%, rgba(255,255,255,0.07) ${percentage}% 100%)`,
+                      }}
+                    >
+                      <div className="flex h-full w-full items-center justify-center rounded-full border border-white/[0.08] bg-[#09110d]">
+                        <span className="text-sm font-bold tabular-nums text-white">
+                          {percentage.toFixed(1)}%
+                        </span>
+                      </div>
+                    </div>
+
+                    <Link
+                      href={`/home/${nominee.id}`}
+                      className="inline-flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.07] px-4 text-xs font-semibold text-emerald-300 transition hover:border-emerald-400/40 hover:bg-emerald-400/15 hover:text-emerald-200 sm:flex-none"
+                    >
+                      View more
+                      <ArrowRight size={13} />
+                    </Link>
                   </div>
                 </article>
               );

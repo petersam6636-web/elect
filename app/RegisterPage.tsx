@@ -3,7 +3,6 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { Geist } from "next/font/google";
 import {
   ArrowRight,
   Eye,
@@ -19,12 +18,6 @@ import {
 } from "lucide-react";
 import { supabase } from "@/lib/supabase-client";
 import { ensureUserTask } from "@/lib/tasks";
-
-const geist = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist",
-  display: "swap",
-});
 
 type AuthMode = "login" | "signup";
 type LoadingType = "email" | "google" | null;
@@ -236,7 +229,7 @@ export default function RegisterPage() {
 
   return (
     <main
-      className={`${geist.className} relative flex min-h-dvh w-full items-center justify-center overflow-hidden bg-[#050a07] px-2 py-5 text-white selection:bg-emerald-500/30 md:px-3`}
+      className="relative flex min-h-dvh w-full items-center justify-center overflow-hidden bg-[#050a07] px-2 py-5 text-white selection:bg-emerald-500/30 md:px-3"
     >
       {/* BACKGROUND AMBIENT GLOWS */}
 

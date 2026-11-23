@@ -391,6 +391,14 @@ export default function FinishedProject() {
                         style={{ width: `${percentage}%` }}
                       />
                     </div>
+
+                    <Link
+                      href={`/home/${nominee.id}`}
+                      className="mt-4 inline-flex min-h-10 items-center gap-2 rounded-xl border border-emerald-400/20 bg-emerald-400/[0.07] px-4 text-sm font-semibold text-emerald-300 transition hover:border-emerald-400/40 hover:bg-emerald-400/15 hover:text-emerald-200"
+                    >
+                      View more
+                      <ArrowRight size={15} />
+                    </Link>
                   </div>
                 </article>
               );

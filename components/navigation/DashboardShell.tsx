@@ -15,7 +15,7 @@ interface DashboardShellProps {
 const STORAGE_KEY = "votesphere-navigation-position";
 
 export default function DashboardShell({ children }: DashboardShellProps) {
-  const { taskKey, project } = useApp();
+  const { project } = useApp();
   const pathname = usePathname();
 
   const [position, setPosition] = useState<NavigationPosition>("left");
@@ -27,12 +27,17 @@ export default function DashboardShell({ children }: DashboardShellProps) {
     routeSegments.length === 3 &&
     routeSegments[0] === "home" &&
     (routeSegments[1] === "share" || routeSegments[1] === "nominees");
-  const isNomineesRoute = pathname === "/home/nominees";
+  const isExcludedNomineesIndicatorRoute =
+    pathname === "/home/nominees" ||
+    pathname.startsWith("/home/nominees/") ||
+    pathname === "/home/starting" ||
+    pathname.startsWith("/home/starting/") ||
+    pathname === "/home/register" ||
+    pathname.startsWith("/home/register/");
 
   const showNomineesIndicator =
-    taskKey === true &&
     Boolean(project && project.length > 0) &&
-    !isNomineesRoute;
+    !isExcludedNomineesIndicatorRoute;
 
   useEffect(() => {
     setPortalRoot(document.body);

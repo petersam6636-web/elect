@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #070b09;
     --foreground: #ededed;
   }
 }
@@ -33,7 +33,11 @@ html {
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(16, 185, 129, 0.075), transparent 24rem),
+    radial-gradient(circle at 82% 78%, rgba(52, 211, 153, 0.045), transparent 28rem),
+    linear-gradient(145deg, #070b09 0%, #08100c 48%, #060a08 100%);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-bodoni-moda), Georgia, serif;
   margin: 0;

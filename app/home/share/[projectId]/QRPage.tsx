@@ -980,6 +980,25 @@ export default function QRPage({ projectId }: QRPageProps) {
                           </span>
                         </div>
 
+                        <div className="hidden items-center gap-3 sm:flex">
+                          <div
+                            role="progressbar"
+                            aria-label={`${nominee.name || "Nominee"} vote percentage`}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
+                            aria-valuenow={Math.round(percentage)}
+                            className="flex h-2 flex-1 overflow-hidden rounded-full bg-white/[0.07]"
+                          >
+                            <div
+                              className="h-full rounded-full bg-gradient-to-r from-emerald-950 via-emerald-600 to-emerald-300"
+                              style={{ width: `${percentage}%` }}
+                            />
+                          </div>
+                          <span className="shrink-0 text-xs font-semibold tabular-nums text-emerald-300">
+                            {percentage.toFixed(1)}%
+                          </span>
+                        </div>
+
                         <Link
                           href={`/home/${nominee.id}`}
                           className="inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.07] px-4 text-xs font-semibold text-emerald-300 transition hover:border-emerald-400/40 hover:bg-emerald-400/15 hover:text-emerald-200"

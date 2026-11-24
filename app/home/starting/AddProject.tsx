@@ -3,11 +3,13 @@
 
 import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { Globe2, LockKeyhole } from "lucide-react";
 
 import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
 
 import ProjectLoading from "@/components/ProjectLoading";
+import ModalPortal from "@/components/ModalPortal";
 
 type DurationUnit = "minutes" | "hours" | "days" | "weeks";
 
@@ -79,6 +81,7 @@ export default function CreateProjectPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const [showAccessModeDialog, setShowAccessModeDialog] = useState(false);
 
   // Verify authenticated user.
   useEffect(() => {
@@ -141,10 +144,7 @@ export default function CreateProjectPage() {
     return durationNumber * durationMultipliers[unit];
   };
 
-  // Create project.
-  const handleCreateProject = async (
-    event: FormEvent<HTMLFormElement>
-  ) => {
+  const handleCreateProject = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!userInfo) {
@@ -157,19 +157,33 @@ export default function CreateProjectPage() {
       return;
     }
 
+    setError("");
+
+    try {
+      getDurationInMilliseconds();
+      setShowAccessModeDialog(true);
+    } catch (err: unknown) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Please review your election details."
+      );
+    }
+  };
+
+  const createPublicProject = async () => {
+    if (!userInfo || saving) return;
+
     setSaving(true);
     setError("");
 
     try {
-      const durationMs = getDurationInMilliseconds();
-
       const projectDetails = {
         name: name.trim(),
         description: description.trim() || null,
-        duration_ms: durationMs,
+        duration_ms: getDurationInMilliseconds(),
       };
 
-      // STEP 1: Create the project.
       const { data, error: insertError } = await supabase
         .from("projects")
         .insert({
@@ -184,7 +198,6 @@ export default function CreateProjectPage() {
 
       if (insertError) throw insertError;
 
-      // STEP 2: Activate inactive tasks.
       const { error: taskError } = await supabase
         .from("tasks")
         .update({ key: true })
@@ -192,7 +205,6 @@ export default function CreateProjectPage() {
         .eq("key", false);
 
       if (taskError) {
-        // Clean up project if task activation fails.
         await supabase
           .from("projects")
           .delete()
@@ -204,11 +216,9 @@ export default function CreateProjectPage() {
         );
       }
 
-      // STEP 3: Update shared application state.
       setProjectDetails(projectDetails);
       setCurrentProject(data);
       setTaskKey(true);
-
       setProject((previous) => [
         ...(previous ?? []),
         {
@@ -217,7 +227,7 @@ export default function CreateProjectPage() {
         },
       ]);
 
-      // STEP 4: Continue to nominee registration.
+      setShowAccessModeDialog(false);
       router.push("/home/register");
     } catch (err: unknown) {
       setError(
@@ -228,6 +238,11 @@ export default function CreateProjectPage() {
     } finally {
       setSaving(false);
     }
+  };
+
+  const openPrivateAccessSetup = () => {
+    setShowAccessModeDialog(false);
+    router.push("/home/accessKey");
   };
 
   if (loading) {
@@ -492,6 +507,90 @@ export default function CreateProjectPage() {
           </div>
         </form>
       </div>
+
+      {showAccessModeDialog && (
+        <ModalPortal>
+          <div className="fixed inset-0 z-[120] flex items-center justify-center bg-black/75 px-4 py-6 backdrop-blur-md">
+            <section
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="access-mode-title"
+              className="w-full max-w-lg rounded-3xl border border-blue-400/20 bg-[#111722] p-6 shadow-[0_25px_90px_rgba(0,0,0,0.55)] sm:p-8"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300">
+                Voter access
+              </p>
+              <h2
+                id="access-mode-title"
+                className="mt-2 text-xl font-bold text-white sm:text-2xl"
+              >
+                Choose who can participate
+              </h2>
+              <p className="mt-2 text-sm leading-6 text-white/55">
+                Select an access method to continue setting up your election.
+              </p>
+
+              {error && (
+                <p
+                  role="alert"
+                  className="mt-4 rounded-xl border border-red-400/20 bg-red-500/10 px-4 py-3 text-sm text-red-300"
+                >
+                  {error}
+                </p>
+              )}
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={() => void createPublicProject()}
+                  disabled={saving}
+                  className="rounded-2xl border border-blue-300/30 bg-blue-400/[0.10] p-4 text-left shadow-[0_10px_28px_rgba(0,0,0,0.22)] transition hover:-translate-y-0.5 hover:border-blue-300/55 hover:bg-blue-400/[0.15] hover:shadow-[0_16px_38px_rgba(0,0,0,0.3)] disabled:cursor-wait disabled:opacity-60"
+                >
+                  <Globe2 className="mb-3 text-blue-300" size={21} />
+                  <span className="block text-sm font-semibold text-white">
+                    Public election
+                  </span>
+                  <span className="mt-1 block text-xs leading-5 text-white/50">
+                    Continue to nominee registration and make the election
+                    available to everyone.
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={openPrivateAccessSetup}
+                  disabled={saving}
+                  className="rounded-2xl border border-white/[0.10] bg-white/[0.04] p-4 text-left shadow-[0_10px_28px_rgba(0,0,0,0.22)] transition hover:-translate-y-0.5 hover:border-white/[0.20] hover:bg-white/[0.07] hover:shadow-[0_16px_38px_rgba(0,0,0,0.3)] disabled:cursor-wait disabled:opacity-60"
+                >
+                  <LockKeyhole className="mb-3 text-blue-300" size={21} />
+                  <span className="block text-sm font-semibold text-white">
+                    Private election
+                  </span>
+                  <span className="mt-1 block text-xs leading-5 text-white/50">
+                    Continue to private access setup. Keys are not issued
+                    until secure storage is configured.
+                  </span>
+                </button>
+              </div>
+
+              {saving && (
+                <p role="status" className="mt-4 text-center text-xs text-white/45">
+                  Creating your public election…
+                </p>
+              )}
+
+              <button
+                type="button"
+                onClick={() => setShowAccessModeDialog(false)}
+                disabled={saving}
+                className="mt-5 w-full rounded-xl border border-white/[0.10] px-4 py-3 text-sm text-white/60 transition hover:bg-white/[0.05] hover:text-white disabled:opacity-40"
+              >
+                Back to election details
+              </button>
+            </section>
+          </div>
+        </ModalPortal>
+      )}
     </main>
   );
 }

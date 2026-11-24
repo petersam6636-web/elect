@@ -231,11 +231,7 @@ export default function CreateProjectPage() {
       ]);
 
       setShowAccessModeDialog(false);
-      router.push(
-        accessMode === "private"
-          ? "/home/settings"
-          : "/home/register"
-      );
+
     } catch (err: unknown) {
       setError(
         err instanceof Error
@@ -247,10 +243,7 @@ export default function CreateProjectPage() {
     }
   };
 
-  const openPrivateAccessSetup = () => {
-    setVotingMethode("private");
-    void createProject("private");
-  };
+
 
   const choosePublicAccess = () => {
     setVotingMethode("public");
@@ -570,7 +563,7 @@ export default function CreateProjectPage() {
 
                 <button
                   type="button"
-                  onClick={openPrivateAccessSetup}
+                  onClick={() => router.push('/home/access')}
                   disabled={saving}
                   className="rounded-2xl border border-white/[0.10] bg-white/[0.04] p-4 text-left shadow-[0_10px_28px_rgba(0,0,0,0.22)] transition hover:-translate-y-0.5 hover:border-white/[0.20] hover:bg-white/[0.07] hover:shadow-[0_16px_38px_rgba(0,0,0,0.3)] disabled:cursor-wait disabled:opacity-60"
                 >

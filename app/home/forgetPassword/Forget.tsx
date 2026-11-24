@@ -137,7 +137,7 @@ export default function ForgetPassword() {
     return (
       <main className="flex min-h-dvh items-center justify-center px-4">
         <LoaderCircle
-          className="h-7 w-7 animate-spin text-emerald-400"
+          className="h-7 w-7 animate-spin text-blue-400"
           aria-label="Checking password reset session"
         />
       </main>
@@ -146,31 +146,18 @@ export default function ForgetPassword() {
 
   return (
     <main className="relative flex min-h-dvh w-full items-center justify-center overflow-hidden px-3 py-8 text-white">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[8%] top-[12%] h-24 w-24 rounded-full border border-emerald-300/15 bg-emerald-400/[0.055] shadow-[0_0_55px_rgba(16,185,129,0.12)] blur-[1px] animate-[floatOne_9s_ease-in-out_infinite]" />
-        <div className="absolute right-[9%] top-[18%] h-16 w-16 rounded-full border border-emerald-300/20 bg-emerald-300/[0.07] shadow-[0_0_45px_rgba(52,211,153,0.14)] animate-[floatTwo_7s_ease-in-out_infinite]" />
-        <div className="absolute bottom-[10%] left-[18%] h-12 w-12 rounded-full border border-emerald-400/20 bg-emerald-400/[0.05] shadow-[0_0_40px_rgba(16,185,129,0.12)] animate-[floatTwo_10s_ease-in-out_infinite]" />
-        <div className="absolute bottom-[16%] right-[16%] h-28 w-28 rounded-full border border-emerald-300/10 bg-emerald-300/[0.035] shadow-[0_0_70px_rgba(52,211,153,0.10)] animate-[floatOne_12s_ease-in-out_infinite]" />
-        <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/[0.09] blur-[100px]" />
-      </div>
-
-      <section className="relative w-full max-w-md overflow-hidden rounded-3xl border border-emerald-400/15 bg-[#0a110d]/90 p-6 shadow-[0_25px_90px_rgba(0,0,0,0.55)] backdrop-blur-2xl sm:p-8">
-        <div
-          aria-hidden="true"
-          className="absolute -right-20 -top-24 h-52 w-52 rounded-full bg-emerald-400/[0.07] blur-[70px]"
-        />
-
+      <section className="relative w-full max-w-md overflow-hidden rounded-3xl border border-blue-400/15 bg-[#101621] p-6 shadow-[0_25px_90px_rgba(0,0,0,0.55)] backdrop-blur-2xl sm:p-8">
         <div className="relative">
           <button
             type="button"
             onClick={() => router.replace("/")}
-            className="inline-flex items-center gap-2 text-xs font-medium text-white/45 transition hover:text-emerald-300"
+            className="inline-flex items-center gap-2 text-xs font-medium text-white/45 transition hover:text-blue-300"
           >
             <ArrowLeft size={15} />
             Back to login
           </button>
 
-          <div className="mt-7 flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">
+          <div className="mt-7 flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.08] text-blue-300">
             {mode === "update" ? (
               <KeyRound size={25} />
             ) : (
@@ -200,7 +187,7 @@ export default function ForgetPassword() {
           {success && (
             <div
               role="status"
-              className="mt-5 flex items-start gap-2 rounded-xl border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-3 text-xs leading-5 text-emerald-300"
+              className="mt-5 flex items-start gap-2 rounded-xl border border-blue-400/15 bg-blue-400/[0.06] px-3 py-3 text-xs leading-5 text-blue-300"
             >
               <CheckCircle2 size={16} className="mt-0.5 shrink-0" />
               {success}
@@ -216,8 +203,8 @@ export default function ForgetPassword() {
                 >
                   Email address
                 </label>
-                <div className="flex h-12 items-center gap-3 rounded-xl border border-white/[0.09] bg-black/20 px-4 transition focus-within:border-emerald-400/45 focus-within:ring-2 focus-within:ring-emerald-400/10">
-                  <Mail size={16} className="text-emerald-400" />
+                <div className="flex h-12 items-center gap-3 rounded-xl border border-white/[0.09] bg-black/20 px-4 transition focus-within:border-blue-400/45 focus-within:ring-2 focus-within:ring-blue-400/10">
+                  <Mail size={16} className="text-blue-400" />
                   <input
                     id="reset-email"
                     type="email"
@@ -234,7 +221,7 @@ export default function ForgetPassword() {
               <button
                 type="submit"
                 disabled={loading}
-                className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-emerald-400 text-sm font-bold text-[#04130c] transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-50"
+                className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-blue-400 text-sm font-bold text-[#07101c] transition hover:bg-blue-300 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {loading ? (
                   <>
@@ -275,8 +262,8 @@ export default function ForgetPassword() {
                   >
                     {field.label}
                   </label>
-                  <div className="flex h-12 items-center gap-3 rounded-xl border border-white/[0.09] bg-black/20 px-4 transition focus-within:border-emerald-400/45 focus-within:ring-2 focus-within:ring-emerald-400/10">
-                    <ShieldCheck size={16} className="text-emerald-400" />
+                  <div className="flex h-12 items-center gap-3 rounded-xl border border-white/[0.09] bg-black/20 px-4 transition focus-within:border-blue-400/45 focus-within:ring-2 focus-within:ring-blue-400/10">
+                    <ShieldCheck size={16} className="text-blue-400" />
                     <input
                       id={field.id}
                       type={showPassword ? "text" : "password"}
@@ -291,7 +278,7 @@ export default function ForgetPassword() {
                       type="button"
                       onClick={() => setShowPassword((previous) => !previous)}
                       aria-label={showPassword ? "Hide passwords" : "Show passwords"}
-                      className="text-white/35 transition hover:text-emerald-300"
+                      className="text-white/35 transition hover:text-blue-300"
                     >
                       {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                     </button>
@@ -302,7 +289,7 @@ export default function ForgetPassword() {
               <button
                 type="submit"
                 disabled={loading}
-                className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-emerald-400 text-sm font-bold text-[#04130c] transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-50"
+                className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-blue-400 text-sm font-bold text-[#07101c] transition hover:bg-blue-300 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {loading ? (
                   <>
@@ -324,16 +311,6 @@ export default function ForgetPassword() {
         </div>
       </section>
 
-      <style jsx>{`
-        @keyframes floatOne {
-          0%, 100% { transform: translate3d(0, 0, 0); }
-          50% { transform: translate3d(18px, -28px, 0); }
-        }
-        @keyframes floatTwo {
-          0%, 100% { transform: translate3d(0, 0, 0); }
-          50% { transform: translate3d(-16px, 24px, 0); }
-        }
-      `}</style>
     </main>
   );
 }

@@ -424,7 +424,7 @@ export default function Nominee() {
 
   if (!currentProject) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#06110d] px-2 text-center text-white md:px-3">
+      <main className="flex min-h-screen items-center justify-center bg-transparent px-2 text-center text-white md:px-3">
         <div>
           <p className="text-sm text-red-300">
             {error || "No project was found for this registration."}
@@ -433,7 +433,7 @@ export default function Nominee() {
           <button
             type="button"
             onClick={() => router.push("/home/projects/create")}
-            className="mt-5 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-[#04100a]"
+            className="mt-5 rounded-xl bg-blue-500 px-5 py-3 text-sm font-semibold text-[#07101c]"
           >
             Create a project
           </button>
@@ -450,10 +450,10 @@ export default function Nominee() {
 
         {/* Page heading */}
         <div className="mb-7">
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-400/15 bg-blue-400/[0.06] px-3 py-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
 
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-400">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-400">
               Project setup · Step 2
             </p>
           </div>
@@ -470,8 +470,8 @@ export default function Nominee() {
               </p>
             </div>
 
-            <div className="flex items-center gap-2 rounded-xl border border-emerald-400/20 bg-emerald-400/[0.06] px-4 py-3">
-              <span className="text-xl font-bold tabular-nums text-emerald-300">
+            <div className="flex items-center gap-2 rounded-xl border border-blue-400/20 bg-blue-400/[0.06] px-4 py-3">
+              <span className="text-xl font-bold tabular-nums text-blue-300">
                 {registeredNominees.length}
               </span>
 
@@ -487,19 +487,15 @@ export default function Nominee() {
 
 
         {/* Single nominee form */}
-        <section className="relative overflow-hidden rounded-3xl border border-emerald-400/15 bg-[#0b1913]/95 p-5 shadow-[0_0_55px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:p-8">
+        <section className="relative overflow-hidden rounded-3xl border border-blue-400/15 bg-[#121824] p-5 shadow-[0_0_55px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:p-8">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-            <div className="absolute -right-16 -top-20 h-44 w-44 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] sm:h-56 sm:w-56" />
-            <div className="absolute right-[14%] top-[16%] h-7 w-7 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04] sm:h-9 sm:w-9" />
-            <div className="absolute bottom-[7%] left-[6%] h-16 w-16 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] sm:h-24 sm:w-24" />
-            <div className="absolute bottom-[24%] right-[8%] h-5 w-5 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
           </div>
 
           <div className="relative">
 
           <div className="mb-7 flex flex-wrap items-center justify-between gap-3">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-400">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-400">
                 New nominee
               </p>
 
@@ -512,7 +508,7 @@ export default function Nominee() {
               </p>
             </div>
 
-            <span className="rounded-full border border-emerald-400/20 bg-emerald-400/[0.07] px-3 py-1.5 text-[10px] font-semibold text-emerald-300">
+            <span className="rounded-full border border-blue-400/20 bg-blue-400/[0.07] px-3 py-1.5 text-[10px] font-semibold text-blue-300">
               #{registeredNominees.length + 1}
             </span>
           </div>
@@ -535,7 +531,7 @@ export default function Nominee() {
                   updateDraft({ name: event.target.value })
                 }
                 placeholder="Enter nominee's full name"
-                className="w-full rounded-xl border border-emerald-400/15 bg-black/30 px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/10 [&:-webkit-autofill]:[-webkit-text-fill-color:white] [&:-webkit-autofill]:[box-shadow:0_0_0px_1000px_#0b1913_inset]"
+                className="w-full rounded-xl border border-blue-400/15 bg-black/30 px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-blue-400/60 focus:ring-2 focus:ring-blue-400/10 [&:-webkit-autofill]:[-webkit-text-fill-color:white] [&:-webkit-autofill]:[box-shadow:0_0_0px_1000px_#121824_inset]"
               />
             </div>
 
@@ -556,7 +552,7 @@ export default function Nominee() {
                 }
                 rows={4}
                 placeholder="What does this nominee stand for? What changes or improvements do they want to bring?"
-                className="w-full resize-none rounded-xl border border-emerald-400/15 bg-black/30 px-4 py-3.5 text-sm leading-6 text-white outline-none transition placeholder:text-white/25 focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/10"
+                className="w-full resize-none rounded-xl border border-blue-400/15 bg-black/30 px-4 py-3.5 text-sm leading-6 text-white outline-none transition placeholder:text-white/25 focus:border-blue-400/60 focus:ring-2 focus:ring-blue-400/10"
               />
             </div>
 
@@ -607,7 +603,7 @@ export default function Nominee() {
                 <button
                   type="button"
                   onClick={addAchievement}
-                  className="rounded-lg border border-emerald-400/20 px-4 py-2.5 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-400/10"
+                  className="rounded-lg border border-blue-400/20 px-4 py-2.5 text-xs font-semibold text-blue-300 transition hover:bg-blue-400/10"
                 >
                   + Add achievement
                 </button>
@@ -642,7 +638,7 @@ export default function Nominee() {
                         }
                         rows={2}
                         placeholder="Describe an achievement..."
-                        className="min-w-0 flex-1 resize-none rounded-xl border border-emerald-400/15 bg-black/30 px-4 py-3 text-sm text-white outline-none placeholder:text-white/25 focus:border-emerald-400/60"
+                        className="min-w-0 flex-1 resize-none rounded-xl border border-blue-400/15 bg-black/30 px-4 py-3 text-sm text-white outline-none placeholder:text-white/25 focus:border-blue-400/60"
                       />
 
                       <button
@@ -666,7 +662,7 @@ export default function Nominee() {
           <button
             type="button"
             onClick={registerNominee}
-            className="mt-7 flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-400/25 bg-emerald-400/[0.08] px-5 py-4 text-sm font-semibold text-emerald-300 transition hover:border-emerald-400/50 hover:bg-emerald-400/[0.14]"
+            className="mt-7 flex w-full items-center justify-center gap-2 rounded-xl border border-blue-400/25 bg-blue-400/[0.08] px-5 py-4 text-sm font-semibold text-blue-300 transition hover:border-blue-400/50 hover:bg-blue-400/[0.14]"
           >
             <span className="text-lg">+</span>
             Register nominee ({registeredNominees.length})
@@ -691,7 +687,7 @@ export default function Nominee() {
         )}
 
         {/* Apply for voting */}
-        <div className="mt-6 rounded-2xl border border-emerald-400/15 bg-[#0b1913]/90 p-5 backdrop-blur-xl sm:p-6">
+        <div className="mt-6 rounded-2xl border border-blue-400/15 bg-[#121824] p-5 backdrop-blur-xl sm:p-6">
           <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
             <div>
               <h3 className="text-sm font-semibold text-white">
@@ -705,7 +701,7 @@ export default function Nominee() {
               </p>
             </div>
 
-            <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1.5 text-xs font-semibold text-emerald-300">
+            <span className="rounded-full border border-blue-400/20 bg-blue-400/10 px-3 py-1.5 text-xs font-semibold text-blue-300">
               Step 2 of 2
             </span>
           </div>
@@ -714,7 +710,7 @@ export default function Nominee() {
             type="button"
             onClick={handleApplyForVoting}
             disabled={saving || registeredNominees.length === 0}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-4 text-sm font-bold text-[#04100a] transition hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-40"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-blue-500 px-5 py-4 text-sm font-bold text-[#07101c] transition hover:bg-blue-400 disabled:cursor-not-allowed disabled:opacity-40"
           >
             Apply for voting
             <span aria-hidden="true">→</span>
@@ -731,16 +727,13 @@ export default function Nominee() {
               role="dialog"
               aria-modal="true"
               aria-labelledby="confirmation-title"
-              className="relative w-full max-w-md overflow-hidden rounded-3xl border border-emerald-400/20 bg-[#0b1913] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
+              className="relative w-full max-w-md overflow-hidden rounded-3xl border border-blue-400/20 bg-[#121824] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
             >
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-              <div className="absolute -right-10 -top-14 h-32 w-32 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025]" />
-              <div className="absolute right-[12%] top-[31%] h-6 w-6 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
-              <div className="absolute -bottom-10 -left-8 h-24 w-24 rounded-full border border-emerald-300/10 bg-emerald-300/[0.02]" />
             </div>
 
             <div className="relative">
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/10 text-xl text-emerald-300">
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/10 text-xl text-blue-300">
               ✓
             </div>
 
@@ -753,7 +746,7 @@ export default function Nominee() {
 
             <p className="mt-3 text-sm leading-6 text-white/50">
               Are you sure you want to continue? You are about to save{" "}
-              <span className="font-semibold text-emerald-300">
+              <span className="font-semibold text-blue-300">
                 {registeredNominees.length} nominee
                 {registeredNominees.length === 1 ? "" : "s"}
               </span>{" "}
@@ -770,7 +763,7 @@ export default function Nominee() {
                 type="button"
                 disabled={saving}
                 onClick={() => setShowConfirmation(false)}
-                className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-white/70 transition hover:bg-white/[0.08] disabled:opacity-50"
+                className="rounded-xl border border-white/10 bg-[#141a24] px-4 py-3 text-sm font-semibold text-white/70 transition hover:bg-[#141a24] disabled:opacity-50"
               >
                 Cancel
               </button>
@@ -779,11 +772,11 @@ export default function Nominee() {
                 type="button"
                 disabled={saving}
                 onClick={activateVoting}
-                className="flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 text-sm font-bold text-[#04100a] transition hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-4 py-3 text-sm font-bold text-[#07101c] transition hover:bg-blue-400 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {saving ? (
                   <>
-                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#04100a]/30 border-t-[#04100a]" />
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#07101c]/30 border-t-[#07101c]" />
                     Saving...
                   </>
                 ) : (
@@ -805,16 +798,13 @@ export default function Nominee() {
               role="dialog"
               aria-modal="true"
               aria-labelledby="register-nominee-title"
-              className="relative w-full max-w-md overflow-hidden rounded-3xl border border-emerald-400/20 bg-[#0b1913] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
+              className="relative w-full max-w-md overflow-hidden rounded-3xl border border-blue-400/20 bg-[#121824] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
             >
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-              <div className="absolute -right-12 -top-16 h-36 w-36 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025]" />
-              <div className="absolute right-[11%] top-[29%] h-6 w-6 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
-              <div className="absolute -bottom-12 -left-10 h-28 w-28 rounded-full border border-emerald-300/10 bg-emerald-300/[0.02]" />
             </div>
 
             <div className="relative">
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/10 text-xl text-emerald-300">
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/10 text-xl text-blue-300">
               +
             </div>
 
@@ -827,7 +817,7 @@ export default function Nominee() {
 
             <p className="mt-3 text-sm leading-6 text-white/50">
               Add{" "}
-              <span className="font-semibold text-emerald-300">
+              <span className="font-semibold text-blue-300">
                 {draftNominee.name.trim()}
               </span>{" "}
               to the nominee list? The form will be cleared so you can add
@@ -838,7 +828,7 @@ export default function Nominee() {
               <button
                 type="button"
                 onClick={() => setShowNomineeConfirmation(false)}
-                className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-white/70 transition hover:bg-white/[0.08]"
+                className="rounded-xl border border-white/10 bg-[#141a24] px-4 py-3 text-sm font-semibold text-white/70 transition hover:bg-[#141a24]"
               >
                 Cancel
               </button>
@@ -846,7 +836,7 @@ export default function Nominee() {
               <button
                 type="button"
                 onClick={confirmRegisterNominee}
-                className="rounded-xl bg-emerald-500 px-4 py-3 text-sm font-bold text-[#04100a] transition hover:bg-emerald-400"
+                className="rounded-xl bg-blue-500 px-4 py-3 text-sm font-bold text-[#07101c] transition hover:bg-blue-400"
               >
                 Yes, register
               </button>

@@ -231,45 +231,19 @@ const {setMode: setEmailMode, } = useApp()
 
   return (
     <main
-      className="relative flex min-h-dvh w-full items-center justify-center overflow-hidden bg-[#050a07] px-3 py-4 text-white selection:bg-emerald-500/30 md:px-4"
+      className="relative flex min-h-dvh w-full items-center justify-center overflow-hidden bg-transparent px-3 py-4 text-white selection:bg-blue-500/30 md:px-4"
     >
-      {/* BACKGROUND AMBIENT GLOWS */}
-
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-36 -top-36 h-[340px] w-[340px] rounded-full bg-emerald-600/[0.13] blur-[100px]" />
-
-        <div className="absolute -bottom-40 -right-32 h-[360px] w-[360px] rounded-full bg-emerald-500/[0.10] blur-[110px]" />
-
-        <div className="absolute left-1/2 top-1/2 h-[350px] w-[350px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-900/[0.08] blur-[120px]" />
-
-        {/* FLOATING GLASS BUBBLES */}
-
-        <div className="floating-orb absolute left-[8%] top-[15%] h-12 w-12 rounded-full border border-emerald-400/20 bg-emerald-400/[0.07] shadow-[inset_0_0_20px_rgba(52,211,153,0.08),0_0_45px_rgba(16,185,129,0.12)]" />
-
-        <div className="floating-orb absolute right-[10%] top-[12%] h-20 w-20 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04] shadow-[inset_0_0_30px_rgba(52,211,153,0.1),0_0_55px_rgba(16,185,129,0.1)]" />
-
-        <div className="floating-orb absolute bottom-[12%] left-[17%] h-9 w-9 rounded-full border border-emerald-400/20 bg-emerald-400/[0.06] shadow-[0_0_35px_rgba(16,185,129,0.15)]" />
-
-        <div className="floating-orb absolute bottom-[17%] right-[15%] h-14 w-14 rounded-full border border-emerald-300/15 bg-emerald-300/[0.05] shadow-[0_0_40px_rgba(16,185,129,0.12)]" />
-
-        <div className="floating-orb absolute left-[28%] top-[8%] h-5 w-5 rounded-full border border-emerald-300/20 bg-emerald-300/[0.06]" />
-
-        <div className="absolute inset-0 opacity-[0.025] [background-image:radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
-      </div>
-
       {/* COMPACT AUTHENTICATION CARD */}
 
       <div className="relative z-10 w-full max-w-[390px]">
         {/* CARD GLOW */}
 
-        <div className="pointer-events-none absolute -inset-3 rounded-[35px] bg-emerald-500/[0.035] blur-2xl" />
+        <div className="pointer-events-none absolute -inset-3 rounded-[35px] bg-blue-500/[0.035] blur-2xl" />
 
-        <section className="relative overflow-hidden rounded-[25px] border border-emerald-400/[0.15] bg-[#0a110d]/95 shadow-[0_25px_80px_rgba(0,0,0,0.65),0_0_45px_rgba(16,185,129,0.055)] backdrop-blur-2xl">
+        <section className="relative overflow-hidden rounded-[25px] border border-blue-400/[0.15] bg-[#101621] shadow-[0_25px_80px_rgba(0,0,0,0.65),0_0_45px_rgba(59,130,246,0.055)] backdrop-blur-2xl">
           {/* CARD AMBIENT DECORATION */}
 
-          <div className="pointer-events-none absolute -right-16 -top-20 h-44 w-44 rounded-full bg-emerald-500/[0.06] blur-[65px]" />
 
-          <div className="pointer-events-none absolute -bottom-24 -left-20 h-48 w-48 rounded-full bg-emerald-600/[0.06] blur-[70px]" />
 
           {/* CARD CONTENT */}
 
@@ -277,7 +251,7 @@ const {setMode: setEmailMode, } = useApp()
             {/* LOGO */}
 
             <div className="mb-4 flex items-center justify-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-emerald-300/20 bg-emerald-400/10 text-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.08)]">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-blue-300/20 bg-blue-400/10 text-blue-300 shadow-[0_0_20px_rgba(59,130,246,0.08)]">
                 <Vote size={21} />
               </div>
 
@@ -298,12 +272,12 @@ const {setMode: setEmailMode, } = useApp()
               <h2 className="text-2xl font-bold tracking-[-1px] sm:text-[26px]">
                 {isLogin ? (
                   <>
-                    Welcome <span className="text-emerald-400">back.</span>
+                    Welcome <span className="text-blue-400">back.</span>
                   </>
                 ) : (
                   <>
                     Create your{" "}
-                    <span className="text-emerald-400">account.</span>
+                    <span className="text-blue-400">account.</span>
                   </>
                 )}
               </h2>
@@ -330,7 +304,7 @@ const {setMode: setEmailMode, } = useApp()
             {/* SUCCESS */}
 
             {success && (
-              <div className="mb-3 flex items-start gap-2 rounded-lg border border-emerald-500/20 bg-emerald-500/[0.07] px-3 py-2 text-[10px] leading-4 text-emerald-300">
+              <div className="mb-3 flex items-start gap-2 rounded-lg border border-blue-500/20 bg-blue-500/[0.07] px-3 py-2 text-[10px] leading-4 text-blue-300">
                 <CheckCircle2 size={14} className="mt-0.5 shrink-0" />
                 <p>{success}</p>
               </div>
@@ -349,10 +323,10 @@ const {setMode: setEmailMode, } = useApp()
                   Email address
                 </label>
 
-                <div className="group flex h-10 items-center gap-2.5 rounded-lg border border-white/[0.08] bg-[#060b08]/80 px-3 transition-all focus-within:border-emerald-400/50 focus-within:ring-2 focus-within:ring-emerald-500/10">
+                <div className="group flex h-10 items-center gap-2.5 rounded-lg border border-white/[0.08] bg-[#090c14] px-3 transition-all focus-within:border-blue-400/50 focus-within:ring-2 focus-within:ring-blue-500/10">
                   <Mail
                     size={15}
-                    className="shrink-0 text-zinc-600 transition-colors group-focus-within:text-emerald-400"
+                    className="shrink-0 text-zinc-600 transition-colors group-focus-within:text-blue-400"
                   />
 
                   <input
@@ -379,10 +353,10 @@ const {setMode: setEmailMode, } = useApp()
                   Password
                 </label>
 
-                <div className="group flex h-10 items-center gap-2.5 rounded-lg border border-white/[0.08] bg-[#060b08]/80 px-3 transition-all focus-within:border-emerald-400/50 focus-within:ring-2 focus-within:ring-emerald-500/10">
+                <div className="group flex h-10 items-center gap-2.5 rounded-lg border border-white/[0.08] bg-[#090c14] px-3 transition-all focus-within:border-blue-400/50 focus-within:ring-2 focus-within:ring-blue-500/10">
                   <Lock
                     size={15}
-                    className="shrink-0 text-zinc-600 transition-colors group-focus-within:text-emerald-400"
+                    className="shrink-0 text-zinc-600 transition-colors group-focus-within:text-blue-400"
                   />
 
                   <input
@@ -405,7 +379,7 @@ const {setMode: setEmailMode, } = useApp()
                     aria-label={
                       showPassword ? "Hide password" : "Show password"
                     }
-                    className="shrink-0 cursor-pointer text-zinc-600 transition-colors hover:text-emerald-400"
+                    className="shrink-0 cursor-pointer text-zinc-600 transition-colors hover:text-blue-400"
                   >
                     {showPassword ? (
                       <EyeOff size={15} />
@@ -419,7 +393,7 @@ const {setMode: setEmailMode, } = useApp()
                   <div className="mt-1.5 text-right">
                     <Link
                       href="/forgetPassword"
-                      className="text-[10px] font-semibold text-emerald-400 transition hover:text-emerald-300"
+                      className="text-[10px] font-semibold text-blue-400 transition hover:text-blue-300"
                     >
                       Forgot password?
                     </Link>
@@ -432,7 +406,7 @@ const {setMode: setEmailMode, } = useApp()
               <button
                 type="submit"
                 disabled={isLoading}
-                className="group mt-1 flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-400 text-[11px] font-bold text-[#032116] shadow-[0_5px_20px_rgba(16,185,129,0.16)] transition-all duration-200 hover:from-emerald-400 hover:to-emerald-300 hover:shadow-[0_5px_25px_rgba(16,185,129,0.25)] disabled:cursor-not-allowed disabled:opacity-60"
+                className="group mt-1 flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-500 to-blue-400 text-[11px] font-bold text-[#07101c] shadow-[0_5px_20px_rgba(59,130,246,0.16)] transition-all duration-200 hover:from-blue-400 hover:to-blue-300 hover:shadow-[0_5px_25px_rgba(59,130,246,0.25)] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {loading === "email" ? (
                   <>
@@ -454,13 +428,13 @@ const {setMode: setEmailMode, } = useApp()
             {/* DIVIDER */}
 
             <div className="my-3 flex items-center gap-3">
-              <div className="h-px flex-1 bg-white/[0.07]" />
+              <div className="h-px flex-1 bg-[#141a24]" />
 
               <span className="text-[9px] font-medium uppercase tracking-[1.3px] text-zinc-600">
                 Or continue with
               </span>
 
-              <div className="h-px flex-1 bg-white/[0.07]" />
+              <div className="h-px flex-1 bg-[#141a24]" />
             </div>
 
             {/* GOOGLE AUTHENTICATION */}
@@ -469,13 +443,13 @@ const {setMode: setEmailMode, } = useApp()
               type="button"
               onClick={handleGoogleAuth}
               disabled={isLoading}
-              className="flex h-10 w-full cursor-pointer items-center justify-center gap-2.5 rounded-lg border border-white/[0.09] bg-white/[0.025] text-[11px] font-semibold text-zinc-300 transition-all hover:border-emerald-400/30 hover:bg-emerald-500/[0.04] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex h-10 w-full cursor-pointer items-center justify-center gap-2.5 rounded-lg border border-white/[0.09] bg-[#141a24] text-[11px] font-semibold text-zinc-300 transition-all hover:border-blue-400/30 hover:bg-blue-500/[0.04] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading === "google" ? (
                 <>
                   <LoaderCircle
                     size={15}
-                    className="animate-spin text-emerald-400"
+                    className="animate-spin text-blue-400"
                   />
                   Connecting to Google...
                 </>
@@ -522,7 +496,7 @@ const {setMode: setEmailMode, } = useApp()
                 type="button"
                 disabled={isLoading}
                 onClick={() => changeMode(isLogin ? "signup" : "login")}
-                className="ml-1 cursor-pointer font-semibold text-emerald-400 transition-colors hover:text-emerald-300 disabled:opacity-50"
+                className="ml-1 cursor-pointer font-semibold text-blue-400 transition-colors hover:text-blue-300 disabled:opacity-50"
               >
                 {isLogin ? "Create one" : "Sign in"}
               </button>
@@ -531,7 +505,7 @@ const {setMode: setEmailMode, } = useApp()
             {/* SECURITY FOOTER */}
 
             <div className="mt-3 flex items-center justify-center gap-1.5 border-t border-white/[0.06] pt-2.5">
-              <ShieldCheck size={12} className="text-emerald-500" />
+              <ShieldCheck size={12} className="text-blue-500" />
 
               <span className="text-[9px] text-zinc-600">
                 Your information is securely protected.
@@ -540,8 +514,6 @@ const {setMode: setEmailMode, } = useApp()
           </div>
         </section>
       </div>
-
-      {/* FLOATING BUBBLE ANIMATION */}
 
     </main>
   );

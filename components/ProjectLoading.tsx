@@ -10,20 +10,20 @@ export default function ProjectLoading() {
         {[0, 1, 2].map((dot) => (
           <span
             key={dot}
-            className="loading-dot h-2.5 w-2.5 rounded-full bg-emerald-400"
+            className="loading-dot h-2.5 w-2.5 rounded-full bg-blue-400"
             style={{ animationDelay: `${dot * 0.18}s` }}
           />
         ))}
       </div>
 
-      <p className="mt-5 text-sm font-medium tracking-wide text-emerald-100/70">
+      <p className="mt-5 text-sm font-medium tracking-wide text-blue-100/70">
         Loading your project
       </p>
 
       <style jsx>{`
         .loading-dot {
           animation: bounce 0.8s ease-in-out infinite;
-          box-shadow: 0 0 12px rgba(52, 211, 153, 0.35);
+          box-shadow: 0 0 12px rgba(96,165,250, 0.35);
         }
 
         @keyframes bounce {

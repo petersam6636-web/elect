@@ -287,17 +287,17 @@ console.log(2)
         <header className="mb-9">
           <div className="mb-3 flex items-center gap-3">
 
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/[0.09] bg-white/[0.045] shadow-lg shadow-emerald-950/20">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/[0.09] bg-[#141a24] shadow-lg shadow-blue-950/20">
               <Settings className="h-5 w-5 text-gray-300" />
             </div>
 
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.22em] text-emerald-400">
+              <p className="text-xs font-medium uppercase tracking-[0.22em] text-blue-400">
                 Account workspace
               </p>
 
               <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">
-                Settings<span className="text-emerald-400">.</span>
+                Settings<span className="text-blue-400">.</span>
               </h1>
             </div>
 
@@ -324,7 +324,7 @@ console.log(2)
 
           <section
             ref={accountCardRef}
-            className="h-fit min-w-0 overflow-hidden rounded-3xl border border-white/[0.09] bg-[#0b1510]/95 shadow-2xl shadow-black/30"
+            className="h-fit min-w-0 overflow-hidden rounded-3xl border border-white/[0.09] bg-[#111722] shadow-2xl shadow-black/30"
           >
 
             {/* Card Header */}
@@ -354,7 +354,7 @@ console.log(2)
                 <div className="flex min-h-48 items-center justify-center">
                   <div className="flex flex-col items-center gap-3">
 
-                    <LoaderCircle className="h-7 w-7 animate-spin text-emerald-400" />
+                    <LoaderCircle className="h-7 w-7 animate-spin text-blue-400" />
 
                     <p className="text-xs text-gray-500">
                       Preparing your account...
@@ -369,7 +369,7 @@ console.log(2)
 
                   {/* Welcome Message */}
 
-                  <div className="rounded-2xl border border-emerald-400/[0.12] bg-gradient-to-br from-emerald-400/[0.08] via-white/[0.025] to-transparent p-5">
+                  <div className="rounded-2xl border border-blue-400/[0.12] bg-gradient-to-br from-blue-400/[0.08] via-white/[0.025] to-transparent p-5">
 
                     <div className="flex items-center gap-4">
 
@@ -377,9 +377,9 @@ console.log(2)
 
                       <div className="relative shrink-0">
 
-                        <div className="absolute -inset-1 rounded-[22px] bg-emerald-400/20 blur-md" />
+                        <div className="absolute -inset-1 rounded-[22px] bg-blue-400/20 blur-md" />
 
-                        <div className="relative flex h-[76px] w-[76px] items-center justify-center overflow-hidden rounded-[20px] border border-emerald-400/20 bg-[#14231a] shadow-lg shadow-black/20">
+                        <div className="relative flex h-[76px] w-[76px] items-center justify-center overflow-hidden rounded-[20px] border border-blue-400/20 bg-[#151d29] shadow-lg shadow-black/20">
 
                           {profileImage ? (
 
@@ -391,7 +391,7 @@ console.log(2)
 
                           ) : (
 
-                            <span className="text-3xl font-semibold text-emerald-300">
+                            <span className="text-3xl font-semibold text-blue-300">
                               {userName.charAt(0).toUpperCase()}
                             </span>
 
@@ -405,7 +405,7 @@ console.log(2)
 
                       <div className="min-w-0 flex-1">
 
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-400">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-400">
                           Welcome back
                         </p>
 
@@ -449,7 +449,7 @@ console.log(2)
 
           <section
             ref={settingsCardRef}
-            className="min-w-0 overflow-hidden rounded-3xl border border-white/[0.09] bg-[#0b1510]/95 shadow-2xl shadow-black/30"
+            className="min-w-0 overflow-hidden rounded-3xl border border-white/[0.09] bg-[#111722] shadow-2xl shadow-black/30"
           >
 
             {/* Card Header */}
@@ -486,12 +486,12 @@ console.log(2)
 
                     <div
                       key={item.title}
-                      className="group flex items-center gap-4 rounded-2xl px-3 py-4 transition-all duration-200 hover:bg-white/[0.035] px-2"
+                      className="group flex items-center gap-4 rounded-2xl px-3 py-4 transition-all duration-200 hover:bg-[#141a24] px-2"
                     >
 
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/[0.07] bg-white/[0.035] transition-all duration-200 group-hover:border-emerald-400/15 group-hover:bg-emerald-400/[0.045]">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/[0.07] bg-[#141a24] transition-all duration-200 group-hover:border-blue-400/15 group-hover:bg-blue-400/[0.045]">
 
-                        <Icon className="h-[19px] w-[19px] text-gray-400 transition-colors group-hover:text-emerald-300" />
+                        <Icon className="h-[19px] w-[19px] text-gray-400 transition-colors group-hover:text-blue-300" />
 
                       </div>
 
@@ -522,12 +522,12 @@ console.log(2)
               <button
                 type="button"
                 onClick={() => setShowDeveloperModal(true)}
-                className="group flex w-full items-center gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.025] px-3 py-4 text-left transition-all duration-200 hover:border-emerald-400/15 hover:bg-emerald-400/[0.045] sm:px-4"
+                className="group flex w-full items-center gap-4 rounded-2xl border border-white/[0.06] bg-[#141a24] px-3 py-4 text-left transition-all duration-200 hover:border-blue-400/15 hover:bg-blue-400/[0.045] sm:px-4"
               >
 
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.035] transition-all duration-200 group-hover:border-emerald-400/20 group-hover:bg-emerald-400/[0.06]">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-[#141a24] transition-all duration-200 group-hover:border-blue-400/20 group-hover:bg-blue-400/[0.06]">
 
-                  <Info className="h-[19px] w-[19px] text-gray-400 transition-colors group-hover:text-emerald-300" />
+                  <Info className="h-[19px] w-[19px] text-gray-400 transition-colors group-hover:text-blue-300" />
 
                 </div>
 
@@ -545,11 +545,11 @@ console.log(2)
 
                 <div className="flex shrink-0 items-center gap-2">
 
-                  <span className="hidden rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-2.5 py-1 text-[10px] font-medium text-emerald-300 sm:inline-flex">
+                  <span className="hidden rounded-full border border-blue-400/15 bg-blue-400/[0.06] px-2.5 py-1 text-[10px] font-medium text-blue-300 sm:inline-flex">
                     Learn more
                   </span>
 
-                  <ChevronRight className="h-4 w-4 text-gray-500 transition-all duration-200 group-hover:translate-x-1 group-hover:text-emerald-300" />
+                  <ChevronRight className="h-4 w-4 text-gray-500 transition-all duration-200 group-hover:translate-x-1 group-hover:text-blue-300" />
 
                 </div>
 
@@ -559,7 +559,7 @@ console.log(2)
 
               <div className="my-3 border-t border-white/[0.07]" />
 
-              <div className="flex flex-col gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.025] px-3 py-4 transition-colors duration-200 hover:border-red-400/15 hover:bg-red-400/[0.025] sm:flex-row sm:items-center sm:justify-between sm:px-4">
+              <div className="flex flex-col gap-4 rounded-2xl border border-white/[0.07] bg-[#141a24] px-3 py-4 transition-colors duration-200 hover:border-red-400/15 hover:bg-red-400/[0.025] sm:flex-row sm:items-center sm:justify-between sm:px-4">
 
                 <div className="flex items-center gap-4">
 
@@ -626,17 +626,15 @@ console.log(2)
 
             {/* Emerald Modal Glow */}
 
-            <div className="pointer-events-none absolute -inset-1 rounded-[30px] bg-emerald-500/[0.10] blur-2xl" />
+            <div className="pointer-events-none absolute -inset-1 rounded-[30px] bg-blue-500/[0.10] blur-2xl" />
 
             {/* Modal Container */}
 
-            <div className="relative overflow-hidden rounded-[24px] border border-white/[0.11] bg-[#0b1510] shadow-2xl shadow-black/50">
+            <div className="relative overflow-hidden rounded-[24px] border border-white/[0.11] bg-[#111722] shadow-2xl shadow-black/50">
 
               {/* Static Modal Decoration */}
 
-              <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-emerald-400/[0.08] blur-[90px]" />
 
-              <div className="pointer-events-none absolute -bottom-24 -left-20 h-56 w-56 rounded-full bg-teal-400/[0.06] blur-[90px]" />
 
               {/* MODAL HEADER */}
 
@@ -644,7 +642,7 @@ console.log(2)
 
                 <div className="flex items-center gap-2.5">
 
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/[0.09] bg-white/[0.04]">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/[0.09] bg-[#141a24]">
 
                     <Info className="h-4 w-4 text-gray-300" />
 
@@ -668,7 +666,7 @@ console.log(2)
                   type="button"
                   onClick={() => setShowDeveloperModal(false)}
                   aria-label="Close developer information"
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.035] text-gray-400 transition-all hover:border-white/[0.15] hover:bg-white/[0.09] hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/[0.08] bg-[#141a24] text-gray-400 transition-all hover:border-white/[0.15] hover:bg-[#141a24] hover:text-white"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -687,9 +685,9 @@ console.log(2)
 
                   <div className="relative">
 
-                    <div className="pointer-events-none absolute -inset-3 rounded-[28px] bg-emerald-400/[0.16] blur-2xl" />
+                    <div className="pointer-events-none absolute -inset-3 rounded-[28px] bg-blue-400/[0.16] blur-2xl" />
 
-                    <div className="relative aspect-square h-20 w-20 shrink-0 overflow-hidden rounded-[20px] border border-emerald-400/20 bg-[#101b14] shadow-[0_0_25px_rgba(16,185,129,0.12),0_12px_35px_rgba(0,0,0,0.45)]">
+                    <div className="relative aspect-square h-20 w-20 shrink-0 overflow-hidden rounded-[20px] border border-blue-400/20 bg-[#151d2a] shadow-[0_0_25px_rgba(59,130,246,0.12),0_12px_35px_rgba(0,0,0,0.45)]">
 
                       <Image
                         src="/business-logo.png"
@@ -706,7 +704,7 @@ console.log(2)
 
                   {/* Developer Badge */}
 
-                  <span className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                  <span className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-blue-400/15 bg-blue-400/[0.06] px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-blue-300">
 
                     <Sparkles className="h-3 w-3" />
 
@@ -730,9 +728,9 @@ console.log(2)
 
                 <div className="mt-4 space-y-2.5">
 
-                  <div className="flex items-center gap-3 rounded-xl border border-white/[0.07] bg-white/[0.025] p-3 transition-colors hover:bg-white/[0.04]">
+                  <div className="flex items-center gap-3 rounded-xl border border-white/[0.07] bg-[#141a24] p-3 transition-colors hover:bg-[#141a24]">
 
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/[0.045]">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#141a24]">
 
                       <Code2 className="h-4 w-4 text-gray-300" />
 
@@ -761,7 +759,7 @@ console.log(2)
                   <div>
 
                     <p className="text-xs font-semibold tracking-wide text-gray-300">
-                      VisionCraft <span className="text-emerald-400">·</span>
+                      VisionCraft <span className="text-blue-400">·</span>
                     </p>
 
                     <p className="mt-0.5 text-[10px] text-gray-600">
@@ -773,7 +771,7 @@ console.log(2)
                   <button
                     type="button"
                     onClick={() => setShowDeveloperModal(false)}
-                    className="rounded-lg border border-white/[0.1] bg-white/[0.045] px-4 py-2 text-xs font-semibold text-gray-200 transition-all hover:border-emerald-400/20 hover:bg-white/[0.09]"
+                    className="rounded-lg border border-white/[0.1] bg-[#141a24] px-4 py-2 text-xs font-semibold text-gray-200 transition-all hover:border-blue-400/20 hover:bg-[#141a24]"
                   >
                     Close
                   </button>
@@ -813,7 +811,7 @@ console.log(2)
 
             {/* Modal Container */}
 
-            <div className="relative overflow-hidden rounded-[26px] border border-red-400/15 bg-[#101310] p-6 shadow-2xl shadow-black/50 sm:p-7">
+            <div className="relative overflow-hidden rounded-[26px] border border-red-400/15 bg-[#151a22] p-6 shadow-2xl shadow-black/50 sm:p-7">
 
               {/* Logout Icon */}
 
@@ -858,7 +856,7 @@ console.log(2)
                     setShowLogoutModal(false);
                     setError("");
                   }}
-                  className="rounded-xl border border-white/[0.09] bg-white/[0.035] px-5 py-3 text-sm font-medium text-gray-300 transition-all hover:bg-white/[0.08] disabled:cursor-not-allowed disabled:opacity-50"
+                  className="rounded-xl border border-white/[0.09] bg-[#141a24] px-5 py-3 text-sm font-medium text-gray-300 transition-all hover:bg-[#141a24] disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   No, stay
                 </button>

@@ -91,12 +91,12 @@ export default function HomePage() {
     <div className="w-full min-w-0 space-y-4 px-2 md:px-3">
       <header className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <div className="mb-2 flex items-center gap-2 text-xs text-emerald-400">
+          <div className="mb-2 flex items-center gap-2 text-xs text-blue-400">
             <Sparkles size={14} />
             YOUR ELECTION WORKSPACE
           </div>
           <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-            Dashboard<span className="text-emerald-400">.</span>
+            Dashboard<span className="text-blue-400">.</span>
           </h1>
           <p className="mt-1 text-sm text-zinc-500">
             Manage your elections and keep every vote organized.
@@ -107,7 +107,7 @@ export default function HomePage() {
           type="button"
           disabled
           title="Election creation will be connected in the next stage"
-          className="inline-flex h-10 cursor-not-allowed items-center gap-2 rounded-xl bg-emerald-400 px-4 text-xs font-bold text-[#062116] opacity-70"
+          className="inline-flex h-10 cursor-not-allowed items-center gap-2 rounded-xl bg-blue-400 px-4 text-xs font-bold text-[#07101c] opacity-70"
         >
           <Plus size={16} />
           Create election
@@ -116,9 +116,9 @@ export default function HomePage() {
 
       <section
         aria-label="Signed-in account"
-        className="flex min-w-0 flex-wrap items-center justify-between gap-x-6 gap-y-2 rounded-2xl border border-white/[0.07] bg-[#0d1310] px-4 py-3"
+        className="flex min-w-0 flex-wrap items-center justify-between gap-x-6 gap-y-2 rounded-2xl border border-white/[0.07] bg-[#141a24] px-4 py-3"
       >
-        <p className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-400">
+        <p className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-blue-400">
           Signed-in account
         </p>
         {profileLoading ? (
@@ -143,19 +143,17 @@ export default function HomePage() {
         )}
       </section>
 
-      <section className="relative overflow-hidden rounded-3xl border border-emerald-400/15 bg-gradient-to-br from-[#103323] via-[#0c1c14] to-[#0b110e] p-4 sm:p-5">
-        <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full bg-emerald-400/10 blur-[90px]" />
-        <div className="pointer-events-none absolute -bottom-32 left-1/3 h-56 w-56 rounded-full bg-emerald-500/[0.07] blur-[80px]" />
+      <section className="relative overflow-hidden rounded-3xl border border-blue-400/15 bg-gradient-to-br from-[#151f2d] via-[#101622] to-[#101621] p-4 sm:p-5">
 
         <div className="relative max-w-xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-[10px] font-semibold tracking-wider text-emerald-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+          <span className="inline-flex items-center gap-2 rounded-full border border-blue-300/20 bg-blue-300/10 px-3 py-1 text-[10px] font-semibold tracking-wider text-blue-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
             WELCOME TO VOTESPHERE
           </span>
 
           <h2 className="mt-3 text-xl font-bold leading-tight sm:text-2xl">
             Every voice deserves
-            <span className="block text-emerald-400">to be heard.</span>
+            <span className="block text-blue-400">to be heard.</span>
           </h2>
 
           <p className="mt-2 max-w-md text-sm leading-5 text-zinc-400">
@@ -165,18 +163,13 @@ export default function HomePage() {
 
           <Link
             href="/home/nominees"
-            className="mt-3 inline-flex h-9 items-center gap-2 rounded-xl border border-emerald-300/20 bg-emerald-400/10 px-4 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-400/20"
+            className="mt-3 inline-flex h-9 items-center gap-2 rounded-xl border border-blue-300/20 bg-blue-400/10 px-4 text-xs font-semibold text-blue-300 transition hover:bg-blue-400/20"
           >
             Explore nominees
             <ArrowRight size={15} />
           </Link>
         </div>
 
-        <div className="pointer-events-none absolute bottom-4 right-5 hidden h-28 w-28 items-center justify-center rounded-full border border-emerald-300/10 bg-emerald-300/[0.04] sm:flex">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full border border-emerald-300/20 bg-emerald-400/[0.06] shadow-[0_0_50px_rgba(16,185,129,0.12)]">
-            <Vote size={36} className="text-emerald-300" strokeWidth={1.2} />
-          </div>
-        </div>
       </section>
 
       <section>
@@ -192,11 +185,11 @@ export default function HomePage() {
           {stats.map(({ label, value, icon: Icon, detail }) => (
             <div
               key={label}
-              className="rounded-2xl border border-white/[0.07] bg-[#0d1310] p-3 transition hover:border-emerald-400/20 sm:p-4"
+              className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-3 transition hover:border-blue-400/20 sm:p-4"
             >
               <div className="flex items-center justify-between gap-2">
                 <span className="text-[11px] text-zinc-500">{label}</span>
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-400/[0.09] text-emerald-400">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-400/[0.09] text-blue-400">
                   <Icon size={16} />
                 </div>
               </div>
@@ -208,17 +201,17 @@ export default function HomePage() {
       </section>
 
       <section className="grid min-w-0 gap-3 xl:grid-cols-[1.4fr_1fr]">
-        <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-[#0d1310] p-4">
+        <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-sm font-semibold">Recent elections</h2>
               <p className="mt-1 text-xs text-zinc-500">Your latest election activity</p>
             </div>
-            <CalendarDays size={18} className="text-emerald-400" />
+            <CalendarDays size={18} className="text-blue-400" />
           </div>
 
           <div className="mt-4 flex min-h-24 flex-col items-center justify-center text-center">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/[0.07] bg-white/[0.025] text-zinc-500">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/[0.07] bg-[#141a24] text-zinc-500">
               <Vote size={22} />
             </div>
             <p className="mt-3 text-xs font-medium text-zinc-300">No elections yet</p>
@@ -228,19 +221,19 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-[#0d1310] p-4">
+        <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-sm font-semibold">Getting started</h2>
               <p className="mt-1 text-xs text-zinc-500">Your next steps</p>
             </div>
-            <Clock3 size={18} className="text-emerald-400" />
+            <Clock3 size={18} className="text-blue-400" />
           </div>
 
           <div className="mt-4 space-y-3">
             {activities.map((activity, index) => (
               <div key={activity.title} className="flex gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-400/10 text-xs font-bold text-emerald-400">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-400/10 text-xs font-bold text-blue-400">
                   {index + 1}
                 </div>
                 <div className="min-w-0">

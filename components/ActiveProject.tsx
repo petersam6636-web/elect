@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { CSSProperties } from "react";
 
 import {
   Vote,
@@ -50,31 +49,6 @@ type TimeLeft = {
 const DAY = 24 * 60 * 60 * 1000;
 const HOUR = 60 * 60 * 1000;
 const MINUTE = 60 * 1000;
-
-// --------------------------------------------------
-// COUNTDOWN BACKGROUND BUBBLES
-// --------------------------------------------------
-
-const backgroundBubbles = Array.from({ length: 20 }, (_, index) => {
-  const seed = index + 1;
-
-  const random = (value: number) => {
-    const x = Math.sin(seed * value) * 10000;
-    return x - Math.floor(x);
-  };
-
-  return {
-    id: index,
-    size: 12 + random(12.9898) * 56,
-    left: random(78.233) * 100,
-    top: random(39.425) * 100,
-    duration: 9 + random(17.123) * 17,
-    delay: random(91.77) * -24,
-    driftX: -55 + random(54.321) * 110,
-    driftY: -65 + random(28.31) * 130,
-    opacity: 0.1 + random(67.91) * 0.2,
-  };
-});
 
 function calculateTimeLeft(milliseconds: number): TimeLeft {
   const remaining = Math.max(0, milliseconds);
@@ -482,40 +456,17 @@ export default function ActiveProject() {
 
   return (
     <div className="relative isolate mx-auto w-full max-w-7xl space-y-6 px-2 pb-6 md:px-3">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
-      >
-        <div className="absolute left-[7%] top-[9%] h-12 w-12 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] shadow-[inset_0_0_18px_rgba(52,211,153,0.06)]" />
-        <div className="absolute right-[9%] top-[35%] h-20 w-20 rounded-full border border-emerald-300/[0.08] bg-emerald-300/[0.02] shadow-[inset_0_0_24px_rgba(52,211,153,0.05)]" />
-        <div className="absolute bottom-[18%] left-[20%] h-8 w-8 rounded-full border border-emerald-400/10 bg-emerald-400/[0.025]" />
-        <div className="absolute bottom-[5%] right-[22%] h-14 w-14 rounded-full border border-emerald-300/[0.08] bg-emerald-300/[0.02]" />
-      </div>
-
       {/* ELECTION HEADER */}
 
-      <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border border-emerald-400/20 bg-gradient-to-br from-[#102b20] via-[#0d2118] to-[#0a1611] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.28)] sm:p-8">
-        <div className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-emerald-400/[0.1] blur-[90px]" />
-
-        <div className="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-teal-400/[0.06] blur-[80px]" />
-
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 overflow-hidden"
-        >
-          <div className="absolute left-[12%] top-[22%] h-10 w-10 rounded-full border border-emerald-300/15 bg-emerald-300/[0.035] shadow-[inset_0_0_18px_rgba(52,211,153,0.05),0_0_30px_rgba(16,185,129,0.05)]" />
-          <div className="absolute right-[13%] top-[18%] h-16 w-16 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] shadow-[inset_0_0_24px_rgba(52,211,153,0.04)]" />
-          <div className="absolute bottom-[17%] right-[32%] h-7 w-7 rounded-full border border-emerald-300/15 bg-emerald-300/[0.035]" />
-        </div>
-
+      <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border border-blue-400/20 bg-gradient-to-br from-[#121925] via-[#151d2b] to-[#101621] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.28)] sm:p-8">
         <div className="relative">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-300/[0.07] px-3 py-1.5 text-xs font-bold tracking-widest text-emerald-200">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-300 shadow-[0_0_8px_rgba(110,231,183,0.6)]" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-300/20 bg-blue-300/[0.07] px-3 py-1.5 text-xs font-bold tracking-widest text-blue-200">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-blue-300 shadow-[0_0_8px_rgba(147,197,253,0.6)]" />
               LIVE ELECTION
             </div>
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 text-[11px] font-semibold text-emerald-200">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-300/20 bg-blue-300/[0.08] px-3 py-1.5 text-[11px] font-semibold text-blue-200">
               <ShieldCheck size={13} />
               Election Active
             </div>
@@ -523,10 +474,10 @@ export default function ActiveProject() {
 
           <h1 className="mt-6 break-words text-3xl font-bold tracking-tight text-white sm:text-4xl">
             {activeProject.name}
-            <span className="text-emerald-400">.</span>
+            <span className="text-blue-400">.</span>
           </h1>
 
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-emerald-50/95">
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-blue-50/95">
             {activeProject.description ||
               "Your election is currently running. Monitor the voting activity and track your nominees below."}
           </p>
@@ -535,7 +486,7 @@ export default function ActiveProject() {
             <div className="flex items-center gap-2">
               <CalendarDays
                 size={15}
-                className="text-emerald-300"
+                className="text-blue-300"
               />
               Started {formatDate(activeProject.created_at)}
             </div>
@@ -543,7 +494,7 @@ export default function ActiveProject() {
             <div className="flex items-center gap-2">
               <Users
                 size={15}
-                className="text-emerald-300"
+                className="text-blue-300"
               />
               {nominees.length} nominees
             </div>
@@ -551,111 +502,15 @@ export default function ActiveProject() {
         </div>
       </section>
 
-      {/* FULL-WIDTH COUNTDOWN WITH RANDOM FLOATING BUBBLES */}
+      {/* FULL-WIDTH COUNTDOWN */}
 
       <section
         className={`relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border transition-colors duration-500 ${
           isUrgent
             ? "border-red-500/25 bg-gradient-to-br from-[#251313] via-[#171010] to-[#100d0d]"
-            : "border-emerald-400/30 bg-gradient-to-br from-[#143b29] via-[#10291d] to-[#0c1c14]"
+            : "border-blue-400/30 bg-gradient-to-br from-[#151d29] via-[#151e2c] to-[#101622]"
         }`}
       >
-        {/* Ambient background glows */}
-
-        <div
-          className={`pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full blur-[100px] ${
-            isUrgent
-              ? "bg-red-500/10"
-              : "bg-emerald-400/[0.16]"
-          }`}
-        />
-
-        <div
-          className={`pointer-events-none absolute -bottom-32 -left-24 h-72 w-72 rounded-full blur-[100px] ${
-            isUrgent
-              ? "bg-red-500/[0.07]"
-              : "bg-teal-400/[0.07]"
-          }`}
-        />
-
-        {/* Random floating bubbles */}
-
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <style jsx>{`
-            @keyframes countdown-bubble-drift {
-              0% {
-                transform: translate3d(0, 0, 0) scale(0.88);
-              }
-
-              25% {
-                transform: translate3d(
-                  calc(var(--bubble-x) * 0.55),
-                  calc(var(--bubble-y) * -0.25),
-                  0
-                ) scale(1.05);
-              }
-
-              50% {
-                transform: translate3d(
-                  var(--bubble-x),
-                  var(--bubble-y),
-                  0
-                ) scale(0.96);
-              }
-
-              75% {
-                transform: translate3d(
-                  calc(var(--bubble-x) * -0.35),
-                  calc(var(--bubble-y) * 0.45),
-                  0
-                ) scale(1.08);
-              }
-
-              100% {
-                transform: translate3d(0, 0, 0) scale(0.88);
-              }
-            }
-
-            .countdown-bubble {
-              position: absolute;
-              border-radius: 9999px;
-              border: 1px solid currentColor;
-              background: currentColor;
-              box-shadow:
-                inset 0 0 7px currentColor,
-                0 0 12px currentColor;
-              filter: blur(0.2px);
-              animation-name: countdown-bubble-drift;
-              animation-timing-function: ease-in-out;
-              animation-iteration-count: infinite;
-              will-change: transform;
-            }
-          `}</style>
-
-          {backgroundBubbles.map((bubble) => (
-            <span
-              key={bubble.id}
-              className={`countdown-bubble ${
-                isUrgent ? "text-red-300" : "text-emerald-300"
-              }`}
-              style={
-                {
-                  left: `${bubble.left}%`,
-                  top: `${bubble.top}%`,
-                  width: `${bubble.size}px`,
-                  height: `${bubble.size}px`,
-                  opacity: bubble.opacity,
-                  animationDuration: `${bubble.duration}s`,
-                  animationDelay: `${bubble.delay}s`,
-                  "--bubble-x": `${bubble.driftX}px`,
-                  "--bubble-y": `${bubble.driftY}px`,
-                } as CSSProperties
-              }
-              aria-hidden="true"
-            />
-          ))}
-        </div>
-
         {/* Countdown content */}
 
         <div className="relative z-10 mx-auto w-full max-w-3xl px-5 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
@@ -668,7 +523,7 @@ export default function ActiveProject() {
                 className={`flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] ${
                   isUrgent
                     ? "text-red-300"
-                    : "text-emerald-200"
+                    : "text-blue-200"
                 }`}
               >
                 <Timer size={15} />
@@ -688,7 +543,7 @@ export default function ActiveProject() {
               className={`flex items-center gap-2 rounded-full border px-3 py-2 text-[9px] font-bold tracking-wider ${
                 isUrgent
                   ? "border-red-400/35 bg-red-400/[0.16] text-red-200"
-                  : "border-emerald-300/30 bg-emerald-300/[0.14] text-emerald-200"
+                  : "border-blue-300/30 bg-blue-300/[0.14] text-blue-200"
               }`}
             >
               {isUrgent ? (
@@ -717,7 +572,7 @@ export default function ActiveProject() {
                   className={`relative flex aspect-square min-h-[65px] items-center justify-center overflow-hidden rounded-xl border backdrop-blur-sm transition-all duration-300 sm:rounded-2xl ${
                     isUrgent
                       ? "border-red-400/40 bg-red-400/[0.17] shadow-[inset_0_0_25px_rgba(239,68,68,0.08)]"
-                      : "border-emerald-300/35 bg-emerald-400/[0.17] shadow-[inset_0_0_25px_rgba(16,185,129,0.08)] group-hover:border-emerald-200/55 group-hover:bg-emerald-400/[0.23]"
+                      : "border-blue-300/35 bg-blue-400/[0.17] shadow-[inset_0_0_25px_rgba(59,130,246,0.08)] group-hover:border-blue-200/55 group-hover:bg-blue-400/[0.23]"
                   }`}
                 >
                   {/* Glass highlight */}
@@ -726,7 +581,7 @@ export default function ActiveProject() {
                     className={`pointer-events-none absolute inset-x-0 top-0 h-px ${
                       isUrgent
                         ? "bg-red-300/40"
-                        : "bg-emerald-200/40"
+                        : "bg-blue-200/40"
                     }`}
                   />
 
@@ -737,7 +592,7 @@ export default function ActiveProject() {
                       isUrgent
                         ? "text-red-300"
                         : index === 3
-                          ? "text-emerald-200"
+                          ? "text-blue-200"
                           : "text-white"
                     }`}
                   >
@@ -750,7 +605,7 @@ export default function ActiveProject() {
                     className={`pointer-events-none absolute bottom-0 left-1/2 h-1 w-1/3 -translate-x-1/2 rounded-full blur-md ${
                       isUrgent
                         ? "bg-red-300/40"
-                        : "bg-emerald-300/40"
+                        : "bg-blue-300/40"
                     }`}
                   />
                 </div>
@@ -759,7 +614,7 @@ export default function ActiveProject() {
                   className={`mt-2 text-[9px] font-bold uppercase tracking-[0.12em] sm:text-[10px] ${
                     isUrgent
                       ? "text-red-300/80"
-                      : "text-emerald-100/85"
+                      : "text-blue-100/85"
                   }`}
                 >
                   {unit.label}
@@ -795,7 +650,7 @@ export default function ActiveProject() {
                 className={`font-semibold tabular-nums ${
                   isUrgent
                     ? "text-red-300"
-                    : "text-emerald-200"
+                    : "text-blue-200"
                 }`}
               >
                 {progress.toFixed(1)}%
@@ -806,14 +661,14 @@ export default function ActiveProject() {
               className={`h-1.5 overflow-hidden rounded-full ${
                 isUrgent
                   ? "bg-red-500/15"
-                  : "bg-emerald-400/15"
+                  : "bg-blue-400/15"
               }`}
             >
               <div
                 className={`h-full rounded-full transition-[width] duration-1000 ${
                   isUrgent
                     ? "bg-red-500"
-                    : "bg-emerald-400"
+                    : "bg-blue-400"
                 }`}
                 style={{
                   width: `${progress}%`,
@@ -829,7 +684,7 @@ export default function ActiveProject() {
               className={`h-2 w-2 rounded-full ${
                 isUrgent
                   ? "animate-pulse bg-red-400"
-                  : "animate-pulse bg-emerald-400"
+                  : "animate-pulse bg-blue-400"
               }`}
             />
 
@@ -837,7 +692,7 @@ export default function ActiveProject() {
               className={`text-[10px] font-bold tracking-[0.18em] ${
                 isUrgent
                   ? "text-red-300"
-                  : "text-emerald-200"
+                  : "text-blue-200"
               }`}
             >
               {isUrgent
@@ -883,9 +738,9 @@ export default function ActiveProject() {
           return (
             <div
               key={stat.label}
-              className="rounded-2xl border border-emerald-400/20 bg-gradient-to-br from-[#112b1e] to-[#0b1711] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.18)]"
+              className="rounded-2xl border border-blue-400/20 bg-gradient-to-br from-[#172131] to-[#111722] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.18)]"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-400/10 text-emerald-400">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-400/10 text-blue-400">
                 <Icon size={19} />
               </div>
 
@@ -915,13 +770,13 @@ export default function ActiveProject() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-white/[0.07] bg-white/[0.03] px-3 py-1.5 text-xs text-zinc-400">
+          <div className="rounded-lg border border-white/[0.07] bg-[#141a24] px-3 py-1.5 text-xs text-zinc-400">
             Showing {topNominees.length} of {nominees.length}
           </div>
         </div>
 
         {nominees.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-white/10 bg-[#0d1310] px-5 py-12 text-center">
+          <div className="rounded-2xl border border-dashed border-white/10 bg-[#141a24] px-5 py-12 text-center">
             <Users
               className="mx-auto mb-3 text-zinc-600"
               size={30}
@@ -1011,7 +866,7 @@ export default function ActiveProject() {
                       </span>
                     </div>
                     <div
-                      className="h-2 overflow-hidden rounded-full bg-white/[0.07]"
+                      className="h-2 overflow-hidden rounded-full bg-[#141a24]"
                       role="progressbar"
                       aria-label={`${nominee.name || "Nominee"} share of votes`}
                       aria-valuenow={Number(votePercentage.toFixed(1))}
@@ -1114,7 +969,6 @@ export default function ActiveProject() {
           >
             {/* Decorative glow */}
 
-            <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full bg-red-500/[0.10] blur-[80px]" />
 
             <div className="relative">
 
@@ -1125,7 +979,7 @@ export default function ActiveProject() {
                 onClick={() => setShowEndConfirmation(false)}
                 disabled={ending}
                 aria-label="Close confirmation"
-                className="absolute right-0 top-0 flex h-9 w-9 cursor-pointer items-center justify-center rounded-xl border border-white/[0.07] bg-white/[0.04] text-zinc-400 transition hover:bg-white/[0.08] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                className="absolute right-0 top-0 flex h-9 w-9 cursor-pointer items-center justify-center rounded-xl border border-white/[0.07] bg-[#141a24] text-zinc-400 transition hover:bg-[#141a24] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <X size={17} />
               </button>
@@ -1175,7 +1029,7 @@ export default function ActiveProject() {
                   type="button"
                   onClick={() => setShowEndConfirmation(false)}
                   disabled={ending}
-                  className="inline-flex cursor-pointer items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] px-5 py-3 text-xs font-semibold text-zinc-300 transition hover:bg-white/[0.08] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-flex cursor-pointer items-center justify-center rounded-xl border border-white/10 bg-[#141a24] px-5 py-3 text-xs font-semibold text-zinc-300 transition hover:bg-[#141a24] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   Cancel
                 </button>
@@ -1210,7 +1064,7 @@ export default function ActiveProject() {
       <div className="flex items-center justify-center gap-2 pb-2 text-[10px] text-zinc-600">
         <CheckCircle2
           size={12}
-          className="text-emerald-500/70"
+          className="text-blue-500/70"
         />
         VoteSphere Election Management
       </div>

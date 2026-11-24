@@ -412,9 +412,9 @@ export default function HistoryPage() {
     <main className="relative min-h-screen overflow-hidden px-2 py-5 text-white md:px-3">
 
       {/* Ambient background */}
-      {/* <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-emerald-500/10 blur-[130px]" />
+      {/* <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-blue-500/10 blur-[130px]" />
 
-      <div className="pointer-events-none absolute -bottom-32 -right-24 h-[28rem] w-[28rem] rounded-full bg-green-500/[0.07] blur-[140px]" />
+      <div className="pointer-events-none absolute -bottom-32 -right-24 h-[28rem] w-[28rem] rounded-full bg-blue-500/[0.07] blur-[140px]" />
 
       <div className="pointer-events-none absolute inset-0 opacity-[0.035] [background-image:radial-gradient(#a7f3d0_1px,transparent_1px)] [background-size:25px_25px]" /> */}
 
@@ -424,7 +424,7 @@ export default function HistoryPage() {
         <header className="mb-10 flex flex-col justify-between gap-5 pb-6 sm:flex-row sm:items-center">
 
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.09] text-emerald-300 shadow-[0_0_30px_rgba(16,185,129,0.08)]">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.09] text-blue-300 shadow-[0_0_30px_rgba(59,130,246,0.08)]">
               <Vote size={23} />
             </div>
 
@@ -440,7 +440,7 @@ export default function HistoryPage() {
           </div>
 
           {/* Section navigation */}
-          <div className="flex items-center gap-1 rounded-xl bg-white/[0.025] p-1">
+          <div className="flex items-center gap-1 rounded-xl bg-[#141a24] p-1">
 
             <button
               type="button"
@@ -451,8 +451,8 @@ export default function HistoryPage() {
               }}
               className={`flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-medium transition-all duration-300 sm:flex-none ${
                 section === "select"
-                  ? "bg-emerald-400 text-[#04130c] shadow-lg shadow-emerald-500/10"
-                  : "text-white/45 hover:bg-white/[0.05] hover:text-white"
+                  ? "bg-blue-400 text-[#07101c] shadow-lg shadow-blue-500/10"
+                  : "text-white/45 hover:bg-[#141a24] hover:text-white"
               }`}
             >
               <FolderOpen size={15} />
@@ -470,8 +470,8 @@ export default function HistoryPage() {
               disabled={!selectedProject}
               className={`flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-medium transition-all duration-300 sm:flex-none ${
                 section === "view"
-                  ? "bg-emerald-400 text-[#04130c] shadow-lg shadow-emerald-500/10"
-                  : "text-white/45 hover:bg-white/[0.05] hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+                  ? "bg-blue-400 text-[#07101c] shadow-lg shadow-blue-500/10"
+                  : "text-white/45 hover:bg-[#141a24] hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
               }`}
             >
               <ChartNoAxesColumnIncreasing size={15} />
@@ -495,7 +495,7 @@ export default function HistoryPage() {
         {success && (
           <div
             role="status"
-            className="mb-6 flex items-start gap-3 rounded-xl border border-emerald-400/20 bg-emerald-400/[0.07] p-4 text-sm text-emerald-300"
+            className="mb-6 flex items-start gap-3 rounded-xl border border-blue-400/20 bg-blue-400/[0.07] p-4 text-sm text-blue-300"
           >
             <CheckCircle2 size={17} className="mt-0.5 shrink-0" />
             <span>{success}</span>
@@ -510,14 +510,14 @@ export default function HistoryPage() {
           <div ref={panelRef}>
 
             <section className="mb-9">
-              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5 text-xs font-medium text-emerald-300">
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-400/15 bg-blue-400/[0.06] px-3 py-1.5 text-xs font-medium text-blue-300">
                 <Sparkles size={13} />
                 Recorded activities
               </div>
 
               <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
                 Your election{" "}
-                <span className="text-emerald-400">history.</span>
+                <span className="text-blue-400">history.</span>
               </h2>
 
               <p className="mt-3 max-w-2xl text-sm leading-7 text-white/45">
@@ -553,7 +553,7 @@ export default function HistoryPage() {
                     value={searchQuery}
                     onChange={(event) => setSearchQuery(event.target.value)}
                     placeholder="Search your projects..."
-                    className="w-full rounded-xl border border-white/[0.08] bg-white/[0.025] py-3 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-emerald-400/40 focus:bg-emerald-400/[0.025]"
+                    className="w-full rounded-xl border border-white/[0.08] bg-[#141a24] py-3 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-blue-400/40 focus:bg-blue-400/[0.025]"
                   />
                 </div>
 
@@ -578,11 +578,10 @@ export default function HistoryPage() {
             {/* Project cards */}
             {filteredProjects.length === 0 ? (
 
-              <section className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.025] px-6 py-16 text-center shadow-2xl shadow-black/20 sm:px-12">
+              <section className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-[#141a24] px-6 py-16 text-center shadow-2xl shadow-black/20 sm:px-12">
 
-                <div className="pointer-events-none absolute left-1/2 top-0 h-48 w-48 -translate-x-1/2 rounded-full bg-emerald-400/[0.08] blur-[70px]" />
 
-                <div className="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">
+                <div className="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl border border-blue-400/20 bg-blue-400/[0.08] text-blue-300">
                   <FolderOpen size={34} />
                 </div>
 
@@ -602,7 +601,7 @@ export default function HistoryPage() {
                   <button
                     type="button"
                     onClick={() => setSearchQuery("")}
-                    className="mt-6 rounded-xl border border-emerald-400/20 bg-emerald-400/[0.07] px-5 py-3 text-sm font-medium text-emerald-300 transition hover:bg-emerald-400/15"
+                    className="mt-6 rounded-xl border border-blue-400/20 bg-blue-400/[0.07] px-5 py-3 text-sm font-medium text-blue-300 transition hover:bg-blue-400/15"
                   >
                     Clear search
                   </button>
@@ -621,7 +620,7 @@ export default function HistoryPage() {
                   return (
                     <article
                       key={item.id}
-                      className="group relative overflow-visible rounded-3xl border border-white/[0.08] bg-gradient-to-br from-[#102019]/90 via-[#0b1711]/95 to-[#09110d] p-5 shadow-[0_15px_55px_rgba(0,0,0,0.20)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/25 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] sm:p-6"
+                      className="group relative overflow-visible rounded-3xl border border-white/[0.08] bg-gradient-to-br from-[#151d2a]/90 via-[#111722]/95 to-[#0d121b] p-5 shadow-[0_15px_55px_rgba(0,0,0,0.20)] transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/25 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] sm:p-6"
                     >
 
                       {/* Decorative background */}
@@ -629,9 +628,6 @@ export default function HistoryPage() {
                         aria-hidden="true"
                         className="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl"
                       >
-                        <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-emerald-400/[0.055] blur-[55px]" />
-                        <div className="absolute bottom-[27%] right-[30%] h-10 w-10 rounded-full border border-emerald-300/[0.10] bg-emerald-300/[0.025] shadow-[inset_0_0_18px_rgba(52,211,153,0.05)]" />
-                        <div className="absolute bottom-[16%] left-[12%] h-6 w-6 rounded-full border border-emerald-400/[0.10] bg-emerald-400/[0.025]" />
                       </div>
 
                       <div className="relative">
@@ -641,12 +637,12 @@ export default function HistoryPage() {
 
                           <div className="flex min-w-0 items-center gap-3">
 
-                            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">
+                            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-blue-400/20 bg-blue-400/[0.08] text-blue-300">
                               <Vote size={20} />
                             </div>
 
                             <div className="min-w-0">
-                              <p className="text-[10px] font-semibold uppercase tracking-[0.17em] text-emerald-300/50">
+                              <p className="text-[10px] font-semibold uppercase tracking-[0.17em] text-blue-300/50">
                                 Historical election
                               </p>
 
@@ -669,13 +665,13 @@ export default function HistoryPage() {
                                   current === item.id ? null : item.id
                                 )
                               }
-                              className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/[0.07] bg-white/[0.035] text-white/45 transition hover:border-emerald-400/25 hover:bg-emerald-400/[0.08] hover:text-emerald-300"
+                              className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/[0.07] bg-[#141a24] text-white/45 transition hover:border-blue-400/25 hover:bg-blue-400/[0.08] hover:text-blue-300"
                             >
                               <Ellipsis size={20} />
                             </button>
 
                             {openMenuId === item.id && (
-                              <div className="absolute right-0 top-11 z-30 w-52 overflow-hidden rounded-xl border border-white/10 bg-[#101c15] p-1.5 shadow-2xl shadow-black/50">
+                              <div className="absolute right-0 top-11 z-30 w-52 overflow-hidden rounded-xl border border-white/10 bg-[#151d2a] p-1.5 shadow-2xl shadow-black/50">
 
                                 <button
                                   type="button"
@@ -700,7 +696,7 @@ export default function HistoryPage() {
                         {/* Project details */}
                         <div className="mt-7">
 
-                          <h3 className="break-words text-xl font-semibold tracking-tight text-white transition group-hover:text-emerald-200">
+                          <h3 className="break-words text-xl font-semibold tracking-tight text-white transition group-hover:text-blue-200">
                             {item.name || "Untitled election"}
                           </h3>
 
@@ -709,7 +705,7 @@ export default function HistoryPage() {
                           </p>
 
                           <div className="mt-5 flex items-center gap-2 text-xs text-white/35">
-                            <CalendarDays size={14} className="text-emerald-400/70" />
+                            <CalendarDays size={14} className="text-blue-400/70" />
                             Created {formatDate(item.created_at)}
                           </div>
 
@@ -719,7 +715,7 @@ export default function HistoryPage() {
                         <div className="mt-6 grid grid-cols-3 gap-2">
 
                           <div className="rounded-xl border border-white/[0.06] bg-black/20 p-3">
-                            <Users size={16} className="text-emerald-300" />
+                            <Users size={16} className="text-blue-300" />
 
                             <p className="mt-3 text-xl font-semibold tabular-nums">
                               {nomineeCount}
@@ -731,7 +727,7 @@ export default function HistoryPage() {
                           </div>
 
                           <div className="rounded-xl border border-white/[0.06] bg-black/20 p-3">
-                            <Vote size={16} className="text-emerald-300" />
+                            <Vote size={16} className="text-blue-300" />
 
                             <p className="mt-3 text-xl font-semibold tabular-nums">
                               {totalVotes.toLocaleString()}
@@ -760,7 +756,7 @@ export default function HistoryPage() {
                         <button
                           type="button"
                           onClick={() => handleViewProject(item.id)}
-                          className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-400/20 bg-emerald-400/[0.08] px-4 py-3.5 text-sm font-semibold text-emerald-300 transition-all duration-300 hover:border-emerald-400/40 hover:bg-emerald-400 hover:text-[#04130c]"
+                          className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-blue-400/20 bg-blue-400/[0.08] px-4 py-3.5 text-sm font-semibold text-blue-300 transition-all duration-300 hover:border-blue-400/40 hover:bg-blue-400 hover:text-[#07101c]"
                         >
                           View election results
                           <ArrowRight
@@ -793,8 +789,8 @@ export default function HistoryPage() {
 
             {!selectedProject || !results ? (
 
-              <section className="rounded-3xl border border-white/[0.08] bg-white/[0.025] p-10 text-center">
-                <FolderOpen size={35} className="mx-auto text-emerald-400" />
+              <section className="rounded-3xl border border-white/[0.08] bg-[#141a24] p-10 text-center">
+                <FolderOpen size={35} className="mx-auto text-blue-400" />
 
                 <h2 className="mt-5 text-xl font-semibold">
                   Project unavailable
@@ -807,7 +803,7 @@ export default function HistoryPage() {
                 <button
                   type="button"
                   onClick={handleBack}
-                  className="mt-6 rounded-xl bg-emerald-400 px-5 py-3 text-sm font-semibold text-[#04130c]"
+                  className="mt-6 rounded-xl bg-blue-400 px-5 py-3 text-sm font-semibold text-[#07101c]"
                 >
                   Back to history
                 </button>
@@ -821,7 +817,7 @@ export default function HistoryPage() {
                 <button
                   type="button"
                   onClick={handleBack}
-                  className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm text-white/55 transition hover:border-emerald-400/30 hover:bg-emerald-400/10 hover:text-emerald-300"
+                  className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#141a24] px-4 py-2.5 text-sm text-white/55 transition hover:border-blue-400/30 hover:bg-blue-400/10 hover:text-blue-300"
                 >
                   <ArrowLeft size={16} />
                   Back to history
@@ -830,14 +826,14 @@ export default function HistoryPage() {
                 {/* Results introduction */}
                 <section className="mb-8">
 
-                  <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5 text-xs font-medium text-emerald-300">
+                  <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-400/15 bg-blue-400/[0.06] px-3 py-1.5 text-xs font-medium text-blue-300">
                     <Sparkles size={13} />
                     Historical election results
                   </div>
 
                   <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
                     Election{" "}
-                    <span className="text-emerald-400">results.</span>
+                    <span className="text-blue-400">results.</span>
                   </h2>
 
                   <p className="mt-3 max-w-2xl text-sm leading-7 text-white/45">
@@ -848,17 +844,15 @@ export default function HistoryPage() {
                 </section>
 
                 {/* Main project card */}
-                <section className="relative overflow-hidden rounded-3xl border border-emerald-400/15 bg-gradient-to-br from-[#10251a] via-[#0b1711] to-[#09110d] p-5 shadow-[0_25px_90px_rgba(0,0,0,0.28)] sm:p-8">
+                <section className="relative overflow-hidden rounded-3xl border border-blue-400/15 bg-gradient-to-br from-[#151e2c] via-[#111722] to-[#0d121b] p-5 shadow-[0_25px_90px_rgba(0,0,0,0.28)] sm:p-8">
 
-                  <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full border border-emerald-300/[0.07]" />
 
-                  <div className="pointer-events-none absolute right-10 top-10 h-32 w-32 rounded-full bg-emerald-400/[0.08] blur-[55px]" />
 
                   <div className="relative">
 
                     <div className="flex flex-wrap items-center justify-between gap-3">
 
-                      <span className="inline-flex items-center gap-2 rounded-full border border-emerald-300/15 bg-black/20 px-3 py-1.5 text-xs font-medium text-emerald-200">
+                      <span className="inline-flex items-center gap-2 rounded-full border border-blue-300/15 bg-black/20 px-3 py-1.5 text-xs font-medium text-blue-200">
                         <Trophy size={13} />
                         Historical election
                       </span>
@@ -872,7 +866,7 @@ export default function HistoryPage() {
 
                     <div className="mt-8 max-w-3xl">
 
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300/60">
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300/60">
                         Project heading
                       </p>
 
@@ -889,9 +883,9 @@ export default function HistoryPage() {
                     </div>
 
                     {/* Winner section */}
-                    <div className="mt-8 rounded-2xl border border-emerald-300/15 bg-black/20 p-5 sm:p-6">
+                    <div className="mt-8 rounded-2xl border border-blue-300/15 bg-black/20 p-5 sm:p-6">
 
-                      <div className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200/65">
+                      <div className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-blue-200/65">
                         <Crown size={15} />
                         Election result
                       </div>
@@ -899,7 +893,7 @@ export default function HistoryPage() {
                       {results.winners.length === 0 ? (
 
                         <div className="flex items-start gap-3">
-                          <div className="rounded-xl bg-white/[0.06] p-3 text-white/50">
+                          <div className="rounded-xl bg-[#141a24] p-3 text-white/50">
                             <AlertTriangle size={22} />
                           </div>
 
@@ -940,7 +934,7 @@ export default function HistoryPage() {
                                   >
                                     {winner.name || "Unnamed nominee"}
                                     {index < results.winners.length - 1 && (
-                                      <span className="text-emerald-300">,</span>
+                                      <span className="text-blue-300">,</span>
                                     )}
                                   </span>
                                 ))}
@@ -976,7 +970,7 @@ export default function HistoryPage() {
                             Election duration
                           </span>
 
-                          <Clock3 size={17} className="text-emerald-300" />
+                          <Clock3 size={17} className="text-blue-300" />
                         </div>
 
                         <p className="mt-3 text-2xl font-semibold">
@@ -994,7 +988,7 @@ export default function HistoryPage() {
                             Total votes
                           </span>
 
-                          <Users size={17} className="text-emerald-300" />
+                          <Users size={17} className="text-blue-300" />
                         </div>
 
                         <p className="mt-3 text-2xl font-semibold tabular-nums">
@@ -1012,7 +1006,7 @@ export default function HistoryPage() {
                             Nominees
                           </span>
 
-                          <Medal size={17} className="text-emerald-300" />
+                          <Medal size={17} className="text-blue-300" />
                         </div>
 
                         <p className="mt-3 text-2xl font-semibold">
@@ -1043,14 +1037,14 @@ export default function HistoryPage() {
                       </p>
                     </div>
 
-                    <span className="rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-xs text-white/45">
+                    <span className="rounded-lg border border-white/[0.08] bg-[#141a24] px-3 py-1.5 text-xs text-white/45">
                       {results.nominees.length} nominees
                     </span>
                   </div>
 
                   {results.rankedNominees.length === 0 ? (
 
-                    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-6 text-center text-sm text-white/40">
+                    <div className="rounded-2xl border border-white/[0.08] bg-[#141a24] p-6 text-center text-sm text-white/40">
                       No nominees were recorded for this project.
                     </div>
 
@@ -1075,7 +1069,7 @@ export default function HistoryPage() {
 
                           <article
                             key={nominee.id}
-                            className="overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] transition-colors hover:border-emerald-400/20"
+                            className="overflow-hidden rounded-2xl border border-white/[0.07] bg-[#141a24] transition-colors hover:border-blue-400/20"
                           >
 
                             {/* Nominee ranking */}
@@ -1088,8 +1082,8 @@ export default function HistoryPage() {
                                   <div
                                     className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-sm font-semibold ${
                                       isWinner
-                                        ? "bg-emerald-400/15 text-emerald-300"
-                                        : "bg-white/[0.06] text-white/45"
+                                        ? "bg-blue-400/15 text-blue-300"
+                                        : "bg-[#141a24] text-white/45"
                                     }`}
                                   >
                                     {index + 1}
@@ -1101,7 +1095,7 @@ export default function HistoryPage() {
                                     </p>
 
                                     {isWinner && (
-                                      <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-300">
+                                      <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-blue-300">
                                         <Crown size={11} />
                                         Winner
                                       </span>
@@ -1122,11 +1116,11 @@ export default function HistoryPage() {
 
                               </div>
 
-                              <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+                              <div className="h-1.5 overflow-hidden rounded-full bg-[#141a24]">
                                 <div
                                   className={`h-full rounded-full transition-all duration-700 ${
                                     isWinner
-                                      ? "bg-emerald-400"
+                                      ? "bg-blue-400"
                                       : "bg-white/25"
                                   }`}
                                   style={{ width: `${percentage}%` }}
@@ -1144,13 +1138,13 @@ export default function HistoryPage() {
                                   <img
                                     src={nominee.image}
                                     alt={nominee.name || "Nominee"}
-                                    className="h-24 w-24 shrink-0 rounded-2xl border border-emerald-400/20 object-cover"
+                                    className="h-24 w-24 shrink-0 rounded-2xl border border-blue-400/20 object-cover"
                                   />
                                 )}
 
                                 <div className="min-w-0 flex-1">
 
-                                  <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.17em] text-emerald-300/60">
+                                  <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.17em] text-blue-300/60">
                                     Nominee manifesto
                                   </p>
 
@@ -1171,7 +1165,7 @@ export default function HistoryPage() {
                               <div className="mt-6">
 
                                 <div className="mb-3 flex items-center gap-2">
-                                  <Award size={15} className="text-emerald-300" />
+                                  <Award size={15} className="text-blue-300" />
 
                                   <h4 className="text-xs font-semibold uppercase tracking-[0.13em] text-white/60">
                                     Achievements
@@ -1191,11 +1185,11 @@ export default function HistoryPage() {
 
                                         <div
                                           key={achievement.id ?? `${achievement.project}-${achievementIndex}`}
-                                          className="flex items-start gap-3 rounded-xl border border-white/[0.06] bg-white/[0.025] p-3"
+                                          className="flex items-start gap-3 rounded-xl border border-white/[0.06] bg-[#141a24] p-3"
                                         >
 
-                                          <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-400/10">
-                                            <Award size={15} className="text-emerald-300" />
+                                          <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-400/10">
+                                            <Award size={15} className="text-blue-300" />
                                           </div>
 
                                           <div className="min-w-0">
@@ -1229,7 +1223,7 @@ export default function HistoryPage() {
                               <div className="mt-6">
 
                                 <div className="mb-3 flex items-center gap-2">
-                                  <MessageCircle size={15} className="text-emerald-300" />
+                                  <MessageCircle size={15} className="text-blue-300" />
 
                                   <h4 className="text-xs font-semibold uppercase tracking-[0.13em] text-white/60">
                                     Voter feedback
@@ -1257,13 +1251,13 @@ export default function HistoryPage() {
 
                                         <div
                                           key={`${nominee.id}-comment-${commentIndex}`}
-                                          className="rounded-xl border border-white/[0.06] bg-white/[0.025] p-4"
+                                          className="rounded-xl border border-white/[0.06] bg-[#141a24] p-4"
                                         >
 
                                           <div className="mb-2 flex items-center gap-2">
                                             <MessageCircle
                                               size={12}
-                                              className="text-emerald-500"
+                                              className="text-blue-500"
                                             />
 
                                             <span className="text-[10px] font-semibold uppercase tracking-wider text-white/30">
@@ -1306,7 +1300,7 @@ export default function HistoryPage() {
                 </section>
 
                 {/* Results footer */}
-                <section className="mt-9 flex flex-col items-start justify-between gap-4 rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.045] p-5 sm:flex-row sm:items-center sm:p-6">
+                <section className="mt-9 flex flex-col items-start justify-between gap-4 rounded-2xl border border-blue-400/15 bg-blue-400/[0.045] p-5 sm:flex-row sm:items-center sm:p-6">
 
                   <div>
                     <h3 className="font-semibold text-white">
@@ -1321,7 +1315,7 @@ export default function HistoryPage() {
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-emerald-400/25 bg-emerald-400/10 px-4 py-3 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-400 hover:text-[#04130c]"
+                    className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-blue-400/25 bg-blue-400/10 px-4 py-3 text-sm font-semibold text-blue-300 transition hover:bg-blue-400 hover:text-[#07101c]"
                   >
                     Back to history
                     <ArrowRight size={16} />
@@ -1371,7 +1365,7 @@ export default function HistoryPage() {
                   disabled={deleting}
                   onClick={() => setProjectToDelete(null)}
                   aria-label="Close confirmation"
-                  className="rounded-lg p-2 text-white/35 transition hover:bg-white/[0.06] hover:text-white disabled:opacity-30"
+                  className="rounded-lg p-2 text-white/35 transition hover:bg-[#141a24] hover:text-white disabled:opacity-30"
                 >
                   <X size={19} />
                 </button>
@@ -1449,7 +1443,7 @@ export default function HistoryPage() {
                 type="button"
                 disabled={deleting}
                 onClick={() => setProjectToDelete(null)}
-                className="w-full rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-3 text-sm font-medium text-white/55 transition hover:bg-white/[0.06] hover:text-white disabled:opacity-30"
+                className="w-full rounded-xl border border-white/[0.08] bg-[#141a24] px-4 py-3 text-sm font-medium text-white/55 transition hover:bg-[#141a24] hover:text-white disabled:opacity-30"
               >
                 Cancel
               </button>
@@ -1489,7 +1483,7 @@ export default function HistoryPage() {
                   disabled={deletingAll}
                   onClick={() => setShowDeleteAllConfirmation(false)}
                   aria-label="Close delete all confirmation"
-                  className="rounded-lg p-2 text-white/35 transition hover:bg-white/[0.06] hover:text-white disabled:opacity-30"
+                  className="rounded-lg p-2 text-white/35 transition hover:bg-[#141a24] hover:text-white disabled:opacity-30"
                 >
                   <X size={19} />
                 </button>
@@ -1541,7 +1535,7 @@ export default function HistoryPage() {
                 type="button"
                 disabled={deletingAll}
                 onClick={() => setShowDeleteAllConfirmation(false)}
-                className="w-full rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-3 text-sm font-medium text-white/55 transition hover:bg-white/[0.06] hover:text-white disabled:opacity-30"
+                className="w-full rounded-xl border border-white/[0.08] bg-[#141a24] px-4 py-3 text-sm font-medium text-white/55 transition hover:bg-[#141a24] hover:text-white disabled:opacity-30"
               >
                 Cancel
               </button>

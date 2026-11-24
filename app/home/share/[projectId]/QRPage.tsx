@@ -689,8 +689,7 @@ export default function QRPage({ projectId }: QRPageProps) {
   if (loadError && !currentProject) {
     return (
       <div className="flex min-h-[calc(100dvh-5rem)] w-full items-center justify-center overflow-hidden px-2 py-4 md:px-3">
-        <section className="relative w-full max-w-md overflow-hidden rounded-3xl border border-white/[0.09] bg-[#0b1510] p-7 text-center shadow-[0_25px_80px_rgba(0,0,0,0.35)] sm:p-9">
-          <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full bg-emerald-400/[0.08] blur-[65px]" />
+        <section className="relative w-full max-w-md overflow-hidden rounded-3xl border border-white/[0.09] bg-[#111722] p-7 text-center shadow-[0_25px_80px_rgba(0,0,0,0.35)] sm:p-9">
 
           <div className="relative mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-red-400/20 bg-red-400/[0.08] text-red-300">
             <Info size={29} />
@@ -707,7 +706,7 @@ export default function QRPage({ projectId }: QRPageProps) {
           <button
             type="button"
             onClick={() => void handleRefresh()}
-            className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-400 px-5 py-3.5 text-sm font-semibold text-[#04130c] transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-300"
+            className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-400 px-5 py-3.5 text-sm font-semibold text-[#07101c] transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-300"
           >
             Try again
             <ArrowRight size={16} />
@@ -727,8 +726,6 @@ export default function QRPage({ projectId }: QRPageProps) {
         ref={pageRef}
         className="relative min-h-screen w-full min-w-0 overflow-x-clip px-2 py-4 text-white md:px-3"
       >
-        <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 rounded-full bg-emerald-500/[0.035] blur-[100px]" />
-        <div className="pointer-events-none absolute bottom-20 right-0 h-64 w-64 rounded-full bg-emerald-400/[0.035] blur-[100px]" />
 
         <div className="relative mx-auto w-full min-w-0 max-w-7xl">
           <header
@@ -736,13 +733,13 @@ export default function QRPage({ projectId }: QRPageProps) {
             className="mb-8 flex flex-col justify-between gap-5 pb-6 sm:flex-row sm:items-center"
           >
             <div>
-              <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-emerald-400/[0.06] px-3 py-1.5 text-xs font-medium text-emerald-300">
+              <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-blue-400/[0.06] px-3 py-1.5 text-xs font-medium text-blue-300">
                 <CheckCircle2 size={13} />
                 Election completed
               </div>
 
               <h1 className="break-words text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                Final <span className="text-emerald-400">results.</span>
+                Final <span className="text-blue-400">results.</span>
               </h1>
 
               <p className="mt-2 max-w-xl break-words text-sm text-white/40">
@@ -754,9 +751,9 @@ export default function QRPage({ projectId }: QRPageProps) {
             <button
               type="button"
               onClick={() => void handleRefresh()}
-              className="inline-flex h-11 w-fit shrink-0 items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 text-sm font-semibold text-white/70 transition hover:border-emerald-400/25 hover:text-emerald-300"
+              className="inline-flex h-11 w-fit shrink-0 items-center gap-2 rounded-xl border border-white/[0.08] bg-[#141a24] px-4 text-sm font-semibold text-white/70 transition hover:border-blue-400/25 hover:text-blue-300"
             >
-              <Loader2 size={15} className="text-emerald-300" />
+              <Loader2 size={15} className="text-blue-300" />
               Refresh results
             </button>
           </header>
@@ -770,13 +767,11 @@ export default function QRPage({ projectId }: QRPageProps) {
             </div>
           )}
 
-          <section className="finished-election-card relative min-w-0 overflow-hidden rounded-3xl border border-emerald-400/25 bg-gradient-to-br from-[#143b29] via-[#0d2419] to-[#09150f] p-5 shadow-[0_25px_90px_rgba(0,0,0,0.32)] sm:p-8">
-            <div className="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full border border-emerald-300/[0.07]" />
-            <div className="pointer-events-none absolute right-10 top-10 h-32 w-32 rounded-full bg-emerald-400/[0.14] blur-[55px]" />
+          <section className="finished-election-card relative min-w-0 overflow-hidden rounded-3xl border border-blue-400/25 bg-gradient-to-br from-[#151d29] via-[#151d2b] to-[#0d121b] p-5 shadow-[0_25px_90px_rgba(0,0,0,0.32)] sm:p-8">
 
             <div className="relative">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-300/15 bg-black/20 px-3 py-1.5 text-xs font-medium text-emerald-200">
+                <span className="inline-flex items-center gap-2 rounded-full border border-blue-300/15 bg-black/20 px-3 py-1.5 text-xs font-medium text-blue-200">
                   <Trophy size={13} />
                   Final election
                 </span>
@@ -787,7 +782,7 @@ export default function QRPage({ projectId }: QRPageProps) {
               </div>
 
               <div className="mt-8 min-w-0 max-w-3xl">
-                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300/60">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300/60">
                   Election
                 </p>
                 <h2 className="break-words text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -795,15 +790,15 @@ export default function QRPage({ projectId }: QRPageProps) {
                 </h2>
               </div>
 
-              <div className="mt-8 rounded-2xl border border-emerald-300/25 bg-[#08130d]/75 p-5 shadow-[inset_0_1px_0_rgba(110,231,183,0.08)] sm:p-6">
-                <div className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200/65">
+              <div className="mt-8 rounded-2xl border border-blue-300/25 bg-[#08130d] p-5 shadow-[inset_0_1px_0_rgba(147,197,253,0.08)] sm:p-6">
+                <div className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-blue-200/65">
                   <Crown size={15} />
                   Election result
                 </div>
 
                 {finishedResults.winners.length === 0 ? (
                   <div className="flex items-start gap-3">
-                    <div className="rounded-xl bg-white/[0.06] p-3 text-white/50">
+                    <div className="rounded-xl bg-[#141a24] p-3 text-white/50">
                       <Vote size={22} />
                     </div>
                     <div>
@@ -833,7 +828,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                             >
                               {winner.name || "Unnamed nominee"}
                               {index < finishedResults.winners.length - 1 && (
-                                <span className="text-emerald-300">,</span>
+                                <span className="text-blue-300">,</span>
                               )}
                             </span>
                           ))}
@@ -854,30 +849,30 @@ export default function QRPage({ projectId }: QRPageProps) {
               </div>
 
               <div className="mt-5 grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-3">
-                <div className="min-w-0 rounded-2xl border border-emerald-300/20 bg-[#0b1912]/90 p-5">
+                <div className="min-w-0 rounded-2xl border border-blue-300/20 bg-[#121824] p-5">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-white/40">Election duration</span>
-                    <Clock3 size={17} className="text-emerald-300" />
+                    <Clock3 size={17} className="text-blue-300" />
                   </div>
                   <p className="mt-3 break-words text-2xl font-semibold">
                     {formatDuration(finishedResults.duration)}
                   </p>
                 </div>
 
-                <div className="min-w-0 rounded-2xl border border-emerald-300/20 bg-[#0b1912]/90 p-5">
+                <div className="min-w-0 rounded-2xl border border-blue-300/20 bg-[#121824] p-5">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-white/40">Total votes</span>
-                    <Users size={17} className="text-emerald-300" />
+                    <Users size={17} className="text-blue-300" />
                   </div>
                   <p className="mt-3 text-2xl font-semibold tabular-nums">
                     {totalVotes.toLocaleString()}
                   </p>
                 </div>
 
-                <div className="min-w-0 rounded-2xl border border-emerald-300/20 bg-[#0b1912]/90 p-5">
+                <div className="min-w-0 rounded-2xl border border-blue-300/20 bg-[#121824] p-5">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-white/40">Nominees</span>
-                    <Award size={17} className="text-emerald-300" />
+                    <Award size={17} className="text-blue-300" />
                   </div>
                   <p className="mt-3 text-2xl font-semibold">
                     {nominees.length}
@@ -895,13 +890,13 @@ export default function QRPage({ projectId }: QRPageProps) {
                   Final vote distribution
                 </p>
               </div>
-              <span className="rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-xs text-white/45">
+              <span className="rounded-lg border border-white/[0.08] bg-[#141a24] px-3 py-1.5 text-xs text-white/45">
                 {nominees.length} nominees
               </span>
             </div>
 
             {finishedResults.rankedNominees.length === 0 ? (
-              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-6 text-center text-sm text-white/40">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#141a24] p-6 text-center text-sm text-white/40">
                 No nominees were recorded for this election.
               </div>
             ) : (
@@ -979,7 +974,7 @@ export default function QRPage({ projectId }: QRPageProps) {
 
           <section
             data-enter
-            className="mt-9 flex min-w-0 flex-col gap-4 rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.045] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"
+            className="mt-9 flex min-w-0 flex-col gap-4 rounded-2xl border border-blue-400/15 bg-blue-400/[0.045] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"
           >
             <div>
               <h2 className="font-semibold text-white">This election is complete</h2>
@@ -993,7 +988,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                 type="button"
                 onClick={() => void handleCopyLink()}
                 disabled={!currentProject}
-                className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 text-sm font-semibold text-white/70 transition hover:border-emerald-400/30 hover:text-emerald-300 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/10 bg-[#141a24] px-4 text-sm font-semibold text-white/70 transition hover:border-blue-400/30 hover:text-blue-300 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {copied ? <CheckCircle2 size={16} /> : <Copy size={16} />}
                 {copied ? "Copied" : "Copy link"}
@@ -1014,15 +1009,13 @@ export default function QRPage({ projectId }: QRPageProps) {
       ref={pageRef}
       className="relative min-h-screen overflow-hidden px-2 py-4 text-white md:px-3"
     >
-      <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 rounded-full bg-emerald-500/[0.035] blur-[100px]" />
-      <div className="pointer-events-none absolute bottom-20 right-0 h-64 w-64 rounded-full bg-emerald-400/[0.035] blur-[100px]" />
 
       <div className="relative mx-auto w-full max-w-7xl">
         {/* Election header */}
         <header className="mb-8 flex flex-col justify-between gap-5 pb-6 sm:flex-row sm:items-center">
           <div>
-            <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-emerald-300/65">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+            <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-blue-300/65">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-blue-400" />
               Live election
             </div>
 
@@ -1036,7 +1029,7 @@ export default function QRPage({ projectId }: QRPageProps) {
             </p>
           </div>
 
-          <div className="inline-flex w-fit shrink-0 items-center gap-2 rounded-xl bg-emerald-400/[0.06] px-3.5 py-2.5 text-xs font-medium text-emerald-300">
+          <div className="inline-flex w-fit shrink-0 items-center gap-2 rounded-xl bg-blue-400/[0.06] px-3.5 py-2.5 text-xs font-medium text-blue-300">
             <CheckCircle2 size={15} />
             Voting active
           </div>
@@ -1044,10 +1037,10 @@ export default function QRPage({ projectId }: QRPageProps) {
 
         {/* Election statistics */}
         <section className="mb-7 grid gap-3 sm:grid-cols-3">
-          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4">
+          <div className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
             <div className="flex items-center justify-between">
               <span className="text-xs text-white/40">Nominees</span>
-              <Users size={17} className="text-emerald-300" />
+              <Users size={17} className="text-blue-300" />
             </div>
 
             <p className="mt-2 text-2xl font-semibold text-white">
@@ -1059,10 +1052,10 @@ export default function QRPage({ projectId }: QRPageProps) {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4">
+          <div className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
             <div className="flex items-center justify-between">
               <span className="text-xs text-white/40">Total votes</span>
-              <Vote size={17} className="text-emerald-300" />
+              <Vote size={17} className="text-blue-300" />
             </div>
 
             <p className="mt-2 text-2xl font-semibold tabular-nums text-white">
@@ -1074,10 +1067,10 @@ export default function QRPage({ projectId }: QRPageProps) {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4">
+          <div className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
             <div className="flex items-center justify-between">
               <span className="text-xs text-white/40">Created</span>
-              <Clock3 size={17} className="text-emerald-300" />
+              <Clock3 size={17} className="text-blue-300" />
             </div>
 
             <p className="mt-2 text-base font-semibold text-white">
@@ -1110,14 +1103,14 @@ export default function QRPage({ projectId }: QRPageProps) {
 
         {/* Voter status */}
         {hasVoted && (
-          <div className="mb-6 flex items-start gap-3 rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.055] p-4">
+          <div className="mb-6 flex items-start gap-3 rounded-2xl border border-blue-400/15 bg-blue-400/[0.055] p-4">
             <ShieldCheck
               size={19}
-              className="mt-0.5 shrink-0 text-emerald-300"
+              className="mt-0.5 shrink-0 text-blue-300"
             />
 
             <div>
-              <p className="text-sm font-semibold text-emerald-200">
+              <p className="text-sm font-semibold text-blue-200">
                 Your vote has been recorded
               </p>
 
@@ -1145,7 +1138,7 @@ export default function QRPage({ projectId }: QRPageProps) {
             </p>
           </div>
 
-          <span className="rounded-full border border-white/[0.08] bg-white/[0.025] px-3 py-1.5 text-xs text-white/45">
+          <span className="rounded-full border border-white/[0.08] bg-[#141a24] px-3 py-1.5 text-xs text-white/45">
             {nominees.length}{" "}
             {nominees.length === 1 ? "nominee" : "nominees"}
           </span>
@@ -1153,7 +1146,7 @@ export default function QRPage({ projectId }: QRPageProps) {
 
         {/* Nominee cards */}
         {nominees.length === 0 ? (
-          <div className="rounded-3xl border border-white/[0.08] bg-white/[0.025] px-5 py-14 text-center">
+          <div className="rounded-3xl border border-white/[0.08] bg-[#141a24] px-5 py-14 text-center">
             <Users className="mx-auto mb-4 text-white/30" size={30} />
 
             <h3 className="font-semibold text-white">
@@ -1254,7 +1247,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                       </div>
 
                       <div
-                        className="h-2 overflow-hidden rounded-full bg-white/[0.07]"
+                        className="h-2 overflow-hidden rounded-full bg-[#141a24]"
                         role="progressbar"
                         aria-label={`${nominee.name || "Nominee"} vote percentage`}
                         aria-valuenow={Number(percentage.toFixed(1))}
@@ -1315,14 +1308,14 @@ export default function QRPage({ projectId }: QRPageProps) {
         <ModalPortal>
           <div
             role="status"
-            className="fixed right-4 top-5 z-[120] flex w-[calc(100%-32px)] max-w-sm items-start gap-3 rounded-2xl border border-emerald-400/20 bg-[#10251a]/95 p-4 shadow-[0_15px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl"
+            className="fixed right-4 top-5 z-[120] flex w-[calc(100%-32px)] max-w-sm items-start gap-3 rounded-2xl border border-blue-400/20 bg-[#151e2c] p-4 shadow-[0_15px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl"
           >
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-400/15 text-emerald-300">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-400/15 text-blue-300">
             <CheckCircle2 size={19} />
           </div>
 
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-semibold text-emerald-200">
+            <p className="text-sm font-semibold text-blue-200">
               Vote submitted successfully!
             </p>
 
@@ -1335,7 +1328,7 @@ export default function QRPage({ projectId }: QRPageProps) {
             type="button"
             onClick={() => setSuccessMessage("")}
             aria-label="Dismiss notification"
-            className="rounded-lg p-1 text-white/40 transition hover:bg-white/[0.06] hover:text-white"
+            className="rounded-lg p-1 text-white/40 transition hover:bg-[#141a24] hover:text-white"
           >
             <X size={16} />
           </button>
@@ -1347,8 +1340,8 @@ export default function QRPage({ projectId }: QRPageProps) {
       {showAlreadyVoted && (
         <ModalPortal>
           <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/70 px-4 backdrop-blur-sm">
-          <div className="w-full max-w-sm rounded-3xl border border-white/[0.1] bg-[#0c1711] p-6 text-center shadow-2xl">
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">
+          <div className="w-full max-w-sm rounded-3xl border border-white/[0.1] bg-[#141a24] p-6 text-center shadow-2xl">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.08] text-blue-300">
               <ShieldCheck size={26} />
             </div>
 
@@ -1364,7 +1357,7 @@ export default function QRPage({ projectId }: QRPageProps) {
             <button
               type="button"
               onClick={() => setShowAlreadyVoted(false)}
-              className="mt-6 w-full rounded-xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-[#04130c] transition hover:bg-emerald-300"
+              className="mt-6 w-full rounded-xl bg-blue-400 px-4 py-3 text-sm font-semibold text-[#07101c] transition hover:bg-blue-300"
             >
               Understood
             </button>
@@ -1388,14 +1381,13 @@ export default function QRPage({ projectId }: QRPageProps) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="vote-modal-title"
-            className="relative my-auto w-full max-w-md overflow-hidden rounded-3xl border border-emerald-400/15 bg-[#0c1711] p-6 shadow-[0_25px_100px_rgba(0,0,0,0.6)] sm:p-7"
+            className="relative my-auto w-full max-w-md overflow-hidden rounded-3xl border border-blue-400/15 bg-[#141a24] p-6 shadow-[0_25px_100px_rgba(0,0,0,0.6)] sm:p-7"
           >
-            <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full bg-emerald-400/[0.07] blur-[65px]" />
 
             <div className="relative">
               <div className="mb-5 flex items-start justify-between">
                 <div>
-                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">
+                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.08] text-blue-300">
                     <Vote size={21} />
                   </div>
 
@@ -1412,7 +1404,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                   onClick={closeVoteModal}
                   disabled={submitting}
                   aria-label="Close voting dialog"
-                  className="rounded-xl p-2 text-white/40 transition hover:bg-white/[0.06] hover:text-white disabled:opacity-40"
+                  className="rounded-xl p-2 text-white/40 transition hover:bg-[#141a24] hover:text-white disabled:opacity-40"
                 >
                   <X size={19} />
                 </button>
@@ -1425,7 +1417,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                     htmlFor="voter-name"
                     className="mb-2 block text-xs font-medium text-white/65"
                   >
-                    Your name <span className="text-emerald-300">*</span>
+                    Your name <span className="text-blue-300">*</span>
                   </label>
 
                   <input
@@ -1442,7 +1434,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                     }
                     placeholder="Enter your name"
                     disabled={submitting}
-                    className="w-full rounded-xl border border-white/[0.09] bg-black/20 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-emerald-400/45 focus:ring-2 focus:ring-emerald-400/10 disabled:opacity-50"
+                    className="w-full rounded-xl border border-white/[0.09] bg-black/20 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-blue-400/45 focus:ring-2 focus:ring-blue-400/10 disabled:opacity-50"
                   />
                 </div>
 
@@ -1469,7 +1461,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                     }
                     placeholder="Share a short comment..."
                     disabled={submitting}
-                    className="w-full resize-none rounded-xl border border-white/[0.09] bg-black/20 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-emerald-400/45 focus:ring-2 focus:ring-emerald-400/10 disabled:opacity-50"
+                    className="w-full resize-none rounded-xl border border-white/[0.09] bg-black/20 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-blue-400/45 focus:ring-2 focus:ring-blue-400/10 disabled:opacity-50"
                   />
 
                   <p className="mt-1 text-right text-[10px] text-white/25">
@@ -1492,7 +1484,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                   type="button"
                   onClick={() => setShowVoteConfirmation(true)}
                   disabled={submitting || !voteForm.name.trim()}
-                  className="group flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-400 px-4 py-3.5 text-sm font-semibold text-[#04130c] transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-40"
+                  className="group flex w-full items-center justify-center gap-2 rounded-xl bg-blue-400 px-4 py-3.5 text-sm font-semibold text-[#07101c] transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-300 disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   {submitting ? (
                     <>
@@ -1515,7 +1507,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                   type="button"
                   onClick={closeVoteModal}
                   disabled={submitting}
-                  className="w-full rounded-xl border border-white/[0.08] px-4 py-3 text-sm font-medium text-white/50 transition hover:bg-white/[0.04] hover:text-white disabled:opacity-40"
+                  className="w-full rounded-xl border border-white/[0.08] px-4 py-3 text-sm font-medium text-white/50 transition hover:bg-[#141a24] hover:text-white disabled:opacity-40"
                 >
                   Cancel
                 </button>
@@ -1545,9 +1537,9 @@ export default function QRPage({ projectId }: QRPageProps) {
               role="alertdialog"
               aria-modal="true"
               aria-labelledby="final-vote-confirmation-title"
-              className="w-full max-w-sm rounded-3xl border border-emerald-400/20 bg-[linear-gradient(145deg,rgba(16,37,26,0.98),rgba(11,17,13,0.98))] p-6 text-center shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
+              className="w-full max-w-sm rounded-3xl border border-blue-400/20 bg-[linear-gradient(145deg,rgba(16,37,26,0.98),rgba(11,17,13,0.98))] p-6 text-center shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
             >
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.10] text-emerald-300">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.10] text-blue-300">
                 <ShieldCheck size={26} />
               </div>
 
@@ -1559,7 +1551,7 @@ export default function QRPage({ projectId }: QRPageProps) {
               </h3>
               <p className="mt-2 text-sm leading-6 text-white/55">
                 Submit your vote for{" "}
-                <span className="font-semibold text-emerald-300">
+                <span className="font-semibold text-blue-300">
                   {selectedNominee.name || "this nominee"}
                 </span>
                 ?
@@ -1573,7 +1565,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                   type="button"
                   disabled={submitting}
                   onClick={() => setShowVoteConfirmation(false)}
-                  className="min-h-11 flex-1 rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 text-sm font-medium text-white/60 transition hover:bg-white/[0.06] hover:text-white disabled:opacity-40"
+                  className="min-h-11 flex-1 rounded-xl border border-white/[0.08] bg-[#141a24] px-4 text-sm font-medium text-white/60 transition hover:bg-[#141a24] hover:text-white disabled:opacity-40"
                 >
                   Go back
                 </button>
@@ -1584,7 +1576,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                     setShowVoteConfirmation(false);
                     void handleVote();
                   }}
-                  className="min-h-11 flex-1 rounded-xl bg-emerald-400 px-4 text-sm font-semibold text-[#04130c] transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-40"
+                  className="min-h-11 flex-1 rounded-xl bg-blue-400 px-4 text-sm font-semibold text-[#07101c] transition hover:bg-blue-300 disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   Yes, submit vote
                 </button>

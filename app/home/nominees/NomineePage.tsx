@@ -492,10 +492,9 @@ export default function NomineesPage() {
   if (taskKey !== true || !selectedProject?.id) {
     return (
       <div className="flex min-h-[calc(100dvh-5rem)] w-full items-center justify-center overflow-hidden px-2 py-5 md:px-3">
-        <section className="relative w-full max-w-md overflow-hidden rounded-3xl border border-white/[0.09] bg-[#0b1510] p-7 text-center shadow-[0_25px_80px_rgba(0,0,0,0.35)] sm:p-9">
-          <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full bg-emerald-400/[0.08] blur-[65px]" />
+        <section className="relative w-full max-w-md overflow-hidden rounded-3xl border border-white/[0.09] bg-[#111722] p-7 text-center shadow-[0_25px_80px_rgba(0,0,0,0.35)] sm:p-9">
 
-          <div className="relative mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">
+          <div className="relative mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.08] text-blue-300">
             <Vote size={29} />
           </div>
 
@@ -511,7 +510,7 @@ export default function NomineesPage() {
           <button
             type="button"
             onClick={handleStartElection}
-            className="group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-400 px-5 py-3.5 text-sm font-semibold text-[#04130c] transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-300"
+            className="group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-400 px-5 py-3.5 text-sm font-semibold text-[#07101c] transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-300"
           >
             <Vote size={17} />
             Start Election
@@ -541,7 +540,7 @@ export default function NomineesPage() {
           <button
             type="button"
             onClick={() => void handleRefresh()}
-            className="mt-4 rounded-xl border border-white/10 px-4 py-2 text-sm text-white/70 transition hover:bg-white/[0.06]"
+            className="mt-4 rounded-xl border border-white/10 px-4 py-2 text-sm text-white/70 transition hover:bg-[#141a24]"
           >
             Try again
           </button>
@@ -557,18 +556,14 @@ export default function NomineesPage() {
   return (
     <main className="relative min-h-screen overflow-x-clip px-2 py-5 text-white md:px-3">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-[6%] top-[12%] h-24 w-24 rounded-full border border-emerald-300/10 bg-emerald-300/[0.02] sm:h-36 sm:w-36" />
-        <div className="absolute right-[7%] top-[18%] h-10 w-10 rounded-full border border-emerald-300/15 bg-emerald-300/[0.035] sm:h-16 sm:w-16" />
-        <div className="absolute bottom-[10%] left-[12%] h-20 w-20 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] sm:h-28 sm:w-28" />
-        <div className="absolute bottom-[22%] right-[10%] h-7 w-7 rounded-full border border-emerald-300/15 bg-emerald-300/[0.035] sm:h-10 sm:w-10" />
       </div>
 
       <div className="relative mx-auto w-full max-w-7xl">
         {/* Election header */}
         <header className="mb-8 flex flex-col justify-between gap-5 pb-6 sm:flex-row sm:items-center">
           <div>
-            <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-emerald-300/65">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+            <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-blue-300/65">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-blue-400" />
               Live election
             </div>
 
@@ -582,7 +577,7 @@ export default function NomineesPage() {
             </p>
           </div>
 
-          <div className="inline-flex w-fit items-center gap-2 rounded-xl bg-emerald-400/[0.06] px-3.5 py-2.5 text-xs font-medium text-emerald-300">
+          <div className="inline-flex w-fit items-center gap-2 rounded-xl bg-blue-400/[0.06] px-3.5 py-2.5 text-xs font-medium text-blue-300">
             <CheckCircle2 size={15} />
             Voting active
           </div>
@@ -590,10 +585,10 @@ export default function NomineesPage() {
 
         {/* Election statistics */}
         <section className="mb-7 grid gap-3 sm:grid-cols-3">
-          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4">
+          <div className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
             <div className="flex items-center justify-between">
               <span className="text-xs text-white/40">Nominees</span>
-              <Users size={17} className="text-emerald-300" />
+              <Users size={17} className="text-blue-300" />
             </div>
 
             <p className="mt-2 text-2xl font-semibold text-white">
@@ -605,10 +600,10 @@ export default function NomineesPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4">
+          <div className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
             <div className="flex items-center justify-between">
               <span className="text-xs text-white/40">Total votes</span>
-              <Vote size={17} className="text-emerald-300" />
+              <Vote size={17} className="text-blue-300" />
             </div>
 
             <p className="mt-2 text-2xl font-semibold tabular-nums text-white">
@@ -620,10 +615,10 @@ export default function NomineesPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4">
+          <div className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
             <div className="flex items-center justify-between">
               <span className="text-xs text-white/40">Created</span>
-              <Clock3 size={17} className="text-emerald-300" />
+              <Clock3 size={17} className="text-blue-300" />
             </div>
 
             <p className="mt-2 text-base font-semibold text-white">
@@ -656,14 +651,14 @@ export default function NomineesPage() {
 
         {/* Voter status */}
         {hasVoted && (
-          <div className="mb-6 flex items-start gap-3 rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.055] p-4">
+          <div className="mb-6 flex items-start gap-3 rounded-2xl border border-blue-400/15 bg-blue-400/[0.055] p-4">
             <ShieldCheck
               size={19}
-              className="mt-0.5 shrink-0 text-emerald-300"
+              className="mt-0.5 shrink-0 text-blue-300"
             />
 
             <div>
-              <p className="text-sm font-semibold text-emerald-200">
+              <p className="text-sm font-semibold text-blue-200">
                 Your vote has been recorded
               </p>
 
@@ -691,7 +686,7 @@ export default function NomineesPage() {
             </p>
           </div>
 
-          <span className="rounded-full border border-white/[0.08] bg-white/[0.025] px-3 py-1.5 text-xs text-white/45">
+          <span className="rounded-full border border-white/[0.08] bg-[#141a24] px-3 py-1.5 text-xs text-white/45">
             {nominees.length}{" "}
             {nominees.length === 1 ? "nominee" : "nominees"}
           </span>
@@ -699,7 +694,7 @@ export default function NomineesPage() {
 
         {/* Nominee cards */}
         {nominees.length === 0 ? (
-          <div className="rounded-3xl border border-white/[0.08] bg-white/[0.025] px-5 py-14 text-center">
+          <div className="rounded-3xl border border-white/[0.08] bg-[#141a24] px-5 py-14 text-center">
             <Users className="mx-auto mb-4 text-white/30" size={30} />
 
             <h3 className="font-semibold text-white">
@@ -794,7 +789,7 @@ export default function NomineesPage() {
                       </div>
 
                       <div
-                        className="h-2 overflow-hidden rounded-full bg-white/[0.07]"
+                        className="h-2 overflow-hidden rounded-full bg-[#141a24]"
                         role="progressbar"
                         aria-label={`${nominee.name || "Nominee"} vote percentage`}
                         aria-valuenow={Number(percentage.toFixed(1))}
@@ -855,14 +850,14 @@ export default function NomineesPage() {
         <ModalPortal>
           <div
             role="status"
-            className="fixed right-4 top-5 z-[120] flex w-[calc(100%-32px)] max-w-sm items-start gap-3 rounded-2xl border border-emerald-400/20 bg-[#10251a]/95 p-4 shadow-[0_15px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl"
+            className="fixed right-4 top-5 z-[120] flex w-[calc(100%-32px)] max-w-sm items-start gap-3 rounded-2xl border border-blue-400/20 bg-[#151e2c] p-4 shadow-[0_15px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl"
           >
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-400/15 text-emerald-300">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-400/15 text-blue-300">
             <CheckCircle2 size={19} />
           </div>
 
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-semibold text-emerald-200">
+            <p className="text-sm font-semibold text-blue-200">
               Vote submitted successfully!
             </p>
 
@@ -875,7 +870,7 @@ export default function NomineesPage() {
             type="button"
             onClick={() => setSuccessMessage("")}
             aria-label="Dismiss notification"
-            className="rounded-lg p-1 text-white/40 transition hover:bg-white/[0.06] hover:text-white"
+            className="rounded-lg p-1 text-white/40 transition hover:bg-[#141a24] hover:text-white"
           >
             <X size={16} />
           </button>
@@ -887,8 +882,8 @@ export default function NomineesPage() {
       {showAlreadyVoted && (
         <ModalPortal>
           <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/70 px-4 backdrop-blur-sm">
-          <div className="w-full max-w-sm rounded-3xl border border-white/[0.1] bg-[#0c1711] p-6 text-center shadow-2xl">
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">
+          <div className="w-full max-w-sm rounded-3xl border border-white/[0.1] bg-[#141a24] p-6 text-center shadow-2xl">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.08] text-blue-300">
               <ShieldCheck size={26} />
             </div>
 
@@ -904,7 +899,7 @@ export default function NomineesPage() {
             <button
               type="button"
               onClick={() => setShowAlreadyVoted(false)}
-              className="mt-6 w-full rounded-xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-[#04130c] transition hover:bg-emerald-300"
+              className="mt-6 w-full rounded-xl bg-blue-400 px-4 py-3 text-sm font-semibold text-[#07101c] transition hover:bg-blue-300"
             >
               Understood
             </button>
@@ -928,19 +923,15 @@ export default function NomineesPage() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="vote-modal-title"
-            className="relative my-auto w-full max-w-md overflow-hidden rounded-3xl border border-emerald-400/15 bg-[#0c1711] p-6 shadow-[0_25px_100px_rgba(0,0,0,0.6)] sm:p-7"
+            className="relative my-auto w-full max-w-md overflow-hidden rounded-3xl border border-blue-400/15 bg-[#141a24] p-6 shadow-[0_25px_100px_rgba(0,0,0,0.6)] sm:p-7"
           >
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-              <div className="absolute -right-12 -top-16 h-36 w-36 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025]" />
-              <div className="absolute right-[12%] top-[28%] h-7 w-7 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
-              <div className="absolute -bottom-12 -left-10 h-28 w-28 rounded-full border border-emerald-300/10 bg-emerald-300/[0.02]" />
-              <div className="absolute bottom-[19%] right-[8%] h-5 w-5 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
             </div>
 
             <div className="relative">
               <div className="mb-5 flex items-start justify-between">
                 <div>
-                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">
+                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.08] text-blue-300">
                     <Vote size={21} />
                   </div>
 
@@ -957,7 +948,7 @@ export default function NomineesPage() {
                   onClick={closeVoteModal}
                   disabled={submitting}
                   aria-label="Close voting dialog"
-                  className="rounded-xl p-2 text-white/40 transition hover:bg-white/[0.06] hover:text-white disabled:opacity-40"
+                  className="rounded-xl p-2 text-white/40 transition hover:bg-[#141a24] hover:text-white disabled:opacity-40"
                 >
                   <X size={19} />
                 </button>
@@ -970,7 +961,7 @@ export default function NomineesPage() {
                     htmlFor="voter-name"
                     className="mb-2 block text-xs font-medium text-white/65"
                   >
-                    Your name <span className="text-emerald-300">*</span>
+                    Your name <span className="text-blue-300">*</span>
                   </label>
 
                   <input
@@ -987,7 +978,7 @@ export default function NomineesPage() {
                     }
                     placeholder="Enter your name"
                     disabled={submitting}
-                    className="w-full rounded-xl border border-white/[0.09] bg-black/20 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-emerald-400/45 focus:ring-2 focus:ring-emerald-400/10 disabled:opacity-50"
+                    className="w-full rounded-xl border border-white/[0.09] bg-black/20 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-blue-400/45 focus:ring-2 focus:ring-blue-400/10 disabled:opacity-50"
                   />
                 </div>
 
@@ -1014,7 +1005,7 @@ export default function NomineesPage() {
                     }
                     placeholder="Share a short comment..."
                     disabled={submitting}
-                    className="w-full resize-none rounded-xl border border-white/[0.09] bg-black/20 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-emerald-400/45 focus:ring-2 focus:ring-emerald-400/10 disabled:opacity-50"
+                    className="w-full resize-none rounded-xl border border-white/[0.09] bg-black/20 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-blue-400/45 focus:ring-2 focus:ring-blue-400/10 disabled:opacity-50"
                   />
 
                   <p className="mt-1 text-right text-[10px] text-white/25">
@@ -1037,7 +1028,7 @@ export default function NomineesPage() {
                   type="button"
                   onClick={() => setShowVoteConfirmation(true)}
                   disabled={submitting || !voteForm.name.trim()}
-                  className="group flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-400 px-4 py-3.5 text-sm font-semibold text-[#04130c] transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-40"
+                  className="group flex w-full items-center justify-center gap-2 rounded-xl bg-blue-400 px-4 py-3.5 text-sm font-semibold text-[#07101c] transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-300 disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   {submitting ? (
                     <>
@@ -1060,7 +1051,7 @@ export default function NomineesPage() {
                   type="button"
                   onClick={closeVoteModal}
                   disabled={submitting}
-                  className="w-full rounded-xl border border-white/[0.08] px-4 py-3 text-sm font-medium text-white/50 transition hover:bg-white/[0.04] hover:text-white disabled:opacity-40"
+                  className="w-full rounded-xl border border-white/[0.08] px-4 py-3 text-sm font-medium text-white/50 transition hover:bg-[#141a24] hover:text-white disabled:opacity-40"
                 >
                   Cancel
                 </button>
@@ -1090,9 +1081,9 @@ export default function NomineesPage() {
               role="alertdialog"
               aria-modal="true"
               aria-labelledby="final-vote-confirmation-title"
-              className="w-full max-w-sm rounded-3xl border border-emerald-400/20 bg-[linear-gradient(145deg,rgba(16,37,26,0.98),rgba(11,17,13,0.98))] p-6 text-center shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
+              className="w-full max-w-sm rounded-3xl border border-blue-400/20 bg-[linear-gradient(145deg,rgba(16,37,26,0.98),rgba(11,17,13,0.98))] p-6 text-center shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
             >
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.10] text-emerald-300">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.10] text-blue-300">
                 <ShieldCheck size={26} />
               </div>
 
@@ -1104,7 +1095,7 @@ export default function NomineesPage() {
               </h3>
               <p className="mt-2 text-sm leading-6 text-white/55">
                 Submit your vote for{" "}
-                <span className="font-semibold text-emerald-300">
+                <span className="font-semibold text-blue-300">
                   {selectedNominee.name || "this nominee"}
                 </span>
                 ?
@@ -1118,7 +1109,7 @@ export default function NomineesPage() {
                   type="button"
                   disabled={submitting}
                   onClick={() => setShowVoteConfirmation(false)}
-                  className="min-h-11 flex-1 rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 text-sm font-medium text-white/60 transition hover:bg-white/[0.06] hover:text-white disabled:opacity-40"
+                  className="min-h-11 flex-1 rounded-xl border border-white/[0.08] bg-[#141a24] px-4 text-sm font-medium text-white/60 transition hover:bg-[#141a24] hover:text-white disabled:opacity-40"
                 >
                   Go back
                 </button>
@@ -1129,7 +1120,7 @@ export default function NomineesPage() {
                     setShowVoteConfirmation(false);
                     void handleVote();
                   }}
-                  className="min-h-11 flex-1 rounded-xl bg-emerald-400 px-4 text-sm font-semibold text-[#04130c] transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-40"
+                  className="min-h-11 flex-1 rounded-xl bg-blue-400 px-4 text-sm font-semibold text-[#07101c] transition hover:bg-blue-300 disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   Yes, submit vote
                 </button>

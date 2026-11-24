@@ -160,8 +160,8 @@ export default function AuthCallbackPage() {
   }, [router]);
 
   return (
-    <main className="flex min-h-dvh items-center justify-center bg-[#070b09] px-2 text-zinc-100 md:px-3">
-      <div className="w-full max-w-sm rounded-2xl border border-white/[0.08] bg-[#0d1310] p-6 text-center">
+    <main className="flex min-h-dvh items-center justify-center bg-transparent px-2 text-zinc-100 md:px-3">
+      <div className="w-full max-w-sm rounded-2xl border border-white/[0.08] bg-[#141a24] p-6 text-center">
 
         {error ? (
           <>
@@ -185,7 +185,7 @@ export default function AuthCallbackPage() {
 
             <Link
               href="/"
-              className="mt-5 inline-flex rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-[#062116] transition hover:bg-emerald-400"
+              className="mt-5 inline-flex rounded-lg bg-blue-500 px-4 py-2 text-sm font-semibold text-[#07101c] transition hover:bg-blue-400"
             >
               Return to login
             </Link>
@@ -194,7 +194,7 @@ export default function AuthCallbackPage() {
           <>
             <LoaderCircle
               aria-hidden="true"
-              className="mx-auto h-7 w-7 animate-spin text-emerald-400"
+              className="mx-auto h-7 w-7 animate-spin text-blue-400"
             />
 
             <h1 className="mt-4 text-lg font-semibold">

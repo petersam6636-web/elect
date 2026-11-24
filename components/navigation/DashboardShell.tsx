@@ -79,14 +79,6 @@ export default function DashboardShell({ children }: DashboardShellProps) {
 
   return (
     <div className="relative min-h-dvh overflow-hidden text-zinc-100">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-0 -z-10"
-      >
-        <div className="absolute -left-32 top-[-12rem] h-[32rem] w-[32rem] rounded-full bg-emerald-500/[0.12] blur-[110px]" />
-        <div className="absolute bottom-[-18rem] right-[-10rem] h-[38rem] w-[38rem] rounded-full bg-emerald-300/[0.08] blur-[130px]" />
-      </div>
-
       {/* Keep fixed navigation outside ScrollSmoother's transformed content. */}
       {!isPublicVoterRoute &&
         portalRoot &&
@@ -114,13 +106,13 @@ export default function DashboardShell({ children }: DashboardShellProps) {
           }`}
         >
           <div
-            className={`mx-auto min-h-dvh w-full max-w-[1600px] pt-5 md:pt-6 ${
+            className={`mx-auto min-h-dvh w-full max-w-7xl pt-5 md:pt-6 ${
               isPublicVoterRoute ? "pb-6" : "pb-24 md:pb-6"
             }`}
           >
-            {ready ? children : (
-              <div className="min-h-[60vh]" aria-hidden="true" />
-            )}
+              {ready ? children : (
+                <div className="min-h-[60vh]" aria-hidden="true" />
+              )}
           </div>
         </main>
       </div>

@@ -122,15 +122,15 @@ export default function AuthGuard({ children }: AuthGuardProps) {
   // has been verified.
   if (checking) {
     return (
-      <div className="flex min-h-dvh items-center justify-center bg-[#050a07] px-2 text-white md:px-3">
+      <div className="flex min-h-dvh items-center justify-center bg-transparent px-2 text-white md:px-3">
         <div className="flex flex-col items-center gap-4">
 
-          <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.07] shadow-[0_0_35px_rgba(16,185,129,0.10)]">
-            <ShieldCheck size={25} className="text-emerald-400" />
+          <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.07] shadow-[0_0_35px_rgba(59,130,246,0.10)]">
+            <ShieldCheck size={25} className="text-blue-400" />
 
             <LoaderCircle
               size={19}
-              className="absolute -right-2 -top-2 animate-spin text-emerald-300"
+              className="absolute -right-2 -top-2 animate-spin text-blue-300"
             />
           </div>
 
@@ -148,5 +148,5 @@ export default function AuthGuard({ children }: AuthGuardProps) {
     );
   }
 
-  return <div className="relative min-h-dvh bg-[#070b09]">{children}</div>;
+  return <div className="relative min-h-dvh bg-transparent">{children}</div>;
 }

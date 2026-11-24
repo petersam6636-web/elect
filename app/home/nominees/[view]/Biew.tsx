@@ -108,7 +108,7 @@ function CircularProgress({
   percentage,
   size = 68,
   strokeWidth = 5,
-  color = "text-emerald-300",
+  color = "text-blue-300",
 }: CircularProgressProps) {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
@@ -155,14 +155,14 @@ function CircularProgress({
           strokeDashoffset={offset}
           className={`${color} transition-[stroke-dashoffset] duration-1000 ease-in-out`}
           style={{
-            filter: "drop-shadow(0 0 4px rgba(52,211,153,0.25))",
+            filter: "drop-shadow(0 0 4px rgba(96,165,250,0.25))",
           }}
         />
       </svg>
 
       {/* Percentage */}
 
-      <span className="absolute inset-0 flex items-center justify-center text-sm font-bold tabular-nums text-emerald-200">
+      <span className="absolute inset-0 flex items-center justify-center text-sm font-bold tabular-nums text-blue-200">
         {safePercentage}%
       </span>
     </div>
@@ -439,12 +439,11 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
 
   if (!currentProject) {
     return (
-      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-2 py-6 text-white md:px-3">
-        <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-emerald-500/10 blur-[120px]" />
+      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-transparent px-2 py-6 text-white md:px-3">
 
-        <div className="relative w-full max-w-md rounded-3xl border border-emerald-400/15 bg-[#0b1712]/90 p-8 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
-          <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/10">
-            <Vote className="h-8 w-8 text-emerald-400" />
+        <div className="relative w-full max-w-md rounded-3xl border border-blue-400/15 bg-[#121824] p-8 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
+          <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/10">
+            <Vote className="h-8 w-8 text-blue-400" />
           </div>
 
           <h1 className="text-xl font-semibold text-white">
@@ -458,7 +457,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
 
           <Link
             href="/home"
-            className="mt-7 inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-[#04120b] transition hover:bg-emerald-400"
+            className="mt-7 inline-flex items-center gap-2 rounded-xl bg-blue-500 px-5 py-3 text-sm font-semibold text-[#07101c] transition hover:bg-blue-400"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to dashboard
@@ -474,12 +473,11 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
 
   if (!nominee) {
     return (
-      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07110c] px-2 py-6 text-white md:px-3">
-        <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-emerald-500/10 blur-[120px]" />
+      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-transparent px-2 py-6 text-white md:px-3">
 
-        <div className="relative w-full max-w-md rounded-3xl border border-emerald-400/15 bg-[#0b1712]/90 p-8 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
-          <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/10">
-            <Users className="h-8 w-8 text-emerald-400" />
+        <div className="relative w-full max-w-md rounded-3xl border border-blue-400/15 bg-[#121824] p-8 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
+          <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/10">
+            <Users className="h-8 w-8 text-blue-400" />
           </div>
 
           <h1 className="text-xl font-semibold text-white">
@@ -493,7 +491,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
 
           <Link
             href="/home"
-            className="mt-7 inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-[#04120b] transition hover:bg-emerald-400"
+            className="mt-7 inline-flex items-center gap-2 rounded-xl bg-blue-500 px-5 py-3 text-sm font-semibold text-[#07101c] transition hover:bg-blue-400"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to dashboard
@@ -524,7 +522,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
         <div className="mb-7 flex min-w-0 flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <div className="min-w-0">
 
-            <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-emerald-400">
+            <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-blue-400">
               VoteSphere / Nominee profile
             </p>
 
@@ -537,9 +535,9 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
             </p>
           </div>
 
-          <div className="mx-auto flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-4 py-2 sm:mx-0 sm:self-center">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
-            <span className="text-xs font-medium text-emerald-300">
+          <div className="mx-auto flex items-center gap-2 rounded-full border border-blue-400/15 bg-blue-400/[0.06] px-4 py-2 sm:mx-0 sm:self-center">
+            <span className="h-2 w-2 rounded-full bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.8)]" />
+            <span className="text-xs font-medium text-blue-300">
               {electionActive === false
                 ? "Election complete"
                 : "Election profile"}
@@ -559,11 +557,11 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
         {electionActive === false && (
           <section
             aria-labelledby="final-results-heading"
-            className="mb-6 w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-emerald-400/20 bg-gradient-to-br from-emerald-500/[0.1] to-[#0b1712] p-5 sm:p-7"
+            className="mb-6 w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-blue-400/20 bg-gradient-to-br from-blue-500/[0.1] to-[#121824] p-5 sm:p-7"
           >
             <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div className="min-w-0">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-300">
                   Election complete
                 </p>
                 <h2
@@ -577,7 +575,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                   {totalVotes === 1 ? "vote" : "votes"} recorded
                 </p>
               </div>
-              <span className="w-fit shrink-0 rounded-full border border-emerald-400/20 bg-emerald-400/[0.08] px-3 py-1.5 text-xs font-semibold text-emerald-200">
+              <span className="w-fit shrink-0 rounded-full border border-blue-400/20 bg-blue-400/[0.08] px-3 py-1.5 text-xs font-semibold text-blue-200">
                 {winningNominees.length > 1
                   ? "Tie"
                   : winningNominees.length === 1
@@ -623,7 +621,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                       key={item.id}
                       className="flex min-w-0 items-center gap-3 rounded-xl border border-white/[0.07] bg-black/10 px-3 py-3"
                     >
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] text-xs font-semibold text-gray-300">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#141a24] text-xs font-semibold text-gray-300">
                         {`#${itemRank}`}
                       </span>
                       <span className="min-w-0 flex-1 break-words text-sm font-medium text-white">
@@ -645,9 +643,8 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
             PROFILE OVERVIEW
         -------------------------------------------------- */}
 
-        <section className="relative mb-6 w-full min-w-0 overflow-hidden rounded-[2rem] border border-emerald-400/15 bg-[#0b1912] shadow-[0_25px_90px_rgba(0,0,0,0.3)]">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.09] via-transparent to-transparent" />
-          <div className="absolute -right-20 -top-36 h-96 w-96 rounded-full bg-emerald-400/[0.08] blur-[100px]" />
+        <section className="relative mb-6 w-full min-w-0 overflow-hidden rounded-[2rem] border border-blue-400/15 bg-[#121824] shadow-[0_25px_90px_rgba(0,0,0,0.3)]">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.09] via-transparent to-transparent" />
 
           <div className="relative grid min-w-0 gap-8 p-5 sm:p-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:p-10">
 
@@ -659,23 +656,23 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                   <img
                     src={nominee.image}
                     alt={nominee.name || "Nominee"}
-                    className="h-36 w-36 rounded-[2rem] border-2 border-emerald-400/30 object-cover shadow-[0_0_45px_rgba(16,185,129,0.16)] sm:h-44 sm:w-44"
+                    className="h-36 w-36 rounded-[2rem] border-2 border-blue-400/30 object-cover shadow-[0_0_45px_rgba(59,130,246,0.16)] sm:h-44 sm:w-44"
                   />
                 ) : (
-                  <div className="flex h-36 w-36 items-center justify-center rounded-[2rem] border-2 border-emerald-400/25 bg-gradient-to-br from-emerald-400/20 to-emerald-950/60 text-4xl font-bold text-emerald-300 shadow-[0_0_45px_rgba(16,185,129,0.12)] sm:h-44 sm:w-44 sm:text-5xl">
+                  <div className="flex h-36 w-36 items-center justify-center rounded-[2rem] border-2 border-blue-400/25 bg-gradient-to-br from-blue-400/20 to-blue-950/60 text-4xl font-bold text-blue-300 shadow-[0_0_45px_rgba(59,130,246,0.12)] sm:h-44 sm:w-44 sm:text-5xl">
                     {getInitials(nominee.name)}
                   </div>
                 )}
 
                 {isWinner && (
-                  <div className="absolute -bottom-3 -right-3 flex h-12 w-12 items-center justify-center rounded-2xl border border-yellow-300/30 bg-[#30270d] shadow-xl">
+                  <div className="absolute -bottom-3 -right-3 flex h-12 w-12 items-center justify-center rounded-2xl border border-yellow-300/30 bg-[#171d2a] shadow-xl">
                     <Crown className="h-6 w-6 text-yellow-300" />
                   </div>
                 )}
               </div>
 
               <div className="min-w-0 text-center sm:text-left">
-                <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/[0.08] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-300">
+                <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-400/[0.08] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-blue-300">
                   <CheckCircle2 className="h-3.5 w-3.5" />
                   Nominee profile
                 </div>
@@ -685,7 +682,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                 </h2>
 
                 <p className="mt-3 flex flex-wrap items-center justify-center gap-2 text-sm text-gray-400 sm:justify-start">
-                  <Vote className="h-4 w-4 shrink-0 text-emerald-400" />
+                  <Vote className="h-4 w-4 shrink-0 text-blue-400" />
                   <span className="break-words">
                     {currentProject.name || "Election project"}
                   </span>
@@ -708,8 +705,8 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                       : "Currently leading this election"}
                   </div>
                 ) : (
-                  <div className="mt-5 inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.035] px-4 py-2 text-xs font-medium text-gray-400">
-                    <Sparkles className="h-4 w-4 text-emerald-400" />
+                  <div className="mt-5 inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-[#141a24] px-4 py-2 text-xs font-medium text-gray-400">
+                    <Sparkles className="h-4 w-4 text-blue-400" />
                     {electionActive === false
                       ? "Final election position"
                       : "Candidate performance profile"}
@@ -722,34 +719,34 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
 
             <div className="grid w-full min-w-0 grid-cols-2 gap-3 sm:grid-cols-3 lg:w-[390px] lg:grid-cols-2">
 
-              <div className="min-w-0 rounded-2xl border border-emerald-300/30 bg-gradient-to-br from-[#154b32] to-[#0d2b1d] p-4 shadow-[inset_0_1px_0_rgba(110,231,183,0.10)]">
-                <Vote className="mb-3 h-5 w-5 text-emerald-200" />
+              <div className="min-w-0 rounded-2xl border border-blue-300/30 bg-gradient-to-br from-[#192337] to-[#151d2b] p-4 shadow-[inset_0_1px_0_rgba(147,197,253,0.10)]">
+                <Vote className="mb-3 h-5 w-5 text-blue-200" />
                 <p className="text-3xl font-bold tabular-nums text-white">
                   {voteCount}
                 </p>
-                <p className="mt-1 text-[11px] text-emerald-100/80">
+                <p className="mt-1 text-[11px] text-blue-100/80">
                   Total votes
                 </p>
               </div>
 
-              <div className="min-w-0 rounded-2xl border border-emerald-300/25 bg-gradient-to-br from-[#123c29] to-[#0b2418] p-4 shadow-[inset_0_1px_0_rgba(110,231,183,0.08)]">
+              <div className="min-w-0 rounded-2xl border border-blue-300/25 bg-gradient-to-br from-[#172538] to-[#111a29] p-4 shadow-[inset_0_1px_0_rgba(147,197,253,0.08)]">
                 <Trophy className="mb-3 h-5 w-5 text-yellow-200" />
                 <p className="text-3xl font-bold tabular-nums text-white">
                   {rank > 0 ? `#${rank}` : "—"}
                 </p>
-                <p className="mt-1 text-[11px] text-emerald-100/80">
+                <p className="mt-1 text-[11px] text-blue-100/80">
                   Current position
                 </p>
               </div>
 
-              <div className="col-span-2 min-w-0 rounded-2xl border border-emerald-300/25 bg-gradient-to-br from-[#123c29] to-[#0b2418] p-4 shadow-[inset_0_1px_0_rgba(110,231,183,0.08)] sm:col-span-1 lg:col-span-2">
+              <div className="col-span-2 min-w-0 rounded-2xl border border-blue-300/25 bg-gradient-to-br from-[#172538] to-[#111a29] p-4 shadow-[inset_0_1px_0_rgba(147,197,253,0.08)] sm:col-span-1 lg:col-span-2">
                 <div className="flex min-w-0 items-center justify-between gap-3">
                   <div className="min-w-0">
                     <Users className="mb-3 h-5 w-5 text-blue-200" />
                     <p className="text-3xl font-bold tabular-nums text-white">
                       {voteShare}%
                     </p>
-                    <p className="mt-1 text-[11px] text-emerald-100/80">
+                    <p className="mt-1 text-[11px] text-blue-100/80">
                       Share of all votes
                     </p>
                   </div>
@@ -782,12 +779,12 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                 VOTING PERFORMANCE
             -------------------------------------------------- */}
 
-            <section className="w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-[#0b1712]/90 p-5 shadow-xl shadow-black/10 sm:p-7">
+            <section className="w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-[#121824] p-5 shadow-xl shadow-black/10 sm:p-7">
               <div className="mb-6 flex min-w-0 flex-wrap items-center justify-between gap-3">
                 <div className="min-w-0">
                   <div className="mb-2 flex items-center gap-2">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-400/10">
-                      <ChartNoAxesColumnIncreasing className="h-4 w-4 text-emerald-400" />
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-400/10">
+                      <ChartNoAxesColumnIncreasing className="h-4 w-4 text-blue-400" />
                     </div>
                     <h2 className="text-base font-semibold text-white">
                       Voting performance
@@ -799,14 +796,14 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                   </p>
                 </div>
 
-                <span className="shrink-0 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5 text-xs font-semibold text-emerald-300">
+                <span className="shrink-0 rounded-full border border-blue-400/15 bg-blue-400/[0.06] px-3 py-1.5 text-xs font-semibold text-blue-300">
                   {voteShare}% vote share
                 </span>
               </div>
 
               <div className="grid min-w-0 grid-cols-2 gap-3 sm:grid-cols-3">
 
-                <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4">
+                <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
                   <p className="text-2xl font-bold text-white">
                     {voteCount}
                   </p>
@@ -815,7 +812,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                   </p>
                 </div>
 
-                <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4">
+                <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
                   <p className="text-2xl font-bold text-white">
                     {rank > 0 ? `#${rank}` : "—"}
                   </p>
@@ -824,7 +821,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                   </p>
                 </div>
 
-                <div className="col-span-2 min-w-0 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 sm:col-span-1">
+                <div className="col-span-2 min-w-0 rounded-2xl border border-white/[0.07] bg-[#141a24] p-4 sm:col-span-1">
                   <p className="text-2xl font-bold text-white">
                     {totalVotes}
                   </p>
@@ -837,7 +834,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
 
               {/* Performance against leader */}
 
-              <div className="mt-5 min-w-0 rounded-2xl border border-emerald-400/15 bg-gradient-to-br from-emerald-400/[0.07] to-transparent p-5 sm:p-6">
+              <div className="mt-5 min-w-0 rounded-2xl border border-blue-400/15 bg-gradient-to-br from-blue-400/[0.07] to-transparent p-5 sm:p-6">
                 <div className="mb-5 flex min-w-0 items-start justify-between gap-4">
                   <div className="min-w-0">
                     <h3 className="text-sm font-semibold text-white">
@@ -848,14 +845,14 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                     </p>
                   </div>
 
-                  <span className="shrink-0 text-2xl font-bold tabular-nums text-emerald-300">
+                  <span className="shrink-0 text-2xl font-bold tabular-nums text-blue-300">
                     {progress}%
                   </span>
                 </div>
 
                 <div className="h-3 w-full overflow-hidden rounded-full bg-black/40">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-300 transition-all duration-700"
+                    className="h-full rounded-full bg-gradient-to-r from-blue-700 via-blue-500 to-blue-300 transition-all duration-700"
                     style={{ width: `${progress}%` }}
                   />
                 </div>
@@ -871,10 +868,10 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                 MANIFESTO
             -------------------------------------------------- */}
 
-            <section className="w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-[#0b1712]/90 p-5 shadow-xl shadow-black/10 sm:p-7">
+            <section className="w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-[#121824] p-5 shadow-xl shadow-black/10 sm:p-7">
               <div className="mb-5 flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-400/15 bg-emerald-400/[0.07]">
-                  <Award className="h-5 w-5 text-emerald-400" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-400/15 bg-blue-400/[0.07]">
+                  <Award className="h-5 w-5 text-blue-400" />
                 </div>
 
                 <div className="min-w-0">
@@ -888,13 +885,13 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
               </div>
 
               {nominee.manifesto?.trim() ? (
-                <div className="w-full min-w-0 overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5 sm:p-6">
+                <div className="w-full min-w-0 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#141a24] p-5 sm:p-6">
                   <p className="whitespace-pre-wrap break-words text-sm leading-8 text-gray-300">
                     {nominee.manifesto}
                   </p>
                 </div>
               ) : (
-                <div className="rounded-2xl border border-dashed border-white/10 bg-white/[0.02] px-5 py-8 text-center">
+                <div className="rounded-2xl border border-dashed border-white/10 bg-[#141a24] px-5 py-8 text-center">
                   <Award className="mx-auto mb-3 h-6 w-6 text-gray-600" />
                   <p className="text-sm font-medium text-gray-400">
                     No manifesto available
@@ -910,7 +907,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                 ELECTION DASHBOARD
             -------------------------------------------------- */}
 
-            <section className="w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-[#0b1712]/90 p-5 shadow-xl shadow-black/10 sm:p-7">
+            <section className="w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-[#121824] p-5 shadow-xl shadow-black/10 sm:p-7">
               <div className="mb-6 flex min-w-0 flex-wrap items-center justify-between gap-3">
                 <div className="flex min-w-0 items-center gap-3">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-yellow-300/15 bg-yellow-300/[0.07]">
@@ -927,7 +924,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                   </div>
                 </div>
 
-                <span className="shrink-0 rounded-full border border-white/[0.08] bg-white/[0.035] px-3 py-1.5 text-xs text-gray-400">
+                <span className="shrink-0 rounded-full border border-white/[0.08] bg-[#141a24] px-3 py-1.5 text-xs text-gray-400">
                   Showing {topNominees.length} of {rankedNominees.length}
                 </span>
               </div>
@@ -949,12 +946,12 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                         key={item.id}
                         className={`flex w-full min-w-0 items-center justify-between gap-3 rounded-2xl border p-3 transition sm:gap-4 sm:p-4 ${
                           isCurrentNominee
-                            ? "border-emerald-400/25 bg-emerald-400/[0.055]"
-                            : "border-white/[0.06] bg-white/[0.02]"
+                            ? "border-blue-400/25 bg-blue-400/[0.055]"
+                            : "border-white/[0.06] bg-[#141a24]"
                         }`}
                       >
                         <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
-                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-xs font-bold text-gray-300 sm:h-9 sm:w-9">
+                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#141a24] text-xs font-bold text-gray-300 sm:h-9 sm:w-9">
                             {itemRank === 1 && itemVotes > 0 ? (
                               <Crown className="h-4 w-4 text-yellow-300" />
                             ) : (
@@ -969,7 +966,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                               className="h-9 w-9 shrink-0 rounded-xl border border-white/10 object-cover sm:h-10 sm:w-10"
                             />
                           ) : (
-                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-sm font-semibold text-gray-300 sm:h-10 sm:w-10">
+                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-[#141a24] text-sm font-semibold text-gray-300 sm:h-10 sm:w-10">
                               {getInitials(item.name)}
                             </div>
                           )}
@@ -993,10 +990,10 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                           strokeWidth={5}
                           color={
                             isCurrentNominee
-                              ? "text-emerald-300"
+                              ? "text-blue-300"
                               : itemRank === 1
                                 ? "text-yellow-300"
-                                : "text-emerald-500"
+                                : "text-blue-500"
                           }
                         />
                       </div>
@@ -1024,11 +1021,11 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                 ACHIEVEMENTS
             -------------------------------------------------- */}
 
-            <section className="w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-[#0b1712]/90 p-5 shadow-xl shadow-black/10 sm:p-7">
+            <section className="w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-[#121824] p-5 shadow-xl shadow-black/10 sm:p-7">
               <div className="mb-6 flex min-w-0 items-center justify-between gap-3">
                 <div className="flex min-w-0 items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-400/15 bg-emerald-400/[0.07]">
-                    <Medal className="h-5 w-5 text-emerald-400" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-400/15 bg-blue-400/[0.07]">
+                    <Medal className="h-5 w-5 text-blue-400" />
                   </div>
 
                   <div className="min-w-0">
@@ -1041,7 +1038,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                   </div>
                 </div>
 
-                <span className="shrink-0 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5 text-xs font-semibold text-emerald-300">
+                <span className="shrink-0 rounded-full border border-blue-400/15 bg-blue-400/[0.06] px-3 py-1.5 text-xs font-semibold text-blue-300">
                   {nominee.achievements?.length ?? 0}
                 </span>
               </div>
@@ -1051,10 +1048,10 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                   {nominee.achievements?.map((achievement, index) => (
                     <div
                       key={achievement.id ?? `${achievement.project}-${index}`}
-                      className="group flex w-full min-w-0 items-start gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition hover:border-emerald-400/20 hover:bg-emerald-400/[0.035]"
+                      className="group flex w-full min-w-0 items-start gap-4 rounded-2xl border border-white/[0.07] bg-[#141a24] p-4 transition hover:border-blue-400/20 hover:bg-blue-400/[0.035]"
                     >
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-400/15 bg-emerald-400/[0.08]">
-                        <Award className="h-5 w-5 text-emerald-300" />
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-400/15 bg-blue-400/[0.08]">
+                        <Award className="h-5 w-5 text-blue-300" />
                       </div>
 
                       <div className="min-w-0 flex-1">
@@ -1073,7 +1070,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                   ))}
                 </div>
               ) : (
-                <div className="rounded-2xl border border-dashed border-white/10 bg-white/[0.02] px-5 py-10 text-center">
+                <div className="rounded-2xl border border-dashed border-white/10 bg-[#141a24] px-5 py-10 text-center">
                   <Award className="mx-auto mb-3 h-7 w-7 text-gray-600" />
                   <p className="text-sm font-medium text-gray-400">
                     No achievements available
@@ -1089,7 +1086,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                 VOTER COMMENTS
             -------------------------------------------------- */}
 
-            <section className="w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-[#0b1712]/90 p-5 shadow-xl shadow-black/10 sm:p-7">
+            <section className="w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-[#121824] p-5 shadow-xl shadow-black/10 sm:p-7">
               <div className="mb-6 flex min-w-0 items-center justify-between gap-3">
                 <div className="flex min-w-0 items-center gap-3">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-400/15 bg-blue-400/[0.07]">
@@ -1106,7 +1103,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                   </div>
                 </div>
 
-                <span className="shrink-0 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-gray-400">
+                <span className="shrink-0 rounded-full border border-white/10 bg-[#141a24] px-3 py-1.5 text-xs text-gray-400">
                   {comments.length} comments
                 </span>
               </div>
@@ -1116,7 +1113,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                   {comments.map((comment, index) => (
                     <div
                       key={`${nominee.id}-comment-${index}`}
-                      className="w-full min-w-0 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition hover:border-blue-400/15 hover:bg-white/[0.04]"
+                      className="w-full min-w-0 rounded-2xl border border-white/[0.07] bg-[#141a24] p-4 transition hover:border-blue-400/15 hover:bg-[#141a24]"
                     >
                       <div className="mb-3 flex items-center gap-2">
                         <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-400/[0.08]">
@@ -1135,7 +1132,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                   ))}
                 </div>
               ) : (
-                <div className="rounded-2xl border border-dashed border-white/10 bg-white/[0.02] px-5 py-10 text-center">
+                <div className="rounded-2xl border border-dashed border-white/10 bg-[#141a24] px-5 py-10 text-center">
                   <MessageCircle className="mx-auto mb-3 h-7 w-7 text-gray-600" />
                   <p className="text-sm font-medium text-gray-400">
                     No comments yet
@@ -1151,10 +1148,10 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                 PROFILE SUMMARY
             -------------------------------------------------- */}
 
-            <section className="w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-emerald-400/15 bg-gradient-to-br from-emerald-500/[0.09] to-[#0b1712] p-6 sm:p-7">
+            <section className="w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-blue-400/15 bg-gradient-to-br from-blue-500/[0.09] to-[#121824] p-6 sm:p-7">
               <div className="flex min-w-0 items-center gap-3">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-emerald-400/20 bg-emerald-400/[0.08]">
-                  <Sparkles className="h-5 w-5 text-emerald-300" />
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-blue-400/20 bg-blue-400/[0.08]">
+                  <Sparkles className="h-5 w-5 text-blue-300" />
                 </div>
 
                 <div className="min-w-0">
@@ -1218,7 +1215,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
             for nominees in this project.
           </p>
 
-          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-emerald-500/70">
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-blue-500/70">
             VoteSphere
           </p>
         </footer>

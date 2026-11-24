@@ -243,23 +243,18 @@ export default function CreateProjectPage() {
         {/* Main Card */}
         <form
           onSubmit={handleCreateProject}
-          className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-emerald-400/15 bg-[#0b1913]/95 p-6 shadow-[0_0_55px_rgba(0,0,0,0.30)] backdrop-blur-xl sm:p-8"
+          className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-blue-400/15 bg-[#121824] p-6 shadow-[0_0_55px_rgba(0,0,0,0.30)] backdrop-blur-xl sm:p-8"
         >
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-            <div className="absolute -right-20 -top-24 h-52 w-52 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025]" />
-            <div className="absolute right-[14%] top-[18%] h-8 w-8 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04] sm:h-10 sm:w-10" />
-            <div className="absolute -left-12 bottom-[8%] h-32 w-32 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] sm:h-40 sm:w-40" />
-            <div className="absolute bottom-[20%] right-[7%] h-6 w-6 rounded-full border border-emerald-300/15 bg-emerald-300/[0.04]" />
-            <div className="absolute left-[46%] top-[9%] h-5 w-5 rounded-full border border-emerald-300/15 bg-emerald-300/[0.035]" />
           </div>
 
           <div className="relative">
 
           {/* Header */}
           <div className="mb-7">
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-400">
+            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-400/15 bg-blue-400/[0.06] px-3 py-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-400">
                 Project setup · Step 1
               </p>
             </div>
@@ -292,7 +287,7 @@ export default function CreateProjectPage() {
                 onChange={(event) => setName(event.target.value)}
                 placeholder="e.g. Student Representative Election"
                 required
-                className="w-full rounded-xl border border-emerald-400/15 bg-black/30 px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/10 [&:-webkit-autofill]:[-webkit-text-fill-color:white] [&:-webkit-autofill]:[box-shadow:0_0_0px_1000px_#0b1913_inset]"
+                className="w-full rounded-xl border border-blue-400/15 bg-black/30 px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-blue-400/60 focus:ring-2 focus:ring-blue-400/10 [&:-webkit-autofill]:[-webkit-text-fill-color:white] [&:-webkit-autofill]:[box-shadow:0_0_0px_1000px_#121824_inset]"
               />
             </div>
 
@@ -315,7 +310,7 @@ export default function CreateProjectPage() {
                 onChange={(event) => setDescription(event.target.value)}
                 placeholder="Describe what this election is about..."
                 rows={4}
-                className="w-full resize-none rounded-xl border border-emerald-400/15 bg-black/30 px-4 py-3.5 text-sm leading-6 text-white outline-none transition placeholder:text-white/25 focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/10 [&:-webkit-autofill]:[-webkit-text-fill-color:white] [&:-webkit-autofill]:[box-shadow:0_0_0px_1000px_#0b1913_inset]"
+                className="w-full resize-none rounded-xl border border-blue-400/15 bg-black/30 px-4 py-3.5 text-sm leading-6 text-white outline-none transition placeholder:text-white/25 focus:border-blue-400/60 focus:ring-2 focus:ring-blue-400/10 [&:-webkit-autofill]:[-webkit-text-fill-color:white] [&:-webkit-autofill]:[box-shadow:0_0_0px_1000px_#121824_inset]"
               />
             </div>
 
@@ -348,8 +343,8 @@ export default function CreateProjectPage() {
                       }}
                       className={`min-h-[112px] rounded-xl border p-3.5 text-left transition ${
                         selected
-                          ? "border-emerald-400/70 bg-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.08)]"
-                          : "border-emerald-400/15 bg-black/20 hover:border-emerald-400/40"
+                          ? "border-blue-400/70 bg-blue-500/10 shadow-[0_0_20px_rgba(59,130,246,0.08)]"
+                          : "border-blue-400/15 bg-black/20 hover:border-blue-400/40"
                       }`}
                     >
                       <div className="flex h-full flex-col justify-between gap-3">
@@ -361,12 +356,12 @@ export default function CreateProjectPage() {
                           <span
                             className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border ${
                               selected
-                                ? "border-emerald-400"
+                                ? "border-blue-400"
                                 : "border-white/30"
                             }`}
                           >
                             {selected && (
-                              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
                             )}
                           </span>
                         </div>
@@ -377,7 +372,7 @@ export default function CreateProjectPage() {
                           </p>
 
                           {preset.label === "1 hour" && (
-                            <span className="mt-2 inline-block text-[9px] font-semibold uppercase tracking-wider text-emerald-400">
+                            <span className="mt-2 inline-block text-[9px] font-semibold uppercase tracking-wider text-blue-400">
                               Popular choice
                             </span>
                           )}
@@ -394,8 +389,8 @@ export default function CreateProjectPage() {
                 onClick={() => setDurationMode("custom")}
                 className={`mt-3 flex w-full items-center justify-between rounded-xl border p-4 text-left transition ${
                   durationMode === "custom"
-                    ? "border-emerald-400/70 bg-emerald-500/10"
-                    : "border-emerald-400/15 bg-black/20 hover:border-emerald-400/40"
+                    ? "border-blue-400/70 bg-blue-500/10"
+                    : "border-blue-400/15 bg-black/20 hover:border-blue-400/40"
                 }`}
               >
                 <div>
@@ -411,19 +406,19 @@ export default function CreateProjectPage() {
                 <span
                   className={`flex h-4 w-4 items-center justify-center rounded-full border ${
                     durationMode === "custom"
-                      ? "border-emerald-400"
+                      ? "border-blue-400"
                       : "border-white/30"
                   }`}
                 >
                   {durationMode === "custom" && (
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
                   )}
                 </span>
               </button>
 
               {/* Custom Duration Inputs */}
               {durationMode === "custom" && (
-                <div className="mt-3 grid grid-cols-2 gap-3 rounded-xl border border-emerald-400/15 bg-black/20 p-4">
+                <div className="mt-3 grid grid-cols-2 gap-3 rounded-xl border border-blue-400/15 bg-black/20 p-4">
                   <div>
                     <label
                       htmlFor="custom-duration"
@@ -442,7 +437,7 @@ export default function CreateProjectPage() {
                         setDuration(event.target.value)
                       }
                       required={durationMode === "custom"}
-                      className="w-full min-w-0 rounded-xl border border-emerald-400/15 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-emerald-400/60"
+                      className="w-full min-w-0 rounded-xl border border-blue-400/15 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-blue-400/60"
                     />
                   </div>
 
@@ -460,7 +455,7 @@ export default function CreateProjectPage() {
                       onChange={(event) =>
                         setUnit(event.target.value as DurationUnit)
                       }
-                      className="w-full min-w-0 rounded-xl border border-emerald-400/15 bg-[#102019] px-4 py-3 text-sm text-white outline-none focus:border-emerald-400/60"
+                      className="w-full min-w-0 rounded-xl border border-blue-400/15 bg-[#151d2a] px-4 py-3 text-sm text-white outline-none focus:border-blue-400/60"
                     >
                       <option value="minutes">Minutes</option>
                       <option value="hours">Hours</option>
@@ -487,7 +482,7 @@ export default function CreateProjectPage() {
           <button
             type="submit"
             disabled={saving || !userInfo}
-            className="mt-7 flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-4 text-sm font-semibold text-[#04100a] transition hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-50"
+            className="mt-7 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-500 px-5 py-4 text-sm font-semibold text-[#07101c] transition hover:bg-blue-400 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {saving ? "Creating project..." : "Continue to nominees"}
 

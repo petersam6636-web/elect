@@ -77,9 +77,9 @@ export default function ChromeOnlyGate({
     <main className="flex min-h-screen items-center justify-center px-5 py-12 text-zinc-100">
       <section
         aria-labelledby="chrome-required-title"
-        className="w-full max-w-lg rounded-3xl border border-white/10 bg-[#0d1310] p-8 text-center shadow-2xl shadow-black/30 sm:p-10"
+        className="w-full max-w-lg rounded-3xl border border-white/10 bg-[#141a24] p-8 text-center shadow-2xl shadow-black/30 sm:p-10"
       >
-        <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">
+        <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.08] text-blue-300">
           <ShieldCheck aria-hidden="true" size={28} />
         </div>
         <h1
@@ -97,7 +97,7 @@ export default function ChromeOnlyGate({
           <button
             type="button"
             onClick={openInChrome}
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-[#07100c] transition-colors hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-blue-500 px-5 py-3 text-sm font-semibold text-[#0a0e16] transition-colors hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-300"
           >
             Open in Chrome
             <ArrowUpRight aria-hidden="true" size={17} />
@@ -106,7 +106,7 @@ export default function ChromeOnlyGate({
             href="https://www.google.com/chrome/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-zinc-100 transition-colors hover:border-emerald-400/30 hover:bg-white/[0.07] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-[#141a24] px-5 py-3 text-sm font-semibold text-zinc-100 transition-colors hover:border-blue-400/30 hover:bg-[#141a24] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-300"
           >
             Download Chrome
             <Download aria-hidden="true" size={17} />

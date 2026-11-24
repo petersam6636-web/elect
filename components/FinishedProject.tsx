@@ -146,8 +146,8 @@ export default function FinishedProject() {
   if (!finishedProject || !results) {
     return (
       <main className="flex min-h-[60vh] items-center justify-center px-2 md:px-3">
-        <section className="w-full max-w-xl rounded-3xl border border-white/[0.08] bg-[#0d1310] p-8 text-center">
-          <Trophy size={38} className="mx-auto text-emerald-400" />
+        <section className="w-full max-w-xl rounded-3xl border border-white/[0.08] bg-[#141a24] p-8 text-center">
+          <Trophy size={38} className="mx-auto text-blue-400" />
           <h1 className="mt-5 text-2xl font-semibold text-white">
             Finished election unavailable
           </h1>
@@ -156,7 +156,7 @@ export default function FinishedProject() {
           </p>
           <Link
             href="/home/history"
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-emerald-400 px-5 py-3 text-sm font-semibold text-[#04130c]"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-blue-400 px-5 py-3 text-sm font-semibold text-[#07101c]"
           >
             View history
             <ArrowRight size={16} />
@@ -174,12 +174,12 @@ export default function FinishedProject() {
     <main className="w-full min-w-0 px-2 md:px-3">
       <header className="mb-7 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5 text-xs font-medium text-emerald-300">
+          <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-400/15 bg-blue-400/[0.06] px-3 py-1.5 text-xs font-medium text-blue-300">
             <CheckCircle2 size={13} />
             Election completed
           </div>
           <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Final <span className="text-emerald-400">results.</span>
+            Final <span className="text-blue-400">results.</span>
           </h1>
           <p className="mt-2 max-w-xl text-sm leading-6 text-zinc-500">
             Review the verified vote totals and final ranking for this election.
@@ -188,19 +188,18 @@ export default function FinishedProject() {
 
         <Link
           href="/home/starting"
-          className="inline-flex h-11 items-center gap-2 rounded-xl bg-emerald-400 px-4 text-sm font-semibold text-[#04130c] transition hover:bg-emerald-300"
+          className="inline-flex h-11 items-center gap-2 rounded-xl bg-blue-400 px-4 text-sm font-semibold text-[#07101c] transition hover:bg-blue-300"
         >
           <Plus size={16} />
           New election
         </Link>
       </header>
 
-      <section className="relative overflow-hidden rounded-3xl border border-emerald-400/25 bg-gradient-to-br from-[#143b29] via-[#0d2419] to-[#09150f] p-5 shadow-[0_25px_90px_rgba(0,0,0,0.32)] sm:p-8">
-        <div className="pointer-events-none absolute right-10 top-10 h-32 w-32 rounded-full bg-emerald-400/[0.14] blur-[55px]" />
+      <section className="relative overflow-hidden rounded-3xl border border-blue-400/25 bg-gradient-to-br from-[#151d29] via-[#151d2b] to-[#0d121b] p-5 shadow-[0_25px_90px_rgba(0,0,0,0.32)] sm:p-8">
 
         <div className="relative">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-300/15 bg-black/20 px-3 py-1.5 text-xs font-medium text-emerald-200">
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-300/15 bg-black/20 px-3 py-1.5 text-xs font-medium text-blue-200">
               <Trophy size={13} />
               Final election
             </span>
@@ -211,7 +210,7 @@ export default function FinishedProject() {
           </div>
 
           <div className="mt-8 max-w-3xl">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300/60">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300/60">
               Election
             </p>
             <h2 className="break-words text-3xl font-semibold tracking-tight text-white sm:text-4xl">
@@ -224,15 +223,15 @@ export default function FinishedProject() {
             )}
           </div>
 
-          <div className="mt-8 rounded-2xl border border-emerald-300/25 bg-[#08130d]/75 p-5 shadow-[inset_0_1px_0_rgba(110,231,183,0.08)] sm:p-6">
-            <div className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200/65">
+          <div className="mt-8 rounded-2xl border border-blue-300/25 bg-[#08130d] p-5 shadow-[inset_0_1px_0_rgba(147,197,253,0.08)] sm:p-6">
+            <div className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-blue-200/65">
               <Crown size={15} />
               Election result
             </div>
 
             {results.winners.length === 0 ? (
               <div className="flex items-start gap-3">
-                <div className="rounded-xl bg-white/[0.06] p-3 text-white/50">
+                <div className="rounded-xl bg-[#141a24] p-3 text-white/50">
                   <Vote size={22} />
                 </div>
                 <div>
@@ -262,7 +261,7 @@ export default function FinishedProject() {
                         >
                           {winner.name || "Unnamed nominee"}
                           {index < results.winners.length - 1 && (
-                            <span className="text-emerald-300">,</span>
+                            <span className="text-blue-300">,</span>
                           )}
                         </span>
                       ))}
@@ -281,30 +280,30 @@ export default function FinishedProject() {
           </div>
 
           <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl border border-emerald-300/20 bg-[#0b1912]/90 p-5">
+            <div className="rounded-2xl border border-blue-300/20 bg-[#121824] p-5">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-white/40">Election duration</span>
-                <Clock3 size={17} className="text-emerald-300" />
+                <Clock3 size={17} className="text-blue-300" />
               </div>
               <p className="mt-3 text-2xl font-semibold text-white">
                 {formatDuration(results.duration)}
               </p>
             </div>
 
-            <div className="rounded-2xl border border-emerald-300/20 bg-[#0b1912]/90 p-5">
+            <div className="rounded-2xl border border-blue-300/20 bg-[#121824] p-5">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-white/40">Total votes</span>
-                <Users size={17} className="text-emerald-300" />
+                <Users size={17} className="text-blue-300" />
               </div>
               <p className="mt-3 text-2xl font-semibold tabular-nums text-white">
                 {results.totalVotes.toLocaleString()}
               </p>
             </div>
 
-            <div className="rounded-2xl border border-emerald-300/20 bg-[#0b1912]/90 p-5">
+            <div className="rounded-2xl border border-blue-300/20 bg-[#121824] p-5">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-white/40">Nominees</span>
-                <Medal size={17} className="text-emerald-300" />
+                <Medal size={17} className="text-blue-300" />
               </div>
               <p className="mt-3 text-2xl font-semibold text-white">
                 {results.nominees.length}
@@ -322,13 +321,13 @@ export default function FinishedProject() {
               Final vote distribution
             </p>
           </div>
-          <span className="rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-xs text-white/45">
+          <span className="rounded-lg border border-white/[0.08] bg-[#141a24] px-3 py-1.5 text-xs text-white/45">
             {results.nominees.length} nominees
           </span>
         </div>
 
         {results.rankedNominees.length === 0 ? (
-          <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-6 text-center text-sm text-white/40">
+          <div className="rounded-2xl border border-white/[0.08] bg-[#141a24] p-6 text-center text-sm text-white/40">
             No nominees were recorded for this election.
           </div>
         ) : (
@@ -403,7 +402,7 @@ export default function FinishedProject() {
         )}
       </section>
 
-      <section className="mt-9 flex flex-col gap-4 rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.045] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+      <section className="mt-9 flex flex-col gap-4 rounded-2xl border border-blue-400/15 bg-blue-400/[0.045] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
         <div>
           <h2 className="font-semibold text-white">Election actions</h2>
           <p className="mt-1 text-sm text-white/40">
@@ -416,7 +415,7 @@ export default function FinishedProject() {
             type="button"
             onClick={handleCopyLink}
             disabled={!shareUrl}
-            className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 text-sm font-semibold text-white/70 transition hover:border-emerald-400/30 hover:text-emerald-300 disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-[#141a24] px-4 text-sm font-semibold text-white/70 transition hover:border-blue-400/30 hover:text-blue-300 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {copied ? <CheckCircle2 size={16} /> : <Copy size={16} />}
             {copied ? "Copied" : "Copy link"}
@@ -424,7 +423,7 @@ export default function FinishedProject() {
 
           <Link
             href="/home/history"
-            className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-emerald-400/25 bg-emerald-400/10 px-4 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-400 hover:text-[#04130c]"
+            className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-blue-400/25 bg-blue-400/10 px-4 text-sm font-semibold text-blue-300 transition hover:bg-blue-400 hover:text-[#07101c]"
           >
             View history
             <ArrowRight size={16} />

@@ -77,8 +77,8 @@ export default function NavigationCustomizer({
         aria-expanded={open}
         className={`flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border transition-all ${
           open
-            ? "border-emerald-400/40 bg-emerald-400/15 text-emerald-300"
-            : "border-white/[0.08] bg-white/[0.04] text-zinc-400 hover:border-emerald-400/30 hover:bg-emerald-400/10 hover:text-emerald-300"
+            ? "border-blue-400/40 bg-blue-400/15 text-blue-300"
+            : "border-white/[0.08] bg-[#141a24] text-zinc-400 hover:border-blue-400/30 hover:bg-blue-400/10 hover:text-blue-300"
         }`}
       >
         {open ? <X size={15} /> : <Plus size={15} />}
@@ -86,7 +86,7 @@ export default function NavigationCustomizer({
 
       {open && (
         <div
-          className={`absolute z-[100] max-h-[calc(100dvh-2rem)] w-44 overflow-y-auto rounded-xl border border-emerald-400/15 bg-[#0c1510]/95 p-2 shadow-[0_18px_55px_rgba(0,0,0,0.6)] backdrop-blur-2xl ${panelPosition}`}
+          className={`absolute z-[100] max-h-[calc(100dvh-2rem)] w-44 overflow-y-auto rounded-xl border border-blue-400/15 bg-[#141a24] p-2 shadow-[0_18px_55px_rgba(0,0,0,0.6)] backdrop-blur-2xl ${panelPosition}`}
           style={
             position === "bottom"
               ? { right: 0, bottom: "calc(100% + 0.75rem)" }
@@ -109,8 +109,8 @@ export default function NavigationCustomizer({
                   onClick={() => selectPosition(value)}
                   className={`flex w-full cursor-pointer items-center justify-between rounded-lg border px-2.5 py-2 text-[11px] transition-all ${
                     active
-                      ? "border-emerald-400/25 bg-emerald-400/10 text-emerald-300"
-                      : "border-transparent text-zinc-400 hover:border-white/[0.07] hover:bg-white/[0.04] hover:text-white"
+                      ? "border-blue-400/25 bg-blue-400/10 text-blue-300"
+                      : "border-transparent text-zinc-400 hover:border-white/[0.07] hover:bg-[#141a24] hover:text-white"
                   }`}
                 >
                   <span className="flex items-center gap-2.5">

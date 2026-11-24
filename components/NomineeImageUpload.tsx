@@ -121,22 +121,22 @@ export default function NomineeImageUpload({
 
       {imageUrl ? (
         /* Uploaded image preview */
-        <div className="group relative overflow-hidden rounded-2xl border border-emerald-400/20 bg-black/20 p-3">
+        <div className="group relative overflow-hidden rounded-2xl border border-blue-400/20 bg-black/20 p-3">
           <div className="flex flex-col items-center gap-4 sm:flex-row">
-            <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-xl border border-emerald-400/20 bg-black/30">
+            <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-xl border border-blue-400/20 bg-black/30">
               <img
                 src={imageUrl}
                 alt="Uploaded nominee"
                 className="h-full w-full object-cover"
               />
 
-              <div className="absolute inset-0 bg-emerald-500/0 transition group-hover:bg-emerald-500/10" />
+              <div className="absolute inset-0 bg-blue-500/0 transition group-hover:bg-blue-500/10" />
             </div>
 
             <div className="min-w-0 flex-1 text-center sm:text-left">
-              <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-emerald-300">
+              <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-400/10 px-3 py-1">
+                <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-blue-300">
                   Upload complete
                 </span>
               </div>
@@ -153,7 +153,7 @@ export default function NomineeImageUpload({
                 <button
                   type="button"
                   onClick={() => inputRef.current?.click()}
-                  className="rounded-lg border border-emerald-400/20 px-3 py-2 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-400/10"
+                  className="rounded-lg border border-blue-400/20 px-3 py-2 text-xs font-semibold text-blue-300 transition hover:bg-blue-400/10"
                 >
                   Change image
                 </button>
@@ -186,13 +186,13 @@ export default function NomineeImageUpload({
           }}
           className={`group relative flex min-h-48 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl border border-dashed px-5 py-8 text-center transition duration-200 ${
             dragging
-              ? "border-emerald-300 bg-emerald-400/10"
-              : "border-emerald-400/25 bg-black/20 hover:border-emerald-400/60 hover:bg-emerald-400/[0.05]"
+              ? "border-blue-300 bg-blue-400/10"
+              : "border-blue-400/25 bg-black/20 hover:border-blue-400/60 hover:bg-blue-400/[0.05]"
           } ${uploading ? "cursor-wait" : ""}`}
         >
-          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300 transition group-hover:scale-105 group-hover:bg-emerald-400/15">
+          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.08] text-blue-300 transition group-hover:scale-105 group-hover:bg-blue-400/15">
             {uploading ? (
-              <span className="h-6 w-6 animate-spin rounded-full border-2 border-emerald-300/20 border-t-emerald-300" />
+              <span className="h-6 w-6 animate-spin rounded-full border-2 border-blue-300/20 border-t-blue-300" />
             ) : (
               <svg
                 viewBox="0 0 24 24"

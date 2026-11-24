@@ -614,7 +614,7 @@ console.log(2)
       {showDeveloperModal && (
         <ModalPortal>
           <div
-            className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/75 px-3 py-3 backdrop-blur-md sm:px-4 sm:py-6"
+            className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto overscroll-contain bg-black/75 px-3 py-3 backdrop-blur-md [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:px-4 sm:py-6"
             onMouseDown={(event) => {
               if (event.target === event.currentTarget) {
                 setShowDeveloperModal(false);
@@ -630,7 +630,7 @@ console.log(2)
 
             {/* Modal Container */}
 
-            <div className="relative max-h-[calc(100dvh-1.5rem)] overflow-y-auto rounded-[24px] border border-white/[0.11] bg-[#0b1510] shadow-2xl shadow-black/50 sm:max-h-[calc(100dvh-3rem)]">
+            <div className="relative overflow-hidden rounded-[24px] border border-white/[0.11] bg-[#0b1510] shadow-2xl shadow-black/50">
 
               {/* Static Modal Decoration */}
 

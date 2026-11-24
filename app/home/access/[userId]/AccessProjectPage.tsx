@@ -9,9 +9,9 @@ import { supabase } from "@/lib/supabase-client";
 import type { Project } from "@/types/project";
 
 export default function AccessProjectPage({
-  projectId,
+  userId,
 }: {
-  projectId: string;
+  userId: string;
 }) {
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
@@ -20,13 +20,15 @@ export default function AccessProjectPage({
   useEffect(() => {
     let active = true;
 
-    const loadOwnedProject = async () => {
+    const loadProjectForUser = async () => {
       try {
         const { data, error: projectError } = await supabase
           .from("projects")
           .select("*")
-          .eq("id", projectId)
+          .eq("user_id", userId)
           .eq("deleted", false)
+          .order("created_at", { ascending: false })
+          .limit(1)
           .maybeSingle();
 
         if (projectError) throw projectError;
@@ -47,11 +49,11 @@ export default function AccessProjectPage({
       }
     };
 
-    void loadOwnedProject();
+    void loadProjectForUser();
     return () => {
       active = false;
     };
-  }, [projectId]);
+  }, [userId]);
 
   if (loading) {
     return (

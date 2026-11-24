@@ -2,11 +2,11 @@ import AccessProjectPage from "./AccessProjectPage";
 
 type AccessRouteProps = {
   params: Promise<{
-    projectId: string;
+    userId: string;
   }>;
 };
 
 export default async function AccessRoute({ params }: AccessRouteProps) {
-  const { projectId } = await params;
-  return <AccessProjectPage projectId={projectId} />;
+  const { userId } = await params;
+  return <AccessProjectPage userId={userId} />;
 }

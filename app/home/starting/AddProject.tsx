@@ -233,7 +233,7 @@ export default function CreateProjectPage() {
       setShowAccessModeDialog(false);
       router.push(
         accessMode === "private"
-          ? `/home/accessKey?projectId=${encodeURIComponent(data.id)}`
+          ? "/home/accessKey"
           : "/home/register"
       );
     } catch (err: unknown) {

@@ -22,9 +22,9 @@ const getBrowserOrigin = () => window.location.origin;
 const getServerOrigin = () => "";
 
 export default function AccessKeyPage({
-  projectId,
+  userId,
 }: {
-  projectId: string;
+  userId: string;
 }) {
   const router = useRouter();
   const { currentProject } = useApp();
@@ -34,26 +34,20 @@ export default function AccessKeyPage({
     getBrowserOrigin,
     getServerOrigin
   );
-  const [loading, setLoading] = useState(Boolean(projectId));
+  const [loading, setLoading] = useState(true);
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
 
-  const resolvedProjectId = projectId || currentProject?.id || "";
   const registrationUrl =
-    origin && resolvedProjectId
-      ? `${origin}/home/access/${encodeURIComponent(resolvedProjectId)}`
+    origin && userId
+      ? `${origin}/home/access/${encodeURIComponent(userId)}`
       : "";
   const contextProject =
-    currentProject?.id === resolvedProjectId ? currentProject : null;
+    currentProject?.user_id === userId ? currentProject : null;
   const visibleProject = project ?? contextProject;
 
   useEffect(() => {
-    if (
-      !resolvedProjectId ||
-      currentProject?.id === resolvedProjectId
-    ) {
-      return;
-    }
+    if (!userId || currentProject?.user_id === userId) return;
 
     let active = true;
 
@@ -67,13 +61,17 @@ export default function AccessKeyPage({
           router.replace("/");
           return;
         }
+        if (authData.user.id !== userId) {
+          throw new Error("This access page is not linked to your account.");
+        }
 
         const { data, error: projectError } = await supabase
           .from("projects")
           .select("*")
-          .eq("id", resolvedProjectId)
-          .eq("user_id", authData.user.id)
+          .eq("user_id", userId)
           .eq("deleted", false)
+          .order("created_at", { ascending: false })
+          .limit(1)
           .maybeSingle();
 
         if (projectError) throw projectError;
@@ -98,7 +96,7 @@ export default function AccessKeyPage({
     return () => {
       active = false;
     };
-  }, [currentProject, resolvedProjectId, router]);
+  }, [currentProject, userId, router]);
 
   const copyRegistrationLink = async () => {
     if (!registrationUrl) return;
@@ -149,9 +147,9 @@ export default function AccessKeyPage({
               className="mt-5 rounded-xl border border-red-400/20 bg-red-500/10 px-4 py-3 text-sm leading-6 text-red-200"
             >
               {error ||
-                (projectId
+                (userId
                   ? "Election details could not be loaded. The QR link is still available below."
-                  : "The election ID is missing from this access link.")}
+                  : "Your account ID is missing from this access link.")}
             </p>
           )}
 
@@ -170,7 +168,7 @@ export default function AccessKeyPage({
           <button
             type="button"
             onClick={handleEndRegistration}
-            disabled={!resolvedProjectId}
+            disabled={!userId}
             className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-400 px-4 py-3.5 text-sm font-semibold text-[#07101c] shadow-[0_12px_30px_rgba(0,0,0,0.25)] transition hover:-translate-y-0.5 hover:bg-blue-300 hover:shadow-[0_18px_42px_rgba(0,0,0,0.32)]"
           >
             End registering and add students

@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, LoaderCircle, ShieldCheck } from "lucide-react";
+import { ArrowLeft, LoaderCircle } from "lucide-react";
 
 import AccessProjectSummary from "@/components/access/AccessProjectSummary";
 import { supabase } from "@/lib/supabase-client";
@@ -14,7 +13,6 @@ export default function AccessProjectPage({
 }: {
   projectId: string;
 }) {
-  const router = useRouter();
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -24,26 +22,16 @@ export default function AccessProjectPage({
 
     const loadOwnedProject = async () => {
       try {
-        const { data: authData, error: authError } =
-          await supabase.auth.getUser();
-
-        if (authError) throw authError;
-        if (!authData.user) {
-          router.replace("/");
-          return;
-        }
-
         const { data, error: projectError } = await supabase
           .from("projects")
           .select("*")
           .eq("id", projectId)
-          .eq("user_id", authData.user.id)
           .eq("deleted", false)
           .maybeSingle();
 
         if (projectError) throw projectError;
         if (!data) {
-          throw new Error("This election is unavailable for this account.");
+          throw new Error("This election is unavailable.");
         }
 
         if (active) setProject(data as Project);
@@ -63,7 +51,7 @@ export default function AccessProjectPage({
     return () => {
       active = false;
     };
-  }, [projectId, router]);
+  }, [projectId]);
 
   if (loading) {
     return (
@@ -96,15 +84,7 @@ export default function AccessProjectPage({
   return (
     <main className="min-h-screen px-3 py-8 text-white sm:px-5">
       <div className="mx-auto w-full max-w-3xl">
-        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-400/[0.07] px-3 py-1.5 text-xs font-medium text-blue-200">
-          <ShieldCheck size={14} />
-          Owner verified
-        </div>
         <AccessProjectSummary project={project} />
-        <p className="mt-4 text-xs leading-5 text-white/40">
-          Project information is loaded only after verifying that the signed-in
-          account owns this election.
-        </p>
       </div>
     </main>
   );

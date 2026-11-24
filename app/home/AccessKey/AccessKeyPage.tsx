@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Check, Copy, QrCode, ShieldAlert } from "lucide-react";
@@ -9,6 +9,10 @@ import { QRCodeSVG } from "qrcode.react";
 import { supabase } from "@/lib/supabase-client";
 import type { Project } from "@/types/project";
 
+const subscribeToLocation = () => () => {};
+const getBrowserOrigin = () => window.location.origin;
+const getServerOrigin = () => "";
+
 export default function AccessKeyPage({
   projectId,
 }: {
@@ -16,26 +20,22 @@ export default function AccessKeyPage({
 }) {
   const router = useRouter();
   const [project, setProject] = useState<Project | null>(null);
-  const [origin, setOrigin] = useState("");
-  const [loading, setLoading] = useState(true);
+  const origin = useSyncExternalStore(
+    subscribeToLocation,
+    getBrowserOrigin,
+    getServerOrigin
+  );
+  const [loading, setLoading] = useState(Boolean(projectId));
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
 
-  const organizerUrl =
+  const registrationUrl =
     origin && projectId
       ? `${origin}/home/access/${encodeURIComponent(projectId)}`
       : "";
 
   useEffect(() => {
-    setOrigin(window.location.origin);
-  }, []);
-
-  useEffect(() => {
-    if (!projectId) {
-      setError("The election ID is missing from this access link.");
-      setLoading(false);
-      return;
-    }
+    if (!projectId) return;
 
     let active = true;
 
@@ -82,17 +82,21 @@ export default function AccessKeyPage({
     };
   }, [projectId, router]);
 
-  const copyOrganizerLink = async () => {
-    if (!organizerUrl) return;
+  const copyRegistrationLink = async () => {
+    if (!registrationUrl) return;
 
     try {
-      await navigator.clipboard.writeText(organizerUrl);
+      await navigator.clipboard.writeText(registrationUrl);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch (copyError: unknown) {
-      console.error("Unable to copy organizer access link:", copyError);
+      console.error("Unable to copy voter registration link:", copyError);
       setError("Copy failed. Select the link and copy it manually.");
     }
+  };
+
+  const handleEndRegistration = () => {
+    router.push("/home/register");
   };
 
   if (loading) {
@@ -108,7 +112,10 @@ export default function AccessKeyPage({
       <main className="flex min-h-[70vh] items-center justify-center px-4 py-8 text-white">
         <section className="w-full max-w-lg rounded-3xl border border-red-400/20 bg-[#111722] p-6 text-center shadow-[0_24px_80px_rgba(0,0,0,0.42)]">
           <p role="alert" className="text-sm leading-6 text-red-200">
-            {error || "Unable to load this election."}
+            {error ||
+              (projectId
+                ? "Unable to load this election."
+                : "The election ID is missing from this access link.")}
           </p>
           <Link
             href="/home/starting"
@@ -136,8 +143,8 @@ export default function AccessKeyPage({
             Organizer access link
           </h1>
           <p className="mt-3 text-sm leading-6 text-white/60">
-            This QR opens the election-specific organizer page. The signed-in
-            account must own the election to view it.
+            Share the QR or link with people who should be able to open this
+            election&apos;s registration page.
           </p>
 
           <div
@@ -146,15 +153,22 @@ export default function AccessKeyPage({
           >
             <ShieldAlert className="mt-0.5 shrink-0 text-amber-200" size={19} />
             <p className="text-xs leading-5 text-amber-100/80">
-              One-use voter keys are not generated yet. This QR is not a voter
-              invitation, and private voting must not be opened until server
-              validation is added.
+              Public registration submission and shared close-state are not
+              connected yet. No voter information is collected from this
+              page at this stage.
             </p>
           </div>
 
+          <button
+            type="button"
+            onClick={handleEndRegistration}
+            className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-400 px-4 py-3.5 text-sm font-semibold text-[#07101c] shadow-[0_12px_30px_rgba(0,0,0,0.25)] transition hover:-translate-y-0.5 hover:bg-blue-300 hover:shadow-[0_18px_42px_rgba(0,0,0,0.32)]"
+          >
+            End registering and add students
+          </button>
           <Link
             href="/home/starting"
-            className="mt-7 inline-flex items-center gap-2 text-sm text-white/55 transition hover:text-white"
+            className="mt-4 inline-flex items-center gap-2 text-sm text-white/45 transition hover:text-white"
           >
             <ArrowLeft size={15} />
             Back to election setup
@@ -162,14 +176,15 @@ export default function AccessKeyPage({
         </section>
 
         <aside className="h-fit rounded-3xl border border-white/[0.08] bg-[#111722]/90 p-5 shadow-[0_16px_48px_rgba(0,0,0,0.28)] sm:p-6">
-          <h2 className="text-sm font-semibold text-white">Organizer QR code</h2>
+          <h2 className="text-sm font-semibold text-white">Voter registration QR</h2>
           <p className="mt-2 text-xs leading-5 text-white/50">
-            Scan it while signed in to open this election&apos;s access details.
+            Scan or copy this link to open the registration page for{" "}
+            <span className="font-medium text-white/75">{project.name}</span>.
           </p>
-          {organizerUrl && (
+          {registrationUrl && (
             <div className="mx-auto mt-5 w-fit rounded-2xl bg-white p-3">
               <QRCodeSVG
-                value={organizerUrl}
+                value={registrationUrl}
                 size={210}
                 level="M"
                 includeMargin
@@ -179,16 +194,16 @@ export default function AccessKeyPage({
             </div>
           )}
           <p className="mt-4 break-all rounded-xl border border-white/[0.08] bg-black/20 p-3 text-[11px] leading-5 text-white/60">
-            {organizerUrl}
+            {registrationUrl}
           </p>
           <button
             type="button"
-            onClick={() => void copyOrganizerLink()}
-            disabled={!organizerUrl}
+            onClick={() => void copyRegistrationLink()}
+            disabled={!registrationUrl}
             className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-400 px-4 py-3 text-sm font-semibold text-[#07101c] transition hover:bg-blue-300 disabled:opacity-50"
           >
             {copied ? <Check size={16} /> : <Copy size={16} />}
-            {copied ? "Link copied" : "Copy organizer link"}
+            {copied ? "Link copied" : "Copy registration link"}
           </button>
         </aside>
       </div>

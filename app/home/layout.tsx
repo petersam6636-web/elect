@@ -13,7 +13,7 @@ export default function HomeLayout({
     <Suspense
       fallback={
         <div
-          className="min-h-dvh"
+          className="min-h-dvh loll"
           aria-label="Loading VoteSphere"
         />
       }

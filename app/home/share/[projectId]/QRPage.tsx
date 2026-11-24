@@ -910,36 +910,36 @@ export default function QRPage({ projectId }: QRPageProps) {
                     >
                       <div className="flex min-w-0 items-center justify-between gap-4">
                         <div className="flex min-w-0 items-center gap-3">
-                        {nominee.image ? (
-                          <img
-                            src={nominee.image}
-                            alt={nominee.name || "Nominee"}
-                            className="h-12 w-12 shrink-0 rounded-xl border border-emerald-400/20 object-cover"
-                          />
-                        ) : (
-                          <div
-                            className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-sm font-semibold ${
-                              isWinner
-                                ? "bg-emerald-400/15 text-emerald-300"
-                                : "bg-white/[0.06] text-white/45"
-                            }`}
-                          >
-                            {index + 1}
-                          </div>
-                        )}
-
-                        <div className="min-w-0">
-                          <p className="break-words font-medium text-white">
-                            {nominee.name || "Unnamed nominee"}
-                          </p>
-                          {isWinner && (
-                            <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-300">
-                              <Crown size={11} />
-                              Winner
-                            </span>
+                          {nominee.image ? (
+                            <img
+                              src={nominee.image}
+                              alt={nominee.name || "Nominee"}
+                              className="h-12 w-12 shrink-0 rounded-xl border border-emerald-400/20 object-cover"
+                            />
+                          ) : (
+                            <div
+                              className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-sm font-semibold ${
+                                isWinner
+                                  ? "bg-emerald-400/15 text-emerald-300"
+                                  : "bg-white/[0.06] text-white/45"
+                              }`}
+                            >
+                              {index + 1}
+                            </div>
                           )}
+
+                          <div className="min-w-0">
+                            <p className="break-words font-medium text-white">
+                              {nominee.name || "Unnamed nominee"}
+                            </p>
+                            {isWinner && (
+                              <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-300">
+                                <Crown size={11} />
+                                Winner
+                              </span>
+                            )}
+                          </div>
                         </div>
-                      </div>
 
                         <div className="shrink-0 rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 text-right">
                           <p className="text-[10px] uppercase tracking-[0.14em] text-white/40">
@@ -958,7 +958,6 @@ export default function QRPage({ projectId }: QRPageProps) {
                         View more
                         <ArrowRight size={13} />
                       </Link>
-
                     </article>
                   );
                 })}

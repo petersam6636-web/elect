@@ -486,10 +486,10 @@ export default function ActiveProject() {
 
       {/* ELECTION HEADER */}
 
-      <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border border-emerald-400/15 bg-gradient-to-br from-[#103323] via-[#0c1c14] to-[#0b110e] p-6 sm:p-8">
-        <div className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-emerald-400/[0.09] blur-[90px]" />
+      <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border border-emerald-400/30 bg-gradient-to-br from-[#16462f] via-[#103522] to-[#0c2117] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.28)] sm:p-8">
+        <div className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-emerald-400/[0.16] blur-[90px]" />
 
-        <div className="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-teal-400/[0.05] blur-[80px]" />
+        <div className="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-teal-400/[0.10] blur-[80px]" />
 
         <div
           aria-hidden="true"
@@ -502,12 +502,12 @@ export default function ActiveProject() {
 
         <div className="relative">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-emerald-400">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300/25 bg-emerald-300/[0.12] px-3 py-1.5 text-xs font-bold tracking-widest text-emerald-200">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(110,231,183,0.8)]" />
               LIVE ELECTION
             </div>
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/[0.08] px-3 py-1.5 text-[11px] font-medium text-emerald-300">
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300/30 bg-emerald-300/[0.14] px-3 py-1.5 text-[11px] font-semibold text-emerald-200">
               <ShieldCheck size={13} />
               Election Active
             </div>
@@ -518,12 +518,12 @@ export default function ActiveProject() {
             <span className="text-emerald-400">.</span>
           </h1>
 
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-zinc-400">
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-emerald-50/75">
             {activeProject.description ||
               "Your election is currently running. Monitor the voting activity and track your nominees below."}
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-zinc-500">
+          <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-zinc-300">
             <div className="flex items-center gap-2">
               <CalendarDays
                 size={15}
@@ -549,7 +549,7 @@ export default function ActiveProject() {
         className={`relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border transition-colors duration-500 ${
           isUrgent
             ? "border-red-500/25 bg-gradient-to-br from-[#251313] via-[#171010] to-[#100d0d]"
-            : "border-emerald-400/15 bg-gradient-to-br from-[#10251b] via-[#101914] to-[#0c110e]"
+            : "border-emerald-400/30 bg-gradient-to-br from-[#143b29] via-[#10291d] to-[#0c1c14]"
         }`}
       >
         {/* Ambient background glows */}
@@ -558,7 +558,7 @@ export default function ActiveProject() {
           className={`pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full blur-[100px] ${
             isUrgent
               ? "bg-red-500/10"
-              : "bg-emerald-400/[0.10]"
+              : "bg-emerald-400/[0.16]"
           }`}
         />
 
@@ -680,7 +680,7 @@ export default function ActiveProject() {
               className={`flex items-center gap-2 rounded-full border px-3 py-2 text-[9px] font-bold tracking-wider ${
                 isUrgent
                   ? "border-red-500/25 bg-red-500/10 text-red-400"
-                  : "border-emerald-400/20 bg-emerald-400/[0.07] text-emerald-300"
+                  : "border-emerald-300/30 bg-emerald-300/[0.14] text-emerald-200"
               }`}
             >
               {isUrgent ? (
@@ -708,8 +708,8 @@ export default function ActiveProject() {
                 <div
                   className={`relative flex aspect-square min-h-[65px] items-center justify-center overflow-hidden rounded-xl border backdrop-blur-sm transition-all duration-300 sm:rounded-2xl ${
                     isUrgent
-                      ? "border-red-400/30 bg-red-400/[0.10] shadow-[inset_0_0_25px_rgba(239,68,68,0.04)]"
-                      : "border-emerald-300/25 bg-emerald-400/[0.09] shadow-[inset_0_0_25px_rgba(16,185,129,0.04)] group-hover:border-emerald-300/45 group-hover:bg-emerald-400/[0.14]"
+                      ? "border-red-400/40 bg-red-400/[0.17] shadow-[inset_0_0_25px_rgba(239,68,68,0.08)]"
+                      : "border-emerald-300/35 bg-emerald-400/[0.17] shadow-[inset_0_0_25px_rgba(16,185,129,0.08)] group-hover:border-emerald-200/55 group-hover:bg-emerald-400/[0.23]"
                   }`}
                 >
                   {/* Glass highlight */}
@@ -751,7 +751,7 @@ export default function ActiveProject() {
                   className={`mt-2 text-[9px] font-bold uppercase tracking-[0.12em] sm:text-[10px] ${
                     isUrgent
                       ? "text-red-300/80"
-                      : "text-emerald-100/70"
+                      : "text-emerald-100/85"
                   }`}
                 >
                   {unit.label}
@@ -875,7 +875,7 @@ export default function ActiveProject() {
           return (
             <div
               key={stat.label}
-              className="rounded-2xl border border-white/[0.07] bg-[#0d1310] p-5"
+              className="rounded-2xl border border-emerald-400/20 bg-gradient-to-br from-[#112b1e] to-[#0b1711] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.18)]"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-400/10 text-emerald-400">
                 <Icon size={19} />

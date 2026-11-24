@@ -187,8 +187,8 @@ export default function FinishedProject() {
         </Link>
       </header>
 
-      <section className="relative overflow-hidden rounded-3xl border border-emerald-400/15 bg-gradient-to-br from-[#10251a] via-[#0b1711] to-[#09110d] p-5 shadow-[0_25px_90px_rgba(0,0,0,0.28)] sm:p-8">
-        <div className="pointer-events-none absolute right-10 top-10 h-32 w-32 rounded-full bg-emerald-400/[0.08] blur-[55px]" />
+      <section className="relative overflow-hidden rounded-3xl border border-emerald-400/25 bg-gradient-to-br from-[#143b29] via-[#0d2419] to-[#09150f] p-5 shadow-[0_25px_90px_rgba(0,0,0,0.32)] sm:p-8">
+        <div className="pointer-events-none absolute right-10 top-10 h-32 w-32 rounded-full bg-emerald-400/[0.14] blur-[55px]" />
 
         <div className="relative">
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -216,7 +216,7 @@ export default function FinishedProject() {
             )}
           </div>
 
-          <div className="mt-8 rounded-2xl border border-emerald-300/15 bg-black/20 p-5 sm:p-6">
+          <div className="mt-8 rounded-2xl border border-emerald-300/25 bg-[#08130d]/75 p-5 shadow-[inset_0_1px_0_rgba(110,231,183,0.08)] sm:p-6">
             <div className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200/65">
               <Crown size={15} />
               Election result
@@ -273,7 +273,7 @@ export default function FinishedProject() {
           </div>
 
           <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl border border-white/[0.07] bg-black/15 p-5">
+            <div className="rounded-2xl border border-emerald-300/20 bg-[#0b1912]/90 p-5">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-white/40">Election duration</span>
                 <Clock3 size={17} className="text-emerald-300" />
@@ -283,7 +283,7 @@ export default function FinishedProject() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-white/[0.07] bg-black/15 p-5">
+            <div className="rounded-2xl border border-emerald-300/20 bg-[#0b1912]/90 p-5">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-white/40">Total votes</span>
                 <Users size={17} className="text-emerald-300" />
@@ -293,7 +293,7 @@ export default function FinishedProject() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-white/[0.07] bg-black/15 p-5">
+            <div className="rounded-2xl border border-emerald-300/20 bg-[#0b1912]/90 p-5">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-white/40">Nominees</span>
                 <Medal size={17} className="text-emerald-300" />

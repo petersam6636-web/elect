@@ -614,7 +614,7 @@ console.log(2)
       {showDeveloperModal && (
         <ModalPortal>
           <div
-            className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/75 px-4 py-8 backdrop-blur-md"
+            className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/75 px-3 py-3 backdrop-blur-md sm:px-4 sm:py-6"
             onMouseDown={(event) => {
               if (event.target === event.currentTarget) {
                 setShowDeveloperModal(false);
@@ -622,7 +622,7 @@ console.log(2)
             }}
           >
 
-          <div className="relative my-auto w-full max-w-lg animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative my-auto w-full max-w-sm animate-in fade-in zoom-in-95 duration-200">
 
             {/* Emerald Modal Glow */}
 
@@ -630,7 +630,7 @@ console.log(2)
 
             {/* Modal Container */}
 
-            <div className="relative overflow-hidden rounded-[28px] border border-white/[0.11] bg-[#0b1510] shadow-2xl shadow-black/50">
+            <div className="relative max-h-[calc(100dvh-1.5rem)] overflow-y-auto rounded-[24px] border border-white/[0.11] bg-[#0b1510] shadow-2xl shadow-black/50 sm:max-h-[calc(100dvh-3rem)]">
 
               {/* Static Modal Decoration */}
 
@@ -640,13 +640,13 @@ console.log(2)
 
               {/* MODAL HEADER */}
 
-              <div className="relative flex items-center justify-between border-b border-white/[0.07] px-6 py-5">
+              <div className="relative flex items-center justify-between border-b border-white/[0.07] px-4 py-3.5">
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2.5">
 
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.09] bg-white/[0.04]">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/[0.09] bg-white/[0.04]">
 
-                    <Info className="h-5 w-5 text-gray-300" />
+                    <Info className="h-4 w-4 text-gray-300" />
 
                   </div>
 
@@ -677,7 +677,7 @@ console.log(2)
 
               {/* MODAL CONTENT */}
 
-              <div className="relative p-6 sm:p-7">
+              <div className="relative p-4 sm:p-5">
 
                 {/* Developer Profile */}
 
@@ -687,17 +687,17 @@ console.log(2)
 
                   <div className="relative">
 
-                    <div className="pointer-events-none absolute -inset-4 rounded-[32px] bg-emerald-400/[0.16] blur-2xl" />
+                    <div className="pointer-events-none absolute -inset-3 rounded-[28px] bg-emerald-400/[0.16] blur-2xl" />
 
-                    <div className="relative flex h-32 w-32 items-center justify-center overflow-hidden rounded-[26px] border border-emerald-400/20 bg-[#101b14] p-3 shadow-[0_0_25px_rgba(16,185,129,0.12),0_12px_35px_rgba(0,0,0,0.45)]">
+                    <div className="relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-[20px] border border-emerald-400/20 bg-[#101b14] p-2 shadow-[0_0_25px_rgba(16,185,129,0.12),0_12px_35px_rgba(0,0,0,0.45)]">
 
                       <Image
                         src="/business-logo.png"
                         alt="Business logo"
                         fill
                         priority
-                        sizes="128px"
-                        className="rounded-[22px] object-contain p-3"
+                        sizes="80px"
+                        className="rounded-[18px] object-contain p-2"
                       />
 
                     </div>
@@ -706,7 +706,7 @@ console.log(2)
 
                   {/* Developer Badge */}
 
-                  <span className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-300">
+                  <span className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
 
                     <Sparkles className="h-3 w-3" />
 
@@ -716,11 +716,11 @@ console.log(2)
 
                   {/* Developer Name */}
 
-                  <h3 className="mt-4 text-2xl font-semibold tracking-tight text-white">
+                  <h3 className="mt-2 text-xl font-semibold tracking-tight text-white">
                     Solomon Arthur
                   </h3>
 
-                  <p className="mt-1 text-sm text-gray-400">
+                  <p className="mt-0.5 text-xs text-gray-400">
                     Application Developer
                   </p>
 
@@ -728,13 +728,13 @@ console.log(2)
 
                 {/* DEVELOPER INFORMATION */}
 
-                <div className="mt-7 space-y-3">
+                <div className="mt-4 space-y-2.5">
 
-                  <div className="flex items-center gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition-colors hover:bg-white/[0.04]">
+                  <div className="flex items-center gap-3 rounded-xl border border-white/[0.07] bg-white/[0.025] p-3 transition-colors hover:bg-white/[0.04]">
 
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.045]">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/[0.045]">
 
-                      <Code2 className="h-5 w-5 text-gray-300" />
+                      <Code2 className="h-4 w-4 text-gray-300" />
 
                     </div>
 
@@ -756,7 +756,7 @@ console.log(2)
 
                 {/* MODAL FOOTER */}
 
-                <div className="mt-6 flex items-center justify-between border-t border-white/[0.07] pt-5">
+                <div className="mt-4 flex items-center justify-between border-t border-white/[0.07] pt-3">
 
                   <div>
 
@@ -764,7 +764,7 @@ console.log(2)
                       VisionCraft <span className="text-emerald-400">·</span>
                     </p>
 
-                    <p className="mt-1 text-[10px] text-gray-600">
+                    <p className="mt-0.5 text-[10px] text-gray-600">
                       Behind the VoteSphere experience
                     </p>
 
@@ -773,7 +773,7 @@ console.log(2)
                   <button
                     type="button"
                     onClick={() => setShowDeveloperModal(false)}
-                    className="rounded-xl border border-white/[0.1] bg-white/[0.045] px-5 py-2.5 text-xs font-semibold text-gray-200 transition-all hover:border-emerald-400/20 hover:bg-white/[0.09]"
+                    className="rounded-lg border border-white/[0.1] bg-white/[0.045] px-4 py-2 text-xs font-semibold text-gray-200 transition-all hover:border-emerald-400/20 hover:bg-white/[0.09]"
                   >
                     Close
                   </button>

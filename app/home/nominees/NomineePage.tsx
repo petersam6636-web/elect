@@ -582,7 +582,7 @@ export default function NomineesPage() {
 
         {/* Election statistics */}
         <section className="mb-7 grid gap-3 sm:grid-cols-3">
-          <div className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
+          <div className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-4 shadow-[0_8px_22px_rgba(0,0,0,0.16)]">
             <div className="flex items-center justify-between">
               <span className="text-xs text-white/40">Nominees</span>
               <Users size={17} className="text-blue-300" />
@@ -597,7 +597,7 @@ export default function NomineesPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
+          <div className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-4 shadow-[0_8px_22px_rgba(0,0,0,0.16)]">
             <div className="flex items-center justify-between">
               <span className="text-xs text-white/40">Total votes</span>
               <Vote size={17} className="text-blue-300" />
@@ -612,7 +612,7 @@ export default function NomineesPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
+          <div className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-4 shadow-[0_8px_22px_rgba(0,0,0,0.16)]">
             <div className="flex items-center justify-between">
               <span className="text-xs text-white/40">Created</span>
               <Clock3 size={17} className="text-blue-300" />
@@ -715,7 +715,7 @@ export default function NomineesPage() {
               return (
                 <article
                   key={nominee.id}
-                  className={`group relative overflow-hidden rounded-3xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:p-6 ${rankTheme.card}`}
+                  className={`group relative overflow-hidden rounded-3xl border p-5 shadow-[0_10px_28px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:p-6 ${rankTheme.card}`}
                 >
                   <div className="relative">
                     <div className="flex items-start gap-4">

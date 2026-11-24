@@ -505,7 +505,7 @@ export default function ActiveProject() {
       {/* FULL-WIDTH COUNTDOWN */}
 
       <section
-        className={`relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border transition-colors duration-500 ${
+        className={`relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border shadow-[0_16px_42px_rgba(0,0,0,0.22)] transition-colors duration-500 ${
           isUrgent
             ? "border-red-500/25 bg-gradient-to-br from-[#151923] via-[#111722] to-[#0a0e16]"
             : "border-blue-400/30 bg-gradient-to-br from-[#151d29] via-[#151e2c] to-[#101622]"
@@ -803,7 +803,7 @@ export default function ActiveProject() {
               return (
                 <article
                   key={nominee.id}
-                  className={`relative overflow-hidden rounded-2xl border ${rankTheme.card}`}
+                  className={`relative overflow-hidden rounded-2xl border shadow-[0_8px_22px_rgba(0,0,0,0.17)] ${rankTheme.card}`}
                 >
                   {/* Nominee information */}
 

@@ -116,7 +116,7 @@ export default function HomePage() {
 
       <section
         aria-label="Signed-in account"
-        className="flex min-w-0 flex-wrap items-center justify-between gap-x-6 gap-y-2 rounded-2xl border border-white/[0.07] bg-[#141a24] px-4 py-3"
+        className="flex min-w-0 flex-wrap items-center justify-between gap-x-6 gap-y-2 rounded-2xl border border-white/[0.07] bg-[#141a24] px-4 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]"
       >
         <p className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-blue-400">
           Signed-in account
@@ -143,7 +143,7 @@ export default function HomePage() {
         )}
       </section>
 
-      <section className="relative overflow-hidden rounded-3xl border border-blue-400/15 bg-gradient-to-br from-[#151f2d] via-[#101622] to-[#101621] p-4 sm:p-5">
+      <section className="relative overflow-hidden rounded-3xl border border-blue-400/15 bg-gradient-to-br from-[#151f2d] via-[#101622] to-[#101621] p-4 shadow-[0_16px_38px_rgba(0,0,0,0.20)] sm:p-5">
 
         <div className="relative max-w-xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-blue-300/20 bg-blue-300/10 px-3 py-1 text-[10px] font-semibold tracking-wider text-blue-300">
@@ -185,7 +185,7 @@ export default function HomePage() {
           {stats.map(({ label, value, icon: Icon, detail }) => (
             <div
               key={label}
-              className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-3 transition hover:border-blue-400/20 sm:p-4"
+              className="rounded-2xl border border-white/[0.07] bg-[#141a24] p-3 shadow-[0_8px_22px_rgba(0,0,0,0.16)] transition-all duration-200 hover:border-blue-400/20 hover:shadow-[0_14px_30px_rgba(0,0,0,0.22)] sm:p-4"
             >
               <div className="flex items-center justify-between gap-2">
                 <span className="text-[11px] text-zinc-500">{label}</span>
@@ -201,7 +201,7 @@ export default function HomePage() {
       </section>
 
       <section className="grid min-w-0 gap-3 xl:grid-cols-[1.4fr_1fr]">
-        <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
+        <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-[#141a24] p-4 shadow-[0_10px_26px_rgba(0,0,0,0.16)]">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-sm font-semibold">Recent elections</h2>
@@ -221,7 +221,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-[#141a24] p-4">
+        <div className="min-w-0 rounded-2xl border border-white/[0.07] bg-[#141a24] p-4 shadow-[0_10px_26px_rgba(0,0,0,0.16)]">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-sm font-semibold">Getting started</h2>

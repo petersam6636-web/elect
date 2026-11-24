@@ -44,7 +44,10 @@ export default function AuthCallbackPage() {
         const requestedDestination =
           callbackUrl.searchParams.get("next");
         const destination =
-          requestedDestination === "/" || requestedDestination === "/home"
+          requestedDestination === "/" ||
+          requestedDestination === "/home" ||
+          requestedDestination === "/forgetPassword" ||
+          requestedDestination === "/home/forgetPassword"
             ? requestedDestination
             : "/home";
 

@@ -1,4 +1,4 @@
-import ForgetPassword from './Forget';
+import ForgetPassword from "./Forget";
 
 export default function ForgetPasswordPage() {
   return <ForgetPassword />;

@@ -3,6 +3,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   ArrowRight,
   Eye,
@@ -412,6 +413,17 @@ export default function RegisterPage() {
                     )}
                   </button>
                 </div>
+
+                {isLogin && (
+                  <div className="mt-2 text-right">
+                    <Link
+                      href="/forgetPassword"
+                      className="text-[10px] font-semibold text-emerald-400 transition hover:text-emerald-300"
+                    >
+                      Forgot password?
+                    </Link>
+                  </div>
+                )}
               </div>
 
               {/* SUBMIT */}

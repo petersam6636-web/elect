@@ -1426,11 +1426,6 @@ export default function HistoryPage() {
 
               </div>
 
-              <p className="text-xs leading-5 text-white/30">
-                This action cannot be undone. All associated records will be
-                permanently removed from your database.
-              </p>
-
               <button
                 type="button"
                 onClick={handleDeleteProject}

@@ -177,25 +177,6 @@ export default function FinishedProject() {
           </p>
         </div>
 
-        <div className="hidden items-center gap-3 sm:flex">
-          <div
-            role="progressbar"
-            aria-label={`${nominee.name || "Nominee"} vote percentage`}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-valuenow={Math.round(percentage)}
-            className="flex h-2 flex-1 overflow-hidden rounded-full bg-white/[0.07]"
-          >
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-emerald-950 via-emerald-600 to-emerald-300"
-              style={{ width: `${percentage}%` }}
-            />
-          </div>
-          <span className="shrink-0 text-xs font-semibold tabular-nums text-emerald-300">
-            {percentage.toFixed(1)}%
-          </span>
-        </div>
-
         <Link
           href="/home/starting"
           className="inline-flex h-11 items-center gap-2 rounded-xl bg-emerald-400 px-4 text-sm font-semibold text-[#04130c] transition hover:bg-emerald-300"

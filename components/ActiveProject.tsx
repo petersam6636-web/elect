@@ -72,7 +72,7 @@ const backgroundBubbles = Array.from({ length: 20 }, (_, index) => {
     delay: random(91.77) * -24,
     driftX: -55 + random(54.321) * 110,
     driftY: -65 + random(28.31) * 130,
-    opacity: 0.3 + random(67.91) * 0.35,
+    opacity: 0.1 + random(67.91) * 0.2,
   };
 });
 
@@ -622,8 +622,8 @@ export default function ActiveProject() {
               border: 1px solid currentColor;
               background: currentColor;
               box-shadow:
-                inset 0 0 14px currentColor,
-                0 0 26px currentColor;
+                inset 0 0 7px currentColor,
+                0 0 12px currentColor;
               filter: blur(0.2px);
               animation-name: countdown-bubble-drift;
               animation-timing-function: ease-in-out;
@@ -636,7 +636,7 @@ export default function ActiveProject() {
             <span
               key={bubble.id}
               className={`countdown-bubble ${
-                isUrgent ? "text-red-200" : "text-emerald-200"
+                isUrgent ? "text-red-300" : "text-emerald-300"
               }`}
               style={
                 {

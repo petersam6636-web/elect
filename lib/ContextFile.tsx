@@ -17,6 +17,8 @@ export default function ContextFile({
 }) {
   const [project, setProject] = useState<Project[] | null>(null);
   const [taskKey, setTaskKey] = useState<boolean | null>(null);
+  const [votingMethode, setVotingMethode] =
+    useState<"private" | "public" | null>(null);
   const [mode, setMode] = useState<ForgetPasswordMode>("request");
   const [userInfo, setUserInfo] = useState("");
   const [projectDetails, setProjectDetails] =
@@ -30,6 +32,9 @@ export default function ContextFile({
         value={{
           userInfo,
           setUserInfo,
+
+          votingMethode,
+          setVotingMethode,
 
           mode,
           setMode,

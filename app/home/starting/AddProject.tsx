@@ -60,6 +60,7 @@ export default function CreateProjectPage() {
   const {
     userInfo,
     setUserInfo,
+    setVotingMethode,
     setProjectDetails,
     setCurrentProject,
     setProject,
@@ -171,7 +172,7 @@ export default function CreateProjectPage() {
     }
   };
 
-  const createPublicProject = async () => {
+  const createProject = async (accessMode: "private" | "public") => {
     if (!userInfo || saving) return;
 
     setSaving(true);
@@ -198,27 +199,29 @@ export default function CreateProjectPage() {
 
       if (insertError) throw insertError;
 
-      const { error: taskError } = await supabase
-        .from("tasks")
-        .update({ key: true })
-        .eq("user_id", userInfo)
-        .eq("key", false);
+      if (accessMode === "public") {
+        const { error: taskError } = await supabase
+          .from("tasks")
+          .update({ key: true })
+          .eq("user_id", userInfo)
+          .eq("key", false);
 
-      if (taskError) {
-        await supabase
-          .from("projects")
-          .delete()
-          .eq("id", data.id)
-          .eq("user_id", userInfo);
+        if (taskError) {
+          await supabase
+            .from("projects")
+            .delete()
+            .eq("id", data.id)
+            .eq("user_id", userInfo);
 
-        throw new Error(
-          `Your project could not finish setting up because task activation failed: ${taskError.message}`
-        );
+          throw new Error(
+            `Your project could not finish setting up because task activation failed: ${taskError.message}`
+          );
+        }
       }
 
       setProjectDetails(projectDetails);
       setCurrentProject(data);
-      setTaskKey(true);
+      if (accessMode === "public") setTaskKey(true);
       setProject((previous) => [
         ...(previous ?? []),
         {
@@ -228,7 +231,11 @@ export default function CreateProjectPage() {
       ]);
 
       setShowAccessModeDialog(false);
-      router.push("/home/register");
+      router.push(
+        accessMode === "private"
+          ? `/home/accessKey?projectId=${encodeURIComponent(data.id)}`
+          : "/home/register"
+      );
     } catch (err: unknown) {
       setError(
         err instanceof Error
@@ -241,8 +248,13 @@ export default function CreateProjectPage() {
   };
 
   const openPrivateAccessSetup = () => {
-    setShowAccessModeDialog(false);
-    router.push("/home/accessKey");
+    setVotingMethode("private");
+    void createProject("private");
+  };
+
+  const choosePublicAccess = () => {
+    setVotingMethode("public");
+    void createProject("public");
   };
 
   if (loading) {
@@ -542,7 +554,7 @@ export default function CreateProjectPage() {
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 <button
                   type="button"
-                  onClick={() => void createPublicProject()}
+                  onClick={choosePublicAccess}
                   disabled={saving}
                   className="rounded-2xl border border-blue-300/30 bg-blue-400/[0.10] p-4 text-left shadow-[0_10px_28px_rgba(0,0,0,0.22)] transition hover:-translate-y-0.5 hover:border-blue-300/55 hover:bg-blue-400/[0.15] hover:shadow-[0_16px_38px_rgba(0,0,0,0.3)] disabled:cursor-wait disabled:opacity-60"
                 >

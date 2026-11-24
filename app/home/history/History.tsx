@@ -445,7 +445,7 @@ export default function HistoryPage() {
               className={`flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-medium transition-all duration-300 sm:flex-none ${
                 section === "select"
                   ? "bg-blue-400 text-[#07101c] shadow-lg shadow-blue-500/10"
-                  : "text-white/45 hover:bg-[#141a24] hover:text-white"
+                  : "text-zinc-300 hover:bg-[#1b2431] hover:text-white"
               }`}
             >
               <FolderOpen size={15} />
@@ -464,7 +464,7 @@ export default function HistoryPage() {
               className={`flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-medium transition-all duration-300 sm:flex-none ${
                 section === "view"
                   ? "bg-blue-400 text-[#07101c] shadow-lg shadow-blue-500/10"
-                  : "text-white/45 hover:bg-[#141a24] hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+                  : "text-zinc-300 hover:bg-[#1b2431] hover:text-white disabled:cursor-not-allowed disabled:bg-[#111722] disabled:text-zinc-300"
               }`}
             >
               <ChartNoAxesColumnIncreasing size={15} />
@@ -546,7 +546,7 @@ export default function HistoryPage() {
                     value={searchQuery}
                     onChange={(event) => setSearchQuery(event.target.value)}
                     placeholder="Search your projects..."
-                    className="w-full rounded-xl border border-white/[0.08] bg-[#141a24] py-3 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-blue-400/40 focus:bg-blue-400/[0.025]"
+                    className="w-full rounded-xl border border-white/[0.08] bg-[#141a24] py-3 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-zinc-400 focus:border-blue-400/40 focus:bg-blue-400/[0.025]"
                   />
                 </div>
 
@@ -852,7 +852,7 @@ export default function HistoryPage() {
 
                     <div className="mt-8 max-w-3xl">
 
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300/60">
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-200">
                         Project heading
                       </p>
 
@@ -871,7 +871,7 @@ export default function HistoryPage() {
                     {/* Winner section */}
                     <div className="mt-8 rounded-2xl border border-blue-300/15 bg-black/20 p-5 sm:p-6">
 
-                      <div className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-blue-200/65">
+                      <div className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-blue-200">
                         <Crown size={15} />
                         Election result
                       </div>
@@ -1130,7 +1130,7 @@ export default function HistoryPage() {
 
                                 <div className="min-w-0 flex-1">
 
-                                  <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.17em] text-blue-300/60">
+                                  <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.17em] text-blue-200">
                                     Nominee manifesto
                                   </p>
 
@@ -1286,7 +1286,7 @@ export default function HistoryPage() {
                 </section>
 
                 {/* Results footer */}
-                <section className="mt-9 flex flex-col items-start justify-between gap-4 rounded-2xl border border-blue-400/15 bg-blue-400/[0.045] p-5 sm:flex-row sm:items-center sm:p-6">
+                <section className="mt-9 flex flex-col items-start justify-between gap-4 rounded-2xl border border-blue-400/20 bg-blue-400/[0.12] p-5 sm:flex-row sm:items-center sm:p-6">
 
                   <div>
                     <h3 className="font-semibold text-white">

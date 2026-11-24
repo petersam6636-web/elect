@@ -559,7 +559,7 @@ export default function NomineesPage() {
         {/* Election header */}
         <header className="mb-8 flex flex-col justify-between gap-5 pb-6 sm:flex-row sm:items-center">
           <div>
-            <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-blue-300/65">
+            <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-blue-200">
               <span className="h-2 w-2 animate-pulse rounded-full bg-blue-400" />
               Live election
             </div>
@@ -632,7 +632,7 @@ export default function NomineesPage() {
         {loadError && (
           <div
             role="alert"
-            className="mb-5 flex items-start justify-between gap-3 rounded-xl border border-amber-400/15 bg-amber-400/[0.05] p-3 text-xs text-amber-200"
+            className="mb-5 flex items-start justify-between gap-3 rounded-xl border border-amber-400/20 bg-amber-400/[0.10] p-3 text-xs text-amber-100"
           >
             <span>{loadError}</span>
 
@@ -648,7 +648,7 @@ export default function NomineesPage() {
 
         {/* Voter status */}
         {hasVoted && (
-          <div className="mb-6 flex items-start gap-3 rounded-2xl border border-blue-400/15 bg-blue-400/[0.055] p-4">
+          <div className="mb-6 flex items-start gap-3 rounded-2xl border border-blue-400/25 bg-blue-400/[0.12] p-4">
             <ShieldCheck
               size={19}
               className="mt-0.5 shrink-0 text-blue-300"
@@ -670,7 +670,7 @@ export default function NomineesPage() {
         {/* Nominee heading */}
         <section className="mb-5 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/30">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-200">
               Election participants
             </p>
 
@@ -972,7 +972,7 @@ export default function NomineesPage() {
                     }
                     placeholder="Enter your name"
                     disabled={submitting}
-                    className="w-full rounded-xl border border-white/[0.09] bg-black/20 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-blue-400/45 focus:ring-2 focus:ring-blue-400/10 disabled:opacity-50"
+                    className="w-full rounded-xl border border-white/[0.09] bg-black/20 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-400 focus:border-blue-400/45 focus:ring-2 focus:ring-blue-400/10 disabled:opacity-50"
                   />
                 </div>
 
@@ -999,7 +999,7 @@ export default function NomineesPage() {
                     }
                     placeholder="Share a short comment..."
                     disabled={submitting}
-                    className="w-full resize-none rounded-xl border border-white/[0.09] bg-black/20 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-blue-400/45 focus:ring-2 focus:ring-blue-400/10 disabled:opacity-50"
+                    className="w-full resize-none rounded-xl border border-white/[0.09] bg-black/20 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-400 focus:border-blue-400/45 focus:ring-2 focus:ring-blue-400/10 disabled:opacity-50"
                   />
 
                   <p className="mt-1 text-right text-[10px] text-white/25">

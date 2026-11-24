@@ -20,6 +20,8 @@ html {
   font-size: 112.5%;
   scroll-behavior: smooth;
   overscroll-behavior: none;
+  background-color: #070a10;
+  color-scheme: dark;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -35,9 +37,11 @@ body {
     radial-gradient(ellipse at 56% 100%, rgba(96, 165, 250, 0.035), transparent 36rem),
     linear-gradient(145deg, #070a10 0%, #101725 52%, #080b12 100%);
   background-attachment: fixed;
+  background-color: #070a10;
   color: var(--foreground);
   font-family: var(--font-bodoni-moda), Georgia, serif;
   margin: 0;
+  min-height: 100dvh;
   overscroll-behavior: none;
 }
 
@@ -47,6 +51,11 @@ select {
   background-color: #0d121b !important;
   color: #fff !important;
   color-scheme: dark;
+}
+
+option {
+  background-color: #101621;
+  color: #f4f4f5;
 }
 
 input:-webkit-autofill,
@@ -87,27 +96,35 @@ body {
 }
 
 [class~="text-white/25"] {
-  color: rgb(255 255 255 / 0.32);
+  color: rgb(255 255 255 / 0.45);
+}
+
+[class~="text-white/30"] {
+  color: rgb(255 255 255 / 0.55);
 }
 
 [class~="text-white/35"] {
-  color: rgb(255 255 255 / 0.48);
-}
-
-[class~="text-white/40"] {
-  color: rgb(255 255 255 / 0.56);
-}
-
-[class~="text-white/45"] {
   color: rgb(255 255 255 / 0.62);
 }
 
+[class~="text-white/40"] {
+  color: rgb(255 255 255 / 0.69);
+}
+
+[class~="text-white/45"] {
+  color: rgb(255 255 255 / 0.74);
+}
+
 [class~="text-white/50"] {
-  color: rgb(255 255 255 / 0.66);
+  color: rgb(255 255 255 / 0.78);
 }
 
 [class~="text-white/55"] {
-  color: rgb(255 255 255 / 0.68);
+  color: rgb(255 255 255 / 0.82);
+}
+
+[class~="text-zinc-600"] {
+  color: #9ca3af;
 }
 
 /* Refined surface depth: stronger contrast, balanced transparency */
@@ -136,31 +153,31 @@ body {
 }
 
 [class*="bg-white/[0.025]"] {
-  background-color: rgb(255 255 255 / 0.060);
+  background-color: rgb(255 255 255 / 0.10);
 }
 
 [class*="bg-white/[0.035]"] {
-  background-color: rgb(255 255 255 / 0.070);
+  background-color: rgb(255 255 255 / 0.12);
 }
 
 [class*="bg-white/[0.06]"] {
-  background-color: rgb(255 255 255 / 0.095);
+  background-color: rgb(255 255 255 / 0.14);
 }
 
 [class*="bg-white/[0.07]"] {
-  background-color: rgb(255 255 255 / 0.105);
+  background-color: rgb(255 255 255 / 0.16);
 }
 
 [class*="bg-black/15"] {
-  background-color: rgb(0 0 0 / 0.24);
-}
-
-[class*="bg-black/20"] {
   background-color: rgb(0 0 0 / 0.30);
 }
 
-[class*="bg-black/30"] {
+[class*="bg-black/20"] {
   background-color: rgb(0 0 0 / 0.38);
+}
+
+[class*="bg-black/30"] {
+  background-color: rgb(0 0 0 / 0.45);
 }
 
 [class*="border-blue-400/[0.15]"] {
@@ -184,15 +201,15 @@ body {
 }
 
 [class*="bg-blue-400/[0.06]"] {
-  background-color: rgb(96 165 250 / 0.09);
+  background-color: rgb(96 165 250 / 0.13);
 }
 
 [class*="bg-blue-400/[0.07]"] {
-  background-color: rgb(96 165 250 / 0.10);
+  background-color: rgb(96 165 250 / 0.15);
 }
 
 [class*="bg-blue-400/[0.08]"] {
-  background-color: rgb(96 165 250 / 0.12);
+  background-color: rgb(96 165 250 / 0.17);
 }
 
 #smooth-wrapper {

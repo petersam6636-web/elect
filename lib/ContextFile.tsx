@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from "react";
 
 import { appContext, type ForgetPasswordMode } from "./appContext";
+import ChromeOnlyGate from "@/components/ChromeOnlyGate";
 
 import type {
   Project,
@@ -24,31 +25,33 @@ export default function ContextFile({
     useState<Project | null>(null);
   const [linkingId, setLinkingId] = useState<string>("");
   return (
-    <appContext.Provider
-      value={{
-        userInfo,
-        setUserInfo,
+    <ChromeOnlyGate>
+      <appContext.Provider
+        value={{
+          userInfo,
+          setUserInfo,
 
-        mode,
-        setMode,
+          mode,
+          setMode,
 
-        project,
-        setProject,
+          project,
+          setProject,
 
-        taskKey,
-        setTaskKey,
+          taskKey,
+          setTaskKey,
 
-        projectDetails,
-        setProjectDetails,
+          projectDetails,
+          setProjectDetails,
 
-        currentProject,
-        setCurrentProject,
+          currentProject,
+          setCurrentProject,
 
-        linkingId,
-        setLinkingId,
-      }}
-    >
-      {children}
-    </appContext.Provider>
+          linkingId,
+          setLinkingId,
+        }}
+      >
+        {children}
+      </appContext.Provider>
+    </ChromeOnlyGate>
   );
 }

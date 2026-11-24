@@ -43,40 +43,53 @@ export function getCompetitionRanks(voteCounts: readonly number[]) {
 export function getRankingTheme(index: number): RankingTheme {
   if (index === 0) {
     return {
-      rank: "border-emerald-400/35 bg-emerald-400/[0.14] text-emerald-200",
-      card: "border-emerald-400/45 bg-emerald-400/[0.18]",
-      avatar: "border-emerald-400/25 bg-emerald-400/[0.12] text-emerald-300",
-      crown: "text-emerald-300",
-      badge: "border-emerald-400/30 bg-emerald-400/[0.15] text-emerald-100",
-      progress: "from-emerald-600 to-emerald-300",
-      action: "border-emerald-400/30 bg-emerald-400/[0.14] text-emerald-200",
-      solid: "border-emerald-400 bg-emerald-400 text-[#04130c] hover:border-emerald-300 hover:bg-emerald-300",
+      rank: "border-amber-300/45 bg-amber-300/[0.16] text-amber-100",
+      card: "border-amber-300/40 bg-amber-300/[0.10]",
+      avatar: "border-amber-300/30 bg-amber-300/[0.12] text-amber-200",
+      crown: "text-amber-200",
+      badge: "border-amber-300/35 bg-amber-300/[0.14] text-amber-100",
+      progress: "from-amber-500 to-yellow-200",
+      action: "border-amber-300/35 bg-amber-300/[0.12] text-amber-100",
+      solid: "border-amber-300 bg-amber-300 text-[#211704] hover:border-amber-200 hover:bg-amber-200",
     };
   }
 
   if (index === 1) {
     return {
-      rank: "border-blue-400/35 bg-blue-400/[0.14] text-blue-200",
-      card: "border-blue-400/45 bg-blue-400/[0.18]",
-      avatar: "border-blue-400/25 bg-blue-400/[0.12] text-blue-300",
-      crown: "text-blue-300",
-      badge: "border-blue-400/30 bg-blue-400/[0.15] text-blue-100",
-      progress: "from-blue-600 to-blue-300",
-      action: "border-blue-400/30 bg-blue-400/[0.14] text-blue-200",
-      solid: "border-blue-400 bg-blue-400 text-[#07111f] hover:border-blue-300 hover:bg-blue-300",
+      rank: "border-violet-300/40 bg-violet-300/[0.14] text-violet-100",
+      card: "border-violet-300/35 bg-violet-300/[0.09]",
+      avatar: "border-violet-300/25 bg-violet-300/[0.12] text-violet-200",
+      crown: "text-violet-200",
+      badge: "border-violet-300/30 bg-violet-300/[0.13] text-violet-100",
+      progress: "from-violet-500 to-purple-200",
+      action: "border-violet-300/30 bg-violet-300/[0.11] text-violet-100",
+      solid: "border-violet-300 bg-violet-300 text-[#1b1024] hover:border-violet-200 hover:bg-violet-200",
     };
   }
 
   if (index === 2) {
     return {
-      rank: "border-amber-300/35 bg-amber-300/[0.14] text-amber-200",
-      card: "border-amber-300/45 bg-amber-300/[0.18]",
-      avatar: "border-amber-300/25 bg-amber-300/[0.12] text-amber-300",
-      crown: "text-amber-300",
-      badge: "border-amber-300/30 bg-amber-300/[0.15] text-amber-100",
-      progress: "from-amber-600 to-amber-300",
-      action: "border-amber-300/30 bg-amber-300/[0.14] text-amber-100",
-      solid: "border-amber-300 bg-amber-300 text-[#211704] hover:border-amber-200 hover:bg-amber-200",
+      rank: "border-[#d99a68]/45 bg-[#d99a68]/[0.15] text-[#f4c7a2]",
+      card: "border-[#d99a68]/40 bg-[#d99a68]/[0.10]",
+      avatar: "border-[#d99a68]/30 bg-[#d99a68]/[0.12] text-[#edb98e]",
+      crown: "text-[#edb98e]",
+      badge: "border-[#d99a68]/35 bg-[#d99a68]/[0.13] text-[#f4c7a2]",
+      progress: "from-[#9a5b32] to-[#e0a06a]",
+      action: "border-[#d99a68]/35 bg-[#d99a68]/[0.11] text-[#f4c7a2]",
+      solid: "border-[#d99a68] bg-[#d99a68] text-[#21140b] hover:border-[#e6ad7d] hover:bg-[#e6ad7d]",
+    };
+  }
+
+  if (index === 3) {
+    return {
+      rank: "border-slate-300/40 bg-slate-300/[0.13] text-slate-100",
+      card: "border-slate-300/35 bg-slate-300/[0.08]",
+      avatar: "border-slate-300/25 bg-slate-300/[0.11] text-slate-200",
+      crown: "text-slate-200",
+      badge: "border-slate-300/30 bg-slate-300/[0.12] text-slate-100",
+      progress: "from-slate-500 to-slate-200",
+      action: "border-slate-300/30 bg-slate-300/[0.10] text-slate-100",
+      solid: "border-slate-200 bg-slate-200 text-[#111318] hover:border-white hover:bg-white",
     };
   }
 

@@ -25,7 +25,6 @@ export default function ContextFile({
     useState<Project | null>(null);
   const [linkingId, setLinkingId] = useState<string>("");
   return (
-  <ChromeOnlyGate>
       <appContext.Provider
         value={{
           userInfo,
@@ -52,6 +51,5 @@ export default function ContextFile({
       >
         {children}
       </appContext.Provider>
-    </ChromeOnlyGate>
   );
 }

@@ -754,8 +754,8 @@ export default function NomineesPage() {
                         </p>
                       </div>
 
-                      <div className="rounded-xl border border-white/[0.07] bg-white/[0.025] px-3 py-2 text-right">
-                        <p className="text-lg font-semibold tabular-nums text-white">
+                      <div className={`rounded-xl border px-3 py-2 text-right ${rankTheme.badge}`}>
+                        <p className={`text-lg font-semibold tabular-nums ${rankTheme.crown}`}>
                           {voteCount.toLocaleString()}
                         </p>
 

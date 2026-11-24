@@ -29,6 +29,7 @@ import {
   getElectionStartStorageKey,
   LEGACY_ELECTION_START_KEY,
 } from "@/lib/electionTimer";
+import { getRankingTheme } from "@/lib/rankingStyles";
 
 import ProjectLoading from "@/components/ProjectLoading";
 import ModalPortal from "@/components/ModalPortal";
@@ -431,22 +432,13 @@ export default function ActiveProject() {
     .sort(
       (a, b) =>
         (b.voters?.length ?? 0) - (a.voters?.length ?? 0)
-    )
-    .slice(0, 3);
+    );
 
   const totalVoters = nominees.reduce(
     (total, nominee) =>
       total + (nominee.voters?.length ?? 0),
     0
   );
-  const highestVoteCount =
-    topNominees[0]?.voters?.length ?? 0;
-  const leadersCount =
-    highestVoteCount > 0
-      ? nominees.filter(
-          (nominee) => (nominee.voters?.length ?? 0) === highestVoteCount
-        ).length
-      : 0;
 
   const totalAchievements = nominees.reduce(
     (total, nominee) =>
@@ -941,8 +933,7 @@ export default function ActiveProject() {
               const voteCount = nominee.voters?.length ?? 0;
               const votePercentage =
                 totalVoters > 0 ? (voteCount / totalVoters) * 100 : 0;
-              const isLeader =
-                voteCount > 0 && voteCount === highestVoteCount;
+              const rankTheme = getRankingTheme(index);
               const rank =
                 nominees.filter(
                   (item) => (item.voters?.length ?? 0) > voteCount
@@ -953,7 +944,7 @@ export default function ActiveProject() {
               return (
                 <article
                   key={nominee.id}
-                  className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d1310]"
+                  className={`relative overflow-hidden rounded-2xl border ${rankTheme.card}`}
                 >
                   {/* Nominee information */}
 
@@ -963,10 +954,10 @@ export default function ActiveProject() {
                         <img
                           src={nominee.image}
                           alt={nominee.name}
-                          className="h-12 w-12 rounded-xl border border-white/10 object-cover"
+                          className={`h-12 w-12 rounded-xl border object-cover ${rankTheme.avatar}`}
                         />
                       ) : (
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-emerald-400/15 bg-emerald-400/10 text-emerald-400">
+                        <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border ${rankTheme.avatar}`}>
                           <UserRound size={21} />
                         </div>
                       )}
@@ -976,12 +967,10 @@ export default function ActiveProject() {
                           <p className="truncate text-sm font-semibold text-white">
                             {nominee.name}
                           </p>
-                          {isLeader && (
-                            <span className="inline-flex items-center gap-1 rounded-full border border-yellow-300/20 bg-yellow-300/[0.07] px-2 py-1 text-[10px] font-semibold text-yellow-200">
-                              <Crown size={12} />
-                              {leadersCount > 1
-                                ? "Tied for first"
-                                : "First place"}
+                          {index < 3 && (
+                            <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
+                              <Crown size={11} />
+                              {index === 0 ? "1st place" : index === 1 ? "2nd place" : "3rd place"}
                             </span>
                           )}
                         </div>
@@ -992,13 +981,13 @@ export default function ActiveProject() {
                       </div>
                     </div>
 
-                    <div className="absolute right-5 top-5 flex items-center gap-2 rounded-xl border border-emerald-400/10 bg-emerald-400/[0.06] px-3 py-2">
+                    <div className={`absolute right-5 top-5 flex items-center gap-2 rounded-xl border px-3 py-2 ${rankTheme.badge}`}>
                       <Vote
                         size={15}
-                        className="text-emerald-400"
+                        className={rankTheme.crown}
                       />
 
-                      <span className="text-sm font-bold text-emerald-300">
+                      <span className={`text-sm font-bold ${rankTheme.crown}`}>
                         {voteCount}
                       </span>
 
@@ -1013,7 +1002,7 @@ export default function ActiveProject() {
                       <span className="text-xs text-zinc-500">
                         Share of votes
                       </span>
-                      <span className="text-xs font-semibold tabular-nums text-emerald-300">
+                      <span className={`text-xs font-semibold tabular-nums ${rankTheme.crown}`}>
                         {votePercentage.toFixed(1)}%
                       </span>
                     </div>
@@ -1026,7 +1015,7 @@ export default function ActiveProject() {
                       aria-valuemax={100}
                     >
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-300 transition-[width] duration-500"
+                        className={`h-full rounded-full bg-gradient-to-r transition-[width] duration-500 ${rankTheme.progress}`}
                         style={{ width: `${votePercentage}%` }}
                       />
                     </div>

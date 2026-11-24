@@ -293,7 +293,7 @@ export default function SharePage() {
                 </p>
               </div>
 
-              <div className="share-page-note mt-2 flex flex-wrap items-center justify-center gap-2 text-center text-[11px] text-zinc-300">
+              <div className="share-page-note  flex flex-wrap items-center justify-center gap-2 text-center text-[11px] text-zinc-300">
                 <QrCode size={14} className="text-blue-400/80" />
                 Scanning opens the election; it never submits a vote automatically.
               </div>

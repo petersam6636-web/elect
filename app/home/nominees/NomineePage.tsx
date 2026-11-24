@@ -22,7 +22,6 @@ import useApp from "@/lib/useApp";
 import {
   getCompetitionRanks,
   getOrdinalLabel,
-  getRankingBubbleLayout,
   getRankingTheme,
 } from "@/lib/rankingStyles";
 import type { Nominee, Project } from "@/types/project";
@@ -717,8 +716,6 @@ export default function NomineesPage() {
               const voteCount = nominee.voters?.length ?? 0;
               const rank = nomineeRanks[index] ?? index + 1;
               const rankTheme = getRankingTheme(rank - 1);
-              const [primaryBubblePosition, secondaryBubblePosition] =
-                getRankingBubbleLayout(index);
 
               const percentage =
                 totalVotes > 0 ? (voteCount / totalVotes) * 100 : 0;
@@ -728,11 +725,6 @@ export default function NomineesPage() {
                   key={nominee.id}
                   className={`group relative overflow-hidden rounded-3xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:p-6 ${rankTheme.card}`}
                 >
-                  <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-                    <div className={`absolute rounded-full border ${primaryBubblePosition} ${rankTheme.bubble}`} />
-                    <div className={`absolute rounded-full border ${secondaryBubblePosition} ${rankTheme.bubble}`} />
-                  </div>
-
                   <div className="relative">
                     <div className="flex items-start gap-4">
                       <div className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border text-lg font-semibold ${rankTheme.avatar}`}>

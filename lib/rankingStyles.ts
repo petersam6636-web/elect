@@ -28,6 +28,17 @@ export function getOrdinalLabel(index: number) {
   return `${position}th place`;
 }
 
+const rankingBubbleLayouts = [
+  ["-right-10 -top-14 h-36 w-36", "bottom-[12%] right-[8%] h-5 w-5"],
+  ["left-[38%] top-[12%] h-32 w-32", "bottom-[16%] left-[12%] h-6 w-6"],
+  ["-left-8 top-[34%] h-32 w-32", "right-[18%] bottom-[14%] h-7 w-7"],
+  ["right-[18%] bottom-[12%] h-36 w-36", "left-[15%] top-[18%] h-5 w-5"],
+] as const;
+
+export function getRankingBubbleLayout(index: number) {
+  return rankingBubbleLayouts[index % rankingBubbleLayouts.length];
+}
+
 export function getRankingTheme(index: number): RankingTheme {
   if (index === 0) {
     return {
@@ -80,6 +91,6 @@ export function getRankingTheme(index: number): RankingTheme {
     progress: "from-zinc-600 to-zinc-300",
     action: "border-white/[0.12] bg-white/[0.05] text-zinc-300",
     solid: "border-zinc-300 bg-zinc-300 text-[#111318] hover:border-zinc-200 hover:bg-zinc-200",
-    bubble: "border-white/[0.10] bg-white/[0.03]",
+    bubble: "border-zinc-400/20 bg-zinc-300/[0.045]",
   };
 }

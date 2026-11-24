@@ -25,7 +25,11 @@ import {
 import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
 import { getElectionDurationMs } from "@/lib/electionTimer";
-import { getOrdinalLabel, getRankingTheme } from "@/lib/rankingStyles";
+import {
+  getOrdinalLabel,
+  getRankingBubbleLayout,
+  getRankingTheme,
+} from "@/lib/rankingStyles";
 import type { Achievement, Nominee, Project } from "@/types/project";
 import ProjectLoading from "@/components/ProjectLoading";
 import ModalPortal from "@/components/ModalPortal";
@@ -1162,6 +1166,8 @@ export default function QRPage({ projectId }: QRPageProps) {
                 .map((voter) => voter.comment?.trim())
                 .filter((comment): comment is string => Boolean(comment));
               const rankTheme = getRankingTheme(index);
+              const [primaryBubblePosition, secondaryBubblePosition] =
+                getRankingBubbleLayout(index);
 
               const percentage =
                 totalVotes > 0 ? (voteCount / totalVotes) * 100 : 0;
@@ -1171,7 +1177,10 @@ export default function QRPage({ projectId }: QRPageProps) {
                   key={nominee.id}
                   className={`group relative overflow-hidden rounded-3xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:p-6 ${rankTheme.card}`}
                 >
-                  <div className={`pointer-events-none absolute -right-16 -top-20 h-44 w-44 rounded-full border ${rankTheme.bubble} blur-[65px] transition`} />
+                  <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+                    <div className={`absolute rounded-full border ${primaryBubblePosition} ${rankTheme.bubble} blur-[65px] transition`} />
+                    <div className={`absolute rounded-full border ${secondaryBubblePosition} ${rankTheme.bubble}`} />
+                  </div>
 
                   <div className="relative">
                     <div className="flex items-start gap-4">

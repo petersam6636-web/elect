@@ -19,7 +19,11 @@ import {
 
 import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
-import { getOrdinalLabel, getRankingTheme } from "@/lib/rankingStyles";
+import {
+  getOrdinalLabel,
+  getRankingBubbleLayout,
+  getRankingTheme,
+} from "@/lib/rankingStyles";
 import type { Nominee, Project } from "@/types/project";
 import ProjectLoading from "@/components/ProjectLoading";
 import ModalPortal from "@/components/ModalPortal";
@@ -707,6 +711,8 @@ export default function NomineesPage() {
             {nominees.map((nominee, index) => {
               const voteCount = nominee.voters?.length ?? 0;
               const rankTheme = getRankingTheme(index);
+              const [primaryBubblePosition, secondaryBubblePosition] =
+                getRankingBubbleLayout(index);
 
               const percentage =
                 totalVotes > 0 ? (voteCount / totalVotes) * 100 : 0;
@@ -717,8 +723,8 @@ export default function NomineesPage() {
                   className={`group relative overflow-hidden rounded-3xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:p-6 ${rankTheme.card}`}
                 >
                   <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-                    <div className={`absolute -right-10 -top-14 h-36 w-36 rounded-full border ${rankTheme.bubble}`} />
-                    <div className={`absolute bottom-[12%] right-[8%] h-5 w-5 rounded-full border ${rankTheme.bubble}`} />
+                    <div className={`absolute rounded-full border ${primaryBubblePosition} ${rankTheme.bubble}`} />
+                    <div className={`absolute rounded-full border ${secondaryBubblePosition} ${rankTheme.bubble}`} />
                   </div>
 
                   <div className="relative">

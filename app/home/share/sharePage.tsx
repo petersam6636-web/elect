@@ -232,11 +232,11 @@ export default function SharePage() {
                 {currentProject.name || "Untitled election"}
               </h2>
 
-              <p className="share-page-instructions mt-3 text-xs text-zinc-500 sm:mt-4">
+              <p className="share-page-instructions mt-3 text-xs text-zinc-300 sm:mt-4">
                 Scan the code with a phone camera to open the voting page
               </p>
 
-              <div className="share-page-code mx-auto mt-3 flex w-full max-w-[260px] justify-center rounded-[1.5rem] border border-white/10 bg-white p-2 shadow-[0_20px_70px_rgba(59,130,246,0.12)] sm:mt-4 sm:p-3">
+              <div className="share-page-code mx-auto mt-3 flex w-full max-w-[260px] justify-center rounded-[1.5rem] border border-white/10 bg-white p-2 shadow-[0_20px_70px_rgba(59,130,246,0.08)] sm:mt-4 sm:p-3">
                 {shareUrl && (
                   <SharedQRCode value={shareUrl} />
                 )}
@@ -245,7 +245,7 @@ export default function SharePage() {
               <div className="share-page-link mx-auto mt-5 max-w-xl text-left">
                 <label
                   htmlFor="election-share-link"
-                  className="mb-2 block text-xs font-medium text-zinc-400"
+                  className="mb-2 block text-xs font-medium text-zinc-300"
                 >
                   Invitation link
                 </label>
@@ -271,7 +271,7 @@ export default function SharePage() {
                     type="button"
                     onClick={handleCopyLink}
                     disabled={!shareUrl}
-                    className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-blue-400 px-5 text-sm font-semibold text-[#07101c] shadow-[0_8px_24px_rgba(59,130,246,0.12)] transition duration-200 hover:bg-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#141a24] disabled:cursor-not-allowed disabled:opacity-50"
+                    className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-blue-400 px-5 text-sm font-semibold text-[#07101c] shadow-[0_8px_24px_rgba(59,130,246,0.08)] transition duration-200 hover:bg-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#141a24] disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {copied ? <Check size={16} /> : <Copy size={16} />}
                     {copied ? "Copied" : "Copy link"}
@@ -293,7 +293,7 @@ export default function SharePage() {
                 </p>
               </div>
 
-              <div className="share-page-note mt-2 flex flex-wrap items-center justify-center gap-2 text-center text-[11px] text-zinc-500">
+              <div className="share-page-note mt-2 flex flex-wrap items-center justify-center gap-2 text-center text-[11px] text-zinc-300">
                 <QrCode size={14} className="text-blue-400/80" />
                 Scanning opens the election; it never submits a vote automatically.
               </div>

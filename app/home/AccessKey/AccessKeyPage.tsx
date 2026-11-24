@@ -27,7 +27,7 @@ export default function AccessKeyPage({
   userId: string;
 }) {
   const router = useRouter();
-  const { currentProject } = useApp();
+  const { currentProject, setCurrentProject } = useApp();
   const [project, setProject] = useState<Project | null>(null);
   const origin = useSyncExternalStore(
     subscribeToLocation,
@@ -79,7 +79,11 @@ export default function AccessKeyPage({
           throw new Error("This election was not found in your account.");
         }
 
-        if (active) setProject(data as Project);
+        if (active) {
+          const loadedProject = data as Project;
+          setProject(loadedProject);
+          setCurrentProject(loadedProject);
+        }
       } catch (loadError: unknown) {
         if (!active) return;
         setError(
@@ -96,7 +100,7 @@ export default function AccessKeyPage({
     return () => {
       active = false;
     };
-  }, [currentProject, userId, router]);
+  }, [currentProject, setCurrentProject, userId, router]);
 
   const copyRegistrationLink = async () => {
     if (!registrationUrl) return;
@@ -112,6 +116,7 @@ export default function AccessKeyPage({
   };
 
   const handleEndRegistration = () => {
+    if (visibleProject) setCurrentProject(visibleProject);
     router.push("/home/register");
   };
 
@@ -168,7 +173,7 @@ export default function AccessKeyPage({
           <button
             type="button"
             onClick={handleEndRegistration}
-            disabled={!userId}
+            disabled={!userId || (loading && !visibleProject)}
             className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-400 px-4 py-3.5 text-sm font-semibold text-[#07101c] shadow-[0_12px_30px_rgba(0,0,0,0.25)] transition hover:-translate-y-0.5 hover:bg-blue-300 hover:shadow-[0_18px_42px_rgba(0,0,0,0.32)]"
           >
             End registering and add students

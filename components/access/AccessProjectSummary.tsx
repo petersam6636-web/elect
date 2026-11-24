@@ -23,12 +23,11 @@ export default function AccessProjectSummary({
         <QrCode className="mt-0.5 shrink-0 text-blue-300" size={18} />
         <div>
           <p className="text-sm font-semibold text-blue-100">
-            Voter registration link
+            Registration page
           </p>
           <p className="mt-1 text-xs leading-5 text-white/55">
-            You reached the registration page for this election. The actual
-            registration form and shared open/closed state will be connected
-            next.
+            Registration submission and the shared open/closed state are not
+            enabled yet, so no voter details are collected on this page.
           </p>
         </div>
       </div>

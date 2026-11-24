@@ -31,6 +31,7 @@ const navigation = [
 
 const homePaths = ["/home", "/home/starting", "/home/register"];
 const fixedHomeRoutes = new Set([
+  ...homePaths,
   ...navigation.map(({ href }) => href),
   "/home/forgetPassword",
 ]);

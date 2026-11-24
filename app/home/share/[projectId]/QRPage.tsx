@@ -898,8 +898,6 @@ export default function QRPage({ projectId }: QRPageProps) {
               <div className="grid min-w-0 gap-3">
                 {finishedResults.rankedNominees.map((nominee, index) => {
                   const voteCount = nominee.voters?.length ?? 0;
-                  const percentage =
-                    totalVotes > 0 ? (voteCount / totalVotes) * 100 : 0;
                   const isWinner = finishedResults.winners.some(
                     (winner) => winner.id === nominee.id
                   );
@@ -908,9 +906,10 @@ export default function QRPage({ projectId }: QRPageProps) {
                     <article
                       key={nominee.id}
                       data-enter
-                      className="group relative grid min-w-0 grid-cols-1 items-center gap-4 overflow-hidden rounded-2xl border border-white/[0.10] bg-white/[0.025] p-4 transition hover:border-white/[0.16] hover:bg-white/[0.035] sm:grid-cols-[minmax(0,1fr)_auto] sm:p-5"
+                      className="group flex min-w-0 flex-col gap-4 overflow-hidden rounded-2xl border border-white/[0.10] bg-white/[0.025] p-4 transition hover:border-white/[0.16] hover:bg-white/[0.035] sm:p-5"
                     >
-                      <div className="flex min-w-0 items-center gap-3 sm:pr-32">
+                      <div className="flex min-w-0 items-center justify-between gap-4">
+                        <div className="flex min-w-0 items-center gap-3">
                         {nominee.image ? (
                           <img
                             src={nominee.image}
@@ -942,71 +941,23 @@ export default function QRPage({ projectId }: QRPageProps) {
                         </div>
                       </div>
 
-                      <div className="absolute right-5 top-5 hidden min-w-28 flex-col items-end rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 text-right sm:flex">
-                        <p className="text-[10px] uppercase tracking-[0.14em] text-white/40">
-                          Total votes
-                        </p>
-                        <p className="mt-1 font-semibold tabular-nums text-white">
-                          {voteCount.toLocaleString()}
-                        </p>
+                        <div className="shrink-0 rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 text-right">
+                          <p className="text-[10px] uppercase tracking-[0.14em] text-white/40">
+                            Total votes
+                          </p>
+                          <p className="mt-1 font-semibold tabular-nums text-white">
+                            {voteCount.toLocaleString()}
+                          </p>
+                        </div>
                       </div>
 
-                      <div className="flex min-w-0 flex-col gap-3 sm:absolute sm:bottom-5 sm:right-5 sm:left-[calc(50%-1rem)] sm:max-w-[48%]">
-                        <div className="flex items-center gap-3 sm:hidden">
-                          <div className="shrink-0 rounded-lg border border-white/[0.06] bg-black/20 px-2.5 py-2 text-center">
-                            <p className="text-[9px] uppercase tracking-[0.12em] text-white/40">
-                              Votes
-                            </p>
-                            <p className="mt-0.5 text-sm font-semibold tabular-nums text-white">
-                              {voteCount.toLocaleString()}
-                            </p>
-                          </div>
-                          <div
-                            role="progressbar"
-                            aria-label={`${nominee.name || "Nominee"} vote percentage`}
-                            aria-valuemin={0}
-                            aria-valuemax={100}
-                            aria-valuenow={Math.round(percentage)}
-                            className="flex h-2 flex-1 overflow-hidden rounded-full bg-white/[0.07]"
-                          >
-                            <div
-                              className="h-full rounded-full bg-gradient-to-r from-emerald-950 via-emerald-600 to-emerald-300"
-                              style={{ width: `${percentage}%` }}
-                            />
-                          </div>
-
-                          <span className="shrink-0 text-xs font-semibold tabular-nums text-emerald-300">
-                            {percentage.toFixed(1)}%
-                          </span>
-                        </div>
-
-                        <div className="hidden items-center gap-3 sm:flex">
-                          <div
-                            role="progressbar"
-                            aria-label={`${nominee.name || "Nominee"} vote percentage`}
-                            aria-valuemin={0}
-                            aria-valuemax={100}
-                            aria-valuenow={Math.round(percentage)}
-                            className="flex h-2 flex-1 overflow-hidden rounded-full bg-white/[0.07]"
-                          >
-                            <div
-                              className="h-full rounded-full bg-gradient-to-r from-emerald-950 via-emerald-600 to-emerald-300"
-                              style={{ width: `${percentage}%` }}
-                            />
-                          </div>
-                          <span className="shrink-0 text-xs font-semibold tabular-nums text-emerald-300">
-                            {percentage.toFixed(1)}%
-                          </span>
-                        </div>
-
-                        <Link
-                          href={`/home/${nominee.id}`}
-                          className="inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.07] px-4 text-xs font-semibold text-emerald-300 transition hover:border-emerald-400/40 hover:bg-emerald-400/15 hover:text-emerald-200"
-                        >
-                          View more
-                          <ArrowRight size={13} />
-                        </Link>
-                      </div>
+                      <Link
+                        href={`/home/${nominee.id}`}
+                        className="inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.07] px-4 text-xs font-semibold text-emerald-300 transition hover:border-emerald-400/40 hover:bg-emerald-400/15 hover:text-emerald-200"
+                      >
+                        View more
+                        <ArrowRight size={13} />
+                      </Link>
 
                     </article>
                   );

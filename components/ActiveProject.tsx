@@ -513,11 +513,11 @@ export default function ActiveProject() {
       >
         {/* Countdown content */}
 
-        <div className="relative z-10 mx-auto w-full max-w-3xl px-5 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+        <div className="relative z-10 mx-auto w-full max-w-3xl px-4 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-7">
 
           {/* Heading */}
 
-          <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <div
                 className={`flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] ${
@@ -530,7 +530,7 @@ export default function ActiveProject() {
                 ELECTION COUNTDOWN
               </div>
 
-              <h2 className="mt-2 text-xl font-bold tracking-tight text-white sm:text-2xl">
+              <h2 className="mt-1.5 text-xl font-bold tracking-tight text-white sm:text-2xl">
                 Time remaining
               </h2>
 
@@ -562,14 +562,14 @@ export default function ActiveProject() {
 
           {/* TRANSPARENT GLASS COUNTDOWN UNITS */}
 
-          <div className="mt-8 grid grid-cols-4 gap-2 sm:gap-4">
+          <div className="mt-5 grid grid-cols-4 gap-2 sm:gap-3">
             {timeUnits.map((unit, index) => (
               <div
                 key={unit.label}
                 className="group min-w-0 text-center"
               >
                 <div
-                  className={`relative flex aspect-square min-h-[65px] items-center justify-center overflow-hidden rounded-xl border backdrop-blur-sm transition-all duration-300 sm:rounded-2xl ${
+                  className={`relative flex h-16 min-h-0 items-center justify-center overflow-hidden rounded-xl border backdrop-blur-sm transition-all duration-300 sm:h-20 sm:rounded-2xl md:h-[5.5rem] ${
                     isUrgent
                       ? "border-red-400/40 bg-red-400/[0.17] shadow-[inset_0_0_25px_rgba(239,68,68,0.08)]"
                       : "border-blue-300/35 bg-blue-400/[0.17] shadow-[inset_0_0_25px_rgba(59,130,246,0.08)] group-hover:border-blue-200/55 group-hover:bg-blue-400/[0.23]"
@@ -611,7 +611,7 @@ export default function ActiveProject() {
                 </div>
 
                 <p
-                  className={`mt-2 text-[9px] font-bold uppercase tracking-[0.12em] sm:text-[10px] ${
+                  className={`mt-1.5 text-[9px] font-bold uppercase tracking-[0.12em] sm:text-[10px] ${
                     isUrgent
                       ? "text-red-300/80"
                       : "text-blue-100/85"
@@ -626,21 +626,21 @@ export default function ActiveProject() {
           {/* Urgent and expired messages */}
 
           {isUrgent && !isExpired && (
-            <p className="mt-5 flex items-center justify-center gap-2 text-center text-[11px] font-semibold text-red-400">
+            <p className="mt-3 flex items-center justify-center gap-2 text-center text-[11px] font-semibold text-red-400">
               <Zap size={13} />
               Less than 10 seconds remaining
             </p>
           )}
 
           {isExpired && (
-            <p className="mt-5 text-center text-[11px] font-semibold text-red-400">
+            <p className="mt-3 text-center text-[11px] font-semibold text-red-400">
               Election time has expired. Finishing your election...
             </p>
           )}
 
           {/* Progress */}
 
-          <div className="mt-8">
+          <div className="mt-5">
             <div className="mb-2 flex items-center justify-between gap-3 text-[10px]">
               <span className="font-medium text-zinc-200">
                 Election time elapsed
@@ -679,7 +679,7 @@ export default function ActiveProject() {
 
           {/* Status */}
 
-          <div className="mt-7 flex items-center justify-center gap-2 text-center">
+          <div className="mt-4 flex items-center justify-center gap-2 text-center">
             <span
               className={`h-2 w-2 rounded-full ${
                 isUrgent
@@ -701,11 +701,11 @@ export default function ActiveProject() {
             </p>
           </div>
 
-          <h3 className="mt-2 text-center text-lg font-bold tracking-tight text-white">
+          <h3 className="mt-1.5 text-center text-base font-bold tracking-tight text-white sm:text-lg">
             {isUrgent ? "Almost there" : "Your election is live"}
           </h3>
 
-          <p className="mx-auto mt-1 max-w-xs text-center text-[11px] leading-5 text-zinc-200">
+          <p className="mx-auto mt-1 max-w-xs text-center text-[10px] leading-4 text-zinc-200">
             {isUrgent
               ? "The election is approaching its scheduled closing time."
               : "Your voting space is active. Every vote counts."}

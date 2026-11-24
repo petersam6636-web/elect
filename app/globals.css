@@ -225,3 +225,47 @@ body {
   width: 100%;
   overflow: visible;
 }
+
+@media (max-height: 700px) {
+  .share-page {
+    padding-block: 0.5rem;
+  }
+
+  .share-page-title {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .share-page-card {
+    padding: 0.875rem;
+  }
+
+  .share-page-instructions {
+    margin-top: 0.5rem;
+  }
+
+  .share-page-code {
+    max-width: 13rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+  }
+
+  .share-page-link {
+    margin-top: 0.75rem;
+  }
+
+  .share-page-note {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-height: 560px) {
+  .share-page-code {
+    max-width: 10rem;
+  }
+
+  .share-page-note {
+    font-size: 0.625rem;
+    line-height: 1rem;
+  }
+}

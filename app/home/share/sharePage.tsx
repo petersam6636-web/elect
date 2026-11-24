@@ -172,9 +172,9 @@ export default function SharePage() {
   };
 
   return (
-    <main className="relative isolate flex min-h-[calc(100dvh-8rem)] items-center justify-center overflow-hidden px-2 py-5 md:px-3">
+    <main className="share-page relative isolate flex min-h-[calc(100dvh-8rem)] items-center justify-center overflow-hidden px-2 py-3 md:px-3 sm:py-4">
       <div className="w-full max-w-2xl">
-        <header className="mb-8 text-center sm:mb-10">
+        <header className="share-page-title mb-5 text-center sm:mb-6">
 
           <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             Share your election
@@ -204,7 +204,7 @@ export default function SharePage() {
             <p>{projectError}</p>
           </section>
         ) : !canGenerateQr ? (
-          <section className="mx-auto max-w-xl rounded-3xl border border-white/[0.08] bg-[#141a24] px-6 py-12 text-center backdrop-blur-xl">
+          <section className="mx-auto max-w-xl rounded-3xl border border-white/[0.08] px-6 py-12 text-center backdrop-blur-xl">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-400/15 bg-blue-400/[0.07] text-blue-300">
               <QrCode size={21} />
             </div>
@@ -224,7 +224,7 @@ export default function SharePage() {
             </Link>
           </section>
         ) : (
-          <section className="relative mx-auto max-w-xl overflow-hidden rounded-[2rem] border border-white/[0.09] bg-[#141a24] p-4 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-2xl sm:p-7">
+          <section className="share-page-card relative mx-auto max-w-xl overflow-hidden rounded-[2rem] border border-white/[0.09] bg-[#141a24] p-3 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-2xl sm:p-5">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/50 to-transparent" />
 
             <div className="relative z-10 text-center">
@@ -232,17 +232,17 @@ export default function SharePage() {
                 {currentProject.name || "Untitled election"}
               </h2>
 
-              <p className="mt-6 text-xs text-zinc-500">
+              <p className="share-page-instructions mt-3 text-xs text-zinc-500 sm:mt-4">
                 Scan the code with a phone camera to open the voting page
               </p>
 
-              <div className="mx-auto mt-5 flex w-full max-w-[320px] justify-center rounded-[1.75rem] border border-white/10 bg-white p-3 shadow-[0_20px_70px_rgba(59,130,246,0.12)] sm:p-4">
+              <div className="share-page-code mx-auto mt-3 flex w-full max-w-[260px] justify-center rounded-[1.5rem] border border-white/10 bg-white p-2 shadow-[0_20px_70px_rgba(59,130,246,0.12)] sm:mt-4 sm:p-3">
                 {shareUrl && (
                   <SharedQRCode value={shareUrl} />
                 )}
               </div>
 
-              <div className="mx-auto mt-7 max-w-xl text-left">
+              <div className="share-page-link mx-auto mt-5 max-w-xl text-left">
                 <label
                   htmlFor="election-share-link"
                   className="mb-2 block text-xs font-medium text-zinc-400"
@@ -293,7 +293,7 @@ export default function SharePage() {
                 </p>
               </div>
 
-              <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-center text-[11px] text-zinc-500">
+              <div className="share-page-note mt-2 flex flex-wrap items-center justify-center gap-2 text-center text-[11px] text-zinc-500">
                 <QrCode size={14} className="text-blue-400/80" />
                 Scanning opens the election; it never submits a vote automatically.
               </div>

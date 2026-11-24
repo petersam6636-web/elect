@@ -19,7 +19,7 @@ import {
 
 import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
-import { getRankingTheme } from "@/lib/rankingStyles";
+import { getOrdinalLabel, getRankingTheme } from "@/lib/rankingStyles";
 import type { Nominee, Project } from "@/types/project";
 import ProjectLoading from "@/components/ProjectLoading";
 import ModalPortal from "@/components/ModalPortal";
@@ -741,12 +741,12 @@ export default function NomineesPage() {
                             {nominee.name || "Unnamed nominee"}
                           </h3>
 
-                          {index < 3 && (
+                          {
                             <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
-                              <Crown size={11} />
-                              {index === 0 ? "1st place" : index === 1 ? "2nd place" : "3rd place"}
+                              {index < 3 && <Crown size={11} />}
+                              {getOrdinalLabel(index)}
                             </span>
-                          )}
+                          }
                         </div>
 
                         <p className="text-xs text-white/35">

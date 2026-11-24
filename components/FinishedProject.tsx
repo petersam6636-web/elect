@@ -18,7 +18,7 @@ import {
 
 import useApp from "@/lib/useApp";
 import { getElectionDurationMs } from "@/lib/electionTimer";
-import { getRankingTheme } from "@/lib/rankingStyles";
+import { getOrdinalLabel, getRankingTheme } from "@/lib/rankingStyles";
 import type { Nominee } from "@/types/project";
 
 function formatDate(date: string | null | undefined) {
@@ -327,9 +327,6 @@ export default function FinishedProject() {
           <div className="grid gap-3">
             {results.rankedNominees.map((nominee, index) => {
               const voteCount = nominee.voters?.length ?? 0;
-              const isWinner = results.winners.some(
-                (winner) => winner.id === nominee.id
-              );
               const rankTheme = getRankingTheme(index);
 
               return (
@@ -364,19 +361,12 @@ export default function FinishedProject() {
                         <p className="break-words font-medium text-white">
                           {nominee.name || "Unnamed nominee"}
                         </p>
-                        {index < 3 ? (
+                        {
                           <span className={`mt-1 inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
-                            <Crown size={11} />
-                            {index === 0 ? "1st place" : index === 1 ? "2nd place" : "3rd place"}
+                            {index < 3 && <Crown size={11} />}
+                            {getOrdinalLabel(index)}
                           </span>
-                        ) : (
-                          isWinner && (
-                            <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-300">
-                              <Crown size={11} />
-                              Winner
-                            </span>
-                          )
-                        )}
+                        }
                       </div>
                     </div>
 

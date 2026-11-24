@@ -25,7 +25,7 @@ import {
 import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
 import { getElectionDurationMs } from "@/lib/electionTimer";
-import { getRankingTheme } from "@/lib/rankingStyles";
+import { getOrdinalLabel, getRankingTheme } from "@/lib/rankingStyles";
 import type { Achievement, Nominee, Project } from "@/types/project";
 import ProjectLoading from "@/components/ProjectLoading";
 import ModalPortal from "@/components/ModalPortal";
@@ -899,9 +899,6 @@ export default function QRPage({ projectId }: QRPageProps) {
               <div className="grid min-w-0 gap-3">
                 {finishedResults.rankedNominees.map((nominee, index) => {
                   const voteCount = nominee.voters?.length ?? 0;
-                  const isWinner = finishedResults.winners.some(
-                    (winner) => winner.id === nominee.id
-                  );
                   const rankTheme = getRankingTheme(index);
 
                   return (
@@ -937,19 +934,12 @@ export default function QRPage({ projectId }: QRPageProps) {
                             <p className="break-words font-medium text-white">
                               {nominee.name || "Unnamed nominee"}
                             </p>
-                            {index < 3 ? (
+                            {
                               <span className={`mt-1 inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
-                                <Crown size={11} />
-                                {index === 0 ? "1st place" : index === 1 ? "2nd place" : "3rd place"}
+                                {index < 3 && <Crown size={11} />}
+                                {getOrdinalLabel(index)}
                               </span>
-                            ) : (
-                              isWinner && (
-                                <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-300">
-                                  <Crown size={11} />
-                                  Winner
-                                </span>
-                              )
-                            )}
+                            }
                           </div>
                         </div>
 
@@ -1206,12 +1196,12 @@ export default function QRPage({ projectId }: QRPageProps) {
                             {nominee.name || "Unnamed nominee"}
                           </h3>
 
-                            {index < 3 && (
+                            {
                               <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
-                                <Crown size={11} />
-                                {index === 0 ? "1st place" : index === 1 ? "2nd place" : "3rd place"}
+                                {index < 3 && <Crown size={11} />}
+                                {getOrdinalLabel(index)}
                             </span>
-                          )}
+                          }
                         </div>
 
                         <p className="text-xs text-white/35">
@@ -1274,7 +1264,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                       <button
                         type="button"
                         onClick={() => handleDetails(nominee.id)}
-                        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-white/[0.09] bg-white/[0.035] px-4 py-3 text-sm font-medium text-white/75 transition-all duration-300 hover:border-emerald-400/25 hover:bg-emerald-400/[0.07] hover:text-emerald-300"
+                        className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 ${rankTheme.action}`}
                       >
                         <Info size={16} />
                         View details
@@ -1285,7 +1275,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                         type="button"
                         onClick={() => void openVoteModal(nominee)}
                         disabled={hasVoted || submitting}
-                        className="group/button inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-[#04130c] transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-40"
+                        className={`group/button inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40 ${rankTheme.solid}`}
                       >
                         <Vote size={16} />
 

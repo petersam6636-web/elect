@@ -9,6 +9,24 @@ export type RankingTheme = {
   solid: string;
 };
 
+export function getOrdinalLabel(index: number) {
+  const position = index + 1;
+  if (position === 1) return "1st place";
+  if (position === 2) return "2nd place";
+  if (position === 3) return "3rd place";
+
+  const lastTwoDigits = position % 100;
+  if (lastTwoDigits >= 11 && lastTwoDigits <= 13) {
+    return `${position}th place`;
+  }
+
+  const lastDigit = position % 10;
+  if (lastDigit === 1) return `${position}st place`;
+  if (lastDigit === 2) return `${position}nd place`;
+  if (lastDigit === 3) return `${position}rd place`;
+  return `${position}th place`;
+}
+
 export function getRankingTheme(index: number): RankingTheme {
   if (index === 0) {
     return {
@@ -50,13 +68,13 @@ export function getRankingTheme(index: number): RankingTheme {
   }
 
   return {
-    rank: "border-white/[0.08] bg-white/[0.06] text-white/50",
+    rank: "border-white/[0.10] bg-white/[0.06] text-zinc-300",
     card: "border-white/[0.10] bg-white/[0.025]",
-    avatar: "border-white/[0.08] bg-white/[0.06] text-white/50",
-    crown: "text-white/45",
-    badge: "border-white/[0.08] bg-white/[0.05] text-white/55",
-    progress: "from-emerald-600 to-emerald-300",
-    action: "border-emerald-400/20 bg-emerald-400/[0.07] text-emerald-300",
-    solid: "border-emerald-400 bg-emerald-400 text-[#04130c] hover:border-emerald-300 hover:bg-emerald-300",
+    avatar: "border-white/[0.10] bg-white/[0.06] text-zinc-300",
+    crown: "text-zinc-300",
+    badge: "border-white/[0.10] bg-white/[0.05] text-zinc-300",
+    progress: "from-zinc-600 to-zinc-300",
+    action: "border-white/[0.12] bg-white/[0.05] text-zinc-300",
+    solid: "border-zinc-300 bg-zinc-300 text-[#111318] hover:border-zinc-200 hover:bg-zinc-200",
   };
 }

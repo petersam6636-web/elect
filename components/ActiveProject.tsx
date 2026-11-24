@@ -29,7 +29,7 @@ import {
   getElectionStartStorageKey,
   LEGACY_ELECTION_START_KEY,
 } from "@/lib/electionTimer";
-import { getRankingTheme } from "@/lib/rankingStyles";
+import { getOrdinalLabel, getRankingTheme } from "@/lib/rankingStyles";
 
 import ProjectLoading from "@/components/ProjectLoading";
 import ModalPortal from "@/components/ModalPortal";
@@ -967,12 +967,12 @@ export default function ActiveProject() {
                           <p className="truncate text-sm font-semibold text-white">
                             {nominee.name}
                           </p>
-                          {index < 3 && (
+                          {
                             <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
-                              <Crown size={11} />
-                              {index === 0 ? "1st place" : index === 1 ? "2nd place" : "3rd place"}
+                              {index < 3 && <Crown size={11} />}
+                              {getOrdinalLabel(index)}
                             </span>
-                          )}
+                          }
                         </div>
 
                         <p className="mt-1 text-[11px] text-zinc-500">

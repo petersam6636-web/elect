@@ -689,7 +689,16 @@ console.log(2)
 
                     <div className="pointer-events-none absolute -inset-3 rounded-[28px] bg-emerald-400/[0.16] blur-2xl" />
 
-                    <div className="relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-[20px] border border-emerald-400/20 bg-[#101b14] p-2 shadow-[0_0_25px_rgba(16,185,129,0.12),0_12px_35px_rgba(0,0,0,0.45)]">
+                    <div className="relative aspect-square h-20 w-20 shrink-0 overflow-hidden rounded-[20px] border border-emerald-400/20 bg-[#101b14] shadow-[0_0_25px_rgba(16,185,129,0.12),0_12px_35px_rgba(0,0,0,0.45)]">
+
+                      <Image
+                        src="/business-logo.png"
+                        alt=""
+                        aria-hidden="true"
+                        fill
+                        sizes="80px"
+                        className="scale-110 object-cover opacity-50 blur-md"
+                      />
 
                       <Image
                         src="/business-logo.png"
@@ -697,7 +706,7 @@ console.log(2)
                         fill
                         priority
                         sizes="80px"
-                        className="rounded-[18px] object-contain p-2"
+                        className="rounded-[18px] object-contain p-1"
                       />
 
                     </div>

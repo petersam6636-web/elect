@@ -25,6 +25,7 @@ import {
 import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
 import { getElectionDurationMs } from "@/lib/electionTimer";
+import { getRankingTheme } from "@/lib/rankingStyles";
 import type { Achievement, Nominee, Project } from "@/types/project";
 import ProjectLoading from "@/components/ProjectLoading";
 import ModalPortal from "@/components/ModalPortal";
@@ -901,28 +902,32 @@ export default function QRPage({ projectId }: QRPageProps) {
                   const isWinner = finishedResults.winners.some(
                     (winner) => winner.id === nominee.id
                   );
+                  const rankTheme = getRankingTheme(index);
 
                   return (
                     <article
                       key={nominee.id}
                       data-enter
-                      className="group flex min-w-0 flex-col gap-4 overflow-hidden rounded-2xl border border-white/[0.10] bg-white/[0.025] p-4 transition hover:border-white/[0.16] hover:bg-white/[0.035] sm:p-5"
+                      className={`group flex min-w-0 flex-col gap-4 overflow-hidden rounded-2xl border p-4 transition hover:bg-white/[0.035] sm:p-5 ${rankTheme.card}`}
                     >
                       <div className="flex min-w-0 items-center justify-between gap-4">
                         <div className="flex min-w-0 items-center gap-3">
+                          {index < 3 && (
+                            <Crown
+                              size={18}
+                              aria-label={`${index + 1}${index === 0 ? "st" : index === 1 ? "nd" : "rd"} place`}
+                              className={`shrink-0 ${rankTheme.crown}`}
+                            />
+                          )}
                           {nominee.image ? (
                             <img
                               src={nominee.image}
                               alt={nominee.name || "Nominee"}
-                              className="h-12 w-12 shrink-0 rounded-xl border border-emerald-400/20 object-cover"
+                              className={`h-12 w-12 shrink-0 rounded-xl border object-cover ${rankTheme.avatar}`}
                             />
                           ) : (
                             <div
-                              className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-sm font-semibold ${
-                                isWinner
-                                  ? "bg-emerald-400/15 text-emerald-300"
-                                  : "bg-white/[0.06] text-white/45"
-                              }`}
+                              className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border text-sm font-semibold ${rankTheme.rank}`}
                             >
                               {index + 1}
                             </div>
@@ -932,11 +937,18 @@ export default function QRPage({ projectId }: QRPageProps) {
                             <p className="break-words font-medium text-white">
                               {nominee.name || "Unnamed nominee"}
                             </p>
-                            {isWinner && (
-                              <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-300">
+                            {index < 3 ? (
+                              <span className={`mt-1 inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
                                 <Crown size={11} />
-                                Winner
+                                {index === 0 ? "1st place" : index === 1 ? "2nd place" : "3rd place"}
                               </span>
+                            ) : (
+                              isWinner && (
+                                <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-300">
+                                  <Crown size={11} />
+                                  Winner
+                                </span>
+                              )
                             )}
                           </div>
                         </div>
@@ -1159,6 +1171,7 @@ export default function QRPage({ projectId }: QRPageProps) {
               const comments = (nominee.voters ?? [])
                 .map((voter) => voter.comment?.trim())
                 .filter((comment): comment is string => Boolean(comment));
+              const rankTheme = getRankingTheme(index);
 
               const percentage =
                 totalVotes > 0 ? (voteCount / totalVotes) * 100 : 0;
@@ -1166,7 +1179,7 @@ export default function QRPage({ projectId }: QRPageProps) {
               return (
                 <article
                   key={nominee.id}
-                  className="group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-[#0b1510]/90 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/20 hover:shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:p-6"
+                  className={`group relative overflow-hidden rounded-3xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:p-6 ${rankTheme.card}`}
                 >
                   <div className="pointer-events-none absolute -right-16 -top-20 h-44 w-44 rounded-full bg-emerald-400/[0.035] blur-[65px] transition group-hover:bg-emerald-400/[0.07]" />
 
@@ -1177,10 +1190,10 @@ export default function QRPage({ projectId }: QRPageProps) {
                           src={nominee.image}
                           alt={nominee.name || "Nominee"}
                           loading="lazy"
-                          className="h-12 w-12 shrink-0 rounded-2xl border border-emerald-400/15 object-cover"
+                          className={`h-12 w-12 shrink-0 rounded-2xl border object-cover ${rankTheme.avatar}`}
                         />
                       ) : (
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.08] text-lg font-semibold text-emerald-300">
+                        <div className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border text-lg font-semibold ${rankTheme.avatar}`}>
                           {nominee.name?.trim().charAt(0).toUpperCase() || (
                             <Users size={22} />
                           )}
@@ -1193,9 +1206,10 @@ export default function QRPage({ projectId }: QRPageProps) {
                             {nominee.name || "Unnamed nominee"}
                           </h3>
 
-                          {index === 0 && voteCount > 0 && (
-                            <span className="rounded-full border border-emerald-400/20 bg-emerald-400/[0.08] px-2 py-1 text-[10px] font-semibold text-emerald-300">
-                              Leading
+                            {index < 3 && (
+                              <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
+                                <Crown size={11} />
+                                {index === 0 ? "1st place" : index === 1 ? "2nd place" : "3rd place"}
                             </span>
                           )}
                         </div>
@@ -1235,7 +1249,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                           Vote distribution
                         </span>
 
-                        <span className="text-xs font-semibold tabular-nums text-emerald-300">
+                        <span className={`text-xs font-semibold tabular-nums ${rankTheme.crown}`}>
                           {percentage.toFixed(1)}%
                         </span>
                       </div>
@@ -1249,7 +1263,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                         aria-valuemax={100}
                       >
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-300 transition-all duration-700 ease-out"
+                          className={`h-full rounded-full bg-gradient-to-r transition-all duration-700 ease-out ${rankTheme.progress}`}
                           style={{ width: `${percentage}%` }}
                         />
                       </div>

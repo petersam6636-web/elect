@@ -19,6 +19,7 @@ import {
 
 import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
+import { getRankingTheme } from "@/lib/rankingStyles";
 import type { Nominee, Project } from "@/types/project";
 import ProjectLoading from "@/components/ProjectLoading";
 import ModalPortal from "@/components/ModalPortal";
@@ -301,14 +302,6 @@ export default function NomineesPage() {
     (total, nominee) => total + (nominee.voters?.length ?? 0),
     0
   );
-  const highestVoteCount = nominees[0]?.voters?.length ?? 0;
-  const leadersCount =
-    highestVoteCount > 0
-      ? nominees.filter(
-          (nominee) => (nominee.voters?.length ?? 0) === highestVoteCount
-        ).length
-      : 0;
-
   const openVoteModal = async (nominee: Nominee) => {
     if (!currentProject?.id || submitting || hasVoted) return;
 
@@ -711,10 +704,9 @@ export default function NomineesPage() {
           </div>
         ) : (
           <div className="grid gap-4 lg:grid-cols-2">
-            {nominees.map((nominee) => {
+            {nominees.map((nominee, index) => {
               const voteCount = nominee.voters?.length ?? 0;
-              const isLeader =
-                voteCount > 0 && voteCount === highestVoteCount;
+              const rankTheme = getRankingTheme(index);
 
               const percentage =
                 totalVotes > 0 ? (voteCount / totalVotes) * 100 : 0;
@@ -722,7 +714,7 @@ export default function NomineesPage() {
               return (
                 <article
                   key={nominee.id}
-                  className="group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-[#0b1510]/90 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/20 hover:shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:p-6"
+                  className={`group relative overflow-hidden rounded-3xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:p-6 ${rankTheme.card}`}
                 >
                   <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
                     <div className="absolute -right-10 -top-14 h-36 w-36 rounded-full border border-emerald-300/10 bg-emerald-300/[0.02]" />
@@ -731,8 +723,16 @@ export default function NomineesPage() {
 
                   <div className="relative">
                     <div className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.08] text-emerald-300">
-                        <Users size={22} />
+                      <div className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border text-lg font-semibold ${rankTheme.avatar}`}>
+                        {nominee.image ? (
+                          <img
+                            src={nominee.image}
+                            alt={nominee.name || "Nominee"}
+                            className="h-full w-full rounded-2xl object-cover"
+                          />
+                        ) : (
+                          <Users size={22} />
+                        )}
                       </div>
 
                       <div className="min-w-0 flex-1">
@@ -741,12 +741,10 @@ export default function NomineesPage() {
                             {nominee.name || "Unnamed nominee"}
                           </h3>
 
-                          {isLeader && (
-                            <span className="inline-flex items-center gap-1 rounded-full border border-yellow-300/20 bg-yellow-300/[0.07] px-2 py-1 text-[10px] font-semibold text-yellow-200">
-                              <Crown size={12} />
-                              {leadersCount > 1
-                                ? "Tied for first"
-                                : "First place"}
+                          {index < 3 && (
+                            <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
+                              <Crown size={11} />
+                              {index === 0 ? "1st place" : index === 1 ? "2nd place" : "3rd place"}
                             </span>
                           )}
                         </div>
@@ -786,7 +784,7 @@ export default function NomineesPage() {
                           Vote distribution
                         </span>
 
-                        <span className="text-xs font-semibold tabular-nums text-emerald-300">
+                        <span className={`text-xs font-semibold tabular-nums ${rankTheme.crown}`}>
                           {percentage.toFixed(1)}%
                         </span>
                       </div>
@@ -800,7 +798,7 @@ export default function NomineesPage() {
                         aria-valuemax={100}
                       >
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-300 transition-all duration-700 ease-out"
+                          className={`h-full rounded-full bg-gradient-to-r transition-all duration-700 ease-out ${rankTheme.progress}`}
                           style={{ width: `${percentage}%` }}
                         />
                       </div>

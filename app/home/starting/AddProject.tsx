@@ -245,9 +245,6 @@ export default function CreateProjectPage() {
           onSubmit={handleCreateProject}
           className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-blue-400/15 bg-[#121824] p-6 shadow-[0_0_55px_rgba(0,0,0,0.30)] backdrop-blur-xl sm:p-8"
         >
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-          </div>
-
           <div className="relative">
 
           {/* Header */}

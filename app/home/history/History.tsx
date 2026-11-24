@@ -411,13 +411,6 @@ export default function HistoryPage() {
   return (
     <main className="relative min-h-screen overflow-hidden px-2 py-5 text-white md:px-3">
 
-      {/* Ambient background */}
-      {/* <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-blue-500/10 blur-[130px]" />
-
-      <div className="pointer-events-none absolute -bottom-32 -right-24 h-[28rem] w-[28rem] rounded-full bg-blue-500/[0.07] blur-[140px]" />
-
-      <div className="pointer-events-none absolute inset-0 opacity-[0.035] [background-image:radial-gradient(#a7f3d0_1px,transparent_1px)] [background-size:25px_25px]" /> */}
-
       <div className="relative z-10 mx-auto w-full max-w-6xl">
 
         {/* Header */}
@@ -620,15 +613,8 @@ export default function HistoryPage() {
                   return (
                     <article
                       key={item.id}
-                      className="group relative overflow-visible rounded-3xl border border-white/[0.08] bg-gradient-to-br from-[#151d2a]/90 via-[#111722]/95 to-[#0d121b] p-5 shadow-[0_15px_55px_rgba(0,0,0,0.20)] transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/25 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] sm:p-6"
+                      className="group relative overflow-visible rounded-3xl border border-white/[0.08] bg-gradient-to-br from-[#151d2a] via-[#111722] to-[#0d121b] p-5 shadow-[0_15px_55px_rgba(0,0,0,0.20)] transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/25 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] sm:p-6"
                     >
-
-                      {/* Decorative background */}
-                      <div
-                        aria-hidden="true"
-                        className="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl"
-                      >
-                      </div>
 
                       <div className="relative">
 

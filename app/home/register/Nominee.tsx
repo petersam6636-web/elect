@@ -488,9 +488,6 @@ export default function Nominee() {
 
         {/* Single nominee form */}
         <section className="relative overflow-hidden rounded-3xl border border-blue-400/15 bg-[#121824] p-5 shadow-[0_0_55px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:p-8">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-          </div>
-
           <div className="relative">
 
           <div className="mb-7 flex flex-wrap items-center justify-between gap-3">
@@ -729,9 +726,6 @@ export default function Nominee() {
               aria-labelledby="confirmation-title"
               className="relative w-full max-w-md overflow-hidden rounded-3xl border border-blue-400/20 bg-[#121824] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
             >
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-            </div>
-
             <div className="relative">
             <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/10 text-xl text-blue-300">
               ✓
@@ -800,9 +794,6 @@ export default function Nominee() {
               aria-labelledby="register-nominee-title"
               className="relative w-full max-w-md overflow-hidden rounded-3xl border border-blue-400/20 bg-[#121824] p-6 shadow-[0_0_60px_rgba(0,0,0,0.5)] sm:p-7"
             >
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-            </div>
-
             <div className="relative">
             <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/10 text-xl text-blue-300">
               +

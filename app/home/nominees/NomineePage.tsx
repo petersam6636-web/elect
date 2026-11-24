@@ -555,9 +555,6 @@ export default function NomineesPage() {
 
   return (
     <main className="relative min-h-screen overflow-x-clip px-2 py-5 text-white md:px-3">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-      </div>
-
       <div className="relative mx-auto w-full max-w-7xl">
         {/* Election header */}
         <header className="mb-8 flex flex-col justify-between gap-5 pb-6 sm:flex-row sm:items-center">
@@ -925,9 +922,6 @@ export default function NomineesPage() {
             aria-labelledby="vote-modal-title"
             className="relative my-auto w-full max-w-md overflow-hidden rounded-3xl border border-blue-400/15 bg-[#141a24] p-6 shadow-[0_25px_100px_rgba(0,0,0,0.6)] sm:p-7"
           >
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-            </div>
-
             <div className="relative">
               <div className="mb-5 flex items-start justify-between">
                 <div>

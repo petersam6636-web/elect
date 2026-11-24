@@ -373,7 +373,7 @@ export default function ActiveProject() {
   if (error && !activeProject) {
     return (
       <div className="flex min-h-[50vh] items-center justify-center px-2 md:px-3">
-        <div className="w-full max-w-md rounded-3xl border border-red-500/15 bg-[#170f0f] p-7 text-center">
+        <div className="w-full max-w-md rounded-3xl border border-red-500/15 bg-[#121824] p-7 text-center">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/10">
             <AlertCircle className="text-red-400" size={23} />
           </div>
@@ -507,7 +507,7 @@ export default function ActiveProject() {
       <section
         className={`relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border transition-colors duration-500 ${
           isUrgent
-            ? "border-red-500/25 bg-gradient-to-br from-[#251313] via-[#171010] to-[#100d0d]"
+            ? "border-red-500/25 bg-gradient-to-br from-[#151923] via-[#111722] to-[#0a0e16]"
             : "border-blue-400/30 bg-gradient-to-br from-[#151d29] via-[#151e2c] to-[#101622]"
         }`}
       >
@@ -915,7 +915,7 @@ export default function ActiveProject() {
 
       {/* FORCE END */}
 
-      <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-2xl border border-red-500/15 bg-gradient-to-br from-[#1c1212] to-[#100e0e] p-5 sm:p-6">
+      <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-2xl border border-red-500/15 bg-gradient-to-br from-[#151923] to-[#0d121b] p-5 sm:p-6">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-3">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-500/15 bg-red-500/10 text-red-400">
@@ -965,7 +965,7 @@ export default function ActiveProject() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="end-election-title"
-            className="relative w-full max-w-md animate-in fade-in zoom-in-95 duration-200 overflow-hidden rounded-3xl border border-red-400/20 bg-gradient-to-br from-[#1c1717] via-[#151111] to-[#100e0e] p-6 shadow-[0_25px_100px_rgba(0,0,0,0.65)] sm:p-8"
+            className="relative w-full max-w-md animate-in fade-in zoom-in-95 duration-200 overflow-hidden rounded-3xl border border-red-400/20 bg-gradient-to-br from-[#151d2b] via-[#111722] to-[#0d121b] p-6 shadow-[0_25px_100px_rgba(0,0,0,0.65)] sm:p-8"
           >
             {/* Decorative glow */}
 

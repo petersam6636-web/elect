@@ -1336,7 +1336,7 @@ export default function HistoryPage() {
             }}
           >
 
-          <div className="w-full max-w-md overflow-hidden rounded-3xl border border-red-400/20 bg-[linear-gradient(145deg,rgba(45,16,18,0.96),rgba(16,18,16,0.98))] shadow-[0_25px_100px_rgba(0,0,0,0.65)]">
+          <div className="w-full max-w-md overflow-hidden rounded-3xl border border-red-400/20 bg-gradient-to-br from-[#171b25] to-[#101621] shadow-[0_25px_100px_rgba(0,0,0,0.65)]">
 
             <div className="border-b border-red-400/15 p-6">
 
@@ -1456,7 +1456,7 @@ export default function HistoryPage() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="delete-all-title"
-            className="w-full max-w-md overflow-hidden rounded-3xl border border-red-400/20 bg-[linear-gradient(145deg,rgba(45,16,18,0.96),rgba(16,18,16,0.98))] shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
+            className="w-full max-w-md overflow-hidden rounded-3xl border border-red-400/20 bg-gradient-to-br from-[#171b25] to-[#101621] shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
           >
             <div className="border-b border-red-400/15 p-6">
               <div className="flex items-start justify-between gap-4">

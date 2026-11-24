@@ -790,7 +790,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                 </h2>
               </div>
 
-              <div className="mt-8 rounded-2xl border border-blue-300/25 bg-[#08130d] p-5 shadow-[inset_0_1px_0_rgba(147,197,253,0.08)] sm:p-6">
+              <div className="mt-8 rounded-2xl border border-blue-300/25 bg-[#121824] p-5 shadow-[inset_0_1px_0_rgba(147,197,253,0.08)] sm:p-6">
                 <div className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-blue-200/65">
                   <Crown size={15} />
                   Election result
@@ -1537,7 +1537,7 @@ export default function QRPage({ projectId }: QRPageProps) {
               role="alertdialog"
               aria-modal="true"
               aria-labelledby="final-vote-confirmation-title"
-              className="w-full max-w-sm rounded-3xl border border-blue-400/20 bg-[linear-gradient(145deg,rgba(16,37,26,0.98),rgba(11,17,13,0.98))] p-6 text-center shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
+              className="w-full max-w-sm rounded-3xl border border-blue-400/20 bg-gradient-to-br from-[#151e2c] via-[#111722] to-[#0d121b] p-6 text-center shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
             >
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.10] text-blue-300">
                 <ShieldCheck size={26} />

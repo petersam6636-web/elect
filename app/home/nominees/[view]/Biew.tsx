@@ -665,7 +665,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                 )}
 
                 {isWinner && (
-                  <div className="absolute -bottom-3 -right-3 flex h-12 w-12 items-center justify-center rounded-2xl border border-yellow-300/30 bg-[#171d2a] shadow-xl">
+                  <div className="absolute -bottom-3 -right-3 flex h-12 w-12 items-center justify-center rounded-2xl border border-yellow-300/30 bg-[#30270d] shadow-xl">
                     <Crown className="h-6 w-6 text-yellow-300" />
                   </div>
                 )}

@@ -223,7 +223,7 @@ export default function FinishedProject() {
             )}
           </div>
 
-          <div className="mt-8 rounded-2xl border border-blue-300/25 bg-[#08130d] p-5 shadow-[inset_0_1px_0_rgba(147,197,253,0.08)] sm:p-6">
+          <div className="mt-8 rounded-2xl border border-blue-300/25 bg-[#121824] p-5 shadow-[inset_0_1px_0_rgba(147,197,253,0.08)] sm:p-6">
             <div className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-blue-200/65">
               <Crown size={15} />
               Election result

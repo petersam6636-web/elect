@@ -1075,7 +1075,7 @@ export default function NomineesPage() {
               role="alertdialog"
               aria-modal="true"
               aria-labelledby="final-vote-confirmation-title"
-              className="w-full max-w-sm rounded-3xl border border-blue-400/20 bg-[linear-gradient(145deg,rgba(16,37,26,0.98),rgba(11,17,13,0.98))] p-6 text-center shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
+              className="w-full max-w-sm rounded-3xl border border-blue-400/20 bg-gradient-to-br from-[#151e2c] via-[#111722] to-[#0d121b] p-6 text-center shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
             >
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/[0.10] text-blue-300">
                 <ShieldCheck size={26} />

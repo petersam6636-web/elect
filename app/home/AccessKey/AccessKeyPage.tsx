@@ -7,9 +7,17 @@ import { ArrowLeft, Check, Copy, QrCode, ShieldAlert } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 
 import { supabase } from "@/lib/supabase-client";
+import useApp from "@/lib/useApp";
 import type { Project } from "@/types/project";
 
-const subscribeToLocation = () => () => {};
+const subscribeToLocation = (onChange: () => void) => {
+  window.addEventListener("popstate", onChange);
+  window.addEventListener("pageshow", onChange);
+  return () => {
+    window.removeEventListener("popstate", onChange);
+    window.removeEventListener("pageshow", onChange);
+  };
+};
 const getBrowserOrigin = () => window.location.origin;
 const getServerOrigin = () => "";
 
@@ -19,6 +27,7 @@ export default function AccessKeyPage({
   projectId: string;
 }) {
   const router = useRouter();
+  const { currentProject } = useApp();
   const [project, setProject] = useState<Project | null>(null);
   const origin = useSyncExternalStore(
     subscribeToLocation,
@@ -29,13 +38,22 @@ export default function AccessKeyPage({
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
 
+  const resolvedProjectId = projectId || currentProject?.id || "";
   const registrationUrl =
-    origin && projectId
-      ? `${origin}/home/access/${encodeURIComponent(projectId)}`
+    origin && resolvedProjectId
+      ? `${origin}/home/access/${encodeURIComponent(resolvedProjectId)}`
       : "";
+  const contextProject =
+    currentProject?.id === resolvedProjectId ? currentProject : null;
+  const visibleProject = project ?? contextProject;
 
   useEffect(() => {
-    if (!projectId) return;
+    if (
+      !resolvedProjectId ||
+      currentProject?.id === resolvedProjectId
+    ) {
+      return;
+    }
 
     let active = true;
 
@@ -53,7 +71,7 @@ export default function AccessKeyPage({
         const { data, error: projectError } = await supabase
           .from("projects")
           .select("*")
-          .eq("id", projectId)
+          .eq("id", resolvedProjectId)
           .eq("user_id", authData.user.id)
           .eq("deleted", false)
           .maybeSingle();
@@ -80,7 +98,7 @@ export default function AccessKeyPage({
     return () => {
       active = false;
     };
-  }, [projectId, router]);
+  }, [currentProject, resolvedProjectId, router]);
 
   const copyRegistrationLink = async () => {
     if (!registrationUrl) return;
@@ -99,32 +117,10 @@ export default function AccessKeyPage({
     router.push("/home/register");
   };
 
-  if (loading) {
+  if (loading && !visibleProject) {
     return (
       <main className="flex min-h-[70vh] items-center justify-center px-4 text-white">
         <span className="text-sm text-white/55">Loading election access…</span>
-      </main>
-    );
-  }
-
-  if (!project) {
-    return (
-      <main className="flex min-h-[70vh] items-center justify-center px-4 py-8 text-white">
-        <section className="w-full max-w-lg rounded-3xl border border-red-400/20 bg-[#111722] p-6 text-center shadow-[0_24px_80px_rgba(0,0,0,0.42)]">
-          <p role="alert" className="text-sm leading-6 text-red-200">
-            {error ||
-              (projectId
-                ? "Unable to load this election."
-                : "The election ID is missing from this access link.")}
-          </p>
-          <Link
-            href="/home/starting"
-            className="mt-5 inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 hover:bg-white/[0.05]"
-          >
-            <ArrowLeft size={15} />
-            Back to election setup
-          </Link>
-        </section>
       </main>
     );
   }
@@ -140,12 +136,24 @@ export default function AccessKeyPage({
             Private election
           </p>
           <h1 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
-            Organizer access link
+            {visibleProject?.name ?? "Election registration"}
           </h1>
           <p className="mt-3 text-sm leading-6 text-white/60">
             Share the QR or link with people who should be able to open this
             election&apos;s registration page.
           </p>
+
+          {!visibleProject && (
+            <p
+              role="alert"
+              className="mt-5 rounded-xl border border-red-400/20 bg-red-500/10 px-4 py-3 text-sm leading-6 text-red-200"
+            >
+              {error ||
+                (projectId
+                  ? "Election details could not be loaded. The QR link is still available below."
+                  : "The election ID is missing from this access link.")}
+            </p>
+          )}
 
           <div
             role="status"
@@ -162,6 +170,7 @@ export default function AccessKeyPage({
           <button
             type="button"
             onClick={handleEndRegistration}
+            disabled={!resolvedProjectId}
             className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-400 px-4 py-3.5 text-sm font-semibold text-[#07101c] shadow-[0_12px_30px_rgba(0,0,0,0.25)] transition hover:-translate-y-0.5 hover:bg-blue-300 hover:shadow-[0_18px_42px_rgba(0,0,0,0.32)]"
           >
             End registering and add students
@@ -179,7 +188,10 @@ export default function AccessKeyPage({
           <h2 className="text-sm font-semibold text-white">Voter registration QR</h2>
           <p className="mt-2 text-xs leading-5 text-white/50">
             Scan or copy this link to open the registration page for{" "}
-            <span className="font-medium text-white/75">{project.name}</span>.
+            <span className="font-medium text-white/75">
+              {visibleProject?.name ?? "this election"}
+            </span>
+            .
           </p>
           {registrationUrl && (
             <div className="mx-auto mt-5 w-fit rounded-2xl bg-white p-3">

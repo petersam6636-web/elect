@@ -44,7 +44,7 @@ export function getRankingTheme(index: number): RankingTheme {
   if (index === 0) {
     return {
       rank: "border-amber-300/45 bg-amber-300/[0.16] text-amber-100",
-      card: "border-amber-300/40 bg-[#211d14]/75",
+      card: "border-amber-300/40 bg-[#211d14]/55",
       avatar: "border-amber-300/30 bg-amber-300/[0.14] text-amber-200",
       crown: "text-amber-200",
       badge: "border-amber-300/35 bg-amber-300/[0.16] text-amber-100",
@@ -57,7 +57,7 @@ export function getRankingTheme(index: number): RankingTheme {
   if (index === 1) {
     return {
       rank: "border-violet-300/40 bg-violet-300/[0.15] text-violet-100",
-      card: "border-violet-300/35 bg-[#1d1827]/75",
+      card: "border-violet-300/35 bg-[#1d1827]/55",
       avatar: "border-violet-300/25 bg-violet-300/[0.14] text-violet-200",
       crown: "text-violet-200",
       badge: "border-violet-300/30 bg-violet-300/[0.15] text-violet-100",
@@ -69,21 +69,21 @@ export function getRankingTheme(index: number): RankingTheme {
 
   if (index === 2) {
     return {
-      rank: "border-[#d99a68]/45 bg-[#d99a68]/[0.16] text-[#f4c7a2]",
-      card: "border-[#d99a68]/40 bg-[#241a14]/75",
-      avatar: "border-[#d99a68]/30 bg-[#d99a68]/[0.14] text-[#edb98e]",
-      crown: "text-[#edb98e]",
-      badge: "border-[#d99a68]/35 bg-[#d99a68]/[0.16] text-[#f4c7a2]",
-      progress: "from-[#9a5b32] to-[#e0a06a]",
-      action: "border-[#d99a68]/35 bg-[#d99a68]/[0.12] text-[#f4c7a2]",
-      solid: "border-[#d99a68] bg-[#d99a68] text-[#21140b] hover:border-[#e6ad7d] hover:bg-[#e6ad7d]",
+      rank: "border-cyan-300/45 bg-cyan-300/[0.16] text-cyan-100",
+      card: "border-cyan-300/40 bg-[#10202a]/55",
+      avatar: "border-cyan-300/30 bg-cyan-300/[0.14] text-cyan-200",
+      crown: "text-cyan-200",
+      badge: "border-cyan-300/35 bg-cyan-300/[0.16] text-cyan-100",
+      progress: "from-cyan-500 to-cyan-200",
+      action: "border-cyan-300/35 bg-cyan-300/[0.12] text-cyan-100",
+      solid: "border-cyan-300 bg-cyan-300 text-[#08212a] hover:border-cyan-200 hover:bg-cyan-200",
     };
   }
 
   if (index === 3) {
     return {
       rank: "border-slate-300/40 bg-slate-300/[0.15] text-slate-100",
-      card: "border-slate-300/35 bg-[#192029]/75",
+      card: "border-slate-300/35 bg-[#192029]/55",
       avatar: "border-slate-300/25 bg-slate-300/[0.13] text-slate-200",
       crown: "text-slate-200",
       badge: "border-slate-300/30 bg-slate-300/[0.15] text-slate-100",
@@ -95,7 +95,7 @@ export function getRankingTheme(index: number): RankingTheme {
 
   return {
     rank: "border-white/[0.10] bg-white/[0.11] text-zinc-100",
-    card: "border-white/[0.10] bg-[#141a24]/75",
+    card: "border-white/[0.10] bg-[#141a24]/55",
     avatar: "border-white/[0.10] bg-white/[0.11] text-zinc-100",
     crown: "text-zinc-300",
     badge: "border-white/[0.10] bg-white/[0.12] text-zinc-100",

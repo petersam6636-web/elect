@@ -27,8 +27,9 @@ html {
     scroll-behavior: auto;
   }
 }
-.loll {
-    background:
+
+body {
+  background:
     radial-gradient(circle at 18% 12%, rgba(16, 185, 129, 0.16), transparent 24rem),
     radial-gradient(circle at 82% 78%, rgba(52, 211, 153, 0.11), transparent 28rem),
     radial-gradient(circle at 50% 45%, rgba(6, 78, 59, 0.13), transparent 36rem),
@@ -39,7 +40,6 @@ html {
   margin: 0;
   overscroll-behavior: none;
 }
-
 
 input,
 textarea,

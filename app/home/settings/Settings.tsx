@@ -693,20 +693,11 @@ console.log(2)
 
                       <Image
                         src="/business-logo.png"
-                        alt=""
-                        aria-hidden="true"
-                        fill
-                        sizes="80px"
-                        className="scale-110 object-cover opacity-50 blur-md"
-                      />
-
-                      <Image
-                        src="/business-logo.png"
                         alt="Business logo"
                         fill
                         priority
                         sizes="80px"
-                        className="rounded-[18px] object-contain p-1"
+                        className="rounded-[18px] object-cover"
                       />
 
                     </div>

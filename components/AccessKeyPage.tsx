@@ -131,61 +131,6 @@ export default function AccessKeyPage({
   return (
     <main className="min-h-screen px-3 py-6 text-white sm:px-5 sm:py-10">
       <div className="mx-auto grid w-full max-w-5xl gap-5 lg:grid-cols-[minmax(0,1fr)_320px]">
-        <section className="rounded-3xl border border-blue-400/20 bg-[#111722]/95 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.38)] sm:p-8">
-          <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-300/20 bg-blue-400/[0.08] text-blue-300 shadow-[0_10px_28px_rgba(0,0,0,0.24)]">
-            <QrCode size={24} />
-          </div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300">
-            Private election
-          </p>
-          <h1 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
-            {visibleProject?.name ?? "Election registration"}
-          </h1>
-          <p className="mt-3 text-sm leading-6 text-white/60">
-            Share the QR or link with people who should be able to open this
-            election&apos;s registration page.
-          </p>
-
-          {!visibleProject && (
-            <p
-              role="alert"
-              className="mt-5 rounded-xl border border-red-400/20 bg-red-500/10 px-4 py-3 text-sm leading-6 text-red-200"
-            >
-              {error ||
-                (userId
-                  ? "Election details could not be loaded. The QR link is still available below."
-                  : "Your account ID is missing from this access link.")}
-            </p>
-          )}
-
-          <div
-            role="status"
-            className="mt-6 flex gap-3 rounded-2xl border border-amber-300/20 bg-amber-300/[0.06] p-4"
-          >
-            <ShieldAlert className="mt-0.5 shrink-0 text-amber-200" size={19} />
-            <p className="text-xs leading-5 text-amber-100/80">
-              Public registration submission and shared close-state are not
-              connected yet. No voter information is collected from this
-              page at this stage.
-            </p>
-          </div>
-
-          <button
-            type="button"
-            onClick={handleEndRegistration}
-            disabled={!userId || (loading && !visibleProject)}
-            className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-400 px-4 py-3.5 text-sm font-semibold text-[#07101c] shadow-[0_12px_30px_rgba(0,0,0,0.25)] transition hover:-translate-y-0.5 hover:bg-blue-300 hover:shadow-[0_18px_42px_rgba(0,0,0,0.32)]"
-          >
-            End registering and add students
-          </button>
-          <Link
-            href="/home/starting"
-            className="mt-4 inline-flex items-center gap-2 text-sm text-white/45 transition hover:text-white"
-          >
-            <ArrowLeft size={15} />
-            Back to election setup
-          </Link>
-        </section>
 
         <aside className="h-fit rounded-3xl border border-white/[0.08] bg-[#111722]/90 p-5 shadow-[0_16px_48px_rgba(0,0,0,0.28)] sm:p-6">
           <h2 className="text-sm font-semibold text-white">Voter registration QR</h2>

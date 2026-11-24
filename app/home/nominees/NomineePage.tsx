@@ -767,7 +767,7 @@ export default function NomineesPage() {
 
                     {/* Description */}
                     <div className="mt-5">
-                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300/55">
+                      <p className={`mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] ${rankTheme.crown}`}>
                         Description
                       </p>
 

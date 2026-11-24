@@ -1025,7 +1025,7 @@ export default function ActiveProject() {
 
                   {nominee.manifesto && (
                     <div className="border-t border-white/[0.06] px-5 py-4">
-                      <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-zinc-500">
+                      <p className={`mb-2 text-[10px] font-semibold uppercase tracking-widest ${rankTheme.crown}`}>
                         Manifesto
                       </p>
 

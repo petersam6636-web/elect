@@ -161,7 +161,7 @@ function CircularProgress({
 
       {/* Percentage */}
 
-      <span className="absolute inset-0 flex items-center justify-center text-sm font-bold tabular-nums text-emerald-300">
+      <span className="absolute inset-0 flex items-center justify-center text-sm font-bold tabular-nums text-emerald-200">
         {safePercentage}%
       </span>
     </div>
@@ -571,34 +571,34 @@ export default function DetailsPage({ nomineeId }: DetailsProps) {
 
             <div className="grid w-full min-w-0 grid-cols-2 gap-3 sm:grid-cols-3 lg:w-[390px] lg:grid-cols-2">
 
-              <div className="min-w-0 rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.06] p-4">
-                <Vote className="mb-3 h-5 w-5 text-emerald-300" />
+              <div className="min-w-0 rounded-2xl border border-emerald-300/30 bg-gradient-to-br from-[#154b32] to-[#0d2b1d] p-4 shadow-[inset_0_1px_0_rgba(110,231,183,0.10)]">
+                <Vote className="mb-3 h-5 w-5 text-emerald-200" />
                 <p className="text-3xl font-bold tabular-nums text-white">
                   {voteCount}
                 </p>
-                <p className="mt-1 text-[11px] text-gray-500">
+                <p className="mt-1 text-[11px] text-emerald-100/80">
                   Total votes
                 </p>
               </div>
 
-              <div className="min-w-0 rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4">
-                <Trophy className="mb-3 h-5 w-5 text-yellow-300" />
+              <div className="min-w-0 rounded-2xl border border-emerald-300/25 bg-gradient-to-br from-[#123c29] to-[#0b2418] p-4 shadow-[inset_0_1px_0_rgba(110,231,183,0.08)]">
+                <Trophy className="mb-3 h-5 w-5 text-yellow-200" />
                 <p className="text-3xl font-bold tabular-nums text-white">
                   {rank > 0 ? `#${rank}` : "—"}
                 </p>
-                <p className="mt-1 text-[11px] text-gray-500">
+                <p className="mt-1 text-[11px] text-emerald-100/80">
                   Current position
                 </p>
               </div>
 
-              <div className="col-span-2 min-w-0 rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4 sm:col-span-1 lg:col-span-2">
+              <div className="col-span-2 min-w-0 rounded-2xl border border-emerald-300/25 bg-gradient-to-br from-[#123c29] to-[#0b2418] p-4 shadow-[inset_0_1px_0_rgba(110,231,183,0.08)] sm:col-span-1 lg:col-span-2">
                 <div className="flex min-w-0 items-center justify-between gap-3">
                   <div className="min-w-0">
-                    <Users className="mb-3 h-5 w-5 text-blue-300" />
+                    <Users className="mb-3 h-5 w-5 text-blue-200" />
                     <p className="text-3xl font-bold tabular-nums text-white">
                       {voteShare}%
                     </p>
-                    <p className="mt-1 text-[11px] text-gray-500">
+                    <p className="mt-1 text-[11px] text-emerald-100/80">
                       Share of all votes
                     </p>
                   </div>

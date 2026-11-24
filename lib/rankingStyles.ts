@@ -28,16 +28,7 @@ export function getOrdinalLabel(index: number) {
   return `${position}th place`;
 }
 
-const rankingBubbleLayouts = [
-  ["-right-10 -top-14 h-36 w-36", "bottom-[12%] right-[8%] h-5 w-5"],
-  ["left-[38%] top-[12%] h-32 w-32", "bottom-[16%] left-[12%] h-6 w-6"],
-  ["-left-8 top-[34%] h-32 w-32", "right-[18%] bottom-[14%] h-7 w-7"],
-  ["right-[18%] bottom-[12%] h-36 w-36", "left-[15%] top-[18%] h-5 w-5"],
-] as const;
 
-export function getRankingBubbleLayout(index: number) {
-  return rankingBubbleLayouts[index % rankingBubbleLayouts.length];
-}
 
 export function getCompetitionRanks(voteCounts: readonly number[]) {
   const sortedCounts = [...voteCounts].sort((a, b) => b - a);

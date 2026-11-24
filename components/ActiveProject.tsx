@@ -526,16 +526,16 @@ export default function ActiveProject() {
             <span className="text-emerald-400">.</span>
           </h1>
 
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-emerald-50/75">
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-emerald-50/95">
             {activeProject.description ||
               "Your election is currently running. Monitor the voting activity and track your nominees below."}
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-zinc-300">
+          <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-white/85">
             <div className="flex items-center gap-2">
               <CalendarDays
                 size={15}
-                className="text-emerald-400"
+                className="text-emerald-300"
               />
               Started {formatDate(activeProject.created_at)}
             </div>
@@ -543,7 +543,7 @@ export default function ActiveProject() {
             <div className="flex items-center gap-2">
               <Users
                 size={15}
-                className="text-emerald-400"
+                className="text-emerald-300"
               />
               {nominees.length} nominees
             </div>
@@ -667,8 +667,8 @@ export default function ActiveProject() {
               <div
                 className={`flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] ${
                   isUrgent
-                    ? "text-red-400"
-                    : "text-emerald-400"
+                    ? "text-red-300"
+                    : "text-emerald-200"
                 }`}
               >
                 <Timer size={15} />
@@ -679,7 +679,7 @@ export default function ActiveProject() {
                 Time remaining
               </h2>
 
-              <p className="mt-1 text-xs text-zinc-400">
+              <p className="mt-1 text-xs text-zinc-200">
                 Time left until voting closes.
               </p>
             </div>
@@ -687,7 +687,7 @@ export default function ActiveProject() {
             <div
               className={`flex items-center gap-2 rounded-full border px-3 py-2 text-[9px] font-bold tracking-wider ${
                 isUrgent
-                  ? "border-red-500/25 bg-red-500/10 text-red-400"
+                  ? "border-red-400/35 bg-red-400/[0.16] text-red-200"
                   : "border-emerald-300/30 bg-emerald-300/[0.14] text-emerald-200"
               }`}
             >
@@ -787,15 +787,15 @@ export default function ActiveProject() {
 
           <div className="mt-8">
             <div className="mb-2 flex items-center justify-between gap-3 text-[10px]">
-              <span className="font-medium text-zinc-400">
+              <span className="font-medium text-zinc-200">
                 Election time elapsed
               </span>
 
               <span
                 className={`font-semibold tabular-nums ${
                   isUrgent
-                    ? "text-red-400"
-                    : "text-emerald-400"
+                    ? "text-red-300"
+                    : "text-emerald-200"
                 }`}
               >
                 {progress.toFixed(1)}%
@@ -836,8 +836,8 @@ export default function ActiveProject() {
             <p
               className={`text-[10px] font-bold tracking-[0.18em] ${
                 isUrgent
-                  ? "text-red-400"
-                  : "text-emerald-400"
+                  ? "text-red-300"
+                  : "text-emerald-200"
               }`}
             >
               {isUrgent
@@ -850,7 +850,7 @@ export default function ActiveProject() {
             {isUrgent ? "Almost there" : "Your election is live"}
           </h3>
 
-          <p className="mx-auto mt-1 max-w-xs text-center text-[11px] leading-5 text-zinc-400">
+          <p className="mx-auto mt-1 max-w-xs text-center text-[11px] leading-5 text-zinc-200">
             {isUrgent
               ? "The election is approaching its scheduled closing time."
               : "Your voting space is active. Every vote counts."}

@@ -20,6 +20,7 @@ import {
 import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
 import {
+  getCompetitionRanks,
   getOrdinalLabel,
   getRankingBubbleLayout,
   getRankingTheme,
@@ -306,6 +307,10 @@ export default function NomineesPage() {
     (total, nominee) => total + (nominee.voters?.length ?? 0),
     0
   );
+  const nomineeVoteCounts = nominees.map(
+    (nominee) => nominee.voters?.length ?? 0
+  );
+  const nomineeRanks = getCompetitionRanks(nomineeVoteCounts);
   const openVoteModal = async (nominee: Nominee) => {
     if (!currentProject?.id || submitting || hasVoted) return;
 
@@ -710,7 +715,8 @@ export default function NomineesPage() {
           <div className="grid gap-4 lg:grid-cols-2">
             {nominees.map((nominee, index) => {
               const voteCount = nominee.voters?.length ?? 0;
-              const rankTheme = getRankingTheme(index);
+              const rank = nomineeRanks[index] ?? index + 1;
+              const rankTheme = getRankingTheme(rank - 1);
               const [primaryBubblePosition, secondaryBubblePosition] =
                 getRankingBubbleLayout(index);
 
@@ -749,8 +755,8 @@ export default function NomineesPage() {
 
                           {
                             <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
-                              {index < 3 && <Crown size={11} />}
-                              {getOrdinalLabel(index)}
+                              {rank <= 3 && voteCount > 0 && <Crown size={11} />}
+                              {getOrdinalLabel(rank - 1)}
                             </span>
                           }
                         </div>

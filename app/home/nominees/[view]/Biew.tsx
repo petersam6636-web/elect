@@ -20,6 +20,7 @@ import {
 import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
 import ProjectLoading from "@/components/ProjectLoading";
+import { getCompetitionRanks } from "@/lib/rankingStyles";
 
 type Voter = {
   id?: string;
@@ -360,11 +361,16 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
       0
     );
 
-    // Use the nominee's actual sorted position, including when vote counts are tied.
+    // Competition ranking gives tied nominees the same position.
     const nomineeIndex = rankedNominees.findIndex(
       (item) => item.id === nomineeId
     );
-    const rank = nomineeIndex >= 0 ? nomineeIndex + 1 : 0;
+    const rank =
+      nomineeIndex >= 0
+        ? getCompetitionRanks(
+            rankedNominees.map((item) => item.voters?.length ?? 0)
+          )[nomineeIndex]
+        : 0;
 
     const progress =
       leadingVotes > 0
@@ -399,7 +405,15 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
     voteShare,
   } = result;
 
-  const topNominees = rankedNominees.slice(0, 3);
+  const rankedNomineeRanks = getCompetitionRanks(
+    rankedNominees.map((item) => item.voters?.length ?? 0)
+  );
+  const topNominees = rankedNominees
+    .map((item, index) => ({
+      nominee: item,
+      rank: rankedNomineeRanks[index] ?? index + 1,
+    }))
+    .filter(({ rank }) => rank <= 3);
   const winningNominees =
     leadingVotes > 0
       ? rankedNominees.filter(
@@ -600,15 +614,9 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
 
             {rankedNominees.length > 0 && (
               <ol className="mt-4 space-y-2">
-                {rankedNominees.map((item) => {
+                {rankedNominees.map((item, index) => {
                   const itemVotes = item.voters?.length ?? 0;
-                  const itemRank =
-                    itemVotes > 0
-                      ? rankedNominees.filter(
-                          (other) =>
-                            (other.voters?.length ?? 0) > itemVotes
-                        ).length + 1
-                      : 0;
+                  const itemRank = rankedNomineeRanks[index] ?? index + 1;
 
                   return (
                     <li
@@ -616,7 +624,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                       className="flex min-w-0 items-center gap-3 rounded-xl border border-white/[0.07] bg-black/10 px-3 py-3"
                     >
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] text-xs font-semibold text-gray-300">
-                        {itemRank > 0 ? `#${itemRank}` : "—"}
+                        {`#${itemRank}`}
                       </span>
                       <span className="min-w-0 flex-1 break-words text-sm font-medium text-white">
                         {item.name || "Unnamed nominee"}
@@ -926,7 +934,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
 
               {topNominees.length > 0 ? (
                 <div className="w-full min-w-0 space-y-4">
-                  {topNominees.map((item) => {
+                  {topNominees.map(({ nominee: item, rank: itemRank }) => {
                     const itemVotes = item.voters?.length ?? 0;
 
                     const percentage =
@@ -935,12 +943,6 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                         : 0;
 
                     const isCurrentNominee = item.id === nominee.id;
-
-                    const itemRank =
-                      rankedNominees.filter(
-                        (other) =>
-                          (other.voters?.length ?? 0) > itemVotes
-                      ).length + 1;
 
                     return (
                       <div
@@ -953,7 +955,7 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
                       >
                         <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
                           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-xs font-bold text-gray-300 sm:h-9 sm:w-9">
-                            {itemRank === 1 ? (
+                            {itemRank === 1 && itemVotes > 0 ? (
                               <Crown className="h-4 w-4 text-yellow-300" />
                             ) : (
                               `#${itemRank}`

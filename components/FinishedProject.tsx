@@ -18,7 +18,11 @@ import {
 
 import useApp from "@/lib/useApp";
 import { getElectionDurationMs } from "@/lib/electionTimer";
-import { getOrdinalLabel, getRankingTheme } from "@/lib/rankingStyles";
+import {
+  getCompetitionRanks,
+  getOrdinalLabel,
+  getRankingTheme,
+} from "@/lib/rankingStyles";
 import type { Nominee } from "@/types/project";
 
 function formatDate(date: string | null | undefined) {
@@ -161,6 +165,10 @@ export default function FinishedProject() {
       </main>
     );
   }
+
+  const rankedNomineeRanks = getCompetitionRanks(
+    results.rankedNominees.map((nominee) => nominee.voters?.length ?? 0)
+  );
 
   return (
     <main className="w-full min-w-0 px-2 md:px-3">
@@ -327,7 +335,8 @@ export default function FinishedProject() {
           <div className="grid gap-3">
             {results.rankedNominees.map((nominee, index) => {
               const voteCount = nominee.voters?.length ?? 0;
-              const rankTheme = getRankingTheme(index);
+              const rank = rankedNomineeRanks[index] ?? index + 1;
+              const rankTheme = getRankingTheme(rank - 1);
 
               return (
                 <article
@@ -336,10 +345,10 @@ export default function FinishedProject() {
                 >
                   <div className="flex min-w-0 items-center justify-between gap-4">
                     <div className="flex min-w-0 items-center gap-3">
-                      {index < 3 && (
+                      {rank <= 3 && voteCount > 0 && (
                         <Crown
                           size={18}
-                          aria-label={`${index + 1}${index === 0 ? "st" : index === 1 ? "nd" : "rd"} place`}
+                          aria-label={getOrdinalLabel(rank - 1)}
                           className={`shrink-0 ${rankTheme.crown}`}
                         />
                       )}
@@ -353,7 +362,7 @@ export default function FinishedProject() {
                         <div
                           className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border ${rankTheme.rank}`}
                         >
-                          {index + 1}
+                          {rank}
                         </div>
                       )}
 
@@ -363,8 +372,8 @@ export default function FinishedProject() {
                         </p>
                         {
                           <span className={`mt-1 inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
-                            {index < 3 && <Crown size={11} />}
-                            {getOrdinalLabel(index)}
+                            {rank <= 3 && voteCount > 0 && <Crown size={11} />}
+                            {getOrdinalLabel(rank - 1)}
                           </span>
                         }
                       </div>

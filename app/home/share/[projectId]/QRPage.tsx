@@ -26,6 +26,7 @@ import { supabase } from "@/lib/supabase-client";
 import useApp from "@/lib/useApp";
 import { getElectionDurationMs } from "@/lib/electionTimer";
 import {
+  getCompetitionRanks,
   getOrdinalLabel,
   getRankingBubbleLayout,
   getRankingTheme,
@@ -405,6 +406,9 @@ export default function QRPage({ projectId }: QRPageProps) {
     (total, nominee) => total + (nominee.voters?.length ?? 0),
     0
   );
+  const nomineeVoteCounts = nominees.map(
+    (nominee) => nominee.voters?.length ?? 0
+  );
 
   const finishedResults = useMemo(() => {
     if (!currentProject) return null;
@@ -438,6 +442,8 @@ export default function QRPage({ projectId }: QRPageProps) {
           : null,
     };
   }, [currentProject, nominees]);
+
+  const nomineeRanks = getCompetitionRanks(nomineeVoteCounts);
 
   useEffect(() => {
     if (!pageRef.current) return;
@@ -903,7 +909,8 @@ export default function QRPage({ projectId }: QRPageProps) {
               <div className="grid min-w-0 gap-3">
                 {finishedResults.rankedNominees.map((nominee, index) => {
                   const voteCount = nominee.voters?.length ?? 0;
-                  const rankTheme = getRankingTheme(index);
+                  const rank = nomineeRanks[index] ?? index + 1;
+                  const rankTheme = getRankingTheme(rank - 1);
 
                   return (
                     <article
@@ -913,10 +920,10 @@ export default function QRPage({ projectId }: QRPageProps) {
                     >
                       <div className="flex min-w-0 items-center justify-between gap-4">
                         <div className="flex min-w-0 items-center gap-3">
-                          {index < 3 && (
+                          {rank <= 3 && voteCount > 0 && (
                             <Crown
                               size={18}
-                              aria-label={`${index + 1}${index === 0 ? "st" : index === 1 ? "nd" : "rd"} place`}
+                              aria-label={getOrdinalLabel(rank - 1)}
                               className={`shrink-0 ${rankTheme.crown}`}
                             />
                           )}
@@ -930,7 +937,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                             <div
                               className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border text-sm font-semibold ${rankTheme.rank}`}
                             >
-                              {index + 1}
+                              {rank}
                             </div>
                           )}
 
@@ -940,8 +947,8 @@ export default function QRPage({ projectId }: QRPageProps) {
                             </p>
                             {
                               <span className={`mt-1 inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
-                                {index < 3 && <Crown size={11} />}
-                                {getOrdinalLabel(index)}
+                                {rank <= 3 && voteCount > 0 && <Crown size={11} />}
+                                {getOrdinalLabel(rank - 1)}
                               </span>
                             }
                           </div>
@@ -1165,7 +1172,8 @@ export default function QRPage({ projectId }: QRPageProps) {
               const comments = (nominee.voters ?? [])
                 .map((voter) => voter.comment?.trim())
                 .filter((comment): comment is string => Boolean(comment));
-              const rankTheme = getRankingTheme(index);
+              const rank = nomineeRanks[index] ?? index + 1;
+              const rankTheme = getRankingTheme(rank - 1);
               const [primaryBubblePosition, secondaryBubblePosition] =
                 getRankingBubbleLayout(index);
 
@@ -1207,8 +1215,8 @@ export default function QRPage({ projectId }: QRPageProps) {
 
                             {
                               <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
-                                {index < 3 && <Crown size={11} />}
-                                {getOrdinalLabel(index)}
+                                {rank <= 3 && voteCount > 0 && <Crown size={11} />}
+                                {getOrdinalLabel(rank - 1)}
                             </span>
                           }
                         </div>

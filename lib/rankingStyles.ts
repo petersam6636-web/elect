@@ -39,6 +39,17 @@ export function getRankingBubbleLayout(index: number) {
   return rankingBubbleLayouts[index % rankingBubbleLayouts.length];
 }
 
+export function getCompetitionRanks(voteCounts: readonly number[]) {
+  const sortedCounts = [...voteCounts].sort((a, b) => b - a);
+  const rankByCount = new Map<number, number>();
+
+  sortedCounts.forEach((count, index) => {
+    if (!rankByCount.has(count)) rankByCount.set(count, index + 1);
+  });
+
+  return voteCounts.map((count) => rankByCount.get(count) ?? 0);
+}
+
 export function getRankingTheme(index: number): RankingTheme {
   if (index === 0) {
     return {
@@ -91,6 +102,6 @@ export function getRankingTheme(index: number): RankingTheme {
     progress: "from-zinc-600 to-zinc-300",
     action: "border-white/[0.12] bg-white/[0.05] text-zinc-300",
     solid: "border-zinc-300 bg-zinc-300 text-[#111318] hover:border-zinc-200 hover:bg-zinc-200",
-    bubble: "border-zinc-400/20 bg-zinc-300/[0.045]",
+    bubble: "border-white/[0.10] bg-white/[0.03]",
   };
 }

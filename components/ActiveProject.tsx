@@ -29,7 +29,11 @@ import {
   getElectionStartStorageKey,
   LEGACY_ELECTION_START_KEY,
 } from "@/lib/electionTimer";
-import { getOrdinalLabel, getRankingTheme } from "@/lib/rankingStyles";
+import {
+  getCompetitionRanks,
+  getOrdinalLabel,
+  getRankingTheme,
+} from "@/lib/rankingStyles";
 
 import ProjectLoading from "@/components/ProjectLoading";
 import ModalPortal from "@/components/ModalPortal";
@@ -439,6 +443,10 @@ export default function ActiveProject() {
       total + (nominee.voters?.length ?? 0),
     0
   );
+  const topNomineeVoteCounts = topNominees.map(
+    (nominee) => nominee.voters?.length ?? 0
+  );
+  const topNomineeRanks = getCompetitionRanks(topNomineeVoteCounts);
 
   const totalAchievements = nominees.reduce(
     (total, nominee) =>
@@ -933,13 +941,9 @@ export default function ActiveProject() {
               const voteCount = nominee.voters?.length ?? 0;
               const votePercentage =
                 totalVoters > 0 ? (voteCount / totalVoters) * 100 : 0;
-              const rankTheme = getRankingTheme(index);
-              const rank =
-                nominees.filter(
-                  (item) => (item.voters?.length ?? 0) > voteCount
-                ).length + 1;
-              const rankLabel =
-                totalVoters > 0 ? `Rank #${rank}` : `Nominee #${index + 1}`;
+              const rank = topNomineeRanks[index] ?? index + 1;
+              const rankTheme = getRankingTheme(rank - 1);
+              const rankLabel = `Rank #${rank}`;
 
               return (
                 <article
@@ -969,8 +973,8 @@ export default function ActiveProject() {
                           </p>
                           {
                             <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold ${rankTheme.badge}`}>
-                              {index < 3 && <Crown size={11} />}
-                              {getOrdinalLabel(index)}
+                              {rank <= 3 && voteCount > 0 && <Crown size={11} />}
+                              {getOrdinalLabel(rank - 1)}
                             </span>
                           }
                         </div>

@@ -12,14 +12,10 @@ import type {
 } from "@/types/project";
 
 export type ForgetPasswordMode = "request" | "update";
-export type VotingMethode = "private" | "public" | null;
 
 export type AppContextType = {
   userInfo: string;
   setUserInfo: Dispatch<SetStateAction<string>>;
-
-  votingMethode: VotingMethode;
-  setVotingMethode: Dispatch<SetStateAction<VotingMethode>>;
 
   mode: ForgetPasswordMode;
   setMode: Dispatch<SetStateAction<ForgetPasswordMode>>;

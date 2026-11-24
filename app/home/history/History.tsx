@@ -559,7 +559,7 @@ export default function HistoryPage() {
                     setSuccess("");
                     setShowDeleteAllConfirmation(true);
                   }}
-                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-red-400/20 bg-red-400/[0.06] px-4 py-3 text-sm font-medium text-red-300 transition hover:border-red-400/35 hover:bg-red-400/[0.12] disabled:cursor-not-allowed disabled:opacity-40"
+                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-red-400/30 bg-red-500 px-4 py-3 text-sm font-semibold text-white transition hover:border-red-300/50 hover:bg-red-400 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <Trash2 size={15} />
                   Delete all
@@ -666,7 +666,7 @@ export default function HistoryPage() {
                                     setOpenMenuId(null);
                                     setError("");
                                   }}
-                                  className="flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-xs font-medium text-red-300 transition hover:bg-red-400/[0.09]"
+                                  className="flex w-full items-center gap-3 rounded-lg border border-red-400/15 bg-red-500/[0.08] px-3 py-3 text-left text-xs font-semibold text-red-200 transition hover:border-red-400/30 hover:bg-red-500/[0.17] hover:text-white"
                                 >
                                   <Trash2 size={15} />
                                   Delete project & all data
@@ -1336,13 +1336,13 @@ export default function HistoryPage() {
             }}
           >
 
-          <div className="w-full max-w-md overflow-hidden rounded-3xl border border-red-400/20 bg-gradient-to-br from-[#171b25] to-[#101621] shadow-[0_25px_100px_rgba(0,0,0,0.65)]">
+          <div className="w-full max-w-md overflow-hidden rounded-3xl border border-red-400/30 bg-gradient-to-br from-[#24161b] to-[#101621] shadow-[0_25px_100px_rgba(0,0,0,0.65)]">
 
-            <div className="border-b border-red-400/15 p-6">
+            <div className="border-b border-red-400/25 p-6">
 
               <div className="flex items-start justify-between gap-4">
 
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-red-400/20 bg-red-400/[0.09] text-red-300">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-red-400/30 bg-red-500/[0.15] text-red-200">
                   <Trash2 size={22} />
                 </div>
 
@@ -1374,31 +1374,31 @@ export default function HistoryPage() {
 
             <div className="space-y-3 p-6">
 
-              <div className="rounded-xl border border-red-400/15 bg-red-400/[0.045] p-4">
+              <div className="rounded-xl border border-red-400/25 bg-red-500/[0.10] p-4">
 
-                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.13em] text-red-300/80">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.13em] text-red-200">
                   The following data will be deleted
                 </p>
 
                 <ul className="space-y-2 text-xs text-white/50">
 
                   <li className="flex items-center gap-2">
-                    <Trash2 size={13} className="text-red-300/70" />
+                    <Trash2 size={13} className="text-red-200" />
                     The entire election project
                   </li>
 
                   <li className="flex items-center gap-2">
-                    <Users size={13} className="text-red-300/70" />
+                    <Users size={13} className="text-red-200" />
                     All associated nominees
                   </li>
 
                   <li className="flex items-center gap-2">
-                    <Award size={13} className="text-red-300/70" />
+                    <Award size={13} className="text-red-200" />
                     All nominee achievements
                   </li>
 
                   <li className="flex items-center gap-2">
-                    <Vote size={13} className="text-red-300/70" />
+                    <Vote size={13} className="text-red-200" />
                     All recorded votes and voter comments
                   </li>
 
@@ -1410,7 +1410,7 @@ export default function HistoryPage() {
                 type="button"
                 onClick={handleDeleteProject}
                 disabled={deleting}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-red-500 px-4 py-3.5 text-sm font-semibold text-white transition hover:bg-red-400 disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-red-400/30 bg-red-500 px-4 py-3.5 text-sm font-semibold text-white transition hover:border-red-300/50 hover:bg-red-400 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {deleting ? (
                   <>
@@ -1456,11 +1456,11 @@ export default function HistoryPage() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="delete-all-title"
-            className="w-full max-w-md overflow-hidden rounded-3xl border border-red-400/20 bg-gradient-to-br from-[#171b25] to-[#101621] shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
+            className="w-full max-w-md overflow-hidden rounded-3xl border border-red-400/30 bg-gradient-to-br from-[#24161b] to-[#101621] shadow-[0_25px_100px_rgba(0,0,0,0.65)]"
           >
-            <div className="border-b border-red-400/15 p-6">
+            <div className="border-b border-red-400/25 p-6">
               <div className="flex items-start justify-between gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-red-400/20 bg-red-400/[0.09] text-red-300">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-red-400/30 bg-red-500/[0.15] text-red-200">
                   <AlertTriangle size={22} />
                 </div>
 
@@ -1490,7 +1490,7 @@ export default function HistoryPage() {
             </div>
 
             <div className="space-y-4 p-6">
-              <div className="rounded-xl border border-red-400/15 bg-red-400/[0.055] p-4 text-xs leading-5 text-red-200/80">
+              <div className="rounded-xl border border-red-400/25 bg-red-500/[0.10] p-4 text-xs leading-5 text-red-100">
                 Your current election will be kept and will not be deleted.
               </div>
 
@@ -1502,7 +1502,7 @@ export default function HistoryPage() {
                 type="button"
                 onClick={() => void handleDeleteAllHistory()}
                 disabled={deletingAll || projectsToDelete.length === 0}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-red-500 px-4 py-3.5 text-sm font-semibold text-white transition hover:bg-red-400 disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-red-400/30 bg-red-500 px-4 py-3.5 text-sm font-semibold text-white transition hover:border-red-300/50 hover:bg-red-400 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {deletingAll ? (
                   <>

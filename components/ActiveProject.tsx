@@ -915,10 +915,10 @@ export default function ActiveProject() {
 
       {/* FORCE END */}
 
-      <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-2xl border border-red-500/15 bg-gradient-to-br from-[#151923] to-[#0d121b] p-5 sm:p-6">
+      <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-2xl border border-red-500/25 bg-gradient-to-br from-[#24161b] to-[#111722] p-5 sm:p-6">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-3">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-500/15 bg-red-500/10 text-red-400">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-400/25 bg-red-500/15 text-red-300">
               <Flag size={20} />
             </div>
 
@@ -938,7 +938,7 @@ export default function ActiveProject() {
             type="button"
             onClick={() => setShowEndConfirmation(true)}
             disabled={ending || isExpired}
-            className="inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-xl border border-red-500/20 bg-red-500/10 px-5 py-3 text-xs font-semibold text-red-300 transition-all hover:border-red-500/40 hover:bg-red-500/20 disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-xl border border-red-400/30 bg-red-500 px-5 py-3 text-xs font-semibold text-white transition-all hover:border-red-300/50 hover:bg-red-400 disabled:cursor-not-allowed disabled:opacity-50"
           >
             <Flag size={15} />
             Force End Election
@@ -965,7 +965,7 @@ export default function ActiveProject() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="end-election-title"
-            className="relative w-full max-w-md animate-in fade-in zoom-in-95 duration-200 overflow-hidden rounded-3xl border border-red-400/20 bg-gradient-to-br from-[#151d2b] via-[#111722] to-[#0d121b] p-6 shadow-[0_25px_100px_rgba(0,0,0,0.65)] sm:p-8"
+            className="relative w-full max-w-md animate-in fade-in zoom-in-95 duration-200 overflow-hidden rounded-3xl border border-red-400/30 bg-gradient-to-br from-[#24161b] via-[#18151c] to-[#101621] p-6 shadow-[0_25px_100px_rgba(0,0,0,0.65)] sm:p-8"
           >
             {/* Decorative glow */}
 
@@ -986,7 +986,7 @@ export default function ActiveProject() {
 
               {/* Warning icon */}
 
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-red-400/20 bg-red-500/10 text-red-400 shadow-[0_0_35px_rgba(239,68,68,0.08)]">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-red-400/30 bg-red-500/15 text-red-300 shadow-[0_0_35px_rgba(239,68,68,0.12)]">
                 <AlertTriangle size={27} strokeWidth={1.6} />
               </div>
 
@@ -1007,14 +1007,14 @@ export default function ActiveProject() {
                 ?
               </p>
 
-              <div className="mt-4 rounded-xl border border-red-400/10 bg-red-500/[0.06] p-4">
+              <div className="mt-4 rounded-xl border border-red-400/25 bg-red-500/[0.10] p-4">
                 <div className="flex items-start gap-3">
                   <AlertCircle
                     size={17}
                     className="mt-0.5 shrink-0 text-red-400"
                   />
 
-                  <p className="text-xs leading-6 text-red-200/80">
+                  <p className="text-xs leading-6 text-red-100">
                     Ending this election will immediately deactivate
                     voting. Voters will no longer be able to participate.
                     This action should only be taken when you are certain.
@@ -1038,7 +1038,7 @@ export default function ActiveProject() {
                   type="button"
                   onClick={() => void confirmEndElection()}
                   disabled={ending}
-                  className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-red-400/25 bg-red-500/15 px-5 py-3 text-xs font-semibold text-red-300 transition hover:border-red-400/40 hover:bg-red-500/25 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-red-400/30 bg-red-500 px-5 py-3 text-xs font-semibold text-white transition hover:border-red-300/50 hover:bg-red-400 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {ending ? (
                     <>

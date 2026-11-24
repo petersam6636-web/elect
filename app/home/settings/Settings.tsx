@@ -559,11 +559,11 @@ console.log(2)
 
               <div className="my-3 border-t border-white/[0.07]" />
 
-              <div className="flex flex-col gap-4 rounded-2xl border border-white/[0.07] bg-[#141a24] px-3 py-4 transition-colors duration-200 hover:border-red-400/15 hover:bg-red-400/[0.025] sm:flex-row sm:items-center sm:justify-between sm:px-4">
+              <div className="flex flex-col gap-4 rounded-2xl border border-red-400/20 bg-gradient-to-br from-[#21171b] to-[#141a24] px-3 py-4 transition-colors duration-200 hover:border-red-400/35 hover:from-[#29181e] sm:flex-row sm:items-center sm:justify-between sm:px-4">
 
                 <div className="flex items-center gap-4">
 
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-400/10 bg-red-400/[0.055] shadow-lg shadow-red-950/10">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-400/25 bg-red-500/[0.15] shadow-lg shadow-red-950/20">
 
                     <LogOut className="h-[19px] w-[19px] text-red-400" />
 
@@ -586,7 +586,7 @@ console.log(2)
                 <button
                   type="button"
                   onClick={openLogoutModal}
-                  className="rounded-xl border border-red-400/20 bg-red-400/[0.07] px-5 py-2.5 text-xs font-semibold text-red-300 transition-all duration-200 hover:border-red-400/40 hover:bg-red-400/[0.13] hover:shadow-lg hover:shadow-red-950/20 sm:ml-auto"
+                  className="rounded-xl border border-red-400/30 bg-red-500 px-5 py-2.5 text-xs font-semibold text-white transition-all duration-200 hover:border-red-300/50 hover:bg-red-400 hover:shadow-lg hover:shadow-red-950/25 sm:ml-auto"
                 >
                   Sign out
                 </button>
@@ -807,15 +807,15 @@ console.log(2)
 
             {/* Red Modal Glow */}
 
-            <div className="pointer-events-none absolute -inset-1 rounded-[28px] bg-red-500/[0.08] blur-2xl" />
+            <div className="pointer-events-none absolute -inset-1 rounded-[28px] bg-red-500/[0.12] blur-2xl" />
 
             {/* Modal Container */}
 
-            <div className="relative overflow-hidden rounded-[26px] border border-red-400/15 bg-[#151a22] p-6 shadow-2xl shadow-black/50 sm:p-7">
+            <div className="relative overflow-hidden rounded-[26px] border border-red-400/30 bg-gradient-to-br from-[#24161b] to-[#141a24] p-6 shadow-2xl shadow-black/50 sm:p-7">
 
               {/* Logout Icon */}
 
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-red-400/15 bg-red-400/[0.08] shadow-lg shadow-red-950/20">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-red-400/30 bg-red-500/[0.16] shadow-lg shadow-red-950/25">
 
                 <LogOut className="h-6 w-6 text-red-400" />
 
@@ -838,7 +838,7 @@ console.log(2)
 
               {error && (
 
-                <div className="mt-4 rounded-xl border border-red-400/20 bg-red-400/[0.07] px-4 py-3 text-sm text-red-300">
+                <div className="mt-4 rounded-xl border border-red-400/25 bg-red-500/[0.12] px-4 py-3 text-sm text-red-200">
                   {error}
                 </div>
               )}
@@ -867,7 +867,7 @@ console.log(2)
                   type="button"
                   disabled={loggingOut}
                   onClick={handleLogout}
-                  className="flex items-center justify-center gap-2 rounded-xl border border-red-400/20 bg-red-500 px-5 py-3 text-sm font-semibold text-white transition-all hover:border-red-400/40 hover:bg-red-400 hover:shadow-lg hover:shadow-red-950/20 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="flex items-center justify-center gap-2 rounded-xl border border-red-300/40 bg-red-500 px-5 py-3 text-sm font-semibold text-white transition-all hover:border-red-200/60 hover:bg-red-400 hover:shadow-lg hover:shadow-red-950/25 disabled:cursor-not-allowed disabled:opacity-60"
                 >
 
                   {loggingOut ? (

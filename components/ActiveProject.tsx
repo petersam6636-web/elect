@@ -494,28 +494,28 @@ export default function ActiveProject() {
 
       {/* ELECTION HEADER */}
 
-      <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border border-emerald-300/40 bg-gradient-to-br from-[#1b6340] via-[#12462d] to-[#0e2c1e] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.28)] sm:p-8">
-        <div className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-emerald-300/[0.24] blur-[90px]" />
+      <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border border-emerald-400/20 bg-gradient-to-br from-[#102b20] via-[#0d2118] to-[#0a1611] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.28)] sm:p-8">
+        <div className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-emerald-400/[0.1] blur-[90px]" />
 
-        <div className="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-teal-300/[0.18] blur-[80px]" />
+        <div className="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-teal-400/[0.06] blur-[80px]" />
 
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 overflow-hidden"
         >
-          <div className="absolute left-[12%] top-[22%] h-10 w-10 rounded-full border border-emerald-200/35 bg-emerald-200/[0.12] shadow-[inset_0_0_18px_rgba(52,211,153,0.12),0_0_30px_rgba(16,185,129,0.12)]" />
-          <div className="absolute right-[13%] top-[18%] h-16 w-16 rounded-full border border-emerald-200/25 bg-emerald-200/[0.08] shadow-[inset_0_0_24px_rgba(52,211,153,0.1)]" />
-          <div className="absolute bottom-[17%] right-[32%] h-7 w-7 rounded-full border border-emerald-200/35 bg-emerald-200/[0.12]" />
+          <div className="absolute left-[12%] top-[22%] h-10 w-10 rounded-full border border-emerald-300/15 bg-emerald-300/[0.035] shadow-[inset_0_0_18px_rgba(52,211,153,0.05),0_0_30px_rgba(16,185,129,0.05)]" />
+          <div className="absolute right-[13%] top-[18%] h-16 w-16 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] shadow-[inset_0_0_24px_rgba(52,211,153,0.04)]" />
+          <div className="absolute bottom-[17%] right-[32%] h-7 w-7 rounded-full border border-emerald-300/15 bg-emerald-300/[0.035]" />
         </div>
 
         <div className="relative">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300/25 bg-emerald-300/[0.12] px-3 py-1.5 text-xs font-bold tracking-widest text-emerald-200">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-200 shadow-[0_0_12px_rgba(167,243,208,0.9)]" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-300/[0.07] px-3 py-1.5 text-xs font-bold tracking-widest text-emerald-200">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-300 shadow-[0_0_8px_rgba(110,231,183,0.6)]" />
               LIVE ELECTION
             </div>
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300/30 bg-emerald-300/[0.14] px-3 py-1.5 text-[11px] font-semibold text-emerald-200">
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 text-[11px] font-semibold text-emerald-200">
               <ShieldCheck size={13} />
               Election Active
             </div>
@@ -523,7 +523,7 @@ export default function ActiveProject() {
 
           <h1 className="mt-6 break-words text-3xl font-bold tracking-tight text-white sm:text-4xl">
             {activeProject.name}
-            <span className="text-emerald-200">.</span>
+            <span className="text-emerald-400">.</span>
           </h1>
 
           <p className="mt-3 max-w-2xl text-sm leading-7 text-emerald-50/95">

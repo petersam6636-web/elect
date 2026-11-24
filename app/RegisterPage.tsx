@@ -231,7 +231,7 @@ const {setMode: setEmailMode, } = useApp()
 
   return (
     <main
-      className="relative flex min-h-dvh w-full items-center justify-center overflow-hidden bg-[#050a07] px-2 py-5 text-white selection:bg-emerald-500/30 md:px-3"
+      className="relative flex min-h-dvh w-full items-center justify-center overflow-hidden bg-[#050a07] px-3 py-4 text-white selection:bg-emerald-500/30 md:px-4"
     >
       {/* BACKGROUND AMBIENT GLOWS */}
 
@@ -259,7 +259,7 @@ const {setMode: setEmailMode, } = useApp()
 
       {/* COMPACT AUTHENTICATION CARD */}
 
-      <div className="relative z-10 w-full max-w-[410px]">
+      <div className="relative z-10 w-full max-w-[390px]">
         {/* CARD GLOW */}
 
         <div className="pointer-events-none absolute -inset-3 rounded-[35px] bg-emerald-500/[0.035] blur-2xl" />
@@ -273,11 +273,11 @@ const {setMode: setEmailMode, } = useApp()
 
           {/* CARD CONTENT */}
 
-          <div className="relative px-5 py-6 sm:px-8 sm:py-7">
+          <div className="relative px-5 py-5 sm:px-7 sm:py-6">
             {/* LOGO */}
 
-            <div className="mb-5 flex items-center justify-center gap-2.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-300/20 bg-emerald-400/10 text-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.08)]">
+            <div className="mb-4 flex items-center justify-center gap-2.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-emerald-300/20 bg-emerald-400/10 text-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.08)]">
                 <Vote size={21} />
               </div>
 
@@ -293,9 +293,9 @@ const {setMode: setEmailMode, } = useApp()
 
             {/* HEADING */}
 
-            <div className="mb-5 text-center">
+            <div className="mb-4 text-center">
        
-              <h2 className="text-[25px] font-bold tracking-[-1px] sm:text-[27px]">
+              <h2 className="text-2xl font-bold tracking-[-1px] sm:text-[26px]">
                 {isLogin ? (
                   <>
                     Welcome <span className="text-emerald-400">back.</span>
@@ -338,7 +338,7 @@ const {setMode: setEmailMode, } = useApp()
 
             {/* AUTHENTICATION FORM */}
 
-            <form onSubmit={handleEmailAuth} className="space-y-3">
+            <form onSubmit={handleEmailAuth} className="space-y-2.5">
               {/* EMAIL */}
 
               <div>
@@ -349,7 +349,7 @@ const {setMode: setEmailMode, } = useApp()
                   Email address
                 </label>
 
-                <div className="group flex h-[42px] items-center gap-2.5 rounded-lg border border-white/[0.08] bg-[#060b08]/80 px-3 transition-all focus-within:border-emerald-400/50 focus-within:ring-2 focus-within:ring-emerald-500/10">
+                <div className="group flex h-10 items-center gap-2.5 rounded-lg border border-white/[0.08] bg-[#060b08]/80 px-3 transition-all focus-within:border-emerald-400/50 focus-within:ring-2 focus-within:ring-emerald-500/10">
                   <Mail
                     size={15}
                     className="shrink-0 text-zinc-600 transition-colors group-focus-within:text-emerald-400"
@@ -379,7 +379,7 @@ const {setMode: setEmailMode, } = useApp()
                   Password
                 </label>
 
-                <div className="group flex h-[42px] items-center gap-2.5 rounded-lg border border-white/[0.08] bg-[#060b08]/80 px-3 transition-all focus-within:border-emerald-400/50 focus-within:ring-2 focus-within:ring-emerald-500/10">
+                <div className="group flex h-10 items-center gap-2.5 rounded-lg border border-white/[0.08] bg-[#060b08]/80 px-3 transition-all focus-within:border-emerald-400/50 focus-within:ring-2 focus-within:ring-emerald-500/10">
                   <Lock
                     size={15}
                     className="shrink-0 text-zinc-600 transition-colors group-focus-within:text-emerald-400"
@@ -416,7 +416,7 @@ const {setMode: setEmailMode, } = useApp()
                 </div>
 
                 {isLogin && (
-                  <div className="mt-2 text-right">
+                  <div className="mt-1.5 text-right">
                     <Link
                       href="/forgetPassword"
                       className="text-[10px] font-semibold text-emerald-400 transition hover:text-emerald-300"
@@ -432,7 +432,7 @@ const {setMode: setEmailMode, } = useApp()
               <button
                 type="submit"
                 disabled={isLoading}
-                className="group mt-1 flex h-[43px] w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-400 text-[11px] font-bold text-[#032116] shadow-[0_5px_20px_rgba(16,185,129,0.16)] transition-all duration-200 hover:from-emerald-400 hover:to-emerald-300 hover:shadow-[0_5px_25px_rgba(16,185,129,0.25)] disabled:cursor-not-allowed disabled:opacity-60"
+                className="group mt-1 flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-400 text-[11px] font-bold text-[#032116] shadow-[0_5px_20px_rgba(16,185,129,0.16)] transition-all duration-200 hover:from-emerald-400 hover:to-emerald-300 hover:shadow-[0_5px_25px_rgba(16,185,129,0.25)] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {loading === "email" ? (
                   <>
@@ -453,7 +453,7 @@ const {setMode: setEmailMode, } = useApp()
 
             {/* DIVIDER */}
 
-            <div className="my-3.5 flex items-center gap-3">
+            <div className="my-3 flex items-center gap-3">
               <div className="h-px flex-1 bg-white/[0.07]" />
 
               <span className="text-[9px] font-medium uppercase tracking-[1.3px] text-zinc-600">
@@ -469,7 +469,7 @@ const {setMode: setEmailMode, } = useApp()
               type="button"
               onClick={handleGoogleAuth}
               disabled={isLoading}
-              className="flex h-[42px] w-full cursor-pointer items-center justify-center gap-2.5 rounded-lg border border-white/[0.09] bg-white/[0.025] text-[11px] font-semibold text-zinc-300 transition-all hover:border-emerald-400/30 hover:bg-emerald-500/[0.04] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex h-10 w-full cursor-pointer items-center justify-center gap-2.5 rounded-lg border border-white/[0.09] bg-white/[0.025] text-[11px] font-semibold text-zinc-300 transition-all hover:border-emerald-400/30 hover:bg-emerald-500/[0.04] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading === "google" ? (
                 <>
@@ -513,7 +513,7 @@ const {setMode: setEmailMode, } = useApp()
 
             {/* SWITCH MODE */}
 
-            <p className="mt-4 text-center text-[10px] text-zinc-600">
+            <p className="mt-3 text-center text-[10px] text-zinc-600">
               {isLogin
                 ? "Don't have an account?"
                 : "Already have an account?"}
@@ -530,7 +530,7 @@ const {setMode: setEmailMode, } = useApp()
 
             {/* SECURITY FOOTER */}
 
-            <div className="mt-4 flex items-center justify-center gap-1.5 border-t border-white/[0.06] pt-3">
+            <div className="mt-3 flex items-center justify-center gap-1.5 border-t border-white/[0.06] pt-2.5">
               <ShieldCheck size={12} className="text-emerald-500" />
 
               <span className="text-[9px] text-zinc-600">

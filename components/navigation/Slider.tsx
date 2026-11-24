@@ -30,6 +30,10 @@ const navigation = [
 ];
 
 const homePaths = ["/home", "/home/starting", "/home/register"];
+const fixedHomeRoutes = new Set([
+  ...navigation.map(({ href }) => href),
+  "/home/forgetPassword",
+]);
 
 export default function Slider({
   position,
@@ -40,7 +44,10 @@ export default function Slider({
 
   const isActive = (href: string) => {
     if (href === "/home") {
-      return homePaths.includes(pathname);
+      const isNomineeDetailsRoute =
+        /^\/home\/[^/]+$/.test(pathname) && !fixedHomeRoutes.has(pathname);
+
+      return homePaths.includes(pathname) || isNomineeDetailsRoute;
     }
 
     return pathname === href || pathname.startsWith(`${href}/`);

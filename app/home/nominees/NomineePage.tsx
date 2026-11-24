@@ -717,8 +717,8 @@ export default function NomineesPage() {
                   className={`group relative overflow-hidden rounded-3xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:p-6 ${rankTheme.card}`}
                 >
                   <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-                    <div className="absolute -right-10 -top-14 h-36 w-36 rounded-full border border-emerald-300/10 bg-emerald-300/[0.02]" />
-                    <div className="absolute bottom-[12%] right-[8%] h-5 w-5 rounded-full border border-emerald-300/15 bg-emerald-300/[0.035]" />
+                    <div className={`absolute -right-10 -top-14 h-36 w-36 rounded-full border ${rankTheme.bubble}`} />
+                    <div className={`absolute bottom-[12%] right-[8%] h-5 w-5 rounded-full border ${rankTheme.bubble}`} />
                   </div>
 
                   <div className="relative">

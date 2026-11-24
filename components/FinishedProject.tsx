@@ -332,7 +332,7 @@ export default function FinishedProject() {
               return (
                 <article
                   key={nominee.id}
-                  className={`group flex w-full flex-col gap-4 overflow-hidden rounded-2xl border p-4 transition hover:bg-white/[0.035] sm:p-5 ${rankTheme.card}`}
+                  className={`group flex w-full flex-col gap-4 overflow-hidden rounded-2xl border p-4 transition sm:p-5 ${rankTheme.card}`}
                 >
                   <div className="flex min-w-0 items-center justify-between gap-4">
                     <div className="flex min-w-0 items-center gap-3">

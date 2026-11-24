@@ -314,14 +314,11 @@ export default function DetailsPage({ nomineeId }: DetailsProps) {
       0
     );
 
-    // Competition ranking: 1, 1, 3 when two nominees share first place.
-    const rank = nominee
-      ? rankedNominees.findIndex((item) => item.id === nominee.id) >= 0
-        ? rankedNominees.filter(
-            (item) => (item.voters?.length ?? 0) > voteCount
-          ).length + 1
-        : 0
-      : 0;
+    // Use the nominee's actual sorted position, including zero-vote and tied cases.
+    const nomineeIndex = rankedNominees.findIndex(
+      (item) => item.id === nomineeId
+    );
+    const rank = nomineeIndex >= 0 ? nomineeIndex + 1 : 0;
 
     const progress =
       leadingVotes > 0

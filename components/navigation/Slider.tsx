@@ -41,13 +41,20 @@ export default function Slider({
   showNomineesIndicator,
 }: SliderProps) {
   const pathname = usePathname();
+  const isNomineeDetailsRoute =
+    /^\/home\/[^/]+$/.test(pathname) && !fixedHomeRoutes.has(pathname);
 
   const isActive = (href: string) => {
     if (href === "/home") {
-      const isNomineeDetailsRoute =
-        /^\/home\/[^/]+$/.test(pathname) && !fixedHomeRoutes.has(pathname);
+      return homePaths.includes(pathname);
+    }
 
-      return homePaths.includes(pathname) || isNomineeDetailsRoute;
+    if (href === "/home/nominees") {
+      return (
+        pathname === href ||
+        pathname.startsWith(`${href}/`) ||
+        isNomineeDetailsRoute
+      );
     }
 
     return pathname === href || pathname.startsWith(`${href}/`);

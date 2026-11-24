@@ -360,13 +360,11 @@ export default function BiewPage({ nomineeId }: DetailsProps) {
       0
     );
 
-    // Competition ranking: 1, 1, 3 when two nominees share first place.
-    const rank =
-      nominee && voteCount > 0
-        ? rankedNominees.filter(
-            (item) => (item.voters?.length ?? 0) > voteCount
-          ).length + 1
-        : 0;
+    // Use the nominee's actual sorted position, including when vote counts are tied.
+    const nomineeIndex = rankedNominees.findIndex(
+      (item) => item.id === nomineeId
+    );
+    const rank = nomineeIndex >= 0 ? nomineeIndex + 1 : 0;
 
     const progress =
       leadingVotes > 0

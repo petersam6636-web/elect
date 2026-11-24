@@ -7,6 +7,7 @@ export type RankingTheme = {
   progress: string;
   action: string;
   solid: string;
+  bubble: string;
 };
 
 export function getOrdinalLabel(index: number) {
@@ -31,39 +32,42 @@ export function getRankingTheme(index: number): RankingTheme {
   if (index === 0) {
     return {
       rank: "border-emerald-400/35 bg-emerald-400/[0.14] text-emerald-200",
-      card: "border-emerald-400/35 bg-emerald-400/[0.08]",
+      card: "border-emerald-400/40 bg-emerald-400/[0.12]",
       avatar: "border-emerald-400/25 bg-emerald-400/[0.12] text-emerald-300",
       crown: "text-emerald-300",
       badge: "border-emerald-400/25 bg-emerald-400/[0.10] text-emerald-200",
       progress: "from-emerald-600 to-emerald-300",
       action: "border-emerald-400/25 bg-emerald-400/[0.10] text-emerald-300",
       solid: "border-emerald-400 bg-emerald-400 text-[#04130c] hover:border-emerald-300 hover:bg-emerald-300",
+      bubble: "border-emerald-300/20 bg-emerald-300/[0.04]",
     };
   }
 
   if (index === 1) {
     return {
       rank: "border-blue-400/35 bg-blue-400/[0.14] text-blue-200",
-      card: "border-blue-400/30 bg-blue-400/[0.07]",
+      card: "border-blue-400/40 bg-blue-400/[0.12]",
       avatar: "border-blue-400/25 bg-blue-400/[0.12] text-blue-300",
       crown: "text-blue-300",
       badge: "border-blue-400/25 bg-blue-400/[0.10] text-blue-200",
       progress: "from-blue-600 to-blue-300",
       action: "border-blue-400/25 bg-blue-400/[0.10] text-blue-300",
       solid: "border-blue-400 bg-blue-400 text-[#07111f] hover:border-blue-300 hover:bg-blue-300",
+      bubble: "border-blue-300/20 bg-blue-300/[0.04]",
     };
   }
 
   if (index === 2) {
     return {
       rank: "border-amber-300/35 bg-amber-300/[0.14] text-amber-200",
-      card: "border-amber-300/30 bg-amber-300/[0.07]",
+      card: "border-amber-300/40 bg-amber-300/[0.12]",
       avatar: "border-amber-300/25 bg-amber-300/[0.12] text-amber-300",
       crown: "text-amber-300",
       badge: "border-amber-300/25 bg-amber-300/[0.10] text-amber-200",
       progress: "from-amber-600 to-amber-300",
       action: "border-amber-300/25 bg-amber-300/[0.10] text-amber-200",
       solid: "border-amber-300 bg-amber-300 text-[#211704] hover:border-amber-200 hover:bg-amber-200",
+      bubble: "border-amber-300/20 bg-amber-300/[0.04]",
     };
   }
 
@@ -76,5 +80,6 @@ export function getRankingTheme(index: number): RankingTheme {
     progress: "from-zinc-600 to-zinc-300",
     action: "border-white/[0.12] bg-white/[0.05] text-zinc-300",
     solid: "border-zinc-300 bg-zinc-300 text-[#111318] hover:border-zinc-200 hover:bg-zinc-200",
+    bubble: "border-white/[0.10] bg-white/[0.03]",
   };
 }

@@ -905,7 +905,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                     <article
                       key={nominee.id}
                       data-enter
-                      className={`group flex min-w-0 flex-col gap-4 overflow-hidden rounded-2xl border p-4 transition hover:bg-white/[0.035] sm:p-5 ${rankTheme.card}`}
+                      className={`group flex min-w-0 flex-col gap-4 overflow-hidden rounded-2xl border p-4 transition sm:p-5 ${rankTheme.card}`}
                     >
                       <div className="flex min-w-0 items-center justify-between gap-4">
                         <div className="flex min-w-0 items-center gap-3">
@@ -1171,7 +1171,7 @@ export default function QRPage({ projectId }: QRPageProps) {
                   key={nominee.id}
                   className={`group relative overflow-hidden rounded-3xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:p-6 ${rankTheme.card}`}
                 >
-                  <div className="pointer-events-none absolute -right-16 -top-20 h-44 w-44 rounded-full bg-emerald-400/[0.035] blur-[65px] transition group-hover:bg-emerald-400/[0.07]" />
+                  <div className={`pointer-events-none absolute -right-16 -top-20 h-44 w-44 rounded-full border ${rankTheme.bubble} blur-[65px] transition`} />
 
                   <div className="relative">
                     <div className="flex items-start gap-4">

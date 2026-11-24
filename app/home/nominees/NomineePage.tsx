@@ -809,7 +809,7 @@ export default function NomineesPage() {
                       <button
                         type="button"
                         onClick={() => handleDetails(nominee.id)}
-                        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-white/[0.09] bg-white/[0.035] px-4 py-3 text-sm font-medium text-white/75 transition-all duration-300 hover:border-emerald-400/25 hover:bg-emerald-400/[0.07] hover:text-emerald-300"
+                        className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 ${rankTheme.action}`}
                       >
                         <Info size={16} />
                         View details
@@ -820,7 +820,7 @@ export default function NomineesPage() {
                         type="button"
                         onClick={() => void openVoteModal(nominee)}
                         disabled={hasVoted || submitting}
-                        className="group/button inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-[#04130c] transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-40"
+                        className={`group/button inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40 ${rankTheme.solid}`}
                       >
                         <Vote size={16} />
 

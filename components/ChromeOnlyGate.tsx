@@ -82,9 +82,6 @@ export default function ChromeOnlyGate({
         <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">
           <ShieldCheck aria-hidden="true" size={28} />
         </div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">
-          VoteSphere browser support
-        </p>
         <h1
           id="chrome-required-title"
           className="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
@@ -115,9 +112,7 @@ export default function ChromeOnlyGate({
             <Download aria-hidden="true" size={17} />
           </a>
         </div>
-        <p className="mt-5 text-xs leading-5 text-zinc-500">
-          If Chrome does not open, install it and return to this page.
-        </p>
+
       </section>
     </main>
   );

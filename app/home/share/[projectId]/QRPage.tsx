@@ -953,11 +953,11 @@ export default function QRPage({ projectId }: QRPageProps) {
                           </div>
                         </div>
 
-                        <div className="shrink-0 rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 text-right">
+                        <div className={`shrink-0 rounded-xl border px-3 py-2 text-right ${rankTheme.badge}`}>
                           <p className="text-[10px] uppercase tracking-[0.14em] text-white/40">
                             Total votes
                           </p>
-                          <p className="mt-1 font-semibold tabular-nums text-white">
+                          <p className={`mt-1 font-semibold tabular-nums ${rankTheme.crown}`}>
                             {voteCount.toLocaleString()}
                           </p>
                         </div>
@@ -965,7 +965,7 @@ export default function QRPage({ projectId }: QRPageProps) {
 
                       <Link
                         href={`/home/${nominee.id}`}
-                        className="inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.07] px-4 text-xs font-semibold text-emerald-300 transition hover:border-emerald-400/40 hover:bg-emerald-400/15 hover:text-emerald-200"
+                        className={`inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-lg border px-4 text-xs font-semibold transition ${rankTheme.action}`}
                       >
                         View more
                         <ArrowRight size={13} />

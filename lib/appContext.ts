@@ -11,9 +11,14 @@ import type {
   ProjectDetail,
 } from "@/types/project";
 
+export type ForgetPasswordMode = "request" | "update";
+
 export type AppContextType = {
   userInfo: string;
   setUserInfo: Dispatch<SetStateAction<string>>;
+
+  mode: ForgetPasswordMode;
+  setMode: Dispatch<SetStateAction<ForgetPasswordMode>>;
 
   project: Project[] | null;
   setProject: Dispatch<SetStateAction<Project[] | null>>;

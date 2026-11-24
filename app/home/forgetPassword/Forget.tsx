@@ -17,13 +17,12 @@ import {
 } from "lucide-react";
 
 import { supabase } from "@/lib/supabase-client";
-
-type PageMode = "request" | "update";
+import useApp from "@/lib/useApp";
 
 export default function ForgetPassword() {
   const router = useRouter();
+  const { mode, setMode } = useApp();
 
-  const [mode, setMode] = useState<PageMode>("request");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -42,9 +41,7 @@ export default function ForgetPassword() {
           data: { session },
         } = await supabase.auth.getSession();
 
-        if (active && session) {
-          setMode("update");
-        }
+        if (active) setMode(session ? "update" : "request");
       } finally {
         if (active) setCheckingSession(false);
       }

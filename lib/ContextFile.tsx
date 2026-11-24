@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 
-import { appContext } from "./appContext";
+import { appContext, type ForgetPasswordMode } from "./appContext";
 
 import type {
   Project,
@@ -16,6 +16,7 @@ export default function ContextFile({
 }) {
   const [project, setProject] = useState<Project[] | null>(null);
   const [taskKey, setTaskKey] = useState<boolean | null>(null);
+  const [mode, setMode] = useState<ForgetPasswordMode>("request");
   const [userInfo, setUserInfo] = useState("");
   const [projectDetails, setProjectDetails] =
     useState<ProjectDetail | null>(null);
@@ -27,6 +28,9 @@ export default function ContextFile({
       value={{
         userInfo,
         setUserInfo,
+
+        mode,
+        setMode,
 
         project,
         setProject,

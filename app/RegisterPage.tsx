@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/lib/supabase-client";
 import { ensureUserTask } from "@/lib/tasks";
-
+import useApp from "@/lib/useApp";
 type AuthMode = "login" | "signup";
 type LoadingType = "email" | "google" | null;
 
@@ -37,7 +37,7 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState<LoadingType>(null);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
+const {setMode: setEmailMode, } = useApp()
   const isLogin = mode === "login";
   const isLoading = loading !== null;
 
@@ -102,6 +102,7 @@ export default function RegisterPage() {
 
   // Handle existing sessions when the login page opens.
   useEffect(() => {
+    setEmailMode('request');
     mountedRef.current = true;
 
     const {
